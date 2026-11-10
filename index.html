@@ -4,1156 +4,729 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>一月慢游：丽江＋大理</title>
-  <meta name="description" content="已选定丽江＋大理为主线：先在丽江上玉龙雪山，再坐高铁去大理看洱海、苍山，当地可用公交、包车或自驾。九寨沟海拔更低，作为备选；川西慢自驾是后补方案。">
+  <meta name="description" content="一月去丽江和大理：先上玉龙雪山，再坐高铁看洱海、苍山。当地可坐公交、包车或自己开车。">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://barrrrywang.github.io/jan-trip-2027/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:title" content="一月慢游：丽江＋大理">
-  <meta property="og:description" content="主线是丽江＋大理：先上玉龙雪山，再坐高铁去大理看洱海、苍山。九寨沟海拔更低，作为备选；川西慢自驾是后补方案。">
+  <meta property="og:description" content="一月去丽江和大理：先上玉龙雪山，再坐高铁看洱海、苍山。">
   <meta property="og:url" content="https://barrrrywang.github.io/jan-trip-2027/">
   <meta property="og:image" content="https://barrrrywang.github.io/jan-trip-2027/og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="玉龙雪山雪峰，2024-12-08，新华社记者 孟涛">
+  <meta property="og:image:alt" content="玉龙雪山雪峰，Ma Martin，CC BY-SA 3.0">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="一月慢游：丽江＋大理">
-  <meta name="twitter:description" content="主线是丽江＋大理：先上玉龙雪山，再去洱海、苍山。九寨沟和川西为备选。">
+  <meta name="twitter:description" content="一月去丽江和大理：先上玉龙雪山，再坐高铁看洱海、苍山。">
   <meta name="twitter:image" content="https://barrrrywang.github.io/jan-trip-2027/og.jpg">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
   <style>
+
     :root {
-      --ink: #0b1012;
-      --ink-2: #12191c;
-      --ink-3: #1a2327;
-      --cream: #f4efe6;
-      --cream-dim: rgba(244, 239, 230, .72);
-      --cream-mute: rgba(244, 239, 230, .48);
-      --ice: #9fd0de;
-      --gold: #d4b07a;
-      --gold-bright: #edcf96;
-      --line: rgba(244, 239, 230, .12);
-      --glass: rgba(11, 16, 18, .55);
-      --glass-2: rgba(18, 25, 28, .72);
-      --serif: "Noto Serif SC", "Songti SC", "STSong", "SimSun", "Source Han Serif SC", "Times New Roman", Georgia, serif;
-      --sans: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", "Segoe UI", system-ui, sans-serif;
-      --ease: cubic-bezier(.22, 1, .36, 1);
+      --ink: #0b1012; --ink-2: #12191c; --ink-3: #1a2327;
+      --cream: #f4efe6; --cream-dim: rgba(244,239,230,.72); --cream-mute: rgba(244,239,230,.48);
+      --ice: #9fd0de; --gold: #d4b07a; --gold-bright: #edcf96;
+      --line: rgba(244,239,230,.12); --glass: rgba(11,16,18,.55); --glass-2: rgba(18,25,28,.72);
+      --green: #8fbe8a; --yellow: #e0c56a; --red: #d9897a;
+      --serif: "Noto Serif SC","Songti SC","STSong","SimSun","Source Han Serif SC",Georgia,serif;
+      --sans: "PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+      --ease: cubic-bezier(.22,1,.36,1);
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     html, body { margin: 0; padding: 0; background: var(--ink); color: var(--cream); }
-    body {
-      font-family: var(--sans);
-      font-size: 17px;
-      line-height: 1.75;
-      letter-spacing: .01em;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
+    body { font-family: var(--sans); font-size: 16px; line-height: 1.55; letter-spacing: .01em; -webkit-font-smoothing: antialiased; }
     img { max-width: 100%; height: auto; display: block; }
     a { color: var(--ice); text-decoration-thickness: 1px; text-underline-offset: 3px; }
     a:hover { color: var(--gold-bright); }
     :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+    p { margin: 0 0 .55rem; }
+    p:last-child { margin-bottom: 0; }
+    ul.plain, ol.plain { margin: .2rem 0 0; padding: 0 0 0 1.1rem; color: var(--cream-dim); }
+    ul.plain li, ol.plain li { margin: .25rem 0; }
+    strong { color: var(--cream); font-weight: 600; }
 
-    .nav {
-      position: fixed; inset: 0 0 auto 0; z-index: 40;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 1rem; padding: .7rem 1.25rem;
-      background: rgba(11,16,18,.35);
-      backdrop-filter: blur(18px) saturate(1.2);
-      -webkit-backdrop-filter: blur(18px) saturate(1.2);
-      border-bottom: 1px solid transparent;
-      transition: background .4s var(--ease), border-color .4s;
-    }
+    .nav { position: fixed; inset: 0 0 auto 0; z-index: 40; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .7rem 1.25rem; background: rgba(11,16,18,.35); backdrop-filter: blur(18px) saturate(1.2); -webkit-backdrop-filter: blur(18px) saturate(1.2); border-bottom: 1px solid transparent; }
     .nav.is-scrolled { background: var(--glass-2); border-bottom-color: var(--line); }
-    .nav-brand {
-      font-family: var(--serif);
-      font-size: .95rem;
-      letter-spacing: .12em;
-      color: var(--cream);
-      text-decoration: none;
-      white-space: nowrap;
-    }
+    .nav-brand { font-family: var(--serif); font-size: .95rem; letter-spacing: .12em; color: var(--cream); text-decoration: none; white-space: nowrap; }
     .nav-links { display: flex; flex-wrap: wrap; gap: .15rem 1.1rem; }
-    .nav-links a {
-      color: var(--cream-dim);
-      text-decoration: none;
-      font-size: .78rem;
-      letter-spacing: .16em;
-      padding: .2rem 0;
-    }
+    .nav-links a { color: var(--cream-dim); text-decoration: none; font-size: .78rem; letter-spacing: .16em; padding: .2rem 0; }
     .nav-links a:hover { color: var(--gold-bright); }
 
-    .hero {
-      position: relative;
-      min-height: 100svh;
-      display: grid;
-      align-items: end;
-      overflow: hidden;
-      background: #050708;
-    }
-    .hero-photo {
-      position: absolute; inset: -8% 0 0;
-      width: 100%; height: 108%;
-      object-fit: cover;
-      transform: scale(1.08);
-      will-change: transform;
-    }
-    .hero-shade {
-      position: absolute; inset: 0;
-      background:
-        linear-gradient(180deg, rgba(11,16,18,.25) 0%, rgba(11,16,18,.08) 35%, rgba(11,16,18,.82) 100%),
-        linear-gradient(90deg, rgba(11,16,18,.35), transparent 42%);
-    }
+    .hero { position: relative; min-height: 88svh; display: grid; align-items: end; overflow: hidden; background: #050708; }
+    .hero-photo { position: absolute; inset: -8% 0 0; width: 100%; height: 108%; object-fit: cover; }
+    .hero-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,16,18,.25) 0%, rgba(11,16,18,.08) 35%, rgba(11,16,18,.86) 100%), linear-gradient(90deg, rgba(11,16,18,.4), transparent 50%); }
     #snow { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; }
-    .hero-copy {
-      position: relative; z-index: 3;
-      width: min(42rem, calc(100% - 10vw));
-      padding: 0 7vw 14vh;
-      writing-mode: horizontal-tb;
-      word-break: keep-all;
-    }
-    .kicker {
-      margin: 0 0 .8rem;
-      font-size: .72rem;
-      letter-spacing: .34em;
-      color: var(--gold-bright);
-    }
-    .hero h1 {
-      font-family: var(--serif);
-      font-weight: 600;
-      font-size: clamp(2.4rem, 6.4vw, 4.6rem);
-      line-height: 1.18;
-      margin: 0 0 .8rem;
-      letter-spacing: .06em;
-    }
-    .hero-lead {
-      margin: 0;
-      max-width: 26em;
-      color: var(--cream-dim);
-      font-size: 1.05rem;
-      word-break: break-word;
-    }
-    .hero-credit {
-      position: absolute; z-index: 3;
-      right: 7vw; bottom: 4.5vh;
-      font-size: .68rem;
-      letter-spacing: .06em;
-      color: var(--cream-mute);
-      text-align: right;
-      max-width: 16rem;
-    }
+    .hero-copy { position: relative; z-index: 3; width: min(42rem, calc(100% - 10vw)); padding: 0 7vw 12vh; }
+    .kicker { margin: 0 0 .8rem; font-size: .72rem; letter-spacing: .34em; color: var(--gold-bright); }
+    .hero h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(2.4rem, 6.4vw, 4.6rem); line-height: 1.18; margin: 0 0 .7rem; letter-spacing: .06em; }
+    .hero-lead { margin: 0; max-width: 22em; color: var(--cream-dim); font-size: 1.05rem; }
+    .hero-credit { position: absolute; z-index: 3; right: 7vw; bottom: 4.2vh; font-size: .68rem; color: var(--cream-mute); text-align: right; max-width: 16rem; }
     .hero-credit a { color: inherit; }
-    .scroll-hint {
-      position: absolute; z-index: 3;
-      left: 50%; bottom: 2.6vh;
-      transform: translateX(-50%);
-      font-size: .68rem;
-      letter-spacing: .28em;
-      color: var(--cream-mute);
-    }
+    .scroll-hint { position: absolute; z-index: 3; left: 50%; bottom: 2.4vh; transform: translateX(-50%); font-size: .68rem; letter-spacing: .28em; color: var(--cream-mute); }
 
-    .band { padding: 4.8rem 0 5.2rem; }
-    .band.ink-2 { background: var(--ink-2); }
-    .wrap { width: min(46rem, calc(100% - 12vw)); margin: 0 auto; }
+    .wrap { width: min(52rem, calc(100% - 10vw)); margin: 0 auto; }
     .wrap-wide { width: min(68rem, calc(100% - 8vw)); margin: 0 auto; }
-    .eyebrow {
-      margin: 0 0 .6rem;
-      font-size: .72rem;
-      letter-spacing: .34em;
-      color: var(--gold);
-    }
-    h2 {
-      font-family: var(--serif);
-      font-weight: 600;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      line-height: 1.25;
-      margin: 0 0 1rem;
-      letter-spacing: .04em;
-    }
-    h3 {
-      font-family: var(--serif);
-      font-weight: 600;
-      font-size: 1.15rem;
-      margin: 1.8rem 0 .6rem;
-      color: var(--gold-bright);
-    }
-    .choose p { margin: 0; font-size: 1.15rem; color: var(--cream-dim); }
-    .choose strong { color: var(--cream); font-weight: 600; }
-    .choose-links { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.6rem; }
-    .pill {
-      display: inline-block;
-      padding: .55rem 1rem;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--cream);
-      text-decoration: none;
-      font-size: .85rem;
-      letter-spacing: .08em;
-      background: rgba(244,239,230,.04);
-    }
-    .pill:hover { border-color: var(--gold); color: var(--gold-bright); }
-    .pill-main {
-      border-color: rgba(212,176,122,.55);
-      background: rgba(212,176,122,.12);
-      color: var(--gold-bright);
-    }
-    .pill-sub { color: var(--cream-mute); border-style: dashed; }
+    .eyebrow { margin: 0 0 .45rem; font-size: .72rem; letter-spacing: .34em; color: var(--gold); }
+    h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.7rem, 3.6vw, 2.5rem); line-height: 1.25; margin: 0 0 .8rem; letter-spacing: .04em; }
+    h3 { font-family: var(--serif); font-weight: 600; font-size: 1.12rem; margin: 0 0 .55rem; color: var(--gold-bright); }
 
-    .bleed {
-      position: relative;
-      min-height: 88svh;
-      display: grid;
-      align-items: end;
-      overflow: hidden;
-      background: #050708;
-    }
-    .bleed img {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-    }
-    .bleed-shade {
-      position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(11,16,18,.15), rgba(11,16,18,.12) 40%, rgba(11,16,18,.88));
-    }
-    .bleed-copy {
-      position: relative; z-index: 1;
-      width: min(44rem, calc(100% - 10vw));
-      padding: 0 7vw 8vh;
-      display: flex; align-items: flex-end; gap: 1.6rem 2rem;
-    }
-    .bleed-title { writing-mode: vertical-rl; }
-    .chap-no {
-      font-size: .72rem; letter-spacing: .34em; color: var(--gold-bright); margin: 0 0 .6rem;
-    }
-    .bleed h2 { font-size: clamp(2.4rem, 6vw, 4.6rem); margin: 0; letter-spacing: .2em; line-height: 1.15; }
-    .bleed-lead { margin: 0; color: var(--cream-dim); max-width: 22em; flex: 1; word-break: break-word; }
+    .overview { padding: 3.2rem 0 2.4rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: .55rem; margin: 0 0 1.1rem; padding: 0; list-style: none; }
+    .chips li { border: 1px solid var(--line); background: rgba(244,239,230,.04); border-radius: 999px; padding: .4rem .85rem; font-size: .88rem; color: var(--cream-dim); }
+    .chips strong { color: var(--gold-bright); }
+    .fact-grid { display: grid; gap: .7rem; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); }
+    .fact { border: 1px solid var(--line); border-radius: 14px; padding: .85rem 1rem; background: rgba(244,239,230,.03); }
+    .fact .k { display: block; font-size: .72rem; letter-spacing: .12em; color: var(--gold); margin-bottom: .3rem; }
+    .fact p { color: var(--cream-dim); font-size: .92rem; }
 
-    .plan { padding: 3.4rem 0 4.2rem; }
-    .days { display: grid; gap: 0; margin: 1.2rem 0 1.6rem; }
-    .day {
-      display: grid;
-      grid-template-columns: 3.2rem 1fr;
-      gap: .2rem 1.1rem;
-      padding: 1.05rem 0;
-      border-top: 1px solid var(--line);
-    }
-    .day:last-child { border-bottom: 1px solid var(--line); }
-    .day-n {
-      font-family: var(--serif);
-      color: var(--gold-bright);
-      letter-spacing: .08em;
-      font-size: 1.05rem;
-      padding-top: .15rem;
-    }
-    .day p { margin: 0; color: var(--cream-dim); }
-    .todo, .budget, .alt-box {
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 1.15rem 1.25rem 1.05rem;
-      background: rgba(244,239,230,.03);
-      margin: 1rem 0 0;
-    }
-    .todo h3, .budget h3, .alt-box h3 { margin: 0 0 .45rem; font-size: 1rem; }
-    .todo ul, .budget p, .alt-box p { margin: 0; padding: 0; color: var(--cream-dim); }
-    .budget-lead { margin: 0 0 .9rem !important; }
-    .budget-note { margin: .85rem 0 0 !important; font-size: .86rem; color: var(--cream-mute) !important; }
-    .budget-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(15.5rem, .85fr);
-      gap: 1.15rem 1.35rem;
-      align-items: start;
-    }
-    .b-row {
-      display: grid;
-      grid-template-columns: 6.6em 1fr auto;
-      gap: .2rem .7rem;
-      padding: .48rem 0;
-      border-bottom: 1px solid var(--line);
-      font-size: .88rem;
-      align-items: start;
-    }
-    .b-row .k { color: var(--cream); }
-    .b-row .d { color: var(--cream-mute); font-size: .75rem; line-height: 1.55; }
-    .b-row .v {
-      color: var(--gold-bright);
-      font-variant-numeric: tabular-nums;
-      white-space: nowrap;
-      text-align: right;
-    }
-    .b-row.total {
-      border-bottom: 0;
-      padding-top: .75rem;
-      font-size: .98rem;
-    }
-    .b-row.total .k, .b-row.total .d { color: var(--cream); }
-    .b-row.total .d { font-size: .8rem; color: var(--cream-dim); }
-    .budget-pie-wrap { display: flex; flex-direction: column; align-items: center; gap: .75rem; }
-    .pie {
-      width: 10.6rem; height: 10.6rem;
-      border-radius: 50%;
-      box-shadow: 0 0 0 6px rgba(244,239,230,.05);
-      flex-shrink: 0;
-    }
-    .pie-legend {
-      list-style: none; margin: 0; padding: 0;
-      width: 100%; font-size: .75rem; color: var(--cream-dim);
-    }
-    .pie-legend li {
-      display: flex; align-items: baseline; gap: .45rem;
-      padding: .14rem 0;
-    }
-    .pie-legend i {
-      width: .52rem; height: .52rem; border-radius: 50%;
-      flex-shrink: 0; position: relative; top: .1em;
-    }
-    .pie-legend .lab { flex: 1; }
-    .pie-legend .amt { color: var(--cream-mute); font-variant-numeric: tabular-nums; white-space: nowrap; }
-    .pie-cap { margin: 0 !important; font-size: .72rem; color: var(--cream-mute) !important; text-align: center; }
-    .pie-lj {
-      background: conic-gradient(
-        #d4b07a 0 27.50%,
-        #edcf96 27.50% 37.06%,
-        #9fd0de 37.06% 40.05%,
-        #6aa8b8 40.05% 50.45%,
-        #e8d5b5 50.45% 79.82%,
-        #b7c4a1 79.82% 99.25%,
-        #8b9aa0 99.25% 100%
-      );
-    }
-    .pie-cx {
-      background: conic-gradient(
-        #edcf96 0 21.90%,
-        #c4895a 21.90% 30.13%,
-        #9fd0de 30.13% 35.39%,
-        #6aa8b8 35.39% 41.96%,
-        #e8d5b5 41.96% 69.99%,
-        #b7c4a1 69.99% 95.18%,
-        #8b9aa0 95.18% 100%
-      );
-    }
-    .pie-jz {
-      background: conic-gradient(
-        #d4b07a 0 11.50%,
-        #edcf96 11.50% 28.80%,
-        #c4895a 28.80% 31.55%,
-        #9fd0de 31.55% 36.70%,
-        #6aa8b8 36.70% 43.57%,
-        #e8d5b5 43.57% 79.62%,
-        #b7c4a1 79.62% 99.36%,
-        #8b9aa0 99.36% 100%
-      );
-    }
+    .map-sec { padding: 0 0 3rem; }
+    .map-toolbar { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0 0 .7rem; align-items: center; }
+    .map-toolbar button { appearance: none; border: 1px solid var(--line); background: rgba(244,239,230,.05); color: var(--cream); border-radius: 999px; padding: .35rem .8rem; font: inherit; font-size: .82rem; cursor: pointer; }
+    .map-toolbar button.is-on, .map-toolbar button:hover { border-color: var(--gold); color: var(--gold-bright); background: rgba(212,176,122,.12); }
+    .map-frame { position: relative; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--ink-2); }
+    #trip-map { height: min(62vh, 32rem); width: 100%; background: #1a2327; }
+    .map-fallback { display: none; padding: 1rem 1.1rem 1.2rem; color: var(--cream-dim); }
+    .map-frame.is-fallback #trip-map { display: none; }
+    .map-frame.is-fallback .map-fallback { display: block; }
+    .legend { display: flex; flex-wrap: wrap; gap: .7rem 1.1rem; margin: .65rem 0 0; padding: 0; list-style: none; font-size: .8rem; color: var(--cream-dim); }
+    .legend i { display: inline-block; width: .65rem; height: .65rem; border-radius: 50%; margin-right: .35rem; vertical-align: -1px; }
+    .dot-g { background: var(--green); } .dot-y { background: var(--yellow); } .dot-r { background: var(--red); }
+    .leaflet-container { font-family: var(--sans); background: #1a2327; }
+    .leaflet-popup-content-wrapper { background: #1a2327; color: var(--cream); border-radius: 12px; }
+    .leaflet-popup-tip { background: #1a2327; }
+    .leaflet-popup-content { margin: .7rem .85rem; font-size: .86rem; line-height: 1.5; }
+    .leaflet-popup-content strong { color: var(--gold-bright); }
 
-    .todo li { list-style: none; padding: .2rem 0 .2rem 1.1rem; position: relative; }
-    .todo li::before {
-      content: "";
-      position: absolute; left: 0; top: .75em;
-      width: .45rem; height: .45rem;
-      border-radius: 50%;
-      background: var(--gold);
-      box-shadow: 0 0 0 3px rgba(212,176,122,.18);
-    }
-    .alt-box {
-      border-color: rgba(159,208,222,.28);
-      background: rgba(159,208,222,.06);
-    }
-    .alt-box h3 { color: var(--ice); }
+    .plan { padding: 0 0 4rem; }
+    .date-box, .todo, .alt-box, .budget { border: 1px solid var(--line); border-radius: 14px; padding: 1.05rem 1.15rem 1rem; background: rgba(244,239,230,.03); margin: 0 0 1.1rem; }
+    .date-box ul, .alt-box ul, .todo ul { margin: .15rem 0 0; padding: 0; list-style: none; }
+    .date-box li, .alt-box li, .todo li { position: relative; padding: .35rem 0 .35rem 1rem; border-bottom: 1px solid var(--line); color: var(--cream-dim); font-size: .92rem; }
+    .date-box li:last-child, .alt-box li:last-child, .todo li:last-child { border-bottom: 0; }
+    .date-box li::before, .alt-box li::before, .todo li::before { content: ""; position: absolute; left: 0; top: .85em; width: .4rem; height: .4rem; border-radius: 50%; background: var(--gold); }
 
-    .links { display: grid; gap: .7rem; margin: .2rem 0 0; }
-    @media (min-width: 800px) {
-      .links { grid-template-columns: 1fr 1fr; }
-    }
-    .refs { margin-top: 1.8rem; }
-    .refs h3 { margin-top: 0; }
-    .refs-note { margin: .75rem 0 0; font-size: .86rem; color: var(--cream-mute); }
-    .card {
-      display: block;
-      padding: .9rem 1.1rem;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      text-decoration: none;
-      color: var(--cream);
-      background: rgba(244,239,230,.03);
-      transition: border-color .25s, background .25s;
-    }
-    .card:hover { border-color: var(--gold); background: rgba(212,176,122,.08); color: var(--gold-bright); }
-    .card .card-title { display: block; }
-    .card small { display: block; color: var(--cream-mute); font-size: .75rem; letter-spacing: .04em; margin-top: .15rem; }
-    .card .card-note { display: block; color: var(--cream-dim); font-size: .86rem; line-height: 1.55; margin-top: .35rem; }
-    .card:hover small, .card:hover .card-note { color: inherit; opacity: .85; }
+    .day-grid { display: grid; gap: .9rem; grid-template-columns: 1fr; margin: 0 0 1.4rem; }
+    @media (min-width: 820px) { .day-grid { grid-template-columns: 1fr 1fr; } }
+    .day-card { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--ink-2); display: flex; flex-direction: column; cursor: pointer; text-align: left; color: inherit; font: inherit; padding: 0; width: 100%; }
+    .day-card:hover { border-color: rgba(212,176,122,.45); }
+    .day-card.is-open { border-color: var(--gold); }
+    .day-card img { width: 100%; height: 10.5rem; object-fit: cover; }
+    .day-body { padding: .8rem .95rem 1rem; }
+    .day-top { display: flex; justify-content: space-between; align-items: baseline; gap: .6rem; }
+    .day-n { color: var(--gold-bright); font-family: var(--serif); letter-spacing: .12em; font-size: .9rem; }
+    .alt-bar { margin: .55rem 0 .45rem; }
+    .alt-bar .lab { display: flex; justify-content: space-between; font-size: .72rem; color: var(--cream-mute); margin-bottom: .2rem; }
+    .alt-bar .track { height: .35rem; border-radius: 99px; background: rgba(244,239,230,.1); overflow: hidden; }
+    .alt-bar .fill { height: 100%; border-radius: 99px; }
+    .fill-g { background: var(--green); } .fill-y { background: var(--yellow); } .fill-r { background: var(--red); }
+    .day-sum { margin: 0; color: var(--cream-dim); font-size: .92rem; }
+    .day-more { display: none; margin: .55rem 0 0; padding: .55rem 0 0; border-top: 1px solid var(--line); color: var(--cream-dim); font-size: .88rem; }
+    .day-card.is-open .day-more { display: block; }
+    .day-more li { margin: .25rem 0; }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-      gap: .7rem;
-      margin-top: 2rem;
-    }
-    figure { margin: 0; }
-    figure img {
-      width: 100%;
-      height: 16rem;
-      object-fit: cover;
-      border-radius: 8px;
-      cursor: zoom-in;
-    }
-    figcaption {
-      font-size: .72rem;
-      color: var(--cream-mute);
-      margin-top: .4rem;
-      letter-spacing: .02em;
-    }
-    figcaption a { color: inherit; }
+    .src { margin: .7rem 0 0; border: 1px dashed var(--line); border-radius: 12px; background: transparent; }
+    .src > summary { cursor: pointer; list-style: none; padding: .55rem .85rem; color: var(--gold); font-size: .82rem; letter-spacing: .08em; }
+    .src > summary::-webkit-details-marker { display: none; }
+    .src > summary::after { content: "＋"; float: right; color: var(--cream-mute); }
+    .src[open] > summary::after { content: "－"; }
+    .src-body { padding: 0 .85rem .85rem; font-size: .82rem; color: var(--cream-dim); }
+    .src-body a { color: var(--gold-bright); }
 
-    .sources { padding: 3.2rem 0 4rem; border-top: 1px solid var(--line); }
-    .sources h2 { font-size: 1.4rem; }
-    .sources ol { margin: 0; padding: 0 0 0 1.2rem; color: var(--cream-dim); font-size: .92rem; }
-    .sources li { margin: .35rem 0; }
-    footer {
-      padding: 1.4rem 0 2.2rem;
-      color: var(--cream-mute);
-      font-size: .78rem;
-      text-align: center;
-    }
-
-    .reveal { opacity: 0; transform: translateY(18px); animation: none; }
-    .reveal.is-in { animation: rise .9s var(--ease) forwards; }
-    @keyframes rise { to { opacity: 1; transform: none; } }
-    html.shot .reveal { opacity: 1 !important; transform: none !important; animation: none !important; }
-    html.shot-budget .nav, html.shot-budget footer, html.shot-budget #lightbox, html.shot-budget #snow { display: none !important; }
-    html.shot-budget .bleed, html.shot-budget .days, html.shot-budget .alt-box, html.shot-budget .todo,
-    html.shot-budget .budget ~ *, html.shot-budget .gallery, html.shot-budget .links { display: none !important; }
-    html.shot-budget body { background: var(--ink); padding: 1.25rem 1.1rem 1.4rem !important; }
-    html.shot-budget .plan { padding: 0; }
-    html.shot-budget .wrap { width: min(52rem, 100%); padding: 0; }
-    html.shot-budget .budget { margin: 0; }
-    html.shot-refs .nav, html.shot-refs footer, html.shot-refs #lightbox, html.shot-refs #snow,
-    html.shot-refs .hero, html.shot-refs .choose, html.shot-refs .sources, html.shot-refs .backup,
-    html.shot-refs .bleed, html.shot-refs .days, html.shot-refs .alt-box, html.shot-refs .todo,
-    html.shot-refs .budget, html.shot-refs .gallery { display: none !important; }
-    html.shot-refs body { background: var(--ink); padding: 1.25rem 1.1rem 1.6rem !important; }
-    html.shot-refs .plan { padding: 0 0 1.4rem; }
-    html.shot-refs .wrap { width: min(52rem, 100%); padding: 0; }
-    html.shot-refs .refs { margin-top: 0; }
-    html.shot-refs #jiuzhaigou .plan { padding-top: 1.6rem; }
-
-    #lightbox {
-      position: fixed; inset: 0; z-index: 80;
-      background: rgba(5,7,8,.92);
-      display: grid;
-      place-items: center;
-      padding: 3vh 4vw;
-    }
-    #lightbox[hidden] { display: none; }
-    #lightbox img { max-width: min(96vw, 1400px); max-height: 86vh; object-fit: contain; }
-    .lb-cap { color: var(--cream-dim); font-size: .85rem; margin-top: .7rem; text-align: center; }
-    .lb-x, .lb-nav {
-      position: absolute; top: 1rem;
-      background: transparent; border: 0; color: var(--cream);
-      font-size: 1.4rem; cursor: pointer; padding: .4rem .7rem;
-    }
-    .lb-x { right: 1rem; }
-    .prev { left: .4rem; top: 50%; }
-    .next { right: .4rem; top: 50%; }
-
-
-    .backup {
-      padding: 3rem 0 3.4rem;
-      background: var(--ink-2);
-      border-top: 1px solid var(--line);
-    }
-    .backup h2 { font-size: clamp(1.45rem, 3.2vw, 2.05rem); }
-    .backup-lead { margin: 0 0 1.15rem; color: var(--cream-dim); font-size: 1.02rem; }
-    .backup-details {
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: rgba(244,239,230,.03);
-    }
-    .backup-details > summary {
-      cursor: pointer;
-      list-style: none;
-      padding: 1rem 1.2rem;
-      color: var(--gold-bright);
-      font-family: var(--serif);
-      font-size: 1.05rem;
-      letter-spacing: .04em;
-    }
-    .backup-details > summary::-webkit-details-marker { display: none; }
-    .backup-details > summary::after {
-      content: "＋";
-      float: right;
-      color: var(--cream-mute);
-      font-family: var(--sans);
-      font-size: .95rem;
-    }
-    .backup-details[open] > summary::after { content: "－"; }
-    .backup-body { padding: 0 1.2rem 1.35rem; }
-    .backup .plan { padding: 0; }
-    .backup .days { margin-top: .2rem; }
-    .lodge-list { margin: .2rem 0 0; padding: 0; list-style: none; }
-    .lodge-list li { padding: .45rem 0; border-bottom: 1px solid var(--line); font-size: .9rem; color: var(--cream-dim); }
-    .lodge-list li:last-child { border-bottom: 0; }
-    .lodge-list a { color: var(--cream); text-decoration: none; }
-    .lodge-list a:hover { color: var(--gold-bright); }
-    .lodge-note { margin: .55rem 0 0; font-size: .86rem; color: var(--cream-mute); }
-    .warn-box {
-      border: 1px solid rgba(212,176,122,.35);
-      border-radius: 14px;
-      padding: 1.15rem 1.25rem 1.05rem;
-      background: rgba(212,176,122,.07);
-      margin: 1rem 0 0;
-    }
-    .warn-box h3 { margin: 0 0 .45rem; font-size: 1rem; color: var(--gold-bright); }
-    .warn-box p { margin: 0; color: var(--cream-dim); font-size: .95rem; }
-    .date-opt {
-      margin: 0 0 1.1rem;
-      padding: .85rem 1rem;
-      border: 1px dashed var(--line);
-      border-radius: 12px;
-      color: var(--cream-dim);
-      font-size: .92rem;
-    }
-    .date-opt strong { color: var(--cream); font-weight: 600; }
-    .perhead-block { margin: 1.15rem 0 1.35rem; }
-    .perhead-block h4 { margin: 0 0 .55rem; font-size: 1.05rem; color: var(--cream); font-weight: 600; }
-    .perhead-intro { margin: 0 0 .75rem; color: var(--cream-dim); font-size: .92rem; }
-    .perhead-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 0 .7rem; border: 1px solid var(--line); border-radius: 12px; }
-    table.perhead { width: 100%; min-width: 0; border-collapse: collapse; font-size: .82rem; color: var(--cream-dim); table-layout: fixed; }
+    .perhead-block { margin: 1rem 0 1.2rem; }
+    .perhead-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 0 .6rem; border: 1px solid var(--line); border-radius: 12px; }
+    table.perhead { width: 100%; min-width: 0; border-collapse: collapse; font-size: .8rem; color: var(--cream-dim); table-layout: fixed; }
     table.perhead col.c-item { width: 28%; } table.perhead col.c-way { width: 12%; } table.perhead col.c-unit { width: 18%; } table.perhead col.c-n { width: 14%; }
-    table.perhead th, table.perhead td { padding: .55rem .6rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    table.perhead th, table.perhead td { padding: .5rem .55rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
     table.perhead th { color: var(--gold); font-weight: 600; background: rgba(244,239,230,.04); white-space: nowrap; }
     table.perhead td.num { text-align: right; color: var(--cream); font-variant-numeric: tabular-nums; }
     table.perhead td.way { white-space: nowrap; }
+    table.perhead .sub { display: block; margin-top: .15rem; font-size: .74rem; color: var(--cream-mute); font-weight: 400; }
     table.perhead tr.total th, table.perhead tr.total td { color: var(--cream); font-weight: 600; border-bottom: 0; background: rgba(212,176,122,.08); }
-    table.perhead .sub { display: block; margin-top: .2rem; font-size: .78rem; font-weight: 400; color: var(--cream-mute); }
-    .perhead-note, .perhead-src { margin: .35rem 0 0; font-size: .86rem; color: var(--cream-dim); }
-    .perhead-src { font-size: .82rem; }
-    .perhead-src a { color: var(--gold-bright); }
-    html.shot-perhead .nav, html.shot-perhead footer, html.shot-perhead #lightbox, html.shot-perhead #snow,
-    html.shot-perhead .hero, html.shot-perhead .choose, html.shot-perhead .sources, html.shot-perhead .backup,
-    html.shot-perhead #jiuzhaigou, html.shot-perhead .bleed, html.shot-perhead .days, html.shot-perhead .alt-box,
-    html.shot-perhead .todo, html.shot-perhead .gallery, html.shot-perhead .refs, html.shot-perhead .budget-grid,
-    html.shot-perhead .lodge-list, html.shot-perhead .lodge-note, html.shot-perhead .budget-note,
-    html.shot-perhead .date-opt { display: none !important; }
-    html.shot-perhead body { background: var(--ink); padding: 1.2rem 1.1rem 1.5rem !important; }
-    html.shot-perhead .plan { padding: 0; }
-    html.shot-perhead .wrap { width: min(54rem, 100%); padding: 0; }
-    html.shot-perhead #budget-lijiang { margin: 0; }
-    html.shot-perhead #budget-lijiang ~ * { display: none !important; }
-    html.shot-perhead #budget-lijiang > h3 { margin-top: 0; }
 
-    html.shot-section .nav, html.shot-section footer, html.shot-section #lightbox, html.shot-section #snow { display: none !important; }
-    html.shot-section body { background: var(--ink); padding: 0 !important; }
-    html.shot-top .nav, html.shot-top footer, html.shot-top #lightbox, html.shot-top #snow,
-    html.shot-top #lijiang, html.shot-top #jiuzhaigou, html.shot-top #chuanxi, html.shot-top .sources { display: none !important; }
+    .budget-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(15rem, .85fr); gap: 1.15rem 1.35rem; align-items: start; }
+    @media (max-width: 800px) { .budget-grid { grid-template-columns: 1fr; } }
+    .b-row { display: grid; grid-template-columns: 6.2em 1fr auto; gap: .2rem .6rem; padding: .42rem 0; border-bottom: 1px solid var(--line); font-size: .86rem; }
+    .b-row .k { color: var(--cream); }
+    .b-row .d { color: var(--cream-mute); font-size: .75rem; }
+    .b-row .v { color: var(--gold-bright); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+    .b-row.total { border-bottom: 0; padding-top: .7rem; }
+    .budget-pie-wrap { display: flex; flex-direction: column; align-items: center; gap: .7rem; }
+    .pie { width: 10.4rem; height: 10.4rem; border-radius: 50%; box-shadow: 0 0 0 6px rgba(244,239,230,.05); flex-shrink: 0; }
+    .pie-lj { background: conic-gradient(#d4b07a 0 27.50%, #edcf96 27.50% 37.06%, #9fd0de 37.06% 40.05%, #6aa8b8 40.05% 50.45%, #e8d5b5 50.45% 79.82%, #b7c4a1 79.82% 99.25%, #8b9aa0 99.25% 100%); }
+    .pie-legend { list-style: none; margin: 0; padding: 0; width: 100%; font-size: .75rem; color: var(--cream-dim); }
+    .pie-legend li { display: flex; align-items: baseline; gap: .45rem; padding: .12rem 0; }
+    .pie-legend i { width: .52rem; height: .52rem; border-radius: 50%; flex-shrink: 0; }
+    .pie-legend .lab { flex: 1; } .pie-legend .amt { color: var(--cream-mute); font-variant-numeric: tabular-nums; }
+    .pie-cap { margin: 0; font-size: .72rem; color: var(--cream-mute); text-align: center; }
+
+    .lodge-grid { display: grid; gap: .7rem; grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr)); margin: .4rem 0 1rem; }
+    .lodge { border: 1px solid var(--line); border-radius: 14px; padding: .85rem .95rem; background: rgba(244,239,230,.03); color: var(--cream-dim); font-size: .88rem; }
+    .lodge a { color: var(--cream); font-weight: 600; text-decoration: none; }
+    .lodge a:hover { color: var(--gold-bright); }
+    .lodge .price { color: var(--gold-bright); font-variant-numeric: tabular-nums; margin: .3rem 0 0; }
+    .lodge .meta { font-size: .8rem; color: var(--cream-mute); margin: .2rem 0 0; }
+
+    .links { display: grid; gap: .7rem; margin: .2rem 0 0; }
+    @media (min-width: 800px) { .links { grid-template-columns: 1fr 1fr; } }
+    .card { display: block; padding: .85rem 1rem; border: 1px solid var(--line); border-radius: 14px; background: rgba(244,239,230,.03); color: inherit; text-decoration: none; }
+    .card:hover { border-color: var(--gold); }
+    .card-title { display: block; color: var(--cream); font-weight: 600; }
+    .card small { color: var(--cream-mute); font-size: .75rem; }
+    .card-note { display: block; margin-top: .25rem; font-size: .82rem; color: var(--cream-dim); }
+
+    .gallery { display: grid; gap: .7rem; grid-template-columns: 1fr 1fr; margin: 1.4rem 0 0; }
+    @media (max-width: 700px) { .gallery { grid-template-columns: 1fr; } }
+    .gallery figure { margin: 0; }
+    .gallery img { width: 100%; height: 12rem; object-fit: cover; border-radius: 12px; cursor: zoom-in; }
+    .gallery figcaption { font-size: .72rem; color: var(--cream-mute); margin-top: .35rem; }
+
+    .sources { padding: 3rem 0 4rem; border-top: 1px solid var(--line); background: var(--ink-2); }
+    .sources ol { color: var(--cream-dim); font-size: .86rem; }
+    footer { padding: 1.2rem; text-align: center; color: var(--cream-mute); font-size: .78rem; }
+
+    #lightbox { position: fixed; inset: 0; z-index: 80; background: rgba(5,7,8,.92); display: grid; place-items: center; padding: 3vh 4vw; }
+    #lightbox[hidden] { display: none; }
+    #lightbox img { max-width: min(96vw, 1400px); max-height: 86vh; object-fit: contain; }
+    .lb-cap { color: var(--cream-dim); font-size: .85rem; margin-top: .7rem; text-align: center; }
+    .lb-x, .lb-nav { position: absolute; top: 1rem; background: transparent; border: 0; color: var(--cream); font-size: 1.4rem; cursor: pointer; padding: .4rem .7rem; }
+    .lb-x { right: 1rem; } .prev { left: .4rem; top: 50%; } .next { right: .4rem; top: 50%; }
+
+    html.shot .reveal { opacity: 1 !important; transform: none !important; animation: none !important; }
+    html.shot-top .nav, html.shot-top footer, html.shot-top #lightbox, html.shot-top #snow, html.shot-top .sources { display: none !important; }
     html.shot-top body { background: var(--ink); }
     html.shot-top .hero { min-height: 40rem; height: 40rem; }
-    html.shot-section .bleed { min-height: 28rem; height: 28rem; }
-    html.shot-section body { background: var(--ink); }
+    html.shot-map .nav, html.shot-map footer, html.shot-map #lightbox, html.shot-map #snow, html.shot-map .hero, html.shot-map .overview, html.shot-map .plan, html.shot-map .sources { display: none !important; }
+    html.shot-map body { background: var(--ink); padding: 1.1rem !important; }
+    html.shot-map .map-sec { padding: 0; }
+    html.shot-perhead .nav, html.shot-perhead footer, html.shot-perhead #lightbox, html.shot-perhead #snow, html.shot-perhead .hero, html.shot-perhead .overview, html.shot-perhead .map-sec, html.shot-perhead .sources, html.shot-perhead .day-grid, html.shot-perhead .date-box, html.shot-perhead .alt-box, html.shot-perhead .todo, html.shot-perhead .gallery, html.shot-perhead .refs, html.shot-perhead .budget-grid { display: none !important; }
+    html.shot-perhead body { background: var(--ink); padding: 1.1rem !important; }
+    html.shot-section .nav, html.shot-section footer, html.shot-section #lightbox, html.shot-section #snow { display: none !important; }
+    html.shot-section body { background: var(--ink); padding: 0 !important; }
+    html.shot-section .hero { min-height: 40rem; height: 40rem; }
+    html.shot-top .gallery, html.shot-top .refs, html.shot-top .sources, html.shot-top footer { display: none !important; }
 
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      .reveal, .reveal.is-in { opacity: 1; transform: none; animation: none; }
-      .hero-photo { transform: none; }
-    }
     @media (max-width: 800px) {
-      .nav { padding: .55rem .8rem .45rem; flex-wrap: wrap; gap: .25rem .6rem; }
-      .nav-brand { font-size: .82rem; letter-spacing: .08em; }
-      .nav-links { flex-wrap: wrap; max-width: 100%; width: 100%; gap: 0; }
-      .nav-links a { padding: .25rem .5rem .25rem 0; letter-spacing: .08em; font-size: .7rem; white-space: nowrap; }
-      .hero-copy { padding: 0 6vw 18vh; width: calc(100% - 8vw); }
-      .hero-credit { right: 6vw; left: 6vw; text-align: left; bottom: 2.2vh; max-width: none; }
-      .scroll-hint { display: none; }
-      .bleed { min-height: 72svh; }
-      .bleed-copy { flex-direction: column; align-items: flex-start; gap: .8rem; width: calc(100% - 8vw); padding: 0 6vw 7vh; }
-      .bleed-title { writing-mode: horizontal-tb; }
-      .bleed h2 { letter-spacing: .08em; }
-      .day { grid-template-columns: 2.6rem 1fr; }
-      .budget-grid { grid-template-columns: 1fr; }
-      .b-row { grid-template-columns: 5.6em 1fr auto; }
-      .gallery { grid-template-columns: 1fr; }
-      figure img { height: 14rem; }
-      .backup { padding: 2.4rem 0 2.8rem; }
+      .nav { padding: .55rem .8rem .45rem; flex-wrap: wrap; }
+      .nav-links a { letter-spacing: .08em; font-size: .7rem; }
+      .hero { min-height: 78svh; }
+      .hero-copy { padding-bottom: 16vh; }
+      #trip-map { height: 22rem; }
     }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>
 <body>
   <header class="nav" id="nav">
     <a class="nav-brand" href="#top">一月慢游</a>
     <nav class="nav-links" aria-label="页面导航">
-      <a href="#choose">怎么选</a>
-      <a href="#lijiang">丽江＋大理</a>
-      <a href="#jiuzhaigou">九寨沟</a>
-      <a href="#chuanxi">川西备选</a>
+      <a href="#plan">行程</a>
+      <a href="#map">地图</a>
+      <a href="#budget">费用</a>
+      <a href="#stay">住宿</a>
+      <a href="#sources">出处</a>
     </nav>
   </header>
 
   <section class="hero" id="top">
-    <img class="hero-photo" id="heroPhoto" src="yulong-snowy-peaks-2024-12.jpg" width="2038" height="1270" alt="玉龙雪山雪峰">
+    <img class="hero-photo" id="heroPhoto" src="img/yulong-snow-mountain.jpg" width="1200" height="750" alt="玉龙雪山雪峰">
     <div class="hero-shade"></div>
     <canvas id="snow" aria-hidden="true"></canvas>
     <div class="hero-copy">
       <p class="kicker">WINTER JOURNEY</p>
       <h1>一月，先丽江再大理</h1>
-      <p class="hero-lead">主线是丽江＋大理：先在丽江上玉龙雪山，再坐高铁去大理看洱海和苍山。当地可用公交或包车，也可自驾。九寨沟海拔更低，作为备选；川西慢自驾是后补方案。</p>
+      <p class="hero-lead">先上玉龙雪山，再坐高铁去洱海、苍山。当地可坐公交、包车，也可以自己开车。</p>
     </div>
-    <p class="hero-credit">玉龙雪山雪峰，2024-12-08<br>新华社记者 孟涛　<a href="https://www.news.cn/photo/20241209/4dc0c19b0c1e4a3f9ef47a1ef1ec264d/c.html">新华网</a></p>
+    <p class="hero-credit">玉龙雪山<br>Ma Martin　<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a></p>
     <p class="scroll-hint">阅读</p>
   </section>
 
-  <section class="band" id="choose">
-    <div class="wrap choose reveal">
-      <p class="eyebrow">怎么选</p>
-      <h2>主线丽江＋大理，另外两条备着</h2>
-      <p><strong>已选定丽江＋大理为主线。</strong>先在丽江上玉龙雪山（有一位同行朋友 1 月 7 日回日本，玉龙雪山要排在这之前），再坐高铁去大理看洱海、苍山。当地可用公交或包车，也可自驾，费用见表。九寨沟海拔更低，更适合担心高反。川西慢自驾（毕棚沟＋四姑娘山）作为备选，冬天路况要再看。</p>
-      <div class="choose-links">
-        <a class="pill pill-main" href="#lijiang">主线 · 丽江＋大理 · 5–6 天</a>
-        <a class="pill" href="#jiuzhaigou">低海拔 · 九寨沟 · 4 天</a>
-        <a class="pill pill-sub" href="#chuanxi">备选 · 川西慢自驾 · 5 天</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="lijiang">
-    <div class="bleed">
-      <img src="yulong-bluemoon-valley-peak-reflection-2024-12.jpg" width="2048" height="1366" alt="玉龙雪山蓝月谷峰影倒映" data-full="yulong-bluemoon-valley-peak-reflection-2024-12.jpg" data-cap="蓝月谷峰影倒映，2024-12-08，新华社记者 孟涛">
-      <div class="bleed-shade"></div>
-      <div class="bleed-copy">
-        <div class="bleed-title">
-          <p class="chap-no">主线 · 五至六天</p>
-          <h2>丽江＋大理</h2>
-        </div>
-        <p class="bleed-lead">先住束河或白沙，上玉龙雪山；再坐高铁去大理，住洱海边，慢慢看海，可选苍山索道。当地可用公交、包车或自驾。</p>
-      </div>
-    </div>
-    <div class="plan" id="lijiang-plan">
-      <div class="wrap">
-        <p class="date-opt reveal"><strong>出发日还没定死。</strong>也可以提前到 12 月 26–30 日走：两居 1083409 这两日档的日历价与 1 月 4–7 日相同，都是 819 元/晚；束河 39652 在 12 月底为 248 元/晚。现在订的是 1 月 4 日–6 日；也可往前改到 1 月 3 日–5 日（注意 1083409 在 12 月 31 日–1 月 3 日日历均为 1139 元/晚，1 月 3 日已是节日价）；若住宿便宜，也可以 1 月 2 日就走。有一位同行朋友 1 月 7 日回日本，玉龙雪山要排在这之前。小宝 1 月 11 日返回。人数可能是 3、4 或 5 人（小宝加两位核心，另有 2 人未定）。下面按灵活的 D1… 来写。</p>
-        <div class="days reveal">
-          <div class="day">
-            <div class="day-n">D1</div>
-            <p>成都飞机到丽江三义机场。5 人加行李，4 座往往不够，可订 7 座接机到束河或白沙，合住一套整房，适应海拔（约 2400 米）。也可坐机场大巴到束河（20 元/人）；白沙没有直达机场大巴，需到束河后再转 6 路或打车。</p>
-          </div>
-          <div class="day">
-            <div class="day-n">D2</div>
-            <p>睡到自然醒。在束河、白沙转转，也可去玉湖村，远看玉龙雪山。短途用滴滴或出租车，也可坐 6 路或雪山轻轨旅游环线公交。可提前买氧气瓶。若 1 月 4 日才出发、后面会赶，这天可以缩短，第二天就上雪山。</p>
-          </div>
-          <div class="day">
-            <div class="day-n">D3</div>
-            <p>上玉龙雪山，须排在同行朋友 1 月 7 日回日本之前。可订包车带司机一天，或坐环线公交到新游客服务中心，再转官方旅游直通车或观光火车；也可到忠义市场坐 101 路；若自驾，车停在游客中心，进景区仍改坐环保车（私家车不能进园）。一早上冰川公园大索道（上站 4506 米），上面别久留，不舒服就下。下午走蓝月谷栈道。对海拔敏感的朋友可能不来；如果来，在蓝月谷等，不上大索道。也可报纯玩小团，详见费用表下说明。</p>
-          </div>
-          <div class="day">
-            <div class="day-n">D4</div>
-            <p>坐高铁或动车去大理，约 1 小时 56 分至 2 小时 22 分，二等座 80 元。住洱海边，喜洲或双廊均可（洱海约 1970 米）。车站到住处坐公交或打车，不租车。朋友若当天回日本，可在丽江分开，其余人再去大理。</p>
-          </div>
-          <div class="day">
-            <div class="day-n">D5</div>
-            <p>洱海慢逛：走环海西路，在双廊或喜洲转转。住在海边，不必赶场。</p>
-          </div>
-          <div class="day">
-            <div class="day-n">D6</div>
-            <p>可选苍山索道：感通较低、较轻松；洗马潭可到约 3900 米，上面别久留。对海拔敏感的朋友如果来，不上苍山。回日本的朋友此时多半已离开。若只排 5 天，这天可改成返程或并进前一天。返回从大理走（也可经丽江或昆明）。</p>
-          </div>
-        </div>
-
-        <div class="alt-box reveal">
-          <h3>对海拔敏感的朋友</h3>
-          <p>同行里有人曾在大理洱海（约 1970 米）就出现高反。这位朋友可能不来；如果来，在蓝月谷等，不上大索道和苍山（大索道上站 4506 米，苍山洗马潭约 3900 米；感通相对较低）。出发前问医生，丽江先在束河或白沙适应，看状态。另有一位同行朋友 1 月 7 日回日本（不是同一人），玉龙雪山要排在这之前。</p>
-        </div>
-
-        <div class="todo reveal">
-          <h3>出发前待办</h3>
-          <ul>
-            <li>大索道在官方渠道实名提前预约，并排在同行朋友 1 月 7 日回日本之前</li>
-            <li>确认出发日：12 月 26–30 日，或 1 月 2 日、3 日、4 日，以及回日本朋友的机票；并确认是 3、4 还是 5 人</li>
-            <li>可提前订丽江 7 座接机和上山包车，或确认机场大巴、环线公交和直通车班次</li>
-            <li>预订丽江—大理高铁，以及大理返程（飞机或经昆明、丽江）</li>
-            <li>苍山索道看天气，大风可能停运</li>
-            <li>保暖：冲锋衣或厚羽绒、墨镜、帽子、防滑鞋、保温杯</li>
-            <li>有心肺问题，先问医生</li>
-          </ul>
-        </div>
-
-        <div class="budget reveal" id="budget-lijiang">
-          <h3>费用（丽江＋大理，5–6 天）</h3>
-          <p class="budget-lead">人数可能是 3、4 或 5 人：小宝加两位核心共 3 人；另有 2 人未定（其中对海拔敏感的朋友可能不来；若他不来，可能还有一人也不来）。请以下面这张人均表为准。一位同行朋友 1 月 7 日回日本后，大理段人数可能少 1 人。表内按该列人数全程估算（丽江 3 晚＋大理 2 晚，共 5 晚、5–6 天）。当地可用公交或包车，也可自驾。饼图仍按 5 人区间中位，作总盘参考。出发前按实际再核。</p>
-          <div class="perhead-block reveal" id="perhead">
-            <h4>人均费用：3 人 / 4 人 / 5 人</h4>
-            <p class="perhead-intro">按人头的项目（机票、高铁、门票、索道、吃饭）每人金额相同；总价固定的项目（包车、油费停车、整套住宿）再按人数均摊。5 座车适合 3–4 人，4 人加冬季行李可能偏紧，5 人需 7 座（价格不同）。宜住 4 人的两居适合 3–4 人；5 人需宜住 5 人以上的两居（如木鸟 1083409）。对海拔敏感的朋友如果来，其本人不上大索道和苍山，索道行按该人减少。</p>
-            <div class="perhead-wrap">
-                            <table class="perhead">
-                <colgroup>
-                  <col class="c-item">
-                  <col class="c-way">
-                  <col class="c-unit">
-                  <col class="c-n">
-                  <col class="c-n">
-                  <col class="c-n">
-                </colgroup>
-                <thead>
-                  <tr>
-                    <th>项目</th>
-                    <th>计费方式</th>
-                    <th>总价或单价</th>
-                    <th>3 人人均</th>
-                    <th>4 人人均</th>
-                    <th>5 人人均</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>长途交通<span class="sub">去程成都—丽江约 290–400 元/人，丽江—大理二等座 80 元，返程大理—成都按 300–700 元/人预留</span></td>
-                    <td class="way">按人头</td>
-                    <td class="num">670–1180 元/人</td>
-                    <td class="num">670–1180</td>
-                    <td class="num">670–1180</td>
-                    <td class="num">670–1180</td>
-                  </tr>
-                  <tr>
-                    <td>丽江用车（对照：包车一天）<span class="sub">大象包车市内价：5 座朗逸 650 元、7 座别克 850 元；玉龙雪山未单列。自驾日租、保险、押金本环境未能打开，不编数字。连租 3 天不等于日价×3</span></td>
-                    <td class="way">总价固定均摊</td>
-                    <td class="num">3–4 人按 5 座 650；5 人按 7 座 850</td>
-                    <td class="num">约 217</td>
-                    <td class="num">约 163</td>
-                    <td class="num">约 170</td>
-                  </tr>
-                  <tr>
-                    <td>油费·过路费·停车<span class="sub">仅自驾时发生。束河往返甘海子约 50–60 公里，预留 40–80 元。过路费按 0。新游客中心暂不收费；甘海子需预约，收费未公布</span></td>
-                    <td class="way">总价固定均摊</td>
-                    <td class="num">约 40–80 元（自驾时）</td>
-                    <td class="num">约 13–27</td>
-                    <td class="num">约 10–20</td>
-                    <td class="num">约 8–16</td>
-                  </tr>
-                  <tr>
-                    <td>门票<span class="sub">玉龙雪山 100 元/人。苍山门票常见含在索道套票里</span></td>
-                    <td class="way">按人头</td>
-                    <td class="num">100 元/人</td>
-                    <td class="num">100</td>
-                    <td class="num">100</td>
-                    <td class="num">100</td>
-                  </tr>
-                  <tr>
-                    <td>索道（含环保车）<span class="sub">玉龙环保车 20＋大索道 120，加苍山感通 100 或洗马潭约 260–320，合计约 240–460 元/人（不含可选蓝月谷电瓶车 40–50）。高反朋友如果来，该人只计环保车 20 元</span></td>
-                    <td class="way">按人头</td>
-                    <td class="num">240–460 元/人</td>
-                    <td class="num">240–460</td>
-                    <td class="num">240–460</td>
-                    <td class="num">240–460</td>
-                  </tr>
-                  <tr>
-                    <td>吃饭<span class="sub">按每人每天 80–150 元、5–6 天估算</span></td>
-                    <td class="way">按人头</td>
-                    <td class="num">400–900 元/人</td>
-                    <td class="num">400–900</td>
-                    <td class="num">400–900</td>
-                    <td class="num">400–900</td>
-                  </tr>
-                  <tr>
-                    <td>住宿（丽江 3 晚＋大理 2 晚）<span class="sub">大理按 1076788 日历 988×2＝1976。3–4 人住宜住 4 人两居，丽江加大理合计 2720–3953；5 人住 1083409，工作日档 4433，节日档约 5393。分日明细见表下</span></td>
-                    <td class="way">总价固定均摊</td>
-                    <td class="num">3–4 人 2720–3953；5 人 4433（节日约 5393）</td>
-                    <td class="num">907–1318</td>
-                    <td class="num">680–988</td>
-                    <td class="num">887–1079</td>
-                  </tr>
-                  <tr class="total">
-                    <td>合计（不含丽江用车）<span class="sub">公交或 101 路另计。含包车一天对照时，约再加 163–217 元/人</span></td>
-                    <td class="way">—</td>
-                    <td class="num">—</td>
-                    <td class="num">2317–3958</td>
-                    <td class="num">2090–3628</td>
-                    <td class="num">2297–3719</td>
-                  </tr>
-                  <tr class="total">
-                    <td>合计（含包车一天对照）</td>
-                    <td class="way">—</td>
-                    <td class="num">—</td>
-                    <td class="num">2534–4175</td>
-                    <td class="num">2253–3791</td>
-                    <td class="num">2467–3889</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <p class="perhead-note">住宿分日（木鸟日历 2026-11-10）：3–4 人，12/26–30 用 39652（248×3＝744）加大理 1976＝2720，人均 907 / 680；1/4–7 用 39652（284×3＝852）合计 2828，人均 943 / 707；或用 638127，1/4–7 为 1893＋1976＝3869，人均 1290 / 967，12/26–30 为 1977＋1976＝3953，人均 1318 / 988。5 人用 1083409：12/26–30 与 1/4–7 均为 2457＋1976＝4433，人均 887；若住到 12/31–1/3 节日夜（1139 元/晚），三晚加大理约 5393，人均 1079。含包车的合计按 3–4 人分摊 5 座市内 650 元、5 人分摊 7 座市内 850 元。若改自驾，用车行改用下单页日租＋保险，并加上油费行约 8–27 元/人；3 天连租另核。1 月 7 日后若少 1 人，大理住宿和吃饭的均摊会变。跟团上雪山：去哪儿可见纯玩 2–8 人小团 ¥246 起（含进山费、大索道、接送、氧气、防寒服、中餐；不含蓝月谷电瓶车 50 元），索道时段以景区审核为准，大风停运可能改中/小索道（如云杉坪）并退差价。</p>
-            <p class="perhead-src">出处：木鸟日历（2026-11-10 接口）<a href="https://www.muniao.com/room/39652.html">39652</a>、<a href="https://www.muniao.com/room/638127.html">638127</a>、<a href="https://www.muniao.com/room/1083409.html">1083409</a>、<a href="https://www.muniao.com/room/1076788.html">1076788</a>；<a href="https://www.daxiangbaoche.com/lijiang-car-service/">大象包车价目</a>；<a href="https://www.yjcxw.com/meiriyoujia/48382.html">丽江 92 号 9.04 元/升（油价查询网 2026-11-10）</a>；停车通告见<a href="https://www.163.com/dy/article/L7LQDQKH052491GH.html">丽江同城网 2026-09-25</a>（转述玉龙雪山省级旅游开发区管委会）；一日游见<a href="https://piao.qunar.com/daytrip/detail_3224093.html">去哪儿</a>。距离按公开攻略束河/市区至甘海子约 25–30 公里估算。门票、索道、机票、高铁出处见页底。</p>
-          </div>
-
-          <div class="budget-grid">
-            <div>
-              <div class="b-row"><span class="k">长途交通</span><span class="d">去程成都—丽江机票单程，按此前 2026 年 1 月特价往返估算拆开约 290–400 元/人，买不到特价会更高。丽江—大理动车二等座 80 元/人，约 1 小时 56 分–2 小时 22 分（携程 2026-11-11）。返程可从大理飞成都，可见 2027-01-10 特价约 300 元起（民航掌上飞，祥鹏 8L9635），未核机建燃油，买不到特价会更高，按 300–700 元/人预留。也可经昆明或回丽江再走。</span><span class="v">3400–5800 元</span></div>
-              <div class="b-row"><span class="k">当地交通</span><span class="d">丽江：接送约 200–600 元（机场大巴 20 元/人往返 200 元，或 7 座接送一例 300 元/次）；短途估算 80–200 元；上山日约 300–850 元（公交约 300–400，或 7 座市内包车一天 850 元（大象价目市内列，玉龙未单列；5 座市内 650 元））。大理：车站到喜洲或双廊坐公交或打车；喜洲中巴约 7 元为去哪儿游客记录（多从古城出发），高铁站出发按实时报价。两地接送和短途合计按 1000–2200 元预留。</span><span class="v">1000–2200 元</span></div>
-              <div class="b-row"><span class="k">门票</span><span class="d">玉龙雪山门票 100 元/人（2026 年官方公示），蓝月谷含在门票内。苍山地质公园门票常见含在索道套票里，是否另购出发前再核。</span><span class="v">500 元</span></div>
-              <div class="b-row"><span class="k">索道与环保车</span><span class="d">玉龙：环保车 20 元/人，冰川公园大索道 120 元/人（高反朋友可不坐，按 4–5 人），蓝月谷电瓶车可选全程 40 元/人，约 580–900 元。苍山：感通往返 100 元/人（大理市发改局 2025-07-25 批复）；洗马潭全程往返，去哪儿 2026-11-10 可见成人约 260 元起（含地质公园门票）；此前平台常见约 320 元，高位按此预留。按 4–5 人、选感通或洗马潭，约 400–1600 元。高反朋友如果来，不上大索道和苍山。</span><span class="v">980–2500 元</span></div>
-              <div class="b-row"><span class="k">住宿</span><span class="d">请以上表日历合计为准。例：丽江 3 晚，宜住 4 人的 39652 在 12/26–30 为 248 元/晚、1/4–7 为 284 元/晚；638127 在 1/4–7 为 631 元/晚（三晚 1893）；5 人两居 1083409 在 12/26–30 与 1/4–7 为 819 元/晚（三晚 2457），12/31–1/3 为 1139 元/晚。大理喜洲 1076788 在上述日期日历均为 988 元/晚，宜住 6 人。</span><span class="v">4433–5393 元</span></div>
-              <div class="b-row"><span class="k">餐饮</span><span class="d">按每人每天 80–150 元估算，5–6 天。这是估算，不是菜单报价。</span><span class="v">2000–4500 元</span></div>
-              <div class="b-row"><span class="k">氧气及其他</span><span class="d">氧气瓶约 9.9–19.9 元/瓶，预留 50–200 元。这是估算。</span><span class="v">50–200 元</span></div>
-              <div class="b-row total"><span class="k">合计</span><span class="d">5 人约 12333–21093 元，人均约 2467–4219 元（含当地交通预留；人均请以上表为准）。</span><span class="v">12333–21093 元</span></div>
-            </div>
-            <div class="budget-pie-wrap">
-              <div class="pie pie-lj" role="img" aria-label="丽江加大理费用占比，按各分项区间中位估算"></div>
-              <ul class="pie-legend">
-                <li><i style="background:#d4b07a"></i><span class="lab">长途交通</span><span class="amt">28% · 4600</span></li>
-                <li><i style="background:#edcf96"></i><span class="lab">当地交通</span><span class="amt">10% · 1600</span></li>
-                <li><i style="background:#9fd0de"></i><span class="lab">门票</span><span class="amt">3% · 500</span></li>
-                <li><i style="background:#6aa8b8"></i><span class="lab">索道与环保车</span><span class="amt">10% · 1740</span></li>
-                <li><i style="background:#e8d5b5"></i><span class="lab">住宿</span><span class="amt">29% · 4913</span></li>
-                <li><i style="background:#b7c4a1"></i><span class="lab">餐饮</span><span class="amt">19% · 3250</span></li>
-                <li><i style="background:#8b9aa0"></i><span class="lab">氧气及其他</span><span class="amt">1% · 125</span></li>
-              </ul>
-              <p class="pie-cap">占比按各分项区间中位估算，合计中位约 16728 元。5 人住宿按 1083409＋喜洲 1076788 日历（工作日 4433，节日约 5393）。</p>
-            </div>
-          </div>
-          <p class="budget-note">出发前按实际再核。请优先看上面 3 / 4 / 5 人人均表。1 月 7 日后同行可能少 1 人。若苍山只坐感通、住宿走廉价端，合计会靠近区间低位。</p>
-        </div>
-
-        <h3 class="reveal">住宿例子（木鸟日历，2026-11-10）</h3>
-        <ul class="lodge-list reveal">
-          <li>丽江 · 宜住 4 人：<a href="https://www.muniao.com/room/39652.html" target="_blank" rel="noopener noreferrer">束河古镇双卧复式套房</a>（39652，2 室 2 床）。12 月 26–31 日日历 248 元/晚；1 月 1–3 日 580 元；1 月 4–7 日 284 元。</li>
-          <li>丽江 · 宜住 4 人：<a href="https://www.muniao.com/room/638127.html" target="_blank" rel="noopener noreferrer">近束河独栋庭院双卧别墅</a>（638127，2 室 2 床）。12 月 26–31 日日历 659 元/晚；1 月 1–3 日 784 元；1 月 4–7 日 631 元（三晚 1893）。</li>
-          <li>丽江 · 5 人用：<a href="https://www.muniao.com/room/1083409.html" target="_blank" rel="noopener noreferrer">近束河涵香＋归心两卫套房</a>（1083409，2 室 5 床，宜住 9 人，可住 5 人）。12 月 26–30 日与 1 月 4–7 日日历均为 819 元/晚（三晚 2457）；12 月 31 日–1 月 3 日节日价 1139 元/晚。</li>
-          <li>大理 · 宜住 6 人：<a href="https://www.muniao.com/room/1076788.html" target="_blank" rel="noopener noreferrer">喜洲仁里邑洱海边整套三居</a>（1076788）。12 月 26 日–1 月 12 日日历均为 988 元/晚，近环海西路。</li>
-        </ul>
-        <p class="lodge-note reveal">以上为木鸟日历价，不是下单瞬间的成交价，出发前请再核。3–4 人住宜住 4 人的两居即可；5 人需 1083409 这类可住 5 人的整套。</p>
-
-        <div class="refs reveal" id="refs-lijiang">
-          <h3>参考视频 · 丽江和大理</h3>
-          <div class="links">
-            <a class="card" href="https://www.douyin.com/video/7703177450784062118" target="_blank" rel="noopener noreferrer"><span class="card-title">丽江冬季怎么玩</span><small>好人阿滇 · 1575 赞 · 2026-11</small><span class="card-note">住大研/束河/白沙、地暖、门票索道和氧气避坑</span></a>
-            <a class="card" href="https://www.douyin.com/video/7593760884875674600" target="_blank" rel="noopener noreferrer"><span class="card-title">玉龙雪山实用攻略</span><small>是阿佳吖 · 1.2 万赞 · 2026-01</small><span class="card-note">一月实游，大索道后吸氧休息和防寒</span></a>
-            <a class="card" href="https://www.douyin.com/video/7686713025142793381" target="_blank" rel="noopener noreferrer"><span class="card-title">玉龙雪山值不值得来</span><small>蛋壳儿 · 3.7 万赞 · 2026-09</small><span class="card-note">大索道到 4500 米、蓝月谷、高反提醒（非冬季拍）</span></a>
-            <a class="card" href="https://www.douyin.com/video/7697612390846934244" target="_blank" rel="noopener noreferrer"><span class="card-title">秋冬雪山实测干货</span><small>云南吉朵 · 抖音</small><span class="card-note">秋冬上雪山的实测补充</span></a>
-            <a class="card" href="https://www.douyin.com/video/7594779658990652699" target="_blank" rel="noopener noreferrer"><span class="card-title">1、2 月云南怎么玩</span><small>付先生在云南 · 抖音</small><span class="card-note">云南冬季参考，未见可靠赞数，不编造</span></a>
-            <a class="card" href="https://www.douyin.com/video/7671625286467518568" target="_blank" rel="noopener noreferrer"><span class="card-title">大理苍山旅行实拍记</span><small>抖音</small><span class="card-note">讲感通索道和苍山步道。未见可靠的账号与赞数，不编造</span></a>
-          </div>
-          <p class="refs-note">博主说法仅供参考（包括高反用药），出发前以官方和医生建议为准。</p>
-        </div>
-
-        <div class="gallery reveal">
-          <figure>
-            <img src="yulong-snowy-peaks-2024-12.jpg" width="2038" height="1270" alt="玉龙雪山雪峰" data-full="yulong-snowy-peaks-2024-12.jpg" data-cap="玉龙雪山雪峰，2024-12-08，新华社记者 孟涛">
-            <figcaption>玉龙雪山雪峰，2024-12-08，新华社记者 孟涛　<a href="https://www.news.cn/photo/20241209/4dc0c19b0c1e4a3f9ef47a1ef1ec264d/c.html">来源</a></figcaption>
-          </figure>
-          <figure>
-            <img src="yulong-bluemoon-valley-aerial-2024-12.jpg" width="2000" height="1124" alt="蓝月谷航拍" data-full="yulong-bluemoon-valley-aerial-2024-12.jpg" data-cap="蓝月谷航拍，2024-12-08，新华社记者 孟涛">
-            <figcaption>蓝月谷航拍，2024-12-08，新华社记者 孟涛　<a href="https://www.news.cn/photo/20241209/4dc0c19b0c1e4a3f9ef47a1ef1ec264d/c.html">来源</a></figcaption>
-          </figure>
-          <figure>
-            <img src="yulong-bluemoon-valley-winter-snow-2022-01.jpg" width="2046" height="1202" alt="蓝月谷冬雪" data-full="yulong-bluemoon-valley-winter-snow-2022-01.jpg" data-cap="蓝月谷冬雪，2022-01-13，新华社记者 王冠森">
-            <figcaption>蓝月谷冬雪，2022-01-13，新华社记者 王冠森　<a href="https://www.news.cn/photo/2022-01/13/c_1128260502.htm">来源</a></figcaption>
-          </figure>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="jiuzhaigou">
-    <div class="bleed">
-      <img src="jiuzhaigou-wucaichi-snow-aerial-2025-10.jpg" width="2048" height="1534" alt="九寨沟五彩池初雪航拍" data-full="jiuzhaigou-wucaichi-snow-aerial-2025-10.jpg" data-cap="五彩池初雪，2025-10-24，桑吉/新华社发">
-      <div class="bleed-shade"></div>
-      <div class="bleed-copy">
-        <div class="bleed-title">
-          <p class="chap-no">低海拔 · 四天</p>
-          <h2>九寨沟慢版</h2>
-        </div>
-        <p class="bleed-lead">坐动车去，到站后租 7 座车（或坐直通车）到沟口住下（约 2000 米）。看诺日朗冰瀑和蓝冰，再留一天慢慢逛较低的树正沟。私家车不能进沟，进沟坐观光车。</p>
-      </div>
-    </div>
-    <div class="plan" id="jiuzhaigou-plan">
-      <div class="wrap">
-        <div class="days reveal">
-          <div class="day">
-            <div class="day-n">D1</div>
-            <p>高铁成都东到黄龙九寨（最快约 1 小时 39 分）。站附近可租一辆 7 座车，开到沟口，五人合住一套整房；若当天没有合适的车，仍可坐直通车（约 51 元、约 2 小时）。私家车不能进沟。一月山路易有暗冰积雪，问清防滑链或冬季胎，尽量白天开。晚上可泡温泉，或看藏羌歌舞。</p>
-          </div>
-          <div class="day">
-            <div class="day-n">D2</div>
-            <p>进沟看诺日朗冰瀑和蓝冰，坐观光车，累了就歇。顺序可参考：上午日则沟，中午诺日朗，下午则查洼沟，最后树正沟。高反过的朋友当天只逛树正沟和诺日朗一带。</p>
-          </div>
-          <div class="day">
-            <div class="day-n">D3</div>
-            <p>再进一次沟，只逛较低的树正沟和诺日朗，慢慢走，累了就出沟。树正群海海拔 2187–2280 米，诺日朗瀑布 2343 米；官网写淡季仍可看这两处。不想再进沟，就在沟口睡懒觉。</p>
-          </div>
-          <div class="day">
-            <div class="day-n">D4</div>
-            <p>沟口睡懒觉，开车回车站还车，坐高铁返回成都。</p>
-          </div>
-        </div>
-
-        <div class="alt-box reveal">
-          <h3>对海拔敏感的朋友</h3>
-          <p>出发前问医生，是否可提前用预防药。两天进沟都只逛较低的树正沟和诺日朗一带（树正群海 2187–2280 米，诺日朗瀑布 2343 米），不去日则沟高处，也不上则查洼沟的长海、五彩池（长海 3101 米、五彩池 3010 米）。</p>
-        </div>
-
-        <div class="todo reveal">
-          <h3>出发前待办</h3>
-          <ul>
-            <li>淡季从上季看是 11 月 16 日起，门票 80 元 + 观光车 80 元，以官方为准</li>
-            <li>若第二天再进沟，出发前核淡季是否仍免门票；次日观光车需另购，两天都要实名预约</li>
-            <li>提前确认黄龙九寨站附近是否有 7 座车；没有就改订直通车</li>
-            <li>提前实名预约，带身份证</li>
-            <li>防滑、保暖；山路备防滑链，尽量白天行车</li>
-            <li>高处线路可能临时关闭，当天看景区通告</li>
-          </ul>
-        </div>
-
-        <div class="budget reveal" id="budget-jiuzhaigou">
-          <h3>费用（按 5 人估算，4 天 3 晚）</h3>
-          <p class="budget-lead">费用按 5 人估算，但还有 2 人尚未确定能否同行（对海拔敏感的朋友可能不来；若他不来，可能还有一人也不来），人数可能是 3、4 或 5 人，请以人均为准。住沟口附近一套整房，3 晚。长途坐高铁，到黄龙九寨站附近租 7 座车开到沟口；私家车不能进沟。预算按第二天再进沟、只逛较低的树正沟和诺日朗来算。若租不到车，可改坐直通车（约 51 元/人）。下列为可核价格的区间，饼图按各分项区间中位估算。出发前按实际再核。</p>
-          <div class="budget-grid">
-            <div>
-              <div class="b-row"><span class="k">长途交通</span><span class="d">成都东—黄龙九寨往返二等座。公布票价多为 143 元，市场化浮动可见约 117–151 元。5 人往返约 1170–1510 元。</span><span class="v">1170–1510 元</span></div>
-              <div class="b-row"><span class="k">租车</span><span class="d">黄龙九寨站附近可租到车：神州有黄龙九寨服务点，悟空上港中租车「黄龙九寨站店」别克 GL8 现标 576 元/日均。按取车到还车约 3–4 天计。当天若无 7 座，改坐直通车（约 51 元/人，往返 5 人约 510 元）。</span><span class="v">1730–2300 元</span></div>
-              <div class="b-row"><span class="k">油费过路停车</span><span class="d">车站到沟口约 93 公里，往返约 200–250 公里。油费按 7 座约 10–12 升/百公里、四川 92 号 8.98 元/升估算约 180–280 元；沟口停车常见约 20 元/天，3 晚约 60 元，过路为少量预留。</span><span class="v">240–400 元</span></div>
-              <div class="b-row"><span class="k">门票</span><span class="d">首日淡季门票 80 元/人。官网旅游服务页写淡季可二次进沟免门票；2016 年已停收 20 元工本费，2025 年 11 月淡季通告未再写这条，出发前以官方为准。次日门票按 0–80 元/人预留。</span><span class="v">400–800 元</span></div>
-              <div class="b-row"><span class="k">观光车</span><span class="d">两天各 80 元/人。官网旅游服务页写明：即使淡季二次进沟免门票，次日观光车仍需另购。保险 10 元/人自愿，未计入此项。</span><span class="v">800 元</span></div>
-              <div class="b-row"><span class="k">住宿</span><span class="d">沟口附近整套，3 晚。公开可核的三居日历价较少；低位按住哪去「整栋包院 800 元/晚起」，高位 2000 元/晚为淡季较舒适整套的预留，不是单条已核房价。</span><span class="v">2400–6000 元</span></div>
-              <div class="b-row"><span class="k">餐饮</span><span class="d">按每人每天 80–150 元估算，4 天。这是估算，沟口餐馆可能略贵。</span><span class="v">1600–3000 元</span></div>
-              <div class="b-row"><span class="k">氧气及其他</span><span class="d">观光车保险可选，以及少量杂费。这是估算。</span><span class="v">0–150 元</span></div>
-              <div class="b-row total"><span class="k">合计</span><span class="d">5 人约 8300–15000 元，人均约 1670–2990 元。人数未定，请先看人均。</span><span class="v">8300–15000 元</span></div>
-            </div>
-            <div class="budget-pie-wrap">
-              <div class="pie pie-jz" role="img" aria-label="九寨沟费用占比，按各分项区间中位估算"></div>
-              <ul class="pie-legend">
-                <li><i style="background:#d4b07a"></i><span class="lab">长途交通</span><span class="amt">11% · 1340</span></li>
-                <li><i style="background:#edcf96"></i><span class="lab">租车</span><span class="amt">17% · 2015</span></li>
-                <li><i style="background:#c4895a"></i><span class="lab">油费过路停车</span><span class="amt">3% · 320</span></li>
-                <li><i style="background:#9fd0de"></i><span class="lab">门票</span><span class="amt">5% · 600</span></li>
-                <li><i style="background:#6aa8b8"></i><span class="lab">观光车</span><span class="amt">7% · 800</span></li>
-                <li><i style="background:#e8d5b5"></i><span class="lab">住宿</span><span class="amt">36% · 4200</span></li>
-                <li><i style="background:#b7c4a1"></i><span class="lab">餐饮</span><span class="amt">20% · 2300</span></li>
-                <li><i style="background:#8b9aa0"></i><span class="lab">氧气及其他</span><span class="amt">1% · 75</span></li>
-              </ul>
-              <p class="pie-cap">占比按各分项区间中位估算，合计中位约 11650 元。</p>
-            </div>
-          </div>
-          <p class="budget-note">出发前按实际再核。人数若有变化，按人均加减。私家车不能进沟。一月山路易有暗冰积雪，租车时确认防滑链或冬季胎，尽量白天行驶。若第二天改在沟口休息、不再进沟，可减去次日门票和观光车。</p>
-        </div>
-
-        <div class="refs reveal" id="refs-jiuzhaigou">
-          <h3>参考视频 · 九寨沟</h3>
-          <div class="links">
-            <a class="card" href="https://www.douyin.com/video/7602565620576558821" target="_blank" rel="noopener noreferrer"><span class="card-title">冬季九寨沟真实现状</span><small>四川旅游九寨沟小旭 · 1.3 万赞 · 2026-02</small><span class="card-note">冬季交通、门票、沟口住宿和路线</span></a>
-            <a class="card" href="https://www.douyin.com/video/7571375280658757033" target="_blank" rel="noopener noreferrer"><span class="card-title">冬天九寨沟避坑</span><small>大川在四川 · 7941 赞 · 2025-11</small><span class="card-note">本地导游讲自驾风险、漳扎镇住宿和地暖</span></a>
-            <a class="card" href="https://www.douyin.com/video/7596675091023334683" target="_blank" rel="noopener noreferrer"><span class="card-title">九寨沟的冬季</span><small>小陈日记 · 6806 赞 · 2026-01</small><span class="card-note">当天往返太赶，建议在沟口住一晚</span></a>
-            <a class="card" href="https://www.douyin.com/video/7579549895338784761" target="_blank" rel="noopener noreferrer"><span class="card-title">冬游川西红黑榜</span><small>行走川藏 · 抖音</small><span class="card-note">冬天川西路线的红黑榜补充</span></a>
-          </div>
-          <p class="refs-note">博主说法仅供参考（包括高反用药），出发前以官方和医生建议为准。</p>
-        </div>
-
-        <div class="gallery reveal">
-          <figure>
-            <img src="jiuzhaigou-nuorilang-icefall-aerial-2024-01.jpg" width="2048" height="1286" alt="诺日朗冰瀑航拍" data-full="jiuzhaigou-nuorilang-icefall-aerial-2024-01.jpg" data-cap="诺日朗冰瀑航拍，2024-01-04，新华社记者 王曦">
-            <figcaption>诺日朗冰瀑航拍，2024-01-04，新华社记者 王曦　<a href="https://www.news.cn/photo/20240104/c85990d23eb84ec1a3f92f6f49775888/c.html">来源</a></figcaption>
-          </figure>
-          <figure>
-            <img src="jiuzhaigou-nuorilang-blue-ice-closeup-2024-01.jpg" width="2048" height="1440" alt="诺日朗蓝冰近景" data-full="jiuzhaigou-nuorilang-blue-ice-closeup-2024-01.jpg" data-cap="诺日朗蓝冰近景，2024-01-04，新华社记者 王曦">
-            <figcaption>诺日朗蓝冰近景，2024-01-04，新华社记者 王曦　<a href="https://www.news.cn/photo/20240104/c85990d23eb84ec1a3f92f6f49775888/c.html">来源</a></figcaption>
-          </figure>
-          <figure>
-            <img src="jiuzhaigou-changhai-snow-mist-2025-10.jpg" width="2004" height="1500" alt="九寨沟长海雪景" data-full="jiuzhaigou-changhai-snow-mist-2025-10.jpg" data-cap="长海雪景，2025-10-24，桑吉/新华社发">
-            <figcaption>长海雪景，2025-10-24，桑吉/新华社发　<a href="https://www.news.cn/photo/20251024/99eb177d967042058115c46ac0b9abf6/c.html">来源</a></figcaption>
-          </figure>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <section class="backup" id="chuanxi">
+  <section class="overview" id="plan">
     <div class="wrap">
-      <p class="eyebrow reveal">备选</p>
-      <h2 class="reveal">川西慢自驾 · 毕棚沟＋四姑娘山</h2>
-      <p class="backup-lead reveal">5 天 4 晚，从成都租 7 座自驾。冬天山路可能临时封闭，不作为主线。点开看行程、费用和参考。</p>
-      <details class="backup-details reveal" id="chuanxi-details">
-        <summary>展开行程、费用和参考</summary>
-        <div class="backup-body">
-          <div class="days">
-            <div class="day">
-              <div class="day-n">D1</div>
-              <p>成都租 7 座车，白天开到理县住下，适应海拔。理县县城海拔 1888 米（四川省情网）。不要夜间赶路。</p>
-            </div>
-            <div class="day">
-              <div class="day-n">D2</div>
-              <p>去毕棚沟。可到磐羊湖（3676 米）；高反过的朋友最多到龙王海（2950 米）。当晚仍住理县。海拔见毕棚沟海拔页。</p>
-            </div>
-            <div class="day">
-              <div class="day-n">D3</div>
-              <p>经理小路前往小金或达维住宿（小金县城约 2367 米，达维约 2720 米）。理小路冬天可能因冰雪临时管制，如 2026 年 11 月 8 日晚曾封闭、次日中午解除，出发前看路况；不通则绕行国道 350 线或卓小路。备好防滑链，白天行驶。</p>
-            </div>
-            <div class="day">
-              <div class="day-n">D4</div>
-              <p>游四姑娘山双桥沟，坐景区观光车到红杉林（约 3840 米）；高反过的朋友留在沟口一带（约 2900 米）。当晚仍住小金或达维。海拔与冬季开放时间见四姑娘山官网。</p>
-            </div>
-            <div class="day">
-              <div class="day-n">D5</div>
-              <p>经巴朗山隧道方向返回成都（官网冬季提示可走成都—都江堰—映秀—卧龙—四姑娘山一线）。白天行驶，还车。</p>
-            </div>
-          </div>
+      <p class="eyebrow">这次怎么走</p>
+      <h2>一条路线，五到六天</h2>
+      <ul class="chips">
+        <li>一共 <strong>5–6 天</strong></li>
+        <li>人数可能是 <strong>3、4 或 5 人</strong></li>
+        <li>木阳 <strong>1 月 11 日</strong>返回</li>
+        <li>有一位同行朋友 <strong>1 月 7 日回日本</strong>，玉龙雪山要排在这之前</li>
+      </ul>
+      <div class="fact-grid">
+        <div class="fact"><span class="k">怎么走</span><p>成都飞丽江，住束河或白沙，上雪山；再坐高铁去大理，住海边。</p></div>
+        <div class="fact"><span class="k">怎么住</span><p><strong>3 人可合住一间</strong>；4–5 人仍住两居整套。</p></div>
+        <div class="fact"><span class="k">高反朋友</span><p>可能不来；如果来，在蓝月谷等，<strong>不上大索道和苍山</strong>。</p></div>
+      </div>
+    </div>
+  </section>
 
-          <div class="alt-box">
-            <h3>对海拔敏感的朋友</h3>
-            <p>过夜选较低处：理县 1888 米住两晚，再住小金约 2367 米或达维约 2720 米两晚。毕棚沟他最多到龙王海 2950 米，不上磐羊湖 3676 米；双桥沟他留在沟口约 2900 米，不上红杉林 3840 米。出发前问医生。</p>
-          </div>
-
-          <div class="warn-box">
-            <h3>冬天路况</h3>
-            <p>理小路遇降雪结冰会临时管制。2026 年 11 月 8 日 19 时起，理县段凉台沟至理小隧道口曾禁止社会车辆通行，11 月 9 日 12 时解除（理县公安局、交通运输局，见川观新闻）。不通可绕行国道 350 线（映秀至小金）或省道 217 线卓小路。山路要备防滑链，不要夜间行驶。四姑娘山冬季游览提示也写了建议安装防滑链、控制车速。</p>
-          </div>
-
-          <div class="budget" id="budget-chuanxi">
-            <h3>费用（按 5 人估算，5 天 4 晚）</h3>
-            <p class="budget-lead">费用按 5 人估算，但还有 2 人尚未确定能否同行（对海拔敏感的朋友可能不来；若他不来，可能还有一人也不来），人数可能是 3、4 或 5 人，请以人均为准。从成都租 7 座自驾，不含长途机票。饼图按各分项区间中位估算。出发前按实际再核。</p>
-            <div class="budget-grid">
-              <div>
-                <div class="b-row"><span class="k">租车</span><span class="d">成都租 7 座约 5 天。这是估算，不是已锁定日历价；元旦前后可能更高。</span><span class="v">2000–3000 元</span></div>
-                <div class="b-row"><span class="k">油费路费停车</span><span class="d">油费、过路和停车的估算。若理小路因冰雪绕行，油费和车程会增加。</span><span class="v">650–1230 元</span></div>
-                <div class="b-row"><span class="k">门票</span><span class="d">毕棚沟与四姑娘山双桥沟淡季口径有出入，故取区间。出发前以官方为准。</span><span class="v">450–750 元</span></div>
-                <div class="b-row"><span class="k">观光车</span><span class="d">含毕棚沟观光车或电瓶车，以及双桥沟观光车。出发前以景区公示为准。</span><span class="v">650–850 元</span></div>
-                <div class="b-row"><span class="k">住宿</span><span class="d">4 晚，按整套或可同住的院落估算。下面候选房源的标价不是一月日历价，需电话确认。</span><span class="v">2000–4400 元</span></div>
-                <div class="b-row"><span class="k">餐饮</span><span class="d">按每人每天约 80–150 元估算，5 天。这是估算，不是菜单报价。</span><span class="v">2000–3750 元</span></div>
-                <div class="b-row"><span class="k">杂费</span><span class="d">氧气、防滑链等预留。这是估算。</span><span class="v">300–800 元</span></div>
-                <div class="b-row total"><span class="k">合计</span><span class="d">5 人约 8100–14800 元，人均约 1620–2960 元。人数未定，请先看人均。</span><span class="v">8100–14800 元</span></div>
-              </div>
-              <div class="budget-pie-wrap">
-                <div class="pie pie-cx" role="img" aria-label="川西慢自驾费用占比，按各分项区间中位估算"></div>
-                <ul class="pie-legend">
-                  <li><i style="background:#edcf96"></i><span class="lab">租车</span><span class="amt">22% · 2500</span></li>
-                  <li><i style="background:#c4895a"></i><span class="lab">油费路费停车</span><span class="amt">8% · 940</span></li>
-                  <li><i style="background:#9fd0de"></i><span class="lab">门票</span><span class="amt">5% · 600</span></li>
-                  <li><i style="background:#6aa8b8"></i><span class="lab">观光车</span><span class="amt">7% · 750</span></li>
-                  <li><i style="background:#e8d5b5"></i><span class="lab">住宿</span><span class="amt">28% · 3200</span></li>
-                  <li><i style="background:#b7c4a1"></i><span class="lab">餐饮</span><span class="amt">25% · 2875</span></li>
-                  <li><i style="background:#8b9aa0"></i><span class="lab">杂费</span><span class="amt">5% · 550</span></li>
-                </ul>
-                <p class="pie-cap">占比按各分项区间中位估算，合计中位约 11415 元。</p>
-              </div>
-            </div>
-            <p class="budget-note">出发前按实际再核。人数若有变化，按人均加减。</p>
-          </div>
-
-          <h3>住宿候选</h3>
-          <ul class="lodge-list">
-            <li><a href="https://hotels.ctrip.com/hotels/135941524.html" target="_blank" rel="noopener noreferrer">森林里·Villa隐宿</a></li>
-            <li><a href="https://hotels.ctrip.com/hotels/131714238.html" target="_blank" rel="noopener noreferrer">拾光别院</a></li>
-            <li><a href="https://hotels.ctrip.com/hotels/111689634.html" target="_blank" rel="noopener noreferrer">吾家小院</a></li>
-            <li><a href="https://hotels.ctrip.com/hotels/133407425.html" target="_blank" rel="noopener noreferrer">半隐·云栖山舍</a>（套房，非独栋）</li>
+  <section class="map-sec" id="map">
+    <div class="wrap-wide">
+      <p class="eyebrow">路线地图</p>
+      <h2>点一天，看那天怎么走</h2>
+      <p>标记按海拔上色。点标记看名字、海拔和那天做什么。也可点下面的日程卡片，地图会跟过去。</p>
+      <div class="map-toolbar" role="toolbar" aria-label="按天筛选">
+        <button type="button" data-day="all" class="is-on">全程</button>
+        <button type="button" data-day="D1">D1 抵达</button>
+        <button type="button" data-day="D2">D2 适应</button>
+        <button type="button" data-day="D3">D3 雪山</button>
+        <button type="button" data-day="D4">D4 去大理</button>
+        <button type="button" data-day="D5">D5 洱海</button>
+        <button type="button" data-day="D6">D6 苍山</button>
+      </div>
+      <div class="map-frame" id="map-frame">
+        <div id="trip-map" role="application" aria-label="丽江到大理行程地图"></div>
+        <div class="map-fallback">
+          <p><strong>地图没能加载。</strong>下面按天列出地点，详细行程见日程卡片。</p>
+          <ul class="plain" id="map-fallback-list"></ul>
+        </div>
+      </div>
+      <ul class="legend">
+        <li><i class="dot-g"></i>低于 2500 米</li>
+        <li><i class="dot-y"></i>2500–3500 米</li>
+        <li><i class="dot-r"></i>高于 3500 米</li>
+      </ul>
+      <details class="src">
+        <summary>来源与说明</summary>
+        <div class="src-body">
+          <p>坐标尽量用公开标注，没有编造。玉湖村没查到可靠的单点坐标，地图上暂不标，行程里仍可去。</p>
+          <ul class="plain">
+            <li>丽江三义机场 26.67917°N，100.24583°E，海拔 2243 米：<a href="https://en.wikipedia.org/wiki/Lijiang_Sanyi_International_Airport">英文维基百科</a></li>
+            <li>束河古镇 26.92347°N，100.20359°E：OpenStreetMap Nominatim 景点</li>
+            <li>白沙古镇 26.95648°N，100.21465°E：OpenStreetMap Nominatim 景点</li>
+            <li>玉龙雪山游客中心／甘海子：高德「雪川游客港」27.097342，100.259092（火星坐标，图上已换算成地球坐标）</li>
+            <li>冰川公园大索道上站：维基共享照片《玉龙雪山4506m标志》（Caihm）文件里标的拍摄位置 27.105193°N，100.199577°E；海拔 4506 米为景区常用标高。拍摄点可能有几米到几十米误差</li>
+            <li>蓝月谷 27.12938°N，100.24193°E：OpenStreetMap Nominatim 景点</li>
+            <li>丽江站 26.81381°N，100.25093°E：OpenStreetMap 火车站</li>
+            <li>大理站 25.59259°N，100.25039°E：<a href="https://zh.wikipedia.org/wiki/%E5%A4%A7%E7%90%86%E7%AB%99">中文维基百科</a></li>
+            <li>喜洲 25.85333°N，100.12935°E：<a href="https://zh.wikipedia.org/wiki/%E5%96%9C%E6%B4%B2%E9%95%87">喜洲镇维基百科</a>；双廊 25.91274°N，100.19250°E：<a href="https://zh.wikipedia.org/wiki/%E5%8F%8C%E5%BB%8A%E9%95%87">双廊镇维基百科</a></li>
+            <li>感通索道下站 25.64762°N，100.16844°E：OpenStreetMap 售票点；洗马潭：大理苍山公示路线坐标 100.103528，25.660918（火星坐标，已换算），上站约 3900 米见大理旅游集团</li>
+            <li>束河、洱海海拔沿用行程常用口径：束河约 2400 米，洱海约 1970 米。底图默认 OpenStreetMap；如加载慢或失败，会改用高德瓦片（需火星坐标）或改显示文字列表</li>
           </ul>
-          <p class="lodge-note">标价不是一月日历价，出发前请电话确认。</p>
-
-          <div class="refs" id="refs-chuanxi">
-            <h3>参考视频 · 川西</h3>
-            <div class="links">
-              <a class="card" href="https://www.douyin.com/video/7706381717719813411" target="_blank" rel="noopener noreferrer"><span class="card-title">阿柚在川西果赖旅行</span><small>72 赞 · 2026-11</small></a>
-              <a class="card" href="https://www.douyin.com/video/7699314542265914490" target="_blank" rel="noopener noreferrer"><span class="card-title">年年麻麻</span><small>46 赞 · 2026-10</small></a>
-              <a class="card" href="https://www.douyin.com/video/7582552865479134510" target="_blank" rel="noopener noreferrer"><span class="card-title">龅牙奇侠</span><small>356 赞 · 2025-12</small></a>
-              <a class="card" href="https://www.douyin.com/video/7580292784968839601" target="_blank" rel="noopener noreferrer"><span class="card-title">说川普的雷神王</span><small>727 赞 · 2025-12</small></a>
-            </div>
-            <p class="refs-note">博主说法仅供参考（包括高反用药），出发前以官方和医生建议为准。未编造视频标题，卡片用账号名。</p>
-          </div>
         </div>
       </details>
     </div>
   </section>
+
+  <div class="plan" id="lijiang">
+    <div class="wrap">
+      <div class="date-box" id="dates">
+        <h3>出发日还没定死</h3>
+        <ul>
+          <li>现在订的是 <strong>1 月 4–6 日</strong>；也可改到 1 月 3–5 日，或 1 月 2 日就走。</li>
+          <li>也可以提前到 <strong>12 月 26–30 日</strong>。这两段日子，两居「涵香＋归心」和 1 月 4–7 日一样，都是 <strong>819 元/晚</strong>。</li>
+          <li>「涵香＋归心」在 <strong>12 月 31 日–1 月 3 日</strong>是 <strong>1139 元/晚</strong>（1 月 3 日已是元旦假期价）。</li>
+          <li>3 人合住一间时，最便宜的「禅茶榻榻米家庭房」平日 <strong>222 元/晚</strong>，元旦那几天 392 元。</li>
+          <li>有一位同行朋友 <strong>1 月 7 日回日本</strong>，玉龙雪山要排在这之前。木阳 <strong>1 月 11 日</strong>返回。</li>
+        </ul>
+      </div>
+
+      <div class="day-grid" id="days">
+        <article class="day-card" data-day="D1" id="day-d1">
+          <img src="img/shuhe-06-gate-lanterns.jpg" alt="束河古镇门口灯笼" width="1000" height="750">
+          <div class="day-body">
+            <div class="day-top"><span class="day-n">D1 · 抵达</span><span>约 2400 米</span></div>
+            <div class="alt-bar"><div class="lab"><span>当天最高海拔</span><span>约 2400 米</span></div><div class="track"><div class="fill fill-g" style="width:48%"></div></div></div>
+            <p class="day-sum">成都飞到<strong>丽江三义机场</strong>，去束河或白沙住下，先适应海拔。</p>
+            <div class="day-more">
+              <ul class="plain">
+                <li>5 人加行李，4 座往往不够，可订 <strong>7 座接机</strong>。</li>
+                <li>也可坐机场大巴到束河，<strong>20 元/人</strong>；去白沙需到束河再转 6 路或打车。</li>
+                <li>合住一套，慢慢适应（束河一带约 2400 米）。</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+        <article class="day-card" data-day="D2" id="day-d2">
+          <img src="img/shuhe-01-stream.jpg" alt="束河古镇溪流与石板路" width="1200" height="900">
+          <div class="day-body">
+            <div class="day-top"><span class="day-n">D2 · 适应</span><span>约 2400 米</span></div>
+            <div class="alt-bar"><div class="lab"><span>当天最高海拔</span><span>约 2400 米</span></div><div class="track"><div class="fill fill-g" style="width:48%"></div></div></div>
+            <p class="day-sum">睡到自然醒。在<strong>束河、白沙</strong>转转，也可去玉湖村远看雪山。</p>
+            <div class="day-more">
+              <ul class="plain">
+                <li>短途用滴滴、出租车，或坐 6 路、雪山轻轨旅游环线公交。</li>
+                <li>可提前买氧气瓶。</li>
+                <li>若 1 月 4 日才出发、后面会赶，这天可以缩短，第二天就上雪山。</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+        <article class="day-card" data-day="D3" id="day-d3">
+          <img src="img/blue-moon-valley.jpg" alt="玉龙雪山蓝月谷的蓝色湖水" width="1200" height="900">
+          <div class="day-body">
+            <div class="day-top"><span class="day-n">D3 · 玉龙雪山</span><span>4506 米</span></div>
+            <div class="alt-bar"><div class="lab"><span>当天最高海拔</span><span>大索道上站 4506 米</span></div><div class="track"><div class="fill fill-r" style="width:90%"></div></div></div>
+            <p class="day-sum">上<strong>冰川公园大索道</strong>，下午走<strong>蓝月谷</strong>。须排在同行朋友 1 月 7 日回日本之前。</p>
+            <div class="day-more">
+              <ul class="plain">
+                <li>可订包车一天，或坐环线公交到新游客服务中心，再转旅游直通车；也可到忠义市场坐 <strong>101 路（15 元/人）</strong>。</li>
+                <li>若自己开车，车停在游客中心。进景区改坐环保车（摆渡车），私家车不能进园。</li>
+                <li>大索道上站 <strong>4506 米</strong>，上面别久留，不舒服就下。</li>
+                <li>对海拔敏感的朋友可能不来；如果来，在蓝月谷等，不上大索道。</li>
+                <li>也可报纯玩小团，说明见费用里的「来源与说明」。</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+        <article class="day-card" data-day="D4" id="day-d4">
+          <img src="img/erhai-xizhou.jpg" alt="喜洲附近的洱海" width="1200" height="750">
+          <div class="day-body">
+            <div class="day-top"><span class="day-n">D4 · 去大理</span><span>约 1970 米</span></div>
+            <div class="alt-bar"><div class="lab"><span>当天海拔</span><span>降到洱海边约 1970 米</span></div><div class="track"><div class="fill fill-g" style="width:39%"></div></div></div>
+            <p class="day-sum">坐高铁去大理，二等座 <strong>80 元</strong>，约 2 小时。住洱海边，喜洲或双廊都行。</p>
+            <div class="day-more">
+              <ul class="plain">
+                <li>约 1 小时 56 分至 2 小时 22 分。</li>
+                <li>车站到住处坐公交或打车。</li>
+                <li>回日本的朋友若当天离开，可在丽江分开，其余人再去大理。</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+        <article class="day-card" data-day="D5" id="day-d5">
+          <img src="img/shuhe-03-qinglong-bridge.jpg" alt="古镇石桥，作大理慢逛配图" width="1200" height="900">
+          <div class="day-body">
+            <div class="day-top"><span class="day-n">D5 · 洱海</span><span>约 1970 米</span></div>
+            <div class="alt-bar"><div class="lab"><span>当天最高海拔</span><span>约 1970 米</span></div><div class="track"><div class="fill fill-g" style="width:39%"></div></div></div>
+            <p class="day-sum">走环海西路，在<strong>双廊或喜洲</strong>转转。住在海边，不必赶场。</p>
+            <div class="day-more">
+              <ul class="plain">
+                <li>慢慢看海即可，不必排太多景点。</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+        <article class="day-card" data-day="D6" id="day-d6">
+          <img src="img/cangshan.jpg" alt="苍山与田野" width="1200" height="750">
+          <div class="day-body">
+            <div class="day-top"><span class="day-n">D6 · 苍山（可选）</span><span>约 3900 米</span></div>
+            <div class="alt-bar"><div class="lab"><span>当天最高海拔</span><span>洗马潭约 3900 米</span></div><div class="track"><div class="fill fill-r" style="width:78%"></div></div></div>
+            <p class="day-sum">可选苍山索道：<strong>感通</strong>较低、较轻松；<strong>洗马潭</strong>可到约 3900 米，上面别久留。</p>
+            <div class="day-more">
+              <ul class="plain">
+                <li>对海拔敏感的朋友如果来，不上苍山。回日本的朋友此时多半已离开。</li>
+                <li>若只排 5 天，这天可改成返程，或并进前一天。</li>
+                <li>返回从大理走（也可经丽江或昆明）。</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+      <p style="font-size:.75rem;color:var(--cream-mute);margin:-.6rem 0 1.2rem;">点卡片看细节，并在地图上高亮这一天。D5 配图是束河石桥，仅作气氛，不是双廊实地。</p>
+
+      <div class="alt-box">
+        <h3>对海拔敏感的朋友</h3>
+        <ul>
+          <li>有人曾在大理洱海（约 <strong>1970 米</strong>）就出现高反。</li>
+          <li>这位朋友<strong>可能不来</strong>；如果来，在蓝月谷等，<strong>不上大索道和苍山</strong>。</li>
+          <li>大索道上站 4506 米，苍山洗马潭约 3900 米；感通相对较低。</li>
+          <li>出发前问医生。丽江先在束河或白沙适应。</li>
+          <li>另有一位同行朋友 1 月 7 日回日本（<strong>不是同一人</strong>），玉龙雪山要排在这之前。</li>
+        </ul>
+      </div>
+
+      <div class="todo">
+        <h3>出发前待办</h3>
+        <ul>
+          <li>大索道在官方渠道实名提前预约，并排在同行朋友 1 月 7 日回日本之前</li>
+          <li>确认出发日：12 月 26–30 日，或 1 月 2、3、4 日；确认是 3、4 还是 5 人</li>
+          <li>可提前订丽江 7 座接机和上山包车，或确认机场大巴、公交班次</li>
+          <li>预订丽江—大理高铁，以及大理返程</li>
+          <li>苍山索道看天气，大风可能停运</li>
+          <li>保暖：冲锋衣或厚羽绒、墨镜、帽子、防滑鞋、保温杯</li>
+          <li>有心肺问题，先问医生</li>
+        </ul>
+      </div>
+
+      <div class="budget" id="budget">
+        <h3>费用（5–6 天）</h3>
+        <ul class="chips">
+          <li>以这张 <strong>3 / 4 / 5 人人均表</strong>为准</li>
+          <li>机票、高铁、门票、索道、吃饭：<strong>按每人收</strong></li>
+          <li>包车、油费停车、整套住宿：<strong>一笔总账再平摊</strong></li>
+        </ul>
+        <ul class="plain">
+          <li>3 人可合住一间；4 人住可住 4 人的两居；5 人需可住 5 人的两居（如「涵香＋归心」）。</li>
+          <li>5 座车适合 3–4 人，4 人加冬季行李可能偏紧；5 人需 7 座。</li>
+          <li>1 月 7 日后大理段可能少 1 人。表内先按该列人数全程估算（丽江 3 晚＋大理 2 晚）。</li>
+        </ul>
+
+        <div class="perhead-block" id="perhead">
+          <h3 style="margin-top:1rem;">人均费用：3 人 / 4 人 / 5 人</h3>
+          <div class="perhead-wrap">
+            <table class="perhead">
+              <colgroup><col class="c-item"><col class="c-way"><col class="c-unit"><col class="c-n"><col class="c-n"><col class="c-n"></colgroup>
+              <thead>
+                <tr><th>项目</th><th>怎么算</th><th>总价或单价</th><th>3 人人均</th><th>4 人人均</th><th>5 人人均</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>长途交通<span class="sub">去程约 290–400 元/人，丽江—大理 80 元，返程预留 300–700 元/人</span></td>
+                  <td class="way">按每人收</td>
+                  <td class="num">670–1180 元/人</td>
+                  <td class="num">670–1180</td><td class="num">670–1180</td><td class="num">670–1180</td>
+                </tr>
+                <tr>
+                  <td>丽江用车（对照：包车一天）<span class="sub">大象包车市内价：5 座 650 元、7 座 850 元；玉龙未单列。自驾日租本页未能打开，不编数字</span></td>
+                  <td class="way">总账平摊</td>
+                  <td class="num">3–4 人按 5 座 650；5 人按 7 座 850</td>
+                  <td class="num">约 217</td><td class="num">约 163</td><td class="num">约 170</td>
+                </tr>
+                <tr>
+                  <td>油费·过路费·停车<span class="sub">仅自驾。束河往返甘海子约 50–60 公里，预留 40–80 元。过路费按 0。新游客中心暂不收费</span></td>
+                  <td class="way">总账平摊</td>
+                  <td class="num">约 40–80 元（自驾时）</td>
+                  <td class="num">约 13–27</td><td class="num">约 10–20</td><td class="num">约 8–16</td>
+                </tr>
+                <tr>
+                  <td>门票<span class="sub">玉龙雪山 100 元/人。苍山门票常见含在索道套票里</span></td>
+                  <td class="way">按每人收</td>
+                  <td class="num">100 元/人</td>
+                  <td class="num">100</td><td class="num">100</td><td class="num">100</td>
+                </tr>
+                <tr>
+                  <td>索道（含景区摆渡车）<span class="sub">玉龙摆渡 20＋大索道 120，加苍山感通 100 或洗马潭约 260–320，约 240–460 元/人。高反朋友如来，该人只计摆渡 20 元</span></td>
+                  <td class="way">按每人收</td>
+                  <td class="num">240–460 元/人</td>
+                  <td class="num">240–460</td><td class="num">240–460</td><td class="num">240–460</td>
+                </tr>
+                <tr>
+                  <td>吃饭<span class="sub">按每人每天 80–150 元、5–6 天估算</span></td>
+                  <td class="way">按每人收</td>
+                  <td class="num">400–900 元/人</td>
+                  <td class="num">400–900</td><td class="num">400–900</td><td class="num">400–900</td>
+                </tr>
+                <tr>
+                  <td>住宿（丽江 3 晚＋大理 2 晚）<span class="sub">3 人：丽江合住一间 666–1113（222–371×3）＋大理 1976＝2642–3089。4 人住两居 2720–3953。5 人住「涵香＋归心」4433（节日约 5393）</span></td>
+                  <td class="way">总账平摊</td>
+                  <td class="num">见上行说明</td>
+                  <td class="num">881–1030</td><td class="num">680–988</td><td class="num">887–1079</td>
+                </tr>
+                <tr class="total">
+                  <td>合计（不含丽江用车）<span class="sub">公交或 101 路另计。含包车一天对照时，约再加 163–217 元/人</span></td>
+                  <td class="way">—</td><td class="num">—</td>
+                  <td class="num">2291–3670</td><td class="num">2090–3628</td><td class="num">2297–3719</td>
+                </tr>
+                <tr class="total">
+                  <td>合计（含包车一天对照）</td>
+                  <td class="way">—</td><td class="num">—</td>
+                  <td class="num">2508–3887</td><td class="num">2253–3791</td><td class="num">2467–3889</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <details class="src" open>
+            <summary>来源与说明</summary>
+            <div class="src-body">
+              <p>住宿分日（木鸟民宿日历，2026 年 11 月 10 日查到）。大理两晚都按「洱海边／花海旁白族民居大院」988×2＝1976。</p>
+              <ul class="plain">
+                <li>3 人丽江合住一间：最便宜是<a href="https://www.muniao.com/room/1441831.html">禅茶榻榻米家庭房</a> 222×3＝666，加大理共 2642，人均 881；若选<a href="https://www.muniao.com/room/896183.html">庭院亲子家庭房</a> 371×3＝1113，加大理共 3089，人均 1030。元旦那几天房价可能更高，见下面房间卡片。</li>
+                <li>4 人两居：12/26–30 用<a href="https://www.muniao.com/room/39652.html">束河古镇双卧复式套房</a>（248×3＝744）加大理＝2720，人均 680；1/4–7 用该房 284×3＝852，合计 2828，人均 707；或用<a href="https://www.muniao.com/room/638127.html">独栋庭院双卧别墅</a>，1/4–7 为 1893＋1976＝3869，人均 967；12/26–30 为 1977＋1976＝3953，人均 988。</li>
+                <li>5 人用<a href="https://www.muniao.com/room/1083409.html">涵香＋归心两卫套房</a>：12/26–30 与 1/4–7 均为 2457＋1976＝4433，人均 887；若住到 12/31–1/3（1139 元/晚），三晚加大理约 5393，人均 1079。</li>
+                <li>包车对照：<a href="https://www.daxiangbaoche.com/lijiang-car-service/">大象包车价目</a>市内列。连租 3 天不等于日价×3。自驾请看租车网站填好日期后的日租金和保险。</li>
+                <li>油价：丽江 92 号 <strong>9.04 元/升</strong>（<a href="https://www.yjcxw.com/meiriyoujia/48382.html">油价查询网 2026-11-10</a>）。停车：新游客中心暂不收费，甘海子需预约、收费未公布（<a href="https://www.163.com/dy/article/L7LQDQKH052491GH.html">丽江同城网 2026-09-25</a>）。</li>
+                <li>跟团上雪山：去哪儿纯玩 2–8 人小团 <strong>246 元起</strong>（<a href="https://piao.qunar.com/daytrip/detail_3224093.html">链接</a>），含进山费、大索道、接送、氧气、防寒服、中餐；不含蓝月谷电瓶车 50 元。大风停运可能改坐云杉坪那边较低的索道，并退差价。</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="budget-grid">
+          <div>
+            <div class="b-row"><span class="k">长途交通</span><span class="d">5 人合计，口径同上表</span><span class="v">3400–5800 元</span></div>
+            <div class="b-row"><span class="k">当地交通</span><span class="d">接送、短途、上山日公交或包车预留</span><span class="v">1000–2200 元</span></div>
+            <div class="b-row"><span class="k">门票</span><span class="d">玉龙 100 元×5</span><span class="v">500 元</span></div>
+            <div class="b-row"><span class="k">索道与摆渡</span><span class="d">玉龙＋苍山，按 4–5 人</span><span class="v">980–2500 元</span></div>
+            <div class="b-row"><span class="k">住宿</span><span class="d">5 人按「涵香＋归心」＋喜洲大院日历</span><span class="v">4433–5393 元</span></div>
+            <div class="b-row"><span class="k">餐饮</span><span class="d">80–150 元/人/天，5–6 天，估算</span><span class="v">2000–4500 元</span></div>
+            <div class="b-row"><span class="k">氧气及其他</span><span class="d">氧气瓶约 9.9–19.9 元，预留</span><span class="v">50–200 元</span></div>
+            <div class="b-row total"><span class="k">合计</span><span class="d">5 人约 12333–21093 元（含当地交通预留；人均请以上表为准）</span><span class="v">12333–21093 元</span></div>
+          </div>
+          <div class="budget-pie-wrap">
+            <div class="pie pie-lj" role="img" aria-label="丽江加大理费用占比，按各分项区间中位估算"></div>
+            <ul class="pie-legend">
+              <li><i style="background:#d4b07a"></i><span class="lab">长途交通</span><span class="amt">28% · 4600</span></li>
+              <li><i style="background:#edcf96"></i><span class="lab">当地交通</span><span class="amt">10% · 1600</span></li>
+              <li><i style="background:#9fd0de"></i><span class="lab">门票</span><span class="amt">3% · 500</span></li>
+              <li><i style="background:#6aa8b8"></i><span class="lab">索道与摆渡</span><span class="amt">10% · 1740</span></li>
+              <li><i style="background:#e8d5b5"></i><span class="lab">住宿</span><span class="amt">29% · 4913</span></li>
+              <li><i style="background:#b7c4a1"></i><span class="lab">餐饮</span><span class="amt">19% · 3250</span></li>
+              <li><i style="background:#8b9aa0"></i><span class="lab">氧气及其他</span><span class="amt">1% · 125</span></li>
+            </ul>
+            <p class="pie-cap">5 人中位约 16728 元，仅作总盘参考。</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 id="stay">3 人住一间</h3>
+      <p>3 人可以合住一间带三张床或双人床＋单人床的房间。下面是木鸟民宿 2026 年 11 月 10 日查到的日历价，<strong>12 月 26–30 日与 1 月 4–7 日相同</strong>。</p>
+      <div class="lodge-grid">
+        <div class="lodge">
+          <a href="https://www.muniao.com/room/1441831.html" target="_blank" rel="noopener noreferrer">禅茶榻榻米家庭房（带雪山观景台，双人床＋单人床）</a>
+          <p class="price"><strong>222 元/晚</strong> · 三晚 666 元</p>
+          <p class="meta">最便宜。元旦 12/31–1/3 为 392 元/晚。</p>
+        </div>
+        <div class="lodge">
+          <a href="https://www.muniao.com/room/1441832.html" target="_blank" rel="noopener noreferrer">古色古香三人间（3张单人床）</a>
+          <p class="price"><strong>236 元/晚</strong> · 三晚 708 元</p>
+          <p class="meta">三张单人床。元旦 12/31–1/3 为 392 元/晚。</p>
+        </div>
+        <div class="lodge">
+          <a href="https://www.muniao.com/room/880957.html" target="_blank" rel="noopener noreferrer">阳光家庭房（3张单人床）</a>
+          <p class="price"><strong>249 元/晚</strong> · 三晚 747 元</p>
+          <p class="meta">元旦那几天也是 249 元，假期里更稳。</p>
+        </div>
+        <div class="lodge">
+          <a href="https://www.muniao.com/room/896183.html" target="_blank" rel="noopener noreferrer">庭院亲子家庭房（可看雪山）</a>
+          <p class="price"><strong>371 元/晚</strong> · 三晚 1113 元</p>
+          <p class="meta">可看雪山。元旦 12/31–1/3 为 757 元/晚。</p>
+        </div>
+      </div>
+
+      <h3>4–5 人住两居，以及大理</h3>
+      <div class="lodge-grid">
+        <div class="lodge">
+          <a href="https://www.muniao.com/room/39652.html" target="_blank" rel="noopener noreferrer">束河古镇双卧复式套房（古镇内，两居，宜住4人）</a>
+          <p class="price">12/26–31：<strong>248 元/晚</strong>；1/4–7：284 元；1/1–3：580 元</p>
+        </div>
+        <div class="lodge">
+          <a href="https://www.muniao.com/room/638127.html" target="_blank" rel="noopener noreferrer">独栋庭院双卧别墅（近束河，宜住4人）</a>
+          <p class="price">12/26–31：<strong>659 元/晚</strong>；1/4–7：631 元（三晚 1893）；1/1–3：784 元</p>
+        </div>
+        <div class="lodge">
+          <a href="https://www.muniao.com/room/1083409.html" target="_blank" rel="noopener noreferrer">涵香＋归心两卫套房（近束河，两居，宜住5人+）</a>
+          <p class="price">12/26–30 与 1/4–7：<strong>819 元/晚</strong>（三晚 2457）；12/31–1/3：1139 元</p>
+        </div>
+        <div class="lodge">
+          <a href="https://www.muniao.com/room/1076788.html" target="_blank" rel="noopener noreferrer">洱海边／花海旁白族民居大院（喜洲仁里邑，三居，可住6人）</a>
+          <p class="price">12/26–1/12 日历均为 <strong>988 元/晚</strong>，两晚 1976 元。近环海西路。</p>
+        </div>
+      </div>
+      <p style="font-size:.86rem;color:var(--cream-mute);">以上是平台日历价，不是下单瞬间的成交价，出发前请再核。</p>
+
+      <div class="refs" id="refs-lijiang">
+        <h3>参考视频</h3>
+        <div class="links">
+          <a class="card" href="https://www.douyin.com/video/7703177450784062118" target="_blank" rel="noopener noreferrer"><span class="card-title">丽江冬季怎么玩</span><small>好人阿滇 · 1575 赞 · 2026-11</small><span class="card-note">住大研/束河/白沙、地暖、门票索道和氧气避坑</span></a>
+          <a class="card" href="https://www.douyin.com/video/7593760884875674600" target="_blank" rel="noopener noreferrer"><span class="card-title">玉龙雪山实用攻略</span><small>是阿佳吖 · 1.2 万赞 · 2026-01</small><span class="card-note">一月实游，大索道后吸氧休息和防寒</span></a>
+          <a class="card" href="https://www.douyin.com/video/7686713025142793381" target="_blank" rel="noopener noreferrer"><span class="card-title">玉龙雪山值不值得来</span><small>蛋壳儿 · 3.7 万赞 · 2026-09</small><span class="card-note">大索道到 4500 米、蓝月谷、高反提醒（非冬季拍）</span></a>
+          <a class="card" href="https://www.douyin.com/video/7697612390846934244" target="_blank" rel="noopener noreferrer"><span class="card-title">秋冬雪山实测干货</span><small>云南吉朵 · 抖音</small><span class="card-note">秋冬上雪山的实测补充</span></a>
+          <a class="card" href="https://www.douyin.com/video/7594779658990652699" target="_blank" rel="noopener noreferrer"><span class="card-title">1、2 月云南怎么玩</span><small>付先生在云南 · 抖音</small><span class="card-note">云南冬季参考，未见可靠赞数，不编造</span></a>
+          <a class="card" href="https://www.douyin.com/video/7671625286467518568" target="_blank" rel="noopener noreferrer"><span class="card-title">大理苍山旅行实拍记</span><small>抖音</small><span class="card-note">讲感通索道和苍山步道。未见可靠的账号与赞数，不编造</span></a>
+        </div>
+        <p class="refs-note" style="font-size:.82rem;color:var(--cream-mute);margin-top:.6rem;">博主说法仅供参考（包括高反用药），出发前以官方和医生建议为准。</p>
+      </div>
+
+      <div class="gallery reveal">
+        <figure>
+          <img src="img/yulong-snow-mountain.jpg" width="1200" height="750" alt="玉龙雪山雪峰" data-full="img/yulong-snow-mountain.jpg" data-cap="玉龙雪山，Ma Martin，CC BY-SA 3.0">
+          <figcaption>玉龙雪山　Ma Martin　<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>　<a href="https://commons.wikimedia.org/wiki/File:%E7%8E%89%E9%BE%99%E9%9B%AA%E5%B1%B1_Jade_Dragon_Snow_Mountain_-_panoramio.jpg">来源</a></figcaption>
+        </figure>
+        <figure>
+          <img src="img/blue-moon-valley.jpg" width="1200" height="900" alt="蓝月谷蓝色湖水" data-full="img/blue-moon-valley.jpg" data-cap="蓝月谷，Ping an Chang，CC BY-SA 4.0">
+          <figcaption>蓝月谷　Ping an Chang　<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>　<a href="https://commons.wikimedia.org/wiki/File:%E6%B0%B4%E8%89%B2%E6%9C%83%E8%AE%8A%E7%9A%84%E8%97%8D%E6%9C%88%E8%B0%B7_20190928195012.jpg">来源</a></figcaption>
+        </figure>
+        <figure>
+          <img src="img/shuhe-02-sanyanjing.jpg" width="1000" height="750" alt="束河三眼井" data-full="img/shuhe-02-sanyanjing.jpg" data-cap="束河三眼井，Yumeto，CC BY-SA 4.0">
+          <figcaption>束河三眼井　Yumeto　<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></figcaption>
+        </figure>
+        <figure>
+          <img src="img/shuhe-04-night-lanterns.jpg" width="802" height="1200" alt="束河夜晚溪边灯笼" data-full="img/shuhe-04-night-lanterns.jpg" data-cap="束河夜色，Li Zhengxu，CC BY-SA 3.0">
+          <figcaption>束河夜色　Li Zhengxu　<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a></figcaption>
+        </figure>
+        <figure>
+          <img src="img/erhai-xizhou.jpg" width="1200" height="750" alt="喜洲附近的洱海" data-full="img/erhai-xizhou.jpg" data-cap="喜洲附近洱海，Ma Martin，CC BY-SA 3.0">
+          <figcaption>喜洲附近洱海　Ma Martin　<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>　<a href="https://commons.wikimedia.org/wiki/File:%E6%B4%B1%E6%B5%B7_%E5%96%9C%E6%B4%B2%E9%99%84%E8%BF%91_Erhai_Lake_-_panoramio.jpg">来源</a></figcaption>
+        </figure>
+        <figure>
+          <img src="img/cangshan.jpg" width="1200" height="750" alt="苍山" data-full="img/cangshan.jpg" data-cap="苍山，Ma Martin，CC BY-SA 3.0">
+          <figcaption>苍山　Ma Martin　<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>　<a href="https://commons.wikimedia.org/wiki/File:%E5%A4%A7%E7%90%86%E8%8B%8D%E5%B1%B1_-_panoramio.jpg">来源</a></figcaption>
+        </figure>
+        <figure>
+          <img src="img/shuhe-05-naxi-house.jpg" width="1200" height="900" alt="束河纳西民居" data-full="img/shuhe-05-naxi-house.jpg" data-cap="束河民居，nobush，CC BY 2.0">
+          <figcaption>束河民居　nobush　<a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a></figcaption>
+        </figure>
+        <figure>
+          <img src="img/shuhe-01-stream.jpg" width="1200" height="900" alt="束河溪流石板路" data-full="img/shuhe-01-stream.jpg" data-cap="束河溪流，wuzhongj，CC BY 3.0">
+          <figcaption>束河溪流　wuzhongj　<a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></figcaption>
+        </figure>
+      </div>
+      <p style="font-size:.75rem;color:var(--cream-mute);margin-top:.5rem;">束河门口灯笼另见行程 D1，作者 Xiaoding413，<a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>。束河青龙桥见 D5 配图，作者 Yumeto，CC BY-SA 4.0。</p>
+    </div>
+  </div>
 
   <section class="sources" id="sources">
     <div class="wrap">
       <p class="eyebrow">出处</p>
       <h2>照片与依据</h2>
       <ol>
-        <li><a href="https://www.news.cn/photo/20240104/c85990d23eb84ec1a3f92f6f49775888/c.html">冬日九寨沟诺日朗冰瀑（2024-01-04，新华社记者 王曦）</a></li>
-        <li><a href="https://www.news.cn/photo/20251024/99eb177d967042058115c46ac0b9abf6/c.html">五彩池初雪、长海雪景（2025-10-24，桑吉/新华社发）</a></li>
-        <li><a href="https://www.news.cn/photo/20241209/4dc0c19b0c1e4a3f9ef47a1ef1ec264d/c.html">蓝月谷与玉龙雪峰（2024-12-08，新华社记者 孟涛）</a></li>
-        <li><a href="https://www.news.cn/photo/2022-01/13/c_1128260502.htm">蓝月谷冬雪（2022-01-13，新华社记者 王冠森）</a></li>
-        <li><a href="https://www.jiuzhai.com/news/notice/10767-2025-11-11-10-00-20">九寨沟淡季旅游接待通告（门票 80、观光车 80）</a></li>
-        <li><a href="https://news.cctv.cn/2024/08/30/ARTI2REK7IpZ7xhs0EwgeiWT240830.shtml">川青铁路开通：成都至黄龙九寨最快 1 小时 39 分</a></li>
-        <li><a href="http://cd.bendibao.com/traffic/2024830/188604.shtm">黄龙九寨站直通车（约 51 元、车程约 2 小时）</a></li>
-        <li><a href="https://www.jiuzhai.com/about/scenic-spot">九寨沟标志景点（长海 3101 米、五彩池 3010 米；树正群海 2187–2280 米、诺日朗瀑布 2343 米）</a></li>
-        <li><a href="https://www.jiuzhai.com/news/scenic-news/10774-2025-11-11-01-06-48">九寨沟 2025 年 11 月轮休保育说明：淡季仍可看诺日朗瀑布、树正群海等</a></li>
-        <li><a href="https://www.jiuzhai.com/news/scenic-news/17-fuwu">官网旅游服务页：淡季可二次进沟免门票，次日观光车需另购</a></li>
-        <li><a href="https://www.jiuzhai.com/news/notice/4860-2016-01-30-03-48-14">2016 年通知：停止收取淡季二次进沟手续工本费 20 元</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:%E7%8E%89%E9%BE%99%E9%9B%AA%E5%B1%B1_Jade_Dragon_Snow_Mountain_-_panoramio.jpg">玉龙雪山照片：Ma Martin，CC BY-SA 3.0</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:%E6%B0%B4%E8%89%B2%E6%9C%83%E8%AE%8A%E7%9A%84%E8%97%8D%E6%9C%88%E8%B0%B7_20190928195012.jpg">蓝月谷照片：Ping an Chang，CC BY-SA 4.0（2019-09-21）</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:%E6%B4%B1%E6%B5%B7_%E5%96%9C%E6%B4%B2%E9%99%84%E8%BF%91_Erhai_Lake_-_panoramio.jpg">喜洲附近洱海照片：Ma Martin，CC BY-SA 3.0</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:%E5%A4%A7%E7%90%86%E8%8B%8D%E5%B1%B1_-_panoramio.jpg">苍山照片：Ma Martin，CC BY-SA 3.0</a></li>
+        <li>束河照片：01 wuzhongj CC BY 3.0；02、03 Yumeto CC BY-SA 4.0；04 Li Zhengxu CC BY-SA 3.0；05 nobush CC BY 2.0；06 Xiaoding413 CC0</li>
         <li><a href="http://www.yn.news.cn/20260702/e8f8d1a27e2845b4bf54cfc5ef8f5d36/c.html">玉龙雪山 2026 年票价：门票 100、环保车 20、冰川公园索道 120、蓝月谷电瓶车全程 40（玉龙雪山管委会 / 新华网云南）</a></li>
-        <li><a href="https://www.gaotie.com.cn/lieche/chengdudong-huanglongjiuzhai.html">成都东至黄龙九寨二等座公布票价多为 143 元（市场化浮动以 12306 为准）</a></li>
         <li><a href="https://view.inews.qq.com/a/20260104A071DC00">2026 年 1 月成都—丽江特价机票：去程 200 元起、返程 240 元起，不含机建燃油（成都本地宝，截自携程）</a></li>
-        <li><a href="https://trains.ctrip.com/trainbooking/chengdu-lijiang/gaotie">成都南至丽江 D239 二等座 376 元（携程火车票）</a></li>
-        <li><a href="https://service.zuche.com/city/search.do?districtId=9984&amp;enName=aba">神州租车黄龙九寨服务点（九寨沟县网点列表）</a></li>
-        <li><a href="https://www.wkzuche.com/cartype/513200-JM2955553013159-5100012889-BUICKGL82023MPV57GASOLINEAT2000.html">港中租车黄龙九寨站店别克 GL8 576 元/日均（悟空租车）</a></li>
+        <li><a href="https://trains.ctrip.com/TrainBooking/lijiang-dali2/dongche">丽江—大理动车二等座 80 元，约 1 小时 56 分–2 小时 22 分（携程 2026-11-11）</a></li>
+        <li><a href="https://www.woyaofei.com.cn/city/tfu/tfu-dlu.html">成都—大理特价机票：2027-01-10 可见约 300 元起（民航掌上飞，祥鹏 8L9635，未核机建燃油）</a></li>
         <li><a href="https://www.lijiang.cn/article/133089.html">丽江网：束河往返三义机场专线 20 元/人（2024-07-06）</a></li>
         <li><a href="https://www.lijiang.cn/article/154420.html">丽江网：雪山轻轨旅游环线公交（束河南门—观光火车站—白沙）10 元/人</a></li>
         <li><a href="https://www.lijiang.cn/article/145546.html">丽江网：新游客服务中心至甘海子旅游直通车，单程 30 元、往返 60 元</a></li>
         <li><a href="https://www.lijiang.cn/article/147838.html">丽江网：101 路雪山专线 15 元/人，冬春季 6:00 发车</a></li>
-        <li><a href="https://www.daxiangbaoche.com/lijiang-car-service/">大象包车价目表：7 座别克接机 300 元/次、市内一天 850 元（页面景点票价有过时数字，出发前再核）</a></li>
-        <li><a href="https://www.scdfz.org.cn/scdqs/sxdq/abz/lx1/content_21006">四川省情网：理县县城海拔 1888 米</a></li>
-        <li><a href="https://www.bipenggou.com/altitude/">毕棚沟海拔页：龙王海 2950 米、磐羊湖 3676 米</a></li>
-        <li><a href="https://www.sgns.cn/understand/sqg">四姑娘山官网：双桥沟沟口约 2900 米，沟尾红杉林 3840 米</a></li>
-        <li><a href="https://www.sgns.cn/info/notice/6419-2025-11-27-07-03-15">四姑娘山景区冬季游览温馨提示（建议安装防滑链；双桥沟冬季开放时间）</a></li>
-        <li><a href="https://cbgc.scol.com.cn/news/8127066">川观新闻：2026-11-08 理小路（理县段）临时交通管制，11-09 12 时解除</a></li>
-        <li><a href="https://trains.ctrip.com/TrainBooking/lijiang-dali2/dongche">丽江—大理动车二等座 80 元，约 1 小时 56 分–2 小时 22 分（携程 2026-11-11）</a></li>
-        <li><a href="https://www.yndali.gov.cn/dlsrmzf/c106727/pc/content/1983766513792946176/content_1983766513792946176.html">大理市发改局：感通索道单程 65 元、往返 100 元（市发改发〔2025〕6 号，2025-07-25）</a></li>
-        <li><a href="https://touch.piao.qunar.com/touch/detail.htm?id=12323">洗马潭索道全程往返：去哪儿 2026-11-10 可见成人约 260 元起（含地质公园门票）；此前平台常见约 320 元，出发前再核</a></li>
+        <li><a href="https://www.daxiangbaoche.com/lijiang-car-service/">大象包车：5 座朗逸接机 200、市内 650、虎跳峡 850；7 座别克接机 300、市内 850、虎跳峡 1100</a></li>
+        <li><a href="https://www.yjcxw.com/meiriyoujia/48382.html">丽江 92 号汽油 9.04 元/升（油价查询网 2026-11-10）</a></li>
+        <li><a href="https://www.163.com/dy/article/L7LQDQKH052491GH.html">丽江同城网 2026-09-25：甘海子停车场预约测试；新游客服务中心暂不收取停车费（转述管委会通告）</a></li>
+        <li><a href="https://piao.qunar.com/daytrip/detail_3224093.html">去哪儿：玉龙雪山纯玩 2–8 人小团 246 元起</a></li>
+        <li><a href="https://www.yndali.gov.cn/dlsrmzf/c106727/pc/content/1983766513792946176/content_1983766513792946176.html">大理市发改局：感通索道单程 65 元、往返 100 元（2025-07-25）</a></li>
+        <li><a href="https://touch.piao.qunar.com/touch/detail.htm?id=12323">洗马潭索道全程往返：去哪儿 2026-11-10 可见成人约 260 元起；此前平台常见约 320 元</a></li>
         <li><a href="https://www.dalitravel.cn/content/read/180.html">大理旅游集团：洗马潭上站位于玉局峰洗马潭，海拔约 3900 米</a></li>
-        <li><a href="https://www.muniao.com/room/1076788.html">木鸟：喜洲仁里邑洱海边整套三居，主标价 988 元/晚，宜住 6 人</a></li>
-        <li><a href="https://www.woyaofei.com.cn/city/tfu/tfu-dlu.html">成都—大理特价机票：2027-01-10 可见约 300 元起（民航掌上飞，祥鹏 8L9635，未核机建燃油）</a></li>
         <li><a href="https://travelnews.qunar.com/ugc/dali-xizhou-bus-vs-ebike">去哪儿游客记录：去喜洲坐中巴约 7 元（可能从古城出发）</a></li>
-        <li><a href="https://www.muniao.com/room/1429731.html">束河附近整套三居，标价 300 元/晚，宜住 6 人（木鸟民宿）</a></li>
-        <li><a href="https://www.muniao.com/room/1083406.html">束河别墅区整套三房两卫，标价 550 元/晚，宜住 10 人（木鸟民宿）</a></li>
-        <li><a href="https://global.tujia.com/zh/city-pages/lijiang">途家丽江束河整套：隐域度假民宿 330 元/晚起等（城市页标价，非指定日期日历价）</a></li>
-        <li><a href="https://www.zhunaqu.com/abazhou/item/list-aid-7185">住哪去：九寨沟整栋包院一般 800–5000 元/晚</a></li>
-        <li><a href="https://www.icauto.com.cn/oil/price_510000_2.html">四川 92 号汽油 8.98 元/升（2026-11-10，车主手册）</a></li>
         <li><a href="https://www.lijiang.cn/article/176940.html">玉龙雪山氧气瓶限价约 9.9–19.9 元（丽江网）</a></li>
-        <li><a href="https://www.jiuzhai.com/intelligent-service/faq/6146-self-help">九寨沟官方 FAQ：冬季驾车要带防滑链，冰雪路慢行；景区内乘观光车</a></li>
+        <li><a href="https://www.muniao.com/room/1441831.html">木鸟：禅茶榻榻米家庭房，12/26–30 与 1/4–7 日历 222 元/晚，12/31–1/3 为 392 元（2026-11-10）</a></li>
+        <li><a href="https://www.muniao.com/room/1441832.html">木鸟：古色古香三人间，平日 236 元/晚，12/31–1/3 为 392 元（2026-11-10）</a></li>
+        <li><a href="https://www.muniao.com/room/880957.html">木鸟：阳光家庭房，平日与元旦均为 249 元/晚（2026-11-10）</a></li>
+        <li><a href="https://www.muniao.com/room/896183.html">木鸟：庭院亲子家庭房，平日 371 元/晚，12/31–1/3 为 757 元（2026-11-10）</a></li>
+        <li><a href="https://www.muniao.com/room/39652.html">木鸟：束河古镇双卧复式套房，12/26–31 为 248 元、1/4–7 为 284 元（2026-11-10）</a></li>
+        <li><a href="https://www.muniao.com/room/638127.html">木鸟：独栋庭院双卧别墅，1/4–7 为 631 元/晚，三晚 1893 元（2026-11-10）</a></li>
+        <li><a href="https://www.muniao.com/room/1083409.html">木鸟：涵香＋归心两卫套房，12/26–30 与 1/4–7 为 819 元/晚，12/31–1/3 为 1139 元（2026-11-10）</a></li>
+        <li><a href="https://www.muniao.com/room/1076788.html">木鸟：洱海边／花海旁白族民居大院（喜洲仁里邑），日历 988 元/晚，可住 6 人（2026-11-10）</a></li>
+        <li><a href="https://www.muniao.com/room/1429731.html">木鸟：束河附近整套三居，页面标价 300 元/晚，可住 6 人</a></li>
+        <li><a href="https://www.muniao.com/room/1083406.html">木鸟：轻奢三房两卫别墅套房（束河别墅区），页面标价 550 元/晚，可住 10 人</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Lijiang_Sanyi_International_Airport">丽江三义机场坐标与海拔 2243 米（英文维基百科）</a></li>
       </ol>
     </div>
   </section>
-  <footer>照片权利归拍摄者与发布机构。页面仅供行程参考，票价、开放与预约以官方最新通告为准。</footer>
+  <footer>照片权利归拍摄者，按标注的知识共享协议使用。页面仅供行程参考，票价、开放与预约以官方最新通告为准。</footer>
 
   <div id="lightbox" hidden>
     <button class="lb-x" type="button" aria-label="关闭">×</button>
     <button class="lb-nav prev" type="button" aria-label="上一张">‹</button>
+    <button class="lb-nav next" type="button" aria-label="下一张">›</button>
     <div>
       <img id="lbImg" alt="">
       <p class="lb-cap" id="lbCap"></p>
     </div>
-    <button class="lb-nav next" type="button" aria-label="下一张">›</button>
   </div>
-
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script>
     (function () {
-      var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       var shot = new URLSearchParams(location.search).get("s");
       if (shot) document.documentElement.classList.add("shot");
 
       var nav = document.getElementById("nav");
-      var heroPhoto = document.getElementById("heroPhoto");
       window.addEventListener("scroll", function () {
-        nav.classList.toggle("is-scrolled", window.scrollY > 40);
-        if (!reduce && !shot && heroPhoto) {
-          var y = Math.min(window.scrollY, 800);
-          heroPhoto.style.transform = "translate3d(0," + (y * 0.22) + "px,0) scale(1.08)";
-        }
+        if (nav) nav.classList.toggle("is-scrolled", window.scrollY > 40);
       }, { passive: true });
 
-      var reveals = document.querySelectorAll(".reveal");
-      if (reduce || shot) {
-        reveals.forEach(function (el) { el.classList.add("is-in"); });
-      } else if ("IntersectionObserver" in window) {
-        var io = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) {
-            if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
-          });
-        }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
-        reveals.forEach(function (el) { io.observe(el); });
-      } else {
-        reveals.forEach(function (el) { el.classList.add("is-in"); });
-      }
-
+      /* --- lightbox --- */
       var items = [].slice.call(document.querySelectorAll("img[data-full]"));
       var lb = document.getElementById("lightbox");
       var lbImg = document.getElementById("lbImg");
       var lbCap = document.getElementById("lbCap");
       var idx = 0;
       function openAt(i) {
+        if (!items.length || !lb) return;
         idx = (i + items.length) % items.length;
         var el = items[idx];
         lbImg.src = el.getAttribute("data-full");
@@ -1170,67 +743,229 @@
       items.forEach(function (el, i) {
         el.addEventListener("click", function () { openAt(i); });
       });
-      lb.querySelector(".lb-x").addEventListener("click", closeLb);
-      lb.querySelector(".prev").addEventListener("click", function () { openAt(idx - 1); });
-      lb.querySelector(".next").addEventListener("click", function () { openAt(idx + 1); });
-      lb.addEventListener("click", function (e) { if (e.target === lb) closeLb(); });
-      document.addEventListener("keydown", function (e) {
-        if (lb.hidden) return;
-        if (e.key === "Escape") closeLb();
-        if (e.key === "ArrowLeft") openAt(idx - 1);
-        if (e.key === "ArrowRight") openAt(idx + 1);
+      if (lb) {
+        lb.querySelector(".lb-x").addEventListener("click", closeLb);
+        lb.querySelector(".prev").addEventListener("click", function () { openAt(idx - 1); });
+        lb.querySelector(".next").addEventListener("click", function () { openAt(idx + 1); });
+        lb.addEventListener("click", function (e) { if (e.target === lb) closeLb(); });
+        document.addEventListener("keydown", function (e) {
+          if (lb.hidden) return;
+          if (e.key === "Escape") closeLb();
+          if (e.key === "ArrowLeft") openAt(idx - 1);
+          if (e.key === "ArrowRight") openAt(idx + 1);
+        });
+      }
+
+      /* --- coords: WGS-84, with GCJ helpers for Amap tiles --- */
+      function outOfChina(lat, lon) {
+        return lon < 72.004 || lon > 137.8347 || lat < 0.8293 || lat > 55.8271;
+      }
+      function trans(lat, lon) {
+        var dlat = -100 + 2 * lon + 3 * lat + 0.2 * lat * lat + 0.1 * lon * lat + 0.2 * Math.sqrt(Math.abs(lon));
+        dlat += (20 * Math.sin(6 * lon * Math.PI) + 20 * Math.sin(2 * lon * Math.PI)) * 2 / 3;
+        dlat += (20 * Math.sin(lat * Math.PI) + 40 * Math.sin(lat / 3 * Math.PI)) * 2 / 3;
+        dlat += (160 * Math.sin(lat / 12 * Math.PI) + 320 * Math.sin(lat * Math.PI / 30)) * 2 / 3;
+        var dlon = 300 + lon + 2 * lat + 0.1 * lon * lon + 0.1 * lon * lat + 0.1 * Math.sqrt(Math.abs(lon));
+        dlon += (20 * Math.sin(6 * lon * Math.PI) + 20 * Math.sin(2 * lon * Math.PI)) * 2 / 3;
+        dlon += (20 * Math.sin(lon * Math.PI) + 40 * Math.sin(lon / 3 * Math.PI)) * 2 / 3;
+        dlon += (150 * Math.sin(lon / 12 * Math.PI) + 300 * Math.sin(lon / 30 * Math.PI)) * 2 / 3;
+        return [dlat, dlon];
+      }
+      function wgsToGcj(lat, lon) {
+        if (outOfChina(lat, lon)) return [lat, lon];
+        var t = trans(lat - 35, lon - 105);
+        var rad = lat / 180 * Math.PI;
+        var magic = 1 - 0.00669342162296594323 * Math.sin(rad) * Math.sin(rad);
+        var sqrtm = Math.sqrt(magic);
+        var a = 6378245;
+        var dlat = (t[0] * 180) / ((a * (1 - 0.00669342162296594323)) / (magic * sqrtm) * Math.PI);
+        var dlon = (t[1] * 180) / (a / sqrtm * Math.cos(rad) * Math.PI);
+        return [lat + dlat, lon + dlon];
+      }
+
+      var PLACES = [
+        { id: "airport", name: "丽江三义机场", lat: 26.67917, lon: 100.24583, alt: 2243, altLabel: "2243 米", days: ["D1"], note: "成都飞到这里。" },
+        { id: "shuhe", name: "束河古镇", lat: 26.9234735, lon: 100.2035898, alt: 2400, altLabel: "约 2400 米", days: ["D1", "D2", "D3"], note: "建议住这里适应海拔。" },
+        { id: "baisha", name: "白沙古镇", lat: 26.9564769, lon: 100.2146539, alt: 2400, altLabel: "约 2400 米", days: ["D1", "D2"], note: "也可住这里，或第二天过来转转。" },
+        { id: "ganhaizi", name: "玉龙雪山游客中心／甘海子", lat: 27.100839, lon: 100.257962, alt: 3356, altLabel: "索道下站一带约 3356 米", days: ["D3"], note: "车停在游客中心，进景区坐摆渡车。" },
+        { id: "cable", name: "冰川公园大索道上站", lat: 27.105193, lon: 100.199577, alt: 4506, altLabel: "4506 米", days: ["D3"], note: "上面别久留，不舒服就下。" },
+        { id: "bluemoon", name: "蓝月谷", lat: 27.1293772, lon: 100.2419291, alt: 3200, altLabel: "低于大索道（未核到精确单点高程）", days: ["D3"], note: "下午走栈道。高反朋友如果来，在这里等。" },
+        { id: "ljstation", name: "丽江站", lat: 26.8138119, lon: 100.2509280, alt: 2400, altLabel: "约 2400 米", days: ["D4"], note: "坐高铁去大理。" },
+        { id: "dlistation", name: "大理站", lat: 25.5925944, lon: 100.2503917, alt: 1970, altLabel: "约 1970 米", days: ["D4", "D6"], note: "下车去喜洲或双廊；返程也可从这里走。" },
+        { id: "xizhou", name: "喜洲", lat: 25.85333, lon: 100.12935, alt: 1970, altLabel: "洱海边约 1970 米", days: ["D4", "D5", "D6"], note: "可住洱海边，慢慢看海。" },
+        { id: "shuanglang", name: "双廊", lat: 25.91274, lon: 100.1925, alt: 1970, altLabel: "洱海边约 1970 米", days: ["D4", "D5"], note: "也可住这里，或第五天过来转转。" },
+        { id: "gantong", name: "苍山感通索道", lat: 25.6476152, lon: 100.1684432, alt: 2200, altLabel: "相对较低（未核到精确单点高程）", days: ["D6"], note: "可选，比较轻松。" },
+        { id: "ximatan", name: "洗马潭", lat: 25.663800, lon: 100.102231, alt: 3900, altLabel: "约 3900 米", days: ["D6"], note: "可选。上面别久留。高反朋友不上苍山。" }
+      ];
+      /* 蓝月谷、感通、束河精确海拔未逐一核到单点高程：束河/洱海用行程常用口径；洗马潭、机场、大索道上站有出处。甘海子 3356 米为索道下站常见公示，作分色参考。蓝月谷只用「低于大索道」显示，分色按 3000 估在黄档，若不准不影响走线。 */
+
+      var ROUTES = {
+        D1: ["airport", "shuhe"],
+        D2: ["shuhe", "baisha"],
+        D3: ["shuhe", "ganhaizi", "cable", "bluemoon"],
+        D4: ["ljstation", "dlistation", "xizhou"],
+        D5: ["xizhou", "shuanglang"],
+        D6: ["xizhou", "gantong", "ximatan", "dlistation"]
+      };
+
+      function altColor(alt) {
+        if (alt > 3500) return "#d9897a";
+        if (alt >= 2500) return "#e0c56a";
+        return "#8fbe8a";
+      }
+
+      var map, markers = {}, routeLine, useGcj = false, tileMode = "osm";
+      var mapEl = document.getElementById("trip-map");
+      var frame = document.getElementById("map-frame");
+      var fallbackList = document.getElementById("map-fallback-list");
+
+      function showFallback() {
+        if (!frame) return;
+        frame.classList.add("is-fallback");
+        if (fallbackList && !fallbackList.childNodes.length) {
+          PLACES.forEach(function (p) {
+            var li = document.createElement("li");
+            li.innerHTML = "<strong>" + p.name + "</strong> · " + p.altLabel + " · " + p.days.join("、") + " · " + p.note;
+            fallbackList.appendChild(li);
+          });
+        }
+      }
+
+      function latlng(p) {
+        if (useGcj) {
+          var g = wgsToGcj(p.lat, p.lon);
+          return [g[0], g[1]];
+        }
+        return [p.lat, p.lon];
+      }
+
+      function osmLayer() {
+        return L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          maxZoom: 18,
+          attribution: "&copy; OpenStreetMap"
+        });
+      }
+      function amapLayer() {
+        return L.tileLayer("https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}", {
+          maxZoom: 18,
+          subdomains: "1234",
+          attribution: "高德地图"
+        });
+      }
+
+      function popupHtml(p) {
+        return "<strong>" + p.name + "</strong><br>海拔：" + p.altLabel + "<br>安排在：" + p.days.join("、") + "<br>" + p.note;
+      }
+
+      function addMarkers(day) {
+        Object.keys(markers).forEach(function (k) {
+          map.removeLayer(markers[k]);
+        });
+        markers = {};
+        PLACES.forEach(function (p) {
+          if (day !== "all" && p.days.indexOf(day) === -1) return;
+          var m = L.circleMarker(latlng(p), {
+            radius: 9,
+            color: "#0b1012",
+            weight: 2,
+            fillColor: altColor(p.alt),
+            fillOpacity: 0.95
+          }).addTo(map);
+          m.bindPopup(popupHtml(p));
+          markers[p.id] = m;
+        });
+        if (routeLine) { map.removeLayer(routeLine); routeLine = null; }
+        if (day !== "all" && ROUTES[day]) {
+          var pts = ROUTES[day].map(function (id) {
+            var p = PLACES.filter(function (x) { return x.id === id; })[0];
+            return latlng(p);
+          });
+          routeLine = L.polyline(pts, { color: "#edcf96", weight: 3, opacity: 0.85 }).addTo(map);
+        }
+        var group = L.featureGroup(Object.keys(markers).map(function (k) { return markers[k]; }).concat(routeLine ? [routeLine] : []));
+        if (Object.keys(markers).length) map.fitBounds(group.getBounds().pad(0.25));
+      }
+
+      function initMap() {
+        if (!mapEl || typeof L === "undefined") { showFallback(); return; }
+        map = L.map("trip-map", { scrollWheelZoom: false, zoomControl: true });
+        var layer = osmLayer();
+        var errors = 0;
+        var switched = false;
+        layer.on("tileerror", function () {
+          errors += 1;
+          if (!switched && errors >= 3) {
+            switched = true;
+            map.removeLayer(layer);
+            useGcj = true;
+            tileMode = "amap";
+            var am = amapLayer();
+            var aerr = 0;
+            am.on("tileerror", function () {
+              aerr += 1;
+              if (aerr >= 3) showFallback();
+            });
+            am.addTo(map);
+            addMarkers(currentDay);
+          }
+        });
+        layer.addTo(map);
+        map.setView([26.4, 100.2], 8);
+        addMarkers("all");
+        setTimeout(function () { if (map) map.invalidateSize(); }, 400);
+      }
+
+      var currentDay = "all";
+      function setDay(day) {
+        currentDay = day;
+        document.querySelectorAll(".map-toolbar button").forEach(function (b) {
+          b.classList.toggle("is-on", b.getAttribute("data-day") === day);
+        });
+        if (map && !frame.classList.contains("is-fallback")) addMarkers(day);
+      }
+      document.querySelectorAll(".map-toolbar button").forEach(function (b) {
+        b.addEventListener("click", function () { setDay(b.getAttribute("data-day")); });
       });
 
+      document.querySelectorAll(".day-card").forEach(function (card) {
+        card.addEventListener("click", function () {
+          var open = card.classList.contains("is-open");
+          document.querySelectorAll(".day-card").forEach(function (c) { c.classList.remove("is-open"); });
+          if (!open) card.classList.add("is-open");
+          var day = card.getAttribute("data-day");
+          setDay(day);
+          var mapSec = document.getElementById("map");
+          if (mapSec && !shot) mapSec.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+          if (map) setTimeout(function () { map.invalidateSize(); }, 250);
+        });
+      });
+
+      if (document.readyState === "complete") initMap();
+      else window.addEventListener("load", initMap);
+
+      /* --- shot modes --- */
       if (shot) {
-        var target = document.getElementById(shot);
-        if (shot === "final-top") {
+        if (shot === "final-top" || shot === "single-plan") {
           document.documentElement.classList.add("shot-top");
+          if (shot === "single-plan") document.documentElement.classList.add("shot-section");
           window.scrollTo(0, 0);
+        } else if (shot === "map") {
+          document.documentElement.classList.add("shot-map");
+          Array.prototype.forEach.call(document.body.children, function (el) {
+            if (el.id !== "map" && el.id !== "lightbox") el.style.display = "none";
+          });
+          window.scrollTo(0, 0);
+          setTimeout(function () { if (map) map.invalidateSize(); }, 600);
         } else if (shot === "perhead") {
           document.documentElement.classList.add("shot-perhead");
-          var keepLj = document.getElementById("lijiang");
-          Array.prototype.forEach.call(document.body.children, function (el) {
-            if (el !== keepLj && el.id !== "lightbox") el.style.display = "none";
-          });
           window.scrollTo(0, 0);
-        } else if (shot === "final-lijiang" || shot === "final-backup") {
+        } else if (shot === "final-lijiang") {
           document.documentElement.classList.add("shot-section");
-          var keep = document.getElementById(shot === "final-lijiang" ? "lijiang" : "chuanxi");
-          Array.prototype.forEach.call(document.body.children, function (el) {
-            if (el !== keep && el.id !== "lightbox") el.style.display = "none";
-          });
-          if (shot === "final-backup") {
-            var det = document.getElementById("chuanxi-details");
-            if (det) det.open = true;
-          }
-          window.scrollTo(0, 0);
-        } else if (shot === "refs") {
-          document.documentElement.classList.add("shot-refs");
-          window.scrollTo(0, 0);
-        } else if (String(shot).indexOf("budget") === 0) {
-          document.documentElement.classList.add("shot-budget");
-          if (target) {
-            var section = target.closest("section") || target;
-            Array.prototype.forEach.call(document.body.children, function (el) {
-              if (el !== section) el.style.display = "none";
-            });
-          }
-          window.scrollTo(0, 0);
-        } else if (target) {
-          var node = target;
-          while (node && node !== document.body) {
-            var sib = node.previousElementSibling;
-            while (sib) {
-              sib.style.display = "none";
-              sib = sib.previousElementSibling;
-            }
-            node = node.parentElement;
-          }
-          document.body.style.paddingTop = "3.5rem";
           window.scrollTo(0, 0);
         }
       }
 
+      /* --- snow --- */
       var canvas = document.getElementById("snow");
       if (canvas && !reduce && !shot) {
         var ctx = canvas.getContext("2d");
@@ -1242,14 +977,7 @@
         function spawn(n) {
           flakes = [];
           for (var i = 0; i < n; i++) {
-            flakes.push({
-              x: Math.random() * w,
-              y: Math.random() * h,
-              r: Math.random() * 1.6 * devicePixelRatio + 0.6,
-              s: Math.random() * 0.6 + 0.25,
-              a: Math.random() * 0.45 + 0.15,
-              d: Math.random() * Math.PI * 2
-            });
+            flakes.push({ x: Math.random() * w, y: Math.random() * h, r: Math.random() * 1.6 * devicePixelRatio + 0.6, s: Math.random() * 0.6 + 0.25, a: Math.random() * 0.45 + 0.15, d: Math.random() * Math.PI * 2 });
           }
         }
         var last = 0;
@@ -1273,7 +1001,7 @@
         spawn(window.innerWidth < 700 ? 36 : 64);
         window.addEventListener("resize", function () { resize(); spawn(window.innerWidth < 700 ? 36 : 64); });
         var hero = document.querySelector(".hero");
-        if ("IntersectionObserver" in window) {
+        if ("IntersectionObserver" in window && hero) {
           new IntersectionObserver(function (entries) {
             running = entries[0].isIntersecting;
             if (running) requestAnimationFrame(frame);
