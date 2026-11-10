@@ -269,6 +269,66 @@
     .day-more li { margin: .22rem 0; }
     .hint { font-size: .75rem; color: var(--mute); margin: -.4rem 0 1.1rem; }
 
+    /* 跟团 vs 自己走 */
+    .tour-cmp { margin: 0 0 1.4rem; }
+    .tour-pair { display: grid; grid-template-columns: 1fr; gap: .7rem; }
+    @media (min-width: 620px) {
+      .tour-pair { grid-template-columns: 1fr 1fr; }
+    }
+    .tour-card {
+      background: var(--paper); border: 1px solid var(--line); border-radius: 22px;
+      padding: .95rem 1rem .9rem; box-shadow: var(--shadow-sm);
+      display: flex; flex-direction: column; min-width: 0; height: 100%;
+    }
+    .tour-card.tour-group { background: linear-gradient(180deg, #E4F3F8 0%, var(--paper) 42%); }
+    .tour-card.tour-self { background: linear-gradient(180deg, #F8EBCB 0%, var(--paper) 42%); }
+    .tour-ico {
+      width: 2.55rem; height: 2.55rem; border-radius: 14px; background: #fff;
+      border: 1px solid var(--line); display: grid; place-items: center;
+      margin: 0 0 .45rem; box-shadow: var(--shadow-sm);
+    }
+    .tour-ico svg { width: 1.6rem; height: 1.6rem; display: block; }
+    .tour-card h4 {
+      font-family: var(--display); font-weight: 400; font-size: 1.2rem;
+      margin: 0 0 .2rem; color: var(--ink);
+    }
+    .tour-price {
+      margin: 0 0 .12rem; color: var(--ink-2); font-size: .82rem;
+      display: flex; align-items: baseline; gap: .22rem; flex-wrap: wrap;
+    }
+    .tour-price b {
+      font-family: var(--display); font-weight: 400; font-size: 2.05rem;
+      line-height: 1; color: var(--ink);
+    }
+    .tour-price .yen { font-family: var(--display); font-size: 1.05rem; color: var(--ink); }
+    .tour-sub { margin: 0 0 .55rem; font-size: .75rem; color: var(--mute); }
+    .tour-card ul { margin: 0; padding: 0; list-style: none; font-size: .84rem; color: var(--ink-2); }
+    .tour-card li {
+      position: relative; padding: .22rem 0 .22rem 1rem;
+      border-top: 1px solid var(--line);
+    }
+    .tour-card li::before {
+      content: ""; position: absolute; left: 0; top: .72em;
+      width: .38rem; height: .38rem; border-radius: 50%; background: var(--peach);
+    }
+    .tour-group li::before { background: var(--blue); }
+    .tour-self li::before { background: var(--gold); }
+    .tour-risk { margin-top: auto; padding-top: .55rem; font-size: .75rem; color: var(--mute); line-height: 1.5; }
+    .tour-foot { margin: .55rem 0 0; font-size: .75rem; color: var(--mute); }
+    .tour-verdict {
+      margin: .7rem 0 0; background: var(--peach-s); border: 1px solid var(--line);
+      border-radius: 16px; padding: .65rem .85rem; font-size: .88rem;
+      color: var(--ink-2); line-height: 1.55;
+    }
+    .tour-verdict strong {
+      font-family: var(--display); font-weight: 400; color: #c17a68; margin-right: .35rem;
+    }
+    .tour-table-note {
+      margin: 0 0 .7rem; font-size: .78rem; color: var(--ink-2); line-height: 1.55;
+      background: var(--gold-s); border-radius: 14px; padding: .65rem .8rem;
+    }
+
+
     .src { margin: .65rem 0 0; border: 1px dashed var(--line); border-radius: 14px; background: transparent; }
     .src > summary { cursor: pointer; list-style: none; padding: .5rem .8rem; color: #c17a68; font-size: .82rem; }
     .src > summary::-webkit-details-marker { display: none; }
@@ -350,9 +410,16 @@
     html.shot-map .nav, html.shot-map footer, html.shot-map #lightbox, html.shot-map .hero, html.shot-map .overview, html.shot-map .plan, html.shot-map .sources { display: none !important; }
     html.shot-map body { background: var(--bg); padding: 1rem !important; }
     html.shot-map .map-sec { padding: 0; }
-    html.shot-table .nav, html.shot-table footer, html.shot-table #lightbox, html.shot-table .hero, html.shot-table .overview, html.shot-table .map-sec, html.shot-table .sources, html.shot-table .day-grid, html.shot-table .date-box, html.shot-table .alt-box, html.shot-table .todo, html.shot-table .gallery, html.shot-table .refs, html.shot-table .budget-grid, html.shot-table .lodge-grid, html.shot-table #stay, html.shot-table .hint, html.shot-table .budget > .chips, html.shot-table .budget > .plain, html.shot-table .budget > h3, html.shot-table .perhead-block .src { display: none !important; }
+    html.shot-table .nav, html.shot-table footer, html.shot-table #lightbox, html.shot-table .hero, html.shot-table .overview, html.shot-table .map-sec, html.shot-table .sources, html.shot-table .day-grid, html.shot-table .date-box, html.shot-table .alt-box, html.shot-table .todo, html.shot-table .gallery, html.shot-table .refs, html.shot-table .budget-grid, html.shot-table .lodge-grid, html.shot-table #stay, html.shot-table .hint, html.shot-table .tour-cmp, html.shot-table .budget > .chips, html.shot-table .budget > .plain, html.shot-table .budget > h3, html.shot-table .perhead-block .src { display: none !important; }
     html.shot-table body { background: var(--bg); padding: 1rem !important; }
     html.shot-table h3:not(.perhead-block h3) { display: none; }
+
+    html.shot-tour .nav, html.shot-tour footer, html.shot-tour #lightbox, html.shot-tour .hero, html.shot-tour .overview, html.shot-tour .map-sec, html.shot-tour .sources { display: none !important; }
+    html.shot-tour .plan > .wrap > *:not(.tour-cmp) { display: none !important; }
+    html.shot-tour body { background: var(--bg) !important; background-image: none !important; padding: 1.7rem 1.2rem 1.6rem !important; }
+    html.shot-tour .plan { padding: 0; }
+    html.shot-tour .tour-cmp { margin: 0; }
+
 
     @media (max-width: 800px) {
       .nav { padding: .45rem .7rem; }
@@ -766,7 +833,7 @@
                 <li>若自己开车，车停在游客中心。进景区改坐环保车（摆渡车），私家车不能进园。</li>
                 <li>大索道上站 <strong>4506 米</strong>，上面别久留，不舒服就下。</li>
                 <li>对海拔敏感的朋友可能不来；如果来，在蓝月谷等，不上大索道。</li>
-                <li>也可报纯玩小团，说明见费用里的「来源与说明」。</li>
+                <li>也可报纯玩小团，见下面「<a href="#tour-vs">跟团，还是自己走</a>」。</li>
               </ul>
             </div>
           </div>
@@ -825,6 +892,58 @@
         </article>
       </div>
       <p class="hint">点卡片看细节，地图会跟着高亮这一天。</p>
+
+      <section class="tour-cmp" id="tour-vs">
+        <p class="eyebrow">D3 玉龙雪山</p>
+        <h3>跟团，还是自己走</h3>
+        <div class="tour-pair">
+          <article class="tour-card tour-group">
+            <div class="tour-ico" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none">
+                <rect x="3.5" y="8" width="25" height="14.5" rx="6" fill="#7EB8D4"/>
+                <rect x="6.5" y="10.5" width="8" height="5.5" rx="1.6" fill="#E4F3F8"/>
+                <rect x="16.5" y="10.5" width="8" height="5.5" rx="1.6" fill="#E4F3F8"/>
+                <circle cx="10" cy="23.5" r="2.6" fill="#3F3A35"/>
+                <circle cx="10" cy="23.5" r="1.15" fill="#FFFCFA"/>
+                <circle cx="22" cy="23.5" r="2.6" fill="#3F3A35"/>
+                <circle cx="22" cy="23.5" r="1.15" fill="#FFFCFA"/>
+                <rect x="26.2" y="14.2" width="2.4" height="3.2" rx="1" fill="#E39B8A"/>
+              </svg>
+            </div>
+            <h4>跟团</h4>
+            <p class="tour-price"><b>246</b><span class="yen">元起</span><span>/ 人</span></p>
+            <p class="tour-sub"><a href="https://piao.qunar.com/daytrip/detail_3224093.html">去哪儿纯玩 2–8 人小团</a></p>
+            <ul>
+              <li>束河接送、门票、大索道都含着</li>
+              <li>氧气、防寒服、午餐也含着</li>
+              <li>当天大约 5–6 小时，节奏跟着团走</li>
+            </ul>
+            <p class="tour-risk">大风季（11–1 月，约 15%）大索道可能停，或改坐别的索道。</p>
+          </article>
+          <article class="tour-card tour-self">
+            <div class="tour-ico" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none">
+                <path d="M11.2 7.2c0-2.2 1.7-3.9 3.8-3.9h2c2.1 0 3.8 1.7 3.8 3.9v1.1H11.2V7.2Z" fill="#E0B56A"/>
+                <rect x="8.2" y="8.6" width="15.6" height="16.6" rx="5" fill="#E8C56A"/>
+                <rect x="12.2" y="13.2" width="7.6" height="7.2" rx="2.2" fill="#F8EBCB"/>
+                <path d="M12.4 8.6v-1.2h7.2V8.6" stroke="#C9A24E" stroke-width="1.4" stroke-linecap="round"/>
+                <circle cx="16" cy="16.6" r="1.15" fill="#8A6A2A"/>
+              </svg>
+            </div>
+            <h4>自己走</h4>
+            <p class="tour-price"><b>240</b><span class="yen">元</span><span>/ 人</span></p>
+            <p class="tour-sub">门票 100 ＋ 大索道 120 ＋ 环保车 20</p>
+            <ul>
+              <li>车费已写在费用表（包车或打车）</li>
+              <li>午餐、氧气、租防寒服另计</li>
+              <li>当天大约 5–6 小时，想停就停</li>
+            </ul>
+            <p class="tour-risk">有人对海拔敏感、或想慢慢走时，更合适。</p>
+          </article>
+        </div>
+        <p class="tour-foot">蓝月谷电瓶车 50 元，两边都不含。</p>
+        <p class="tour-verdict"><strong>怎么选</strong>跟团更省、更省心；想自由走，或有人对海拔敏感，选自己走。</p>
+      </section>
 
       <div class="alt-box">
         <h3>对海拔敏感的朋友</h3>
@@ -927,6 +1046,7 @@
               </tbody>
             </table>
           </div>
+          <p class="tour-table-note">若玉龙这天改跟团（246 元/人，含门票、大索道、束河接送）：相对「含包车一天对照」，人均大约少 137–191 元（3 人约 191、4 人约 137、5 人约 144）。环保车 20、苍山索道、蓝月谷电瓶车 50 仍另计。跟团还含午餐、氧气和防寒服，上表吃饭和氧气尚未扣减。</p>
           <details class="src" open>
             <summary>来源与说明</summary>
             <div class="src-body">
@@ -1329,6 +1449,8 @@
           setDay("D3", "bluemoon");
         } else if (shot === "table" || shot === "perhead") {
           document.documentElement.classList.add("shot-table");
+        } else if (shot === "tour") {
+          document.documentElement.classList.add("shot-tour");
           window.scrollTo(0, 0);
         }
       }
