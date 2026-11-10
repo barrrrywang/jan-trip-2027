@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>一月，两种慢法：丽江上雪山 · 九寨沟看冰瀑</title>
-  <meta name="description" content="从成都出发，不用自己开车。丽江慢版四天，上玉龙雪山冰川公园大索道；九寨沟慢版三天，看诺日朗冰瀑和蓝冰。九寨沟海拔低，不太担心高反；丽江雪山更震撼。">
+  <meta name="description" content="从成都出发，长途坐飞机或高铁，到了再租一辆 7 座车跑附近。丽江慢版四天，上玉龙雪山冰川公园大索道；九寨沟慢版四天，看诺日朗冰瀑和蓝冰。九寨沟海拔低，不太担心高反；丽江雪山更震撼。">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://barrrrywang.github.io/jan-trip-2027/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:title" content="一月，两种慢法：丽江上雪山 · 九寨沟看冰瀑">
-  <meta property="og:description" content="从成都出发，不用自己开车。丽江四天上雪山，九寨沟三天看冰瀑。九寨沟海拔低，不太担心高反；丽江雪山更震撼。">
+  <meta property="og:description" content="从成都出发，长途坐飞机或高铁，到了再租 7 座车跑附近。丽江四天上雪山，九寨沟四天看冰瀑。九寨沟海拔低，不太担心高反；丽江雪山更震撼。">
   <meta property="og:url" content="https://barrrrywang.github.io/jan-trip-2027/">
   <meta property="og:image" content="https://barrrrywang.github.io/jan-trip-2027/og.jpg">
   <meta property="og:image:width" content="1200">
@@ -18,7 +18,7 @@
   <meta property="og:image:alt" content="九寨沟诺日朗冰瀑航拍，2024-01-04，新华社记者 王曦">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="一月，两种慢法：丽江上雪山 · 九寨沟看冰瀑">
-  <meta name="twitter:description" content="从成都出发，不用自己开车。丽江四天上雪山，九寨沟三天看冰瀑。">
+  <meta name="twitter:description" content="从成都出发，长途坐飞机或高铁，到了再租 7 座车跑附近。丽江四天上雪山，九寨沟四天看冰瀑。">
   <meta name="twitter:image" content="https://barrrrywang.github.io/jan-trip-2027/og.jpg">
   <style>
     :root {
@@ -250,6 +250,85 @@
     }
     .todo h3, .budget h3, .alt-box h3 { margin: 0 0 .45rem; font-size: 1rem; }
     .todo ul, .budget p, .alt-box p { margin: 0; padding: 0; color: var(--cream-dim); }
+    .budget-lead { margin: 0 0 .9rem !important; }
+    .budget-note { margin: .85rem 0 0 !important; font-size: .86rem; color: var(--cream-mute) !important; }
+    .budget-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(15.5rem, .85fr);
+      gap: 1.15rem 1.35rem;
+      align-items: start;
+    }
+    .b-row {
+      display: grid;
+      grid-template-columns: 6.6em 1fr auto;
+      gap: .2rem .7rem;
+      padding: .48rem 0;
+      border-bottom: 1px solid var(--line);
+      font-size: .88rem;
+      align-items: start;
+    }
+    .b-row .k { color: var(--cream); }
+    .b-row .d { color: var(--cream-mute); font-size: .75rem; line-height: 1.55; }
+    .b-row .v {
+      color: var(--gold-bright);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+      text-align: right;
+    }
+    .b-row.total {
+      border-bottom: 0;
+      padding-top: .75rem;
+      font-size: .98rem;
+    }
+    .b-row.total .k, .b-row.total .d { color: var(--cream); }
+    .b-row.total .d { font-size: .8rem; color: var(--cream-dim); }
+    .budget-pie-wrap { display: flex; flex-direction: column; align-items: center; gap: .75rem; }
+    .pie {
+      width: 10.6rem; height: 10.6rem;
+      border-radius: 50%;
+      box-shadow: 0 0 0 6px rgba(244,239,230,.05);
+      flex-shrink: 0;
+    }
+    .pie-legend {
+      list-style: none; margin: 0; padding: 0;
+      width: 100%; font-size: .75rem; color: var(--cream-dim);
+    }
+    .pie-legend li {
+      display: flex; align-items: baseline; gap: .45rem;
+      padding: .14rem 0;
+    }
+    .pie-legend i {
+      width: .52rem; height: .52rem; border-radius: 50%;
+      flex-shrink: 0; position: relative; top: .1em;
+    }
+    .pie-legend .lab { flex: 1; }
+    .pie-legend .amt { color: var(--cream-mute); font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .pie-cap { margin: 0 !important; font-size: .72rem; color: var(--cream-mute) !important; text-align: center; }
+    .pie-lj {
+      background: conic-gradient(
+        #d4b07a 0 30.18%,
+        #edcf96 30.18% 53.15%,
+        #c4895a 53.15% 56.78%,
+        #9fd0de 56.78% 61.15%,
+        #6aa8b8 61.15% 67.63%,
+        #e8d5b5 67.63% 78.78%,
+        #b7c4a1 78.78% 98.91%,
+        #8b9aa0 98.91% 100%
+      );
+    }
+    .pie-jz {
+      background: conic-gradient(
+        #d4b07a 0 11.50%,
+        #edcf96 11.50% 28.80%,
+        #c4895a 28.80% 31.55%,
+        #9fd0de 31.55% 36.70%,
+        #6aa8b8 36.70% 43.57%,
+        #e8d5b5 43.57% 79.62%,
+        #b7c4a1 79.62% 99.36%,
+        #8b9aa0 99.36% 100%
+      );
+    }
+
     .todo li { list-style: none; padding: .2rem 0 .2rem 1.1rem; position: relative; }
     .todo li::before {
       content: "";
@@ -265,7 +344,13 @@
     }
     .alt-box h3 { color: var(--ice); }
 
-    .links { display: grid; gap: .7rem; margin: 1.1rem 0 0; }
+    .links { display: grid; gap: .7rem; margin: .2rem 0 0; }
+    @media (min-width: 800px) {
+      .links { grid-template-columns: 1fr 1fr; }
+    }
+    .refs { margin-top: 1.8rem; }
+    .refs h3 { margin-top: 0; }
+    .refs-note { margin: .75rem 0 0; font-size: .86rem; color: var(--cream-mute); }
     .card {
       display: block;
       padding: .9rem 1.1rem;
@@ -277,7 +362,10 @@
       transition: border-color .25s, background .25s;
     }
     .card:hover { border-color: var(--gold); background: rgba(212,176,122,.08); color: var(--gold-bright); }
+    .card .card-title { display: block; }
     .card small { display: block; color: var(--cream-mute); font-size: .75rem; letter-spacing: .04em; margin-top: .15rem; }
+    .card .card-note { display: block; color: var(--cream-dim); font-size: .86rem; line-height: 1.55; margin-top: .35rem; }
+    .card:hover small, .card:hover .card-note { color: inherit; opacity: .85; }
 
     .gallery {
       display: grid;
@@ -316,6 +404,22 @@
     .reveal.is-in { animation: rise .9s var(--ease) forwards; }
     @keyframes rise { to { opacity: 1; transform: none; } }
     html.shot .reveal { opacity: 1 !important; transform: none !important; animation: none !important; }
+    html.shot-budget .nav, html.shot-budget footer, html.shot-budget #lightbox, html.shot-budget #snow { display: none !important; }
+    html.shot-budget .bleed, html.shot-budget .days, html.shot-budget .alt-box, html.shot-budget .todo,
+    html.shot-budget .budget ~ *, html.shot-budget .gallery, html.shot-budget .links { display: none !important; }
+    html.shot-budget body { background: var(--ink); padding: 1.25rem 1.1rem 1.4rem !important; }
+    html.shot-budget .plan { padding: 0; }
+    html.shot-budget .wrap { width: min(52rem, 100%); padding: 0; }
+    html.shot-budget .budget { margin: 0; }
+    html.shot-refs .nav, html.shot-refs footer, html.shot-refs #lightbox, html.shot-refs #snow,
+    html.shot-refs .hero, html.shot-refs .choose, html.shot-refs .sources,
+    html.shot-refs .bleed, html.shot-refs .days, html.shot-refs .alt-box, html.shot-refs .todo,
+    html.shot-refs .budget, html.shot-refs .gallery { display: none !important; }
+    html.shot-refs body { background: var(--ink); padding: 1.25rem 1.1rem 1.6rem !important; }
+    html.shot-refs .plan { padding: 0 0 1.4rem; }
+    html.shot-refs .wrap { width: min(52rem, 100%); padding: 0; }
+    html.shot-refs .refs { margin-top: 0; }
+    html.shot-refs #jiuzhaigou .plan { padding-top: 1.6rem; }
 
     #lightbox {
       position: fixed; inset: 0; z-index: 80;
@@ -354,6 +458,8 @@
       .bleed-title { writing-mode: horizontal-tb; }
       .bleed h2 { letter-spacing: .08em; }
       .day { grid-template-columns: 2.6rem 1fr; }
+      .budget-grid { grid-template-columns: 1fr; }
+      .b-row { grid-template-columns: 5.6em 1fr auto; }
       .gallery { grid-template-columns: 1fr; }
       figure img { height: 14rem; }
     }
@@ -376,7 +482,7 @@
     <div class="hero-copy">
       <p class="kicker">WINTER JOURNEY</p>
       <h1>一月，两种慢法</h1>
-      <p class="hero-lead">从成都出发，不用自己开车。一条去丽江，上玉龙雪山；一条去九寨沟，看冰瀑和蓝冰。</p>
+      <p class="hero-lead">从成都出发，长途坐飞机或高铁，到了再租一辆 7 座车跑附近。一条去丽江，上玉龙雪山；一条去九寨沟，看冰瀑和蓝冰。</p>
     </div>
     <p class="hero-credit">诺日朗冰瀑航拍，2024-01-04<br>新华社记者 王曦　<a href="https://www.news.cn/photo/20240104/c85990d23eb84ec1a3f92f6f49775888/c.html">新华网</a></p>
     <p class="scroll-hint">阅读</p>
@@ -386,10 +492,10 @@
     <div class="wrap choose reveal">
       <p class="eyebrow">怎么选</p>
       <h2>先看高反，再看雪山</h2>
-      <p><strong>九寨沟海拔低，不太担心高反；丽江雪山更震撼。</strong>两条都按慢节奏排，都不自驾。同行里如果有人对海拔敏感，每个行程里都写了怎么避开高处。</p>
+      <p><strong>九寨沟海拔低，不太担心高反；丽江雪山更震撼。</strong>两条都按慢节奏排。长途不自己开，到了当地再租一辆 7 座车跑短途。同行里如果有人对海拔敏感，每个行程里都写了怎么避开高处。</p>
       <div class="choose-links">
         <a class="pill" href="#lijiang">丽江慢版 · 4 天</a>
-        <a class="pill" href="#jiuzhaigou">九寨沟慢版 · 3 天</a>
+        <a class="pill" href="#jiuzhaigou">九寨沟慢版 · 4 天</a>
       </div>
     </div>
   </section>
@@ -411,19 +517,19 @@
         <div class="days reveal">
           <div class="day">
             <div class="day-n">D1</div>
-            <p>成都飞机或高铁到丽江，住白沙或束河，适应海拔（古城约 2400 米）。</p>
+            <p>成都飞机或高铁到丽江，在机场租一辆 7 座车，开到白沙或束河，五人合住一套整房，适应海拔（古城约 2400 米）。</p>
           </div>
           <div class="day">
             <div class="day-n">D2</div>
-            <p>睡到自然醒。束河或白沙骑电动车，也可去玉湖村，远看玉龙雪山。在古城提前买氧气瓶。</p>
+            <p>睡到自然醒。开车在束河、白沙转转，也可去玉湖村，远看玉龙雪山。在古城提前买氧气瓶。</p>
           </div>
           <div class="day">
             <div class="day-n">D3</div>
-            <p>一早上玉龙雪山冰川公园大索道（上站 4506 米），上面别久留，不舒服就下。下午蓝月谷。高反过的朋友可在蓝月谷或山下等。</p>
+            <p>开车到雪山脚下，进景区改坐环保车。一早上冰川公园大索道（上站 4506 米），上面别久留，不舒服就下。下午蓝月谷。高反过的朋友可在蓝月谷或山下等。</p>
           </div>
           <div class="day">
             <div class="day-n">D4</div>
-            <p>天晴的话，早上看日照金山，返回成都。</p>
+            <p>天晴的话，早上看日照金山，把车还到机场后返回成都。一月山路可能有冰雪，租车时问清是否有冬季胎或防滑链，慢开。</p>
           </div>
         </div>
 
@@ -436,21 +542,55 @@
           <h3>出发前待办</h3>
           <ul>
             <li>大索道在官方渠道实名提前预约</li>
+            <li>机场提前订一辆 7 座车，问清是否有冬季胎或防滑链</li>
             <li>保暖：冲锋衣或厚羽绒、墨镜、帽子、防滑鞋、保温杯</li>
             <li>避开春节高峰</li>
             <li>有心肺问题，先问医生</li>
           </ul>
         </div>
 
-        <div class="budget reveal">
-          <h3>费用（已有数字）</h3>
-          <p>此前按 5 人 3 天估算过，含住宿约 7650–12300 元。这次是 4 天慢版，会多一天住宿和餐饮，出发前按机票和住房再核。没有把 4 天总价再估一遍，以免数字不实。</p>
+        <div class="budget reveal" id="budget-lijiang">
+          <h3>费用（5 人，4 天 3 晚）</h3>
+          <p class="budget-lead">住白沙或束河一套整房（三居左右）。长途坐飞机，到丽江机场租一辆 7 座车。下列为 2026 年淡季和 1 月可核价格的区间，饼图按各分项区间中位估算。出发前按实际再核。</p>
+          <div class="budget-grid">
+            <div>
+              <div class="b-row"><span class="k">长途交通</span><span class="d">成都—丽江往返机票，含税约 580–800 元/人（按 2026 年 1 月特价加机建燃油估算；买不到特价会更高）。也可坐高铁，二等座约 376 元/人单程，约 9 小时。</span><span class="v">2900–4000 元</span></div>
+              <div class="b-row"><span class="k">租车</span><span class="d">机场租 7 座车 4 天。低位按机场 7 座厢型约 63 美元/天（按 2026-11-10 中间价 6.7167 约 425 元/天）；高位参考当地店别克 GL8 888 元/日均。神州、一嗨在机场有网点，出发前再核实时日租。</span><span class="v">1700–3550 元</span></div>
+              <div class="b-row"><span class="k">油费过路停车</span><span class="d">油费按约 200–400 公里、7 座约 10–12 升/百公里、丽江 92 号 9.04 元/升估算约 180–450 元；过路和停车约 50–150 元，为预留。</span><span class="v">230–600 元</span></div>
+              <div class="b-row"><span class="k">门票</span><span class="d">玉龙雪山门票 100 元/人（2026 年官方公示）。蓝月谷含在门票内。</span><span class="v">500 元</span></div>
+              <div class="b-row"><span class="k">索道与环保车</span><span class="d">环保车 20 元/人（必买）；冰川公园大索道 120 元/人（高反朋友可不坐，按 4–5 人计）；蓝月谷电瓶车可选，全程 40 元/人。</span><span class="v">580–900 元</span></div>
+              <div class="b-row"><span class="k">住宿</span><span class="d">白沙或束河整套三居，3 晚。廉价端按木鸟、途家整套标价约 300–550 元/晚（宜住 5–6 人），日历价出发前再核；元旦前后可能更高。</span><span class="v">900–1650 元</span></div>
+              <div class="b-row"><span class="k">餐饮</span><span class="d">按每人每天 80–150 元估算，4 天。这是估算，不是菜单报价。</span><span class="v">1600–3000 元</span></div>
+              <div class="b-row"><span class="k">氧气及其他</span><span class="d">氧气瓶约 9.9–19.9 元/瓶，5 人各备 1–2 瓶约 50–200 元。这是估算。</span><span class="v">50–200 元</span></div>
+              <div class="b-row total"><span class="k">合计</span><span class="d">5 人约 8500–14400 元，人均约 1700–2880 元。</span><span class="v">8500–14400 元</span></div>
+            </div>
+            <div class="budget-pie-wrap">
+              <div class="pie pie-lj" role="img" aria-label="丽江费用占比，按各分项区间中位估算"></div>
+              <ul class="pie-legend">
+                <li><i style="background:#d4b07a"></i><span class="lab">长途交通</span><span class="amt">30% · 3450</span></li>
+                <li><i style="background:#edcf96"></i><span class="lab">租车</span><span class="amt">23% · 2625</span></li>
+                <li><i style="background:#c4895a"></i><span class="lab">油费过路停车</span><span class="amt">4% · 415</span></li>
+                <li><i style="background:#9fd0de"></i><span class="lab">门票</span><span class="amt">4% · 500</span></li>
+                <li><i style="background:#6aa8b8"></i><span class="lab">索道与环保车</span><span class="amt">6% · 740</span></li>
+                <li><i style="background:#e8d5b5"></i><span class="lab">住宿</span><span class="amt">11% · 1275</span></li>
+                <li><i style="background:#b7c4a1"></i><span class="lab">餐饮</span><span class="amt">20% · 2300</span></li>
+                <li><i style="background:#8b9aa0"></i><span class="lab">氧气及其他</span><span class="amt">1% · 125</span></li>
+              </ul>
+              <p class="pie-cap">占比按各分项区间中位估算，合计中位约 11430 元。</p>
+            </div>
+          </div>
+          <p class="budget-note">出发前按实际再核。一月山路可能有冰雪，租车时确认冬季胎或防滑链。</p>
         </div>
 
-        <h3 class="reveal">参考视频</h3>
-        <div class="links reveal">
-          <a class="card" href="https://www.douyin.com/video/7594779658990652699" target="_blank" rel="noopener noreferrer">1、2 月云南怎么玩<small>付先生在云南 · 抖音</small></a>
-          <a class="card" href="https://www.douyin.com/video/7697612390846934244" target="_blank" rel="noopener noreferrer">秋冬雪山实测干货<small>云南吉朵 · 抖音</small></a>
+        <div class="refs reveal" id="refs-lijiang">
+          <h3>参考视频 · 丽江</h3>
+          <div class="links">
+            <a class="card" href="https://www.douyin.com/video/7703177450784062118" target="_blank" rel="noopener noreferrer"><span class="card-title">丽江冬季怎么玩</span><small>好人阿滇 · 1575 赞 · 2026-11</small><span class="card-note">住大研/束河/白沙、地暖、门票索道和氧气避坑</span></a>
+            <a class="card" href="https://www.douyin.com/video/7593760884875674600" target="_blank" rel="noopener noreferrer"><span class="card-title">玉龙雪山实用攻略</span><small>是阿佳吖 · 1.2 万赞 · 2026-01</small><span class="card-note">一月实游，大索道后吸氧休息和防寒</span></a>
+            <a class="card" href="https://www.douyin.com/video/7686713025142793381" target="_blank" rel="noopener noreferrer"><span class="card-title">玉龙雪山值不值得来</span><small>蛋壳儿 · 3.7 万赞 · 2026-09</small><span class="card-note">大索道到 4500 米、蓝月谷、高反提醒（非冬季拍）</span></a>
+            <a class="card" href="https://www.douyin.com/video/7697612390846934244" target="_blank" rel="noopener noreferrer"><span class="card-title">秋冬雪山实测干货</span><small>云南吉朵 · 抖音</small><span class="card-note">秋冬上雪山的实测补充</span></a>
+          </div>
+          <p class="refs-note">博主说法仅供参考（包括高反用药），出发前以官方和医生建议为准。</p>
         </div>
 
         <div class="gallery reveal">
@@ -477,10 +617,10 @@
       <div class="bleed-shade"></div>
       <div class="bleed-copy">
         <div class="bleed-title">
-          <p class="chap-no">02 · 三天</p>
+          <p class="chap-no">02 · 四天</p>
           <h2>九寨沟慢版</h2>
         </div>
-        <p class="bleed-lead">坐动车去，住沟口（约 2000 米），看诺日朗冰瀑和蓝冰。坐观光车，累了就歇，不必赶路。</p>
+        <p class="bleed-lead">坐动车去，到站后租 7 座车（或坐直通车）到沟口住下（约 2000 米）。看诺日朗冰瀑和蓝冰，再留一天慢慢逛较低的树正沟。私家车不能进沟，进沟坐观光车。</p>
       </div>
     </div>
     <div class="plan" id="jiuzhaigou-plan">
@@ -488,41 +628,81 @@
         <div class="days reveal">
           <div class="day">
             <div class="day-n">D1</div>
-            <p>高铁成都东到黄龙九寨（最快约 1 小时 39 分），再换乘直通车约 2 小时到沟口住下。晚上可泡温泉，或看藏羌歌舞。</p>
+            <p>高铁成都东到黄龙九寨（最快约 1 小时 39 分）。站附近可租一辆 7 座车，开到沟口，五人合住一套整房；若当天没有合适的车，仍可坐直通车（约 51 元、约 2 小时）。私家车不能进沟。一月山路易有暗冰积雪，问清防滑链或冬季胎，尽量白天开。晚上可泡温泉，或看藏羌歌舞。</p>
           </div>
           <div class="day">
             <div class="day-n">D2</div>
-            <p>进沟看诺日朗冰瀑和蓝冰，坐观光车，累了就歇。顺序可参考：上午日则沟，中午诺日朗，下午则查洼沟，最后树正沟。</p>
+            <p>进沟看诺日朗冰瀑和蓝冰，坐观光车，累了就歇。顺序可参考：上午日则沟，中午诺日朗，下午则查洼沟，最后树正沟。高反过的朋友当天只逛树正沟和诺日朗一带。</p>
           </div>
           <div class="day">
             <div class="day-n">D3</div>
-            <p>沟口睡懒觉，返回成都。</p>
+            <p>再进一次沟，只逛较低的树正沟和诺日朗，慢慢走，累了就出沟。树正群海海拔 2187–2280 米，诺日朗瀑布 2343 米；官网写淡季仍可看这两处。不想再进沟，就在沟口睡懒觉。</p>
+          </div>
+          <div class="day">
+            <div class="day-n">D4</div>
+            <p>沟口睡懒觉，开车回车站还车，坐高铁返回成都。</p>
           </div>
         </div>
 
         <div class="alt-box reveal">
           <h3>对海拔敏感的朋友</h3>
-          <p>出发前问医生，是否可提前用预防药。进沟当天只逛较低的树正沟和诺日朗一带，不去日则沟高处，也不上则查洼沟的长海、五彩池（长海 3101 米、五彩池 3010 米）。</p>
+          <p>出发前问医生，是否可提前用预防药。两天进沟都只逛较低的树正沟和诺日朗一带（树正群海 2187–2280 米，诺日朗瀑布 2343 米），不去日则沟高处，也不上则查洼沟的长海、五彩池（长海 3101 米、五彩池 3010 米）。</p>
         </div>
 
         <div class="todo reveal">
           <h3>出发前待办</h3>
           <ul>
             <li>淡季从上季看是 11 月 16 日起，门票 80 元 + 观光车 80 元，以官方为准</li>
+            <li>若第二天再进沟，出发前核淡季是否仍免门票；次日观光车需另购，两天都要实名预约</li>
+            <li>提前确认黄龙九寨站附近是否有 7 座车；没有就改订直通车</li>
             <li>提前实名预约，带身份证</li>
-            <li>防滑、保暖</li>
+            <li>防滑、保暖；山路备防滑链，尽量白天行车</li>
             <li>高处线路可能临时关闭，当天看景区通告</li>
           </ul>
         </div>
 
-        <div class="budget reveal">
-          <h3>费用（已有数字）</h3>
-          <p>5 人 3 天交通加门票已核约 2740 元，不含住宿和餐饮。直通车约 51 元。淡季票价以上述上季通告为参考，出发前再核官方。</p>
+        <div class="budget reveal" id="budget-jiuzhaigou">
+          <h3>费用（5 人，4 天 3 晚）</h3>
+          <p class="budget-lead">住沟口附近一套整房，3 晚。长途坐高铁，到黄龙九寨站附近租 7 座车开到沟口；私家车不能进沟。预算按第二天再进沟、只逛较低的树正沟和诺日朗来算。若租不到车，可改坐直通车（约 51 元/人）。下列为可核价格的区间，饼图按各分项区间中位估算。出发前按实际再核。</p>
+          <div class="budget-grid">
+            <div>
+              <div class="b-row"><span class="k">长途交通</span><span class="d">成都东—黄龙九寨往返二等座。公布票价多为 143 元，市场化浮动可见约 117–151 元。5 人往返约 1170–1510 元。</span><span class="v">1170–1510 元</span></div>
+              <div class="b-row"><span class="k">租车</span><span class="d">黄龙九寨站附近可租到车：神州有黄龙九寨服务点，悟空上港中租车「黄龙九寨站店」别克 GL8 现标 576 元/日均。按取车到还车约 3–4 天计。当天若无 7 座，改坐直通车（约 51 元/人，往返 5 人约 510 元）。</span><span class="v">1730–2300 元</span></div>
+              <div class="b-row"><span class="k">油费过路停车</span><span class="d">车站到沟口约 93 公里，往返约 200–250 公里。油费按 7 座约 10–12 升/百公里、四川 92 号 8.98 元/升估算约 180–280 元；沟口停车常见约 20 元/天，3 晚约 60 元，过路为少量预留。</span><span class="v">240–400 元</span></div>
+              <div class="b-row"><span class="k">门票</span><span class="d">首日淡季门票 80 元/人。官网旅游服务页写淡季可二次进沟免门票；2016 年已停收 20 元工本费，2025 年 11 月淡季通告未再写这条，出发前以官方为准。次日门票按 0–80 元/人预留。</span><span class="v">400–800 元</span></div>
+              <div class="b-row"><span class="k">观光车</span><span class="d">两天各 80 元/人。官网旅游服务页写明：即使淡季二次进沟免门票，次日观光车仍需另购。保险 10 元/人自愿，未计入此项。</span><span class="v">800 元</span></div>
+              <div class="b-row"><span class="k">住宿</span><span class="d">沟口附近整套，3 晚。公开可核的三居日历价较少；低位按住哪去「整栋包院 800 元/晚起」，高位 2000 元/晚为淡季较舒适整套的预留，不是单条已核房价。</span><span class="v">2400–6000 元</span></div>
+              <div class="b-row"><span class="k">餐饮</span><span class="d">按每人每天 80–150 元估算，4 天。这是估算，沟口餐馆可能略贵。</span><span class="v">1600–3000 元</span></div>
+              <div class="b-row"><span class="k">氧气及其他</span><span class="d">观光车保险可选，以及少量杂费。这是估算。</span><span class="v">0–150 元</span></div>
+              <div class="b-row total"><span class="k">合计</span><span class="d">5 人约 8300–15000 元，人均约 1670–2990 元。</span><span class="v">8300–15000 元</span></div>
+            </div>
+            <div class="budget-pie-wrap">
+              <div class="pie pie-jz" role="img" aria-label="九寨沟费用占比，按各分项区间中位估算"></div>
+              <ul class="pie-legend">
+                <li><i style="background:#d4b07a"></i><span class="lab">长途交通</span><span class="amt">11% · 1340</span></li>
+                <li><i style="background:#edcf96"></i><span class="lab">租车</span><span class="amt">17% · 2015</span></li>
+                <li><i style="background:#c4895a"></i><span class="lab">油费过路停车</span><span class="amt">3% · 320</span></li>
+                <li><i style="background:#9fd0de"></i><span class="lab">门票</span><span class="amt">5% · 600</span></li>
+                <li><i style="background:#6aa8b8"></i><span class="lab">观光车</span><span class="amt">7% · 800</span></li>
+                <li><i style="background:#e8d5b5"></i><span class="lab">住宿</span><span class="amt">36% · 4200</span></li>
+                <li><i style="background:#b7c4a1"></i><span class="lab">餐饮</span><span class="amt">20% · 2300</span></li>
+                <li><i style="background:#8b9aa0"></i><span class="lab">氧气及其他</span><span class="amt">1% · 75</span></li>
+              </ul>
+              <p class="pie-cap">占比按各分项区间中位估算，合计中位约 11650 元。</p>
+            </div>
+          </div>
+          <p class="budget-note">出发前按实际再核。私家车不能进沟。一月山路易有暗冰积雪，租车时确认防滑链或冬季胎，尽量白天行驶。若第二天改在沟口休息、不再进沟，可减去次日门票和观光车。</p>
         </div>
 
-        <h3 class="reveal">参考视频</h3>
-        <div class="links reveal">
-          <a class="card" href="https://www.douyin.com/video/7579549895338784761" target="_blank" rel="noopener noreferrer">冬游川西红黑榜<small>行走川藏 · 抖音</small></a>
+        <div class="refs reveal" id="refs-jiuzhaigou">
+          <h3>参考视频 · 九寨沟</h3>
+          <div class="links">
+            <a class="card" href="https://www.douyin.com/video/7602565620576558821" target="_blank" rel="noopener noreferrer"><span class="card-title">冬季九寨沟真实现状</span><small>四川旅游九寨沟小旭 · 1.3 万赞 · 2026-02</small><span class="card-note">冬季交通、门票、沟口住宿和路线</span></a>
+            <a class="card" href="https://www.douyin.com/video/7571375280658757033" target="_blank" rel="noopener noreferrer"><span class="card-title">冬天九寨沟避坑</span><small>大川在四川 · 7941 赞 · 2025-11</small><span class="card-note">本地导游讲自驾风险、漳扎镇住宿和地暖</span></a>
+            <a class="card" href="https://www.douyin.com/video/7596675091023334683" target="_blank" rel="noopener noreferrer"><span class="card-title">九寨沟的冬季</span><small>小陈日记 · 6806 赞 · 2026-01</small><span class="card-note">当天往返太赶，建议在沟口住一晚</span></a>
+            <a class="card" href="https://www.douyin.com/video/7579549895338784761" target="_blank" rel="noopener noreferrer"><span class="card-title">冬游川西红黑榜</span><small>行走川藏 · 抖音</small><span class="card-note">冬天川西路线的红黑榜补充</span></a>
+          </div>
+          <p class="refs-note">博主说法仅供参考（包括高反用药），出发前以官方和医生建议为准。</p>
         </div>
 
         <div class="gallery reveal">
@@ -555,7 +735,28 @@
         <li><a href="https://www.jiuzhai.com/news/notice/10767-2025-11-11-10-00-20">九寨沟淡季旅游接待通告（门票 80、观光车 80）</a></li>
         <li><a href="https://news.cctv.cn/2024/08/30/ARTI2REK7IpZ7xhs0EwgeiWT240830.shtml">川青铁路开通：成都至黄龙九寨最快 1 小时 39 分</a></li>
         <li><a href="http://cd.bendibao.com/traffic/2024830/188604.shtm">黄龙九寨站直通车（约 51 元、车程约 2 小时）</a></li>
-        <li><a href="https://www.jiuzhai.com/about/scenic-spot">九寨沟标志景点（长海 3101 米、五彩池 3010 米）</a></li>
+        <li><a href="https://www.jiuzhai.com/about/scenic-spot">九寨沟标志景点（长海 3101 米、五彩池 3010 米；树正群海 2187–2280 米、诺日朗瀑布 2343 米）</a></li>
+        <li><a href="https://www.jiuzhai.com/news/scenic-news/10774-2025-11-11-01-06-48">九寨沟 2025 年 11 月轮休保育说明：淡季仍可看诺日朗瀑布、树正群海等</a></li>
+        <li><a href="https://www.jiuzhai.com/news/scenic-news/17-fuwu">官网旅游服务页：淡季可二次进沟免门票，次日观光车需另购</a></li>
+        <li><a href="https://www.jiuzhai.com/news/notice/4860-2016-01-30-03-48-14">2016 年通知：停止收取淡季二次进沟手续工本费 20 元</a></li>
+        <li><a href="http://www.yn.news.cn/20260702/e8f8d1a27e2845b4bf54cfc5ef8f5d36/c.html">玉龙雪山 2026 年票价：门票 100、环保车 20、冰川公园索道 120、蓝月谷电瓶车全程 40（玉龙雪山管委会 / 新华网云南）</a></li>
+        <li><a href="https://www.gaotie.com.cn/lieche/chengdudong-huanglongjiuzhai.html">成都东至黄龙九寨二等座公布票价多为 143 元（市场化浮动以 12306 为准）</a></li>
+        <li><a href="https://view.inews.qq.com/a/20260104A071DC00">2026 年 1 月成都—丽江特价机票：去程 200 元起、返程 240 元起，不含机建燃油（成都本地宝，截自携程）</a></li>
+        <li><a href="https://trains.ctrip.com/trainbooking/chengdu-lijiang/gaotie">成都南至丽江 D239 二等座 376 元（携程火车票）</a></li>
+        <li><a href="https://service.zuche.com/dept/detail.do?deptId=2236">神州租车丽江三义机场服务点（24 小时，到达口对面停车场）</a></li>
+        <li><a href="https://www.carngo.com/zuche/china-lijiang-sanyi-airport-ljg-van">丽江三义机场 7 座厢型约 63 美元/天（Carngo）</a></li>
+        <li><a href="https://www.wkzuche.com/cartype/530700-JM104576-5300006141-BUICKGL82023MPV57GASOLINEAT2000.html">丽江当地店别克 GL8 888 元/日均（悟空租车·车乐享，非机场网点）</a></li>
+        <li><a href="https://service.zuche.com/city/search.do?districtId=9984&amp;enName=aba">神州租车黄龙九寨服务点（九寨沟县网点列表）</a></li>
+        <li><a href="https://www.wkzuche.com/cartype/513200-JM2955553013159-5100012889-BUICKGL82023MPV57GASOLINEAT2000.html">港中租车黄龙九寨站店别克 GL8 576 元/日均（悟空租车）</a></li>
+        <li><a href="https://www.muniao.com/room/1429731.html">束河附近整套三居，标价 300 元/晚，宜住 6 人（木鸟民宿）</a></li>
+        <li><a href="https://www.muniao.com/room/1083406.html">束河别墅区整套三房两卫，标价 550 元/晚，宜住 10 人（木鸟民宿）</a></li>
+        <li><a href="https://global.tujia.com/zh/city-pages/lijiang">途家丽江束河整套：隐域度假民宿 330 元/晚起等（城市页标价，非指定日期日历价）</a></li>
+        <li><a href="https://www.zhunaqu.com/abazhou/item/list-aid-7185">住哪去：九寨沟整栋包院一般 800–5000 元/晚</a></li>
+        <li><a href="https://www.icauto.com.cn/oil/price_530700_2_2.html">丽江 92 号汽油 9.04 元/升（2026-11-10，车主手册）</a></li>
+        <li><a href="https://www.icauto.com.cn/oil/price_510000_2.html">四川 92 号汽油 8.98 元/升（2026-11-10，车主手册）</a></li>
+        <li><a href="https://www.chinanews.com.cn/cj/2026/11-10/10729234.shtml">人民币对美元中间价 6.7167（2026-11-10，中国外汇交易中心 / 中新网）</a></li>
+        <li><a href="https://www.lijiang.cn/article/176940.html">玉龙雪山氧气瓶限价约 9.9–19.9 元（丽江网）</a></li>
+        <li><a href="https://www.jiuzhai.com/intelligent-service/faq/6146-self-help">九寨沟官方 FAQ：冬季驾车要带防滑链，冰雪路慢行；景区内乘观光车</a></li>
       </ol>
     </div>
   </section>
@@ -636,7 +837,19 @@
 
       if (shot) {
         var target = document.getElementById(shot);
-        if (target) {
+        if (shot === "refs") {
+          document.documentElement.classList.add("shot-refs");
+          window.scrollTo(0, 0);
+        } else if (String(shot).indexOf("budget") === 0) {
+          document.documentElement.classList.add("shot-budget");
+          if (target) {
+            var section = target.closest("section") || target;
+            Array.prototype.forEach.call(document.body.children, function (el) {
+              if (el !== section) el.style.display = "none";
+            });
+          }
+          window.scrollTo(0, 0);
+        } else if (target) {
           var node = target;
           while (node && node !== document.body) {
             var sib = node.previousElementSibling;
