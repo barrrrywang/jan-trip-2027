@@ -15,205 +15,358 @@
   <meta property="og:image" content="https://barrrrywang.github.io/jan-trip-2027/og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="玉龙雪山雪峰，Ma Martin，CC BY-SA 3.0">
+  <meta property="og:image:alt" content="玉龙雪山雪峰，CEphoto, Uwe Aranas，CC BY-SA 3.0">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="一月慢游：丽江＋大理">
   <meta name="twitter:description" content="一月去丽江和大理：先上玉龙雪山，再坐高铁看洱海、苍山。">
   <meta name="twitter:image" content="https://barrrrywang.github.io/jan-trip-2027/og.jpg">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <script>
+    (function(){
+      var y = new URLSearchParams(location.search).get("y");
+      if (y) document.documentElement.style.marginTop = (-parseInt(y, 10) || 0) + "px";
+    })();
+  </script>
+  <link rel="preload" href="fonts/zcool-kuaile.woff" as="font" type="font/woff" crossorigin>
   <style>
-
+    @font-face {
+      font-family: "ZCOOL KuaiLe";
+      src: url("fonts/zcool-kuaile.woff") format("woff");
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
     :root {
-      --ink: #0b1012; --ink-2: #12191c; --ink-3: #1a2327;
-      --cream: #f4efe6; --cream-dim: rgba(244,239,230,.72); --cream-mute: rgba(244,239,230,.48);
-      --ice: #9fd0de; --gold: #d4b07a; --gold-bright: #edcf96;
-      --line: rgba(244,239,230,.12); --glass: rgba(11,16,18,.55); --glass-2: rgba(18,25,28,.72);
-      --green: #8fbe8a; --yellow: #e0c56a; --red: #d9897a;
-      --serif: "Noto Serif SC","Songti SC","STSong","SimSun","Source Han Serif SC",Georgia,serif;
-      --sans: "PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;
+      --bg: #FBF7F0;
+      --bg-2: #F3EEE4;
+      --paper: #FFFCFA;
+      --ink: #3F3A35;
+      --ink-2: #5C564E;
+      --mute: #8A8278;
+      --line: rgba(80, 60, 40, .10);
+      --blue: #7EB8D4;
+      --blue-s: #E4F3F8;
+      --mint: #7EAB8A;
+      --mint-s: #E6F3E9;
+      --peach: #E39B8A;
+      --peach-s: #FDECE6;
+      --gold: #E0B56A;
+      --gold-s: #F8EBCB;
+      --display: "ZCOOL KuaiLe", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      --sans: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", "Segoe UI", system-ui, sans-serif;
+      --shadow: 0 10px 28px rgba(80, 55, 35, .08);
+      --shadow-sm: 0 4px 14px rgba(80, 55, 35, .06);
+      --r: 22px;
       --ease: cubic-bezier(.22,1,.36,1);
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    html, body { margin: 0; padding: 0; background: var(--ink); color: var(--cream); }
-    body { font-family: var(--sans); font-size: 16px; line-height: 1.55; letter-spacing: .01em; -webkit-font-smoothing: antialiased; }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
+    body {
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      background-image:
+        radial-gradient(ellipse 80% 40% at 10% -10%, #f3e4d4 0%, transparent 55%),
+        radial-gradient(ellipse 60% 30% at 100% 5%, #dceee8 0%, transparent 50%);
+    }
     img { max-width: 100%; height: auto; display: block; }
-    a { color: var(--ice); text-decoration-thickness: 1px; text-underline-offset: 3px; }
-    a:hover { color: var(--gold-bright); }
-    :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-    p { margin: 0 0 .55rem; }
+    a { color: #4a8aa3; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a:hover { color: #c26b5a; }
+    :focus-visible { outline: 2px solid var(--peach); outline-offset: 3px; }
+    p { margin: 0 0 .5rem; }
     p:last-child { margin-bottom: 0; }
-    ul.plain, ol.plain { margin: .2rem 0 0; padding: 0 0 0 1.1rem; color: var(--cream-dim); }
-    ul.plain li, ol.plain li { margin: .25rem 0; }
-    strong { color: var(--cream); font-weight: 600; }
+    ul.plain, ol.plain { margin: .15rem 0 0; padding: 0 0 0 1.1rem; color: var(--ink-2); }
+    ul.plain li, ol.plain li { margin: .22rem 0; }
+    strong { font-weight: 650; color: var(--ink); }
 
-    .nav { position: fixed; inset: 0 0 auto 0; z-index: 40; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .7rem 1.25rem; background: rgba(11,16,18,.35); backdrop-filter: blur(18px) saturate(1.2); -webkit-backdrop-filter: blur(18px) saturate(1.2); border-bottom: 1px solid transparent; }
-    .nav.is-scrolled { background: var(--glass-2); border-bottom-color: var(--line); }
-    .nav-brand { font-family: var(--serif); font-size: .95rem; letter-spacing: .12em; color: var(--cream); text-decoration: none; white-space: nowrap; }
-    .nav-links { display: flex; flex-wrap: wrap; gap: .15rem 1.1rem; }
-    .nav-links a { color: var(--cream-dim); text-decoration: none; font-size: .78rem; letter-spacing: .16em; padding: .2rem 0; }
-    .nav-links a:hover { color: var(--gold-bright); }
+    .nav {
+      position: sticky; top: 0; z-index: 40;
+      display: flex; align-items: center; justify-content: space-between; gap: .7rem;
+      padding: .55rem 1rem;
+      background: rgba(251,247,240,.82);
+      backdrop-filter: blur(16px) saturate(1.2);
+      -webkit-backdrop-filter: blur(16px) saturate(1.2);
+      border-bottom: 1px solid transparent;
+    }
+    .nav.is-scrolled { border-bottom-color: var(--line); }
+    .nav-brand {
+      font-family: var(--display); font-size: 1.05rem; color: var(--ink);
+      text-decoration: none; white-space: nowrap;
+      background: var(--paper); border-radius: 999px; padding: .28rem .8rem;
+      box-shadow: var(--shadow-sm); border: 1px solid var(--line);
+    }
+    .nav-links { display: flex; flex-wrap: wrap; gap: .15rem .85rem; }
+    .nav-links a { color: var(--ink-2); text-decoration: none; font-size: .8rem; padding: .2rem 0; }
+    .nav-links a:hover { color: var(--peach); }
 
-    .hero { position: relative; min-height: 88svh; display: grid; align-items: end; overflow: hidden; background: #050708; }
-    .hero-photo { position: absolute; inset: -8% 0 0; width: 100%; height: 108%; object-fit: cover; }
-    .hero-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,16,18,.25) 0%, rgba(11,16,18,.08) 35%, rgba(11,16,18,.86) 100%), linear-gradient(90deg, rgba(11,16,18,.4), transparent 50%); }
-    #snow { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; }
-    .hero-copy { position: relative; z-index: 3; width: min(42rem, calc(100% - 10vw)); padding: 0 7vw 12vh; }
-    .kicker { margin: 0 0 .8rem; font-size: .72rem; letter-spacing: .34em; color: var(--gold-bright); }
-    .hero h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(2.4rem, 6.4vw, 4.6rem); line-height: 1.18; margin: 0 0 .7rem; letter-spacing: .06em; }
-    .hero-lead { margin: 0; max-width: 22em; color: var(--cream-dim); font-size: 1.05rem; }
-    .hero-credit { position: absolute; z-index: 3; right: 7vw; bottom: 4.2vh; font-size: .68rem; color: var(--cream-mute); text-align: right; max-width: 16rem; }
+    .wrap { width: min(40rem, calc(100% - 1.6rem)); margin: 0 auto; }
+    .wrap-wide { width: min(52rem, calc(100% - 1.4rem)); margin: 0 auto; }
+    .eyebrow {
+      margin: 0 0 .35rem; font-family: var(--display); font-size: .95rem; color: #c17a68;
+    }
+    h2 {
+      font-family: var(--display); font-weight: 400;
+      font-size: clamp(1.45rem, 4vw, 1.85rem); line-height: 1.35;
+      margin: 0 0 .75rem; color: var(--ink);
+    }
+    h3 {
+      font-family: var(--display); font-weight: 400;
+      font-size: 1.15rem; margin: 0 0 .55rem; color: #c17a68;
+    }
+
+    /* hero */
+    .hero { padding: 1rem 0 1.6rem; }
+    .hero-grid {
+      width: min(58rem, calc(100% - 1.4rem));
+      margin: 0 auto;
+      display: grid; gap: 1.1rem; align-items: center;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 820px) {
+      .hero-grid { grid-template-columns: .92fr 1.08fr; gap: 1.8rem; min-height: 22rem; }
+    }
+    .hero-copy { padding: .4rem .2rem 0; }
+    .kicker {
+      display: inline-block; margin: 0 0 .65rem;
+      font-size: .78rem; color: #c17a68;
+      background: var(--peach-s); border-radius: 999px; padding: .2rem .7rem;
+    }
+    .hero h1 {
+      font-family: var(--display); font-weight: 400;
+      font-size: clamp(1.85rem, 6vw, 2.7rem); line-height: 1.28;
+      margin: 0 0 .7rem;
+    }
+    .hero-lead { margin: 0; max-width: 22em; color: var(--ink-2); font-size: 1rem; }
+    .hero-photo-wrap {
+      position: relative; border-radius: 28px; overflow: hidden;
+      box-shadow: var(--shadow); background: #d7e4ec;
+    }
+    .hero-photo { width: 100%; height: min(52vw, 22rem); object-fit: cover; }
+    @media (min-width: 820px) { .hero-photo { height: 24rem; } }
+    .hero-credit {
+      margin: .4rem .15rem 0; font-size: .68rem; color: var(--mute); text-align: right;
+    }
     .hero-credit a { color: inherit; }
-    .scroll-hint { position: absolute; z-index: 3; left: 50%; bottom: 2.4vh; transform: translateX(-50%); font-size: .68rem; letter-spacing: .28em; color: var(--cream-mute); }
 
-    .wrap { width: min(52rem, calc(100% - 10vw)); margin: 0 auto; }
-    .wrap-wide { width: min(68rem, calc(100% - 8vw)); margin: 0 auto; }
-    .eyebrow { margin: 0 0 .45rem; font-size: .72rem; letter-spacing: .34em; color: var(--gold); }
-    h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(1.7rem, 3.6vw, 2.5rem); line-height: 1.25; margin: 0 0 .8rem; letter-spacing: .04em; }
-    h3 { font-family: var(--serif); font-weight: 600; font-size: 1.12rem; margin: 0 0 .55rem; color: var(--gold-bright); }
+    .overview { padding: 0 0 2rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: .45rem; margin: 0 0 1rem; padding: 0; list-style: none; }
+    .chips li {
+      background: var(--paper); border: 1px solid var(--line); border-radius: 999px;
+      padding: .35rem .8rem; font-size: .84rem; color: var(--ink-2); box-shadow: var(--shadow-sm);
+    }
+    .chips strong { color: #c17a68; }
+    .fact-grid { display: grid; gap: .65rem; grid-template-columns: 1fr; }
+    @media (min-width: 640px) { .fact-grid { grid-template-columns: repeat(3, 1fr); } }
+    .fact {
+      background: var(--paper); border: 1px solid var(--line); border-radius: 18px;
+      padding: .85rem .9rem; box-shadow: var(--shadow-sm);
+    }
+    .fact .k { display: block; font-family: var(--display); font-size: .95rem; color: #c17a68; margin-bottom: .25rem; }
+    .fact p { color: var(--ink-2); font-size: .88rem; }
 
-    .overview { padding: 3.2rem 0 2.4rem; }
-    .chips { display: flex; flex-wrap: wrap; gap: .55rem; margin: 0 0 1.1rem; padding: 0; list-style: none; }
-    .chips li { border: 1px solid var(--line); background: rgba(244,239,230,.04); border-radius: 999px; padding: .4rem .85rem; font-size: .88rem; color: var(--cream-dim); }
-    .chips strong { color: var(--gold-bright); }
-    .fact-grid { display: grid; gap: .7rem; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); }
-    .fact { border: 1px solid var(--line); border-radius: 14px; padding: .85rem 1rem; background: rgba(244,239,230,.03); }
-    .fact .k { display: block; font-size: .72rem; letter-spacing: .12em; color: var(--gold); margin-bottom: .3rem; }
-    .fact p { color: var(--cream-dim); font-size: .92rem; }
+    /* map */
+    .map-sec { padding: 0 0 2.4rem; }
+    .map-toolbar { display: flex; flex-wrap: wrap; gap: .35rem; margin: 0 0 .7rem; }
+    .map-toolbar button {
+      appearance: none; border: 1px solid var(--line); background: var(--paper);
+      color: var(--ink-2); border-radius: 999px; padding: .32rem .75rem;
+      font: inherit; font-size: .8rem; cursor: pointer; box-shadow: var(--shadow-sm);
+    }
+    .map-toolbar button.is-on, .map-toolbar button:hover {
+      background: #c17a68; color: #fff; border-color: #c17a68;
+    }
+    .map-stage {
+      position: relative; background: var(--paper);
+      border: 1px solid var(--line); border-radius: 28px;
+      box-shadow: var(--shadow); overflow: hidden; padding: .4rem;
+    }
+    .map-svg { display: block; width: 100%; height: auto; }
+    .legend { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin: .65rem 0 0; padding: 0; list-style: none; font-size: .78rem; color: var(--ink-2); }
+    .legend i { display: inline-block; width: .7rem; height: .7rem; border-radius: 50%; margin-right: .3rem; vertical-align: -1px; border: 2px solid #fff; box-shadow: 0 0 0 1px rgba(80,60,40,.12); }
+    .dot-g { background: #8FCB9E; } .dot-y { background: #E8C56A; } .dot-r { background: #E8A090; }
 
-    .map-sec { padding: 0 0 3rem; }
-    .map-toolbar { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0 0 .7rem; align-items: center; }
-    .map-toolbar button { appearance: none; border: 1px solid var(--line); background: rgba(244,239,230,.05); color: var(--cream); border-radius: 999px; padding: .35rem .8rem; font: inherit; font-size: .82rem; cursor: pointer; }
-    .map-toolbar button.is-on, .map-toolbar button:hover { border-color: var(--gold); color: var(--gold-bright); background: rgba(212,176,122,.12); }
-    .map-frame { position: relative; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--ink-2); }
-    #trip-map { height: min(62vh, 32rem); width: 100%; background: #1a2327; }
-    .map-fallback { display: none; padding: 1rem 1.1rem 1.2rem; color: var(--cream-dim); }
-    .map-frame.is-fallback #trip-map { display: none; }
-    .map-frame.is-fallback .map-fallback { display: block; }
-    .legend { display: flex; flex-wrap: wrap; gap: .7rem 1.1rem; margin: .65rem 0 0; padding: 0; list-style: none; font-size: .8rem; color: var(--cream-dim); }
-    .legend i { display: inline-block; width: .65rem; height: .65rem; border-radius: 50%; margin-right: .35rem; vertical-align: -1px; }
-    .dot-g { background: var(--green); } .dot-y { background: var(--yellow); } .dot-r { background: var(--red); }
-    .leaflet-container { font-family: var(--sans); background: #1a2327; }
-    .leaflet-popup-content-wrapper { background: #1a2327; color: var(--cream); border-radius: 12px; }
-    .leaflet-popup-tip { background: #1a2327; }
-    .leaflet-popup-content { margin: .7rem .85rem; font-size: .86rem; line-height: 1.5; }
-    .leaflet-popup-content strong { color: var(--gold-bright); }
+    .stop { cursor: pointer; }
+    .stop .halo { fill: #fff; stroke-width: 3; }
+    .stop.alt-low .halo { stroke: #8FCB9E; }
+    .stop.alt-mid .halo { stroke: #E8C56A; }
+    .stop.alt-high .halo { stroke: #E8A090; }
+    .stop .slabel {
+      font-family: var(--sans); font-size: 11px; fill: var(--ink);
+      text-anchor: middle; pointer-events: none;
+    }
+    .stop.is-dim { opacity: .22; }
+    .stop.is-on { opacity: 1; }
+    .stop.is-on .halo { filter: drop-shadow(0 2px 6px rgba(80,60,40,.2)); }
+    .route-line { fill: none; stroke: #E39B8A; stroke-width: 2.2; stroke-dasharray: 4 5; stroke-linecap: round; stroke-linejoin: round; opacity: 0; }
+    .route-line.is-on { opacity: .9; }
+    .route-main { fill: none; stroke: #C17A68; stroke-width: 2; stroke-dasharray: 3 6; stroke-linecap: round; opacity: .7; }
+    .map-bubble {
+      position: absolute; z-index: 5; width: min(16.5rem, calc(100% - 1.6rem));
+      background: var(--paper); border: 1px solid var(--line); border-radius: 16px;
+      box-shadow: var(--shadow); padding: .7rem .8rem .75rem; color: var(--ink);
+      font-size: .82rem; line-height: 1.5;
+    }
+    .map-bubble[hidden] { display: none; }
+    .map-bubble strong { font-family: var(--display); font-weight: 400; font-size: 1rem; display: block; margin-bottom: .15rem; }
+    .map-bubble .b-alt { display: inline-block; font-size: .72rem; border-radius: 999px; padding: .05rem .5rem; margin: .1rem 0 .3rem; }
+    .b-alt.low { background: var(--mint-s); color: #3d6b4a; }
+    .b-alt.mid { background: var(--gold-s); color: #7a5a18; }
+    .b-alt.high { background: var(--peach-s); color: #8a4a3a; }
+    .map-bubble .b-note { color: var(--ink-2); margin: 0 0 .2rem; }
+    .map-bubble .b-days { font-size: .72rem; color: var(--mute); }
+    .bubble-x {
+      position: absolute; top: .3rem; right: .4rem; border: 0; background: transparent;
+      color: var(--mute); font-size: 1.1rem; cursor: pointer; padding: .15rem .3rem;
+    }
+    .map-fallback { display: none; padding: 1rem; color: var(--ink-2); }
+    .map-stage.is-fallback .map-svg, .map-stage.is-fallback .map-bubble { display: none; }
+    .map-stage.is-fallback .map-fallback { display: block; }
 
-    .plan { padding: 0 0 4rem; }
-    .date-box, .todo, .alt-box, .budget { border: 1px solid var(--line); border-radius: 14px; padding: 1.05rem 1.15rem 1rem; background: rgba(244,239,230,.03); margin: 0 0 1.1rem; }
-    .date-box ul, .alt-box ul, .todo ul { margin: .15rem 0 0; padding: 0; list-style: none; }
-    .date-box li, .alt-box li, .todo li { position: relative; padding: .35rem 0 .35rem 1rem; border-bottom: 1px solid var(--line); color: var(--cream-dim); font-size: .92rem; }
+    .plan { padding: 0 0 3rem; }
+    .date-box, .todo, .alt-box, .budget {
+      background: var(--paper); border: 1px solid var(--line); border-radius: 20px;
+      padding: 1rem 1.05rem .9rem; box-shadow: var(--shadow-sm); margin: 0 0 1rem;
+    }
+    .date-box ul, .alt-box ul, .todo ul { margin: .1rem 0 0; padding: 0; list-style: none; }
+    .date-box li, .alt-box li, .todo li {
+      position: relative; padding: .32rem 0 .32rem 1.05rem;
+      border-bottom: 1px solid var(--line); color: var(--ink-2); font-size: .9rem;
+    }
     .date-box li:last-child, .alt-box li:last-child, .todo li:last-child { border-bottom: 0; }
-    .date-box li::before, .alt-box li::before, .todo li::before { content: ""; position: absolute; left: 0; top: .85em; width: .4rem; height: .4rem; border-radius: 50%; background: var(--gold); }
+    .date-box li::before, .alt-box li::before, .todo li::before {
+      content: ""; position: absolute; left: 0; top: .75em; width: .42rem; height: .42rem;
+      border-radius: 50%; background: #E39B8A;
+    }
 
-    .day-grid { display: grid; gap: .9rem; grid-template-columns: 1fr; margin: 0 0 1.4rem; }
+    .day-grid { display: grid; gap: .8rem; grid-template-columns: 1fr; margin: 0 0 1.2rem; }
     @media (min-width: 820px) { .day-grid { grid-template-columns: 1fr 1fr; } }
-    .day-card { border: 1px solid var(--line); border-radius: 16px; overflow: hidden; background: var(--ink-2); display: flex; flex-direction: column; cursor: pointer; text-align: left; color: inherit; font: inherit; padding: 0; width: 100%; }
-    .day-card:hover { border-color: rgba(212,176,122,.45); }
-    .day-card.is-open { border-color: var(--gold); }
-    .day-card img { width: 100%; height: 10.5rem; object-fit: cover; }
-    .day-body { padding: .8rem .95rem 1rem; }
-    .day-top { display: flex; justify-content: space-between; align-items: baseline; gap: .6rem; }
-    .day-n { color: var(--gold-bright); font-family: var(--serif); letter-spacing: .12em; font-size: .9rem; }
-    .alt-bar { margin: .55rem 0 .45rem; }
-    .alt-bar .lab { display: flex; justify-content: space-between; font-size: .72rem; color: var(--cream-mute); margin-bottom: .2rem; }
-    .alt-bar .track { height: .35rem; border-radius: 99px; background: rgba(244,239,230,.1); overflow: hidden; }
+    .day-card {
+      border: 1px solid var(--line); border-radius: 22px; overflow: hidden;
+      background: var(--paper); display: flex; flex-direction: column;
+      cursor: pointer; text-align: left; color: inherit; font: inherit;
+      padding: 0; width: 100%; box-shadow: var(--shadow-sm);
+    }
+    .day-card:hover { box-shadow: var(--shadow); }
+    .day-card.is-open { border-color: #E39B8A; box-shadow: var(--shadow); }
+    .day-photo { position: relative; }
+    .day-card img { width: 100%; height: 9.2rem; object-fit: cover; }
+    .day-n {
+      position: absolute; left: .7rem; top: .7rem;
+      font-family: var(--display); font-size: .92rem;
+      background: rgba(255,252,250,.92); color: var(--ink);
+      border-radius: 999px; padding: .15rem .65rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .day-body { padding: .75rem .85rem .9rem; }
+    .day-top { display: flex; justify-content: flex-end; font-size: .75rem; color: var(--mute); margin: -.15rem 0 .2rem; }
+    .alt-bar { margin: .2rem 0 .45rem; }
+    .alt-bar .lab { display: flex; justify-content: space-between; font-size: .7rem; color: var(--mute); margin-bottom: .18rem; }
+    .alt-bar .track { height: .32rem; border-radius: 99px; background: var(--bg-2); overflow: hidden; }
     .alt-bar .fill { height: 100%; border-radius: 99px; }
-    .fill-g { background: var(--green); } .fill-y { background: var(--yellow); } .fill-r { background: var(--red); }
-    .day-sum { margin: 0; color: var(--cream-dim); font-size: .92rem; }
-    .day-more { display: none; margin: .55rem 0 0; padding: .55rem 0 0; border-top: 1px solid var(--line); color: var(--cream-dim); font-size: .88rem; }
+    .fill-g { background: #8FCB9E; } .fill-y { background: #E8C56A; } .fill-r { background: #E8A090; }
+    .day-sum { margin: 0; color: var(--ink-2); font-size: .88rem; }
+    .day-more { display: none; margin: .5rem 0 0; padding: .5rem 0 0; border-top: 1px solid var(--line); color: var(--ink-2); font-size: .84rem; }
     .day-card.is-open .day-more { display: block; }
-    .day-more li { margin: .25rem 0; }
+    .day-more li { margin: .22rem 0; }
+    .hint { font-size: .75rem; color: var(--mute); margin: -.4rem 0 1.1rem; }
 
-    .src { margin: .7rem 0 0; border: 1px dashed var(--line); border-radius: 12px; background: transparent; }
-    .src > summary { cursor: pointer; list-style: none; padding: .55rem .85rem; color: var(--gold); font-size: .82rem; letter-spacing: .08em; }
+    .src { margin: .65rem 0 0; border: 1px dashed var(--line); border-radius: 14px; background: transparent; }
+    .src > summary { cursor: pointer; list-style: none; padding: .5rem .8rem; color: #c17a68; font-size: .82rem; }
     .src > summary::-webkit-details-marker { display: none; }
-    .src > summary::after { content: "＋"; float: right; color: var(--cream-mute); }
+    .src > summary::after { content: "＋"; float: right; color: var(--mute); }
     .src[open] > summary::after { content: "－"; }
-    .src-body { padding: 0 .85rem .85rem; font-size: .82rem; color: var(--cream-dim); }
-    .src-body a { color: var(--gold-bright); }
+    .src-body { padding: 0 .8rem .8rem; font-size: .8rem; color: var(--ink-2); }
 
-    .perhead-block { margin: 1rem 0 1.2rem; }
-    .perhead-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 0 .6rem; border: 1px solid var(--line); border-radius: 12px; }
-    table.perhead { width: 100%; min-width: 0; border-collapse: collapse; font-size: .8rem; color: var(--cream-dim); table-layout: fixed; }
+    .perhead-block { margin: .9rem 0 1.1rem; }
+    .perhead-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 0 .55rem; border: 1px solid var(--line); border-radius: 16px; background: #fff; }
+    table.perhead { width: 100%; min-width: 38rem; border-collapse: collapse; font-size: .78rem; color: var(--ink-2); table-layout: fixed; }
     table.perhead col.c-item { width: 28%; } table.perhead col.c-way { width: 12%; } table.perhead col.c-unit { width: 18%; } table.perhead col.c-n { width: 14%; }
-    table.perhead th, table.perhead td { padding: .5rem .55rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
-    table.perhead th { color: var(--gold); font-weight: 600; background: rgba(244,239,230,.04); white-space: nowrap; }
-    table.perhead td.num { text-align: right; color: var(--cream); font-variant-numeric: tabular-nums; }
+    table.perhead th, table.perhead td { padding: .48rem .5rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    table.perhead th { color: #8a5346; font-weight: 600; background: var(--peach-s); white-space: nowrap; }
+    table.perhead td.num { text-align: right; color: var(--ink); font-variant-numeric: tabular-nums; }
     table.perhead td.way { white-space: nowrap; }
-    table.perhead .sub { display: block; margin-top: .15rem; font-size: .74rem; color: var(--cream-mute); font-weight: 400; }
-    table.perhead tr.total th, table.perhead tr.total td { color: var(--cream); font-weight: 600; border-bottom: 0; background: rgba(212,176,122,.08); }
+    table.perhead .sub { display: block; margin-top: .12rem; font-size: .7rem; color: var(--mute); font-weight: 400; }
+    table.perhead tr.total th, table.perhead tr.total td { color: var(--ink); font-weight: 650; border-bottom: 0; background: var(--gold-s); }
+    .way-pill { display: inline-block; font-size: .68rem; border-radius: 999px; padding: .05rem .4rem; }
+    .way-head { background: var(--blue-s); color: #3a6a80; }
+    .way-share { background: var(--mint-s); color: #3d6b4a; }
 
-    .budget-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(15rem, .85fr); gap: 1.15rem 1.35rem; align-items: start; }
+    .budget-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(14rem, .85fr); gap: 1rem 1.2rem; align-items: start; }
     @media (max-width: 800px) { .budget-grid { grid-template-columns: 1fr; } }
-    .b-row { display: grid; grid-template-columns: 6.2em 1fr auto; gap: .2rem .6rem; padding: .42rem 0; border-bottom: 1px solid var(--line); font-size: .86rem; }
-    .b-row .k { color: var(--cream); }
-    .b-row .d { color: var(--cream-mute); font-size: .75rem; }
-    .b-row .v { color: var(--gold-bright); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
-    .b-row.total { border-bottom: 0; padding-top: .7rem; }
-    .budget-pie-wrap { display: flex; flex-direction: column; align-items: center; gap: .7rem; }
-    .pie { width: 10.4rem; height: 10.4rem; border-radius: 50%; box-shadow: 0 0 0 6px rgba(244,239,230,.05); flex-shrink: 0; }
-    .pie-lj { background: conic-gradient(#d4b07a 0 27.50%, #edcf96 27.50% 37.06%, #9fd0de 37.06% 40.05%, #6aa8b8 40.05% 50.45%, #e8d5b5 50.45% 79.82%, #b7c4a1 79.82% 99.25%, #8b9aa0 99.25% 100%); }
-    .pie-legend { list-style: none; margin: 0; padding: 0; width: 100%; font-size: .75rem; color: var(--cream-dim); }
-    .pie-legend li { display: flex; align-items: baseline; gap: .45rem; padding: .12rem 0; }
-    .pie-legend i { width: .52rem; height: .52rem; border-radius: 50%; flex-shrink: 0; }
-    .pie-legend .lab { flex: 1; } .pie-legend .amt { color: var(--cream-mute); font-variant-numeric: tabular-nums; }
-    .pie-cap { margin: 0; font-size: .72rem; color: var(--cream-mute); text-align: center; }
+    .b-row { display: grid; grid-template-columns: 6.2em 1fr auto; gap: .15rem .5rem; padding: .38rem 0; border-bottom: 1px solid var(--line); font-size: .84rem; }
+    .b-row .k { color: var(--ink); }
+    .b-row .d { color: var(--mute); font-size: .72rem; }
+    .b-row .v { color: #c17a68; font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+    .b-row.total { border-bottom: 0; padding-top: .65rem; }
+    .budget-pie-wrap { display: flex; flex-direction: column; align-items: center; gap: .6rem; }
+    .pie { width: 9.6rem; height: 9.6rem; border-radius: 50%; box-shadow: 0 0 0 6px rgba(80,60,40,.04); flex-shrink: 0; }
+    .pie-lj { background: conic-gradient(#E0B56A 0 27.50%, #F0C9A0 27.50% 37.06%, #7EB8D4 37.06% 40.05%, #8EBFD0 40.05% 50.45%, #E8C9B0 50.45% 79.82%, #A8C9A8 79.82% 99.25%, #C0B8B0 99.25% 100%); }
+    .pie-legend { list-style: none; margin: 0; padding: 0; width: 100%; font-size: .74rem; color: var(--ink-2); }
+    .pie-legend li { display: flex; align-items: baseline; gap: .4rem; padding: .1rem 0; }
+    .pie-legend i { width: .5rem; height: .5rem; border-radius: 50%; flex-shrink: 0; }
+    .pie-legend .lab { flex: 1; } .pie-legend .amt { color: var(--mute); font-variant-numeric: tabular-nums; }
+    .pie-cap { margin: 0; font-size: .7rem; color: var(--mute); text-align: center; }
 
-    .lodge-grid { display: grid; gap: .7rem; grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr)); margin: .4rem 0 1rem; }
-    .lodge { border: 1px solid var(--line); border-radius: 14px; padding: .85rem .95rem; background: rgba(244,239,230,.03); color: var(--cream-dim); font-size: .88rem; }
-    .lodge a { color: var(--cream); font-weight: 600; text-decoration: none; }
-    .lodge a:hover { color: var(--gold-bright); }
-    .lodge .price { color: var(--gold-bright); font-variant-numeric: tabular-nums; margin: .3rem 0 0; }
-    .lodge .meta { font-size: .8rem; color: var(--cream-mute); margin: .2rem 0 0; }
+    .lodge-grid { display: grid; gap: .65rem; grid-template-columns: 1fr; margin: .35rem 0 1rem; }
+    @media (min-width: 640px) { .lodge-grid { grid-template-columns: repeat(2, 1fr); } }
+    .lodge {
+      border: 1px solid var(--line); border-radius: 18px; padding: .8rem .9rem;
+      background: var(--paper); color: var(--ink-2); font-size: .86rem; box-shadow: var(--shadow-sm);
+    }
+    .lodge a { color: var(--ink); font-weight: 650; text-decoration: none; }
+    .lodge a:hover { color: #c17a68; }
+    .lodge .price { color: #c17a68; font-variant-numeric: tabular-nums; margin: .28rem 0 0; }
+    .lodge .meta { font-size: .78rem; color: var(--mute); margin: .15rem 0 0; }
 
-    .links { display: grid; gap: .7rem; margin: .2rem 0 0; }
+    .links { display: grid; gap: .6rem; margin: .2rem 0 0; }
     @media (min-width: 800px) { .links { grid-template-columns: 1fr 1fr; } }
-    .card { display: block; padding: .85rem 1rem; border: 1px solid var(--line); border-radius: 14px; background: rgba(244,239,230,.03); color: inherit; text-decoration: none; }
-    .card:hover { border-color: var(--gold); }
-    .card-title { display: block; color: var(--cream); font-weight: 600; }
-    .card small { color: var(--cream-mute); font-size: .75rem; }
-    .card-note { display: block; margin-top: .25rem; font-size: .82rem; color: var(--cream-dim); }
+    .card {
+      display: block; padding: .8rem .9rem; border: 1px solid var(--line); border-radius: 16px;
+      background: var(--paper); color: inherit; text-decoration: none; box-shadow: var(--shadow-sm);
+    }
+    .card:hover { border-color: #E39B8A; }
+    .card-title { display: block; color: var(--ink); font-weight: 650; }
+    .card small { color: var(--mute); font-size: .72rem; }
+    .card-note { display: block; margin-top: .2rem; font-size: .8rem; color: var(--ink-2); }
 
-    .gallery { display: grid; gap: .7rem; grid-template-columns: 1fr 1fr; margin: 1.4rem 0 0; }
+    .gallery { display: grid; gap: .7rem; grid-template-columns: 1fr 1fr; margin: 1.2rem 0 0; }
     @media (max-width: 700px) { .gallery { grid-template-columns: 1fr; } }
     .gallery figure { margin: 0; }
-    .gallery img { width: 100%; height: 12rem; object-fit: cover; border-radius: 12px; cursor: zoom-in; }
-    .gallery figcaption { font-size: .72rem; color: var(--cream-mute); margin-top: .35rem; }
+    .gallery img { width: 100%; height: 11rem; object-fit: cover; border-radius: 16px; cursor: zoom-in; box-shadow: var(--shadow-sm); }
+    .gallery figcaption { font-size: .7rem; color: var(--mute); margin-top: .3rem; }
 
-    .sources { padding: 3rem 0 4rem; border-top: 1px solid var(--line); background: var(--ink-2); }
-    .sources ol { color: var(--cream-dim); font-size: .86rem; }
-    footer { padding: 1.2rem; text-align: center; color: var(--cream-mute); font-size: .78rem; }
+    .sources { padding: 2.2rem 0 3rem; }
+    footer { padding: 1rem 1.2rem 2rem; text-align: center; color: var(--mute); font-size: .75rem; }
 
-    #lightbox { position: fixed; inset: 0; z-index: 80; background: rgba(5,7,8,.92); display: grid; place-items: center; padding: 3vh 4vw; }
+    #lightbox { position: fixed; inset: 0; z-index: 80; background: rgba(50,44,38,.88); display: grid; place-items: center; padding: 3vh 4vw; }
     #lightbox[hidden] { display: none; }
-    #lightbox img { max-width: min(96vw, 1400px); max-height: 86vh; object-fit: contain; }
-    .lb-cap { color: var(--cream-dim); font-size: .85rem; margin-top: .7rem; text-align: center; }
-    .lb-x, .lb-nav { position: absolute; top: 1rem; background: transparent; border: 0; color: var(--cream); font-size: 1.4rem; cursor: pointer; padding: .4rem .7rem; }
+    #lightbox img { max-width: min(96vw, 1400px); max-height: 86vh; object-fit: contain; border-radius: 12px; }
+    .lb-cap { color: #efe8de; font-size: .82rem; margin-top: .6rem; text-align: center; }
+    .lb-x, .lb-nav { position: absolute; top: 1rem; background: transparent; border: 0; color: #fff; font-size: 1.4rem; cursor: pointer; padding: .4rem .7rem; }
     .lb-x { right: 1rem; } .prev { left: .4rem; top: 50%; } .next { right: .4rem; top: 50%; }
 
     html.shot .reveal { opacity: 1 !important; transform: none !important; animation: none !important; }
-    html.shot-top .nav, html.shot-top footer, html.shot-top #lightbox, html.shot-top #snow, html.shot-top .sources { display: none !important; }
-    html.shot-top body { background: var(--ink); }
-    html.shot-top .hero { min-height: 40rem; height: 40rem; }
-    html.shot-map .nav, html.shot-map footer, html.shot-map #lightbox, html.shot-map #snow, html.shot-map .hero, html.shot-map .overview, html.shot-map .plan, html.shot-map .sources { display: none !important; }
-    html.shot-map body { background: var(--ink); padding: 1.1rem !important; }
+    html.shot-hero .nav, html.shot-hero footer, html.shot-hero #lightbox, html.shot-hero .overview, html.shot-hero .map-sec, html.shot-hero .plan, html.shot-hero .sources { display: none !important; }
+    html.shot-hero body { background: var(--bg); padding: 1rem !important; }
+    html.shot-map .nav, html.shot-map footer, html.shot-map #lightbox, html.shot-map .hero, html.shot-map .overview, html.shot-map .plan, html.shot-map .sources { display: none !important; }
+    html.shot-map body { background: var(--bg); padding: 1rem !important; }
     html.shot-map .map-sec { padding: 0; }
-    html.shot-perhead .nav, html.shot-perhead footer, html.shot-perhead #lightbox, html.shot-perhead #snow, html.shot-perhead .hero, html.shot-perhead .overview, html.shot-perhead .map-sec, html.shot-perhead .sources, html.shot-perhead .day-grid, html.shot-perhead .date-box, html.shot-perhead .alt-box, html.shot-perhead .todo, html.shot-perhead .gallery, html.shot-perhead .refs, html.shot-perhead .budget-grid { display: none !important; }
-    html.shot-perhead body { background: var(--ink); padding: 1.1rem !important; }
-    html.shot-section .nav, html.shot-section footer, html.shot-section #lightbox, html.shot-section #snow { display: none !important; }
-    html.shot-section body { background: var(--ink); padding: 0 !important; }
-    html.shot-section .hero { min-height: 40rem; height: 40rem; }
-    html.shot-top .gallery, html.shot-top .refs, html.shot-top .sources, html.shot-top footer { display: none !important; }
+    html.shot-table .nav, html.shot-table footer, html.shot-table #lightbox, html.shot-table .hero, html.shot-table .overview, html.shot-table .map-sec, html.shot-table .sources, html.shot-table .day-grid, html.shot-table .date-box, html.shot-table .alt-box, html.shot-table .todo, html.shot-table .gallery, html.shot-table .refs, html.shot-table .budget-grid, html.shot-table .lodge-grid, html.shot-table #stay, html.shot-table .hint, html.shot-table .budget > .chips, html.shot-table .budget > .plain, html.shot-table .budget > h3, html.shot-table .perhead-block .src { display: none !important; }
+    html.shot-table body { background: var(--bg); padding: 1rem !important; }
+    html.shot-table h3:not(.perhead-block h3) { display: none; }
 
     @media (max-width: 800px) {
-      .nav { padding: .55rem .8rem .45rem; flex-wrap: wrap; }
-      .nav-links a { letter-spacing: .08em; font-size: .7rem; }
-      .hero { min-height: 78svh; }
-      .hero-copy { padding-bottom: 16vh; }
-      #trip-map { height: 22rem; }
+      .nav { padding: .45rem .7rem; }
+      .hero-photo { height: 14.5rem; }
     }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .train-bounce { animation: none !important; }
+    }
+    @keyframes train-bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+    .train-bounce { animation: train-bounce 1.6s ease-in-out infinite; }
   </style>
 </head>
 <body>
@@ -229,16 +382,19 @@
   </header>
 
   <section class="hero" id="top">
-    <img class="hero-photo" id="heroPhoto" src="img/yulong-snow-mountain.jpg" width="1200" height="750" alt="玉龙雪山雪峰">
-    <div class="hero-shade"></div>
-    <canvas id="snow" aria-hidden="true"></canvas>
-    <div class="hero-copy">
-      <p class="kicker">WINTER JOURNEY</p>
-      <h1>一月，先丽江再大理</h1>
-      <p class="hero-lead">先上玉龙雪山，再坐高铁去洱海、苍山。当地可坐公交、包车，也可以自己开车。</p>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="kicker">木阳的冬日小记</p>
+        <h1>一月，先丽江<br>再大理</h1>
+        <p class="hero-lead">先上玉龙雪山，再坐高铁去洱海、苍山。当地可坐公交、包车，也可以自己开车。</p>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-photo-wrap">
+          <img class="hero-photo" id="heroPhoto" src="img/yulong-peak.jpg" width="1800" height="810" alt="玉龙雪山雪峰">
+        </div>
+        <p class="hero-credit">玉龙雪山　CEphoto, Uwe Aranas　<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a></p>
+      </div>
     </div>
-    <p class="hero-credit">玉龙雪山<br>Ma Martin　<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a></p>
-    <p class="scroll-hint">阅读</p>
   </section>
 
   <section class="overview" id="plan">
@@ -261,9 +417,8 @@
 
   <section class="map-sec" id="map">
     <div class="wrap-wide">
-      <p class="eyebrow">路线地图</p>
+      <p class="eyebrow">手绘行程图</p>
       <h2>点一天，看那天怎么走</h2>
-      <p>标记按海拔上色。点标记看名字、海拔和那天做什么。也可点下面的日程卡片，地图会跟过去。</p>
       <div class="map-toolbar" role="toolbar" aria-label="按天筛选">
         <button type="button" data-day="all" class="is-on">全程</button>
         <button type="button" data-day="D1">D1 抵达</button>
@@ -273,10 +428,249 @@
         <button type="button" data-day="D5">D5 洱海</button>
         <button type="button" data-day="D6">D6 苍山</button>
       </div>
-      <div class="map-frame" id="map-frame">
-        <div id="trip-map" role="application" aria-label="丽江到大理行程地图"></div>
+      <div class="map-stage" id="map-stage">
+        <svg class="map-svg" id="trip-map" viewBox="0 0 400 795" role="img" aria-label="丽江到大理手绘行程图">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#EAF5FB"/>
+              <stop offset="38%" stop-color="#F7F1E6"/>
+              <stop offset="100%" stop-color="#F3EBDD"/>
+            </linearGradient>
+            <linearGradient id="lake" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#B9E0EE"/>
+              <stop offset="55%" stop-color="#8EC9E0"/>
+              <stop offset="100%" stop-color="#7EB8D4"/>
+            </linearGradient>
+            <linearGradient id="pool" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#C8F0F2"/>
+              <stop offset="100%" stop-color="#6EC4C8"/>
+            </linearGradient>
+            <linearGradient id="snowcap" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#fff"/>
+              <stop offset="100%" stop-color="#E4F0F6"/>
+            </linearGradient>
+            <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
+              <feDropShadow dx="0" dy="1" stdDeviation="1.2" flood-color="#8a7460" flood-opacity=".18"/>
+            </filter>
+          </defs>
+
+          <rect width="400" height="720" rx="24" fill="url(#sky)"/>
+
+          <!-- decorative sun & clouds -->
+          <circle cx="338" cy="42" r="16" fill="#F8E3A8" opacity=".9"/>
+          <circle cx="338" cy="42" r="22" fill="#F8E3A8" opacity=".28"/>
+          <g fill="#fff" opacity=".92">
+            <ellipse cx="52" cy="46" rx="22" ry="9"/>
+            <ellipse cx="70" cy="44" rx="14" ry="8"/>
+            <ellipse cx="36" cy="46" rx="12" ry="7"/>
+            <ellipse cx="300" cy="70" rx="18" ry="8"/>
+            <ellipse cx="316" cy="68" rx="11" ry="7"/>
+          </g>
+
+          <!-- north label -->
+          <g transform="translate(28 28)">
+            <circle r="13" fill="#fff" stroke="#E8D9C8" stroke-width="1.2"/>
+            <text text-anchor="middle" y="-1" font-size="8" fill="#8A8278" font-family="PingFang SC,Microsoft YaHei,sans-serif">北</text>
+            <polygon points="0,-9 2.2,-3 -2.2,-3" fill="#E39B8A"/>
+          </g>
+          <text x="200" y="28" text-anchor="middle" font-size="13" fill="#C17A68" font-family="ZCOOL KuaiLe,PingFang SC,sans-serif">丽江</text>
+
+          <!-- Yulong snow mountains, cute stylized -->
+          <g class="mounts">
+            <path d="M70 155 L110 78 L145 120 L168 52 L200 108 L228 62 L262 118 L295 88 L345 160 Z" fill="#C9D8E2"/>
+            <path d="M110 78 L124 102 L96 102 Z" fill="url(#snowcap)"/>
+            <path d="M168 52 L186 88 L148 90 Z" fill="url(#snowcap)"/>
+            <path d="M228 62 L242 90 L210 92 Z" fill="url(#snowcap)"/>
+            <path d="M295 88 L306 112 L280 112 Z" fill="url(#snowcap)"/>
+            <!-- front foothills -->
+            <path d="M48 168 Q120 138 200 162 Q280 136 360 172 L360 210 Q200 190 48 210 Z" fill="#DDE8C9"/>
+            <text x="188" y="48" text-anchor="middle" font-size="10" fill="#5C6B78" font-family="PingFang SC,Microsoft YaHei,sans-serif">玉龙雪山</text>
+          </g>
+
+          <!-- tiny pines -->
+          <g fill="#88A878">
+            <path d="M58 188 l5 -12 5 12 z"/><path d="M74 194 l4 -10 4 10 z"/>
+            <path d="M318 186 l5 -12 5 12 z"/><path d="M338 194 l4 -9 4 9 z"/>
+            <path d="M42 248 l4 -9 4 9 z"/><path d="M360 250 l4 -9 4 9 z"/>
+          </g>
+
+          <!-- mid hills / travel corridor -->
+          <path d="M0 330 Q80 300 160 328 Q240 355 400 318 L400 430 Q200 455 0 428 Z" fill="#EFE4D0"/>
+          <path d="M0 400 Q140 378 260 410 Q340 428 400 400 L400 455 Q200 478 0 450 Z" fill="#E7DCC8" opacity=".85"/>
+
+          <!-- Cangshan west of Erhai -->
+          <g>
+            <path d="M18 460 L48 390 L78 445 L100 368 L128 438 L150 400 L168 455 L168 700 L18 700 Z" fill="#B7C9B0"/>
+            <path d="M48 390 L58 415 L36 416 Z" fill="url(#snowcap)"/>
+            <path d="M100 368 L114 402 L84 404 Z" fill="url(#snowcap)"/>
+            <path d="M150 400 L160 424 L138 425 Z" fill="#EEF4F0"/>
+            <text x="86" y="448" text-anchor="middle" font-size="11" fill="#4A5C48" font-family="ZCOOL KuaiLe,PingFang SC,sans-serif">苍山</text>
+          </g>
+
+          <!-- Erhai lake -->
+          <path d="M176 458 C 210 448, 268 452, 292 478 C 318 508, 322 560, 308 610 C 296 658, 260 692, 212 698 C 168 704, 150 668, 146 620 C 142 568, 148 510, 176 458 Z" fill="url(#lake)" filter="url(#soft)"/>
+          <path d="M190 500 C 220 490, 260 508, 270 545 C 278 580, 250 650, 210 662 C 178 672, 168 620, 172 575 C 174 540, 178 512, 190 500 Z" fill="#C5E8F2" opacity=".45"/>
+          <!-- tiny boat on lake -->
+          <g transform="translate(230 580)" fill="#C17A68">
+            <ellipse cx="0" cy="4" rx="9" ry="3.2" fill="#E8D5B5"/>
+            <path d="M-2 4 L-2 -10 L8 -1 Z" fill="#C17A68"/>
+          </g>
+          <text x="230" y="640" text-anchor="middle" font-size="11" fill="#2F6A80" font-family="ZCOOL KuaiLe,PingFang SC,sans-serif">洱海</text>
+
+          <text x="200" y="438" text-anchor="middle" font-size="13" fill="#C17A68" font-family="ZCOOL KuaiLe,PingFang SC,sans-serif">大理</text>
+
+          <!-- main corridor dotted line 丽江站 → 大理站 -->
+          <path id="main-rail" class="route-main" d="M175 286 C 220 330, 330 350, 345 410 C 358 480, 350 620, 250 700 S 210 722, 210 722"/>
+
+          <!-- day routes (hidden unless selected) -->
+          <path class="route-line" data-day="D1" d="M255 292 L110 242"/>
+          <path class="route-line" data-day="D2" d="M110 242 L150 208"/>
+          <path class="route-line" data-day="D3" d="M110 242 L210 172 L160 108 L262 136"/>
+          <path class="route-line" data-day="D4" d="M175 286 C 220 330, 330 350, 345 410 C 358 480, 350 620, 250 700 L210 722 L162 568"/>
+          <path class="route-line" data-day="D5" d="M162 568 L292 498"/>
+          <path class="route-line" data-day="D6" d="M162 568 L102 638 L88 528 L210 722"/>
+
+          <!-- cute train between Lijiang and Dali -->
+          <g transform="translate(318 368)">
+            <g class="train-bounce">
+              <rect x="0" y="0" width="28" height="16" rx="5" fill="#E39B8A"/>
+              <rect x="4" y="4" width="6" height="6" rx="1.5" fill="#FFF6E8"/>
+              <rect x="12" y="4" width="6" height="6" rx="1.5" fill="#FFF6E8"/>
+              <rect x="20" y="4" width="5" height="6" rx="1.5" fill="#FFF6E8"/>
+              <circle cx="7" cy="16" r="2.4" fill="#5C564E"/>
+              <circle cx="21" cy="16" r="2.4" fill="#5C564E"/>
+              <rect x="28" y="5" width="6" height="8" rx="2" fill="#C17A68"/>
+              <text x="14" y="30" text-anchor="middle" font-size="8" fill="#8A5346" font-family="PingFang SC,Microsoft YaHei,sans-serif">高铁 · 约2小时</text>
+            </g>
+          </g>
+
+          <!-- stops -->
+          <!-- airport -->
+          <g class="stop alt-low" data-id="airport" data-days="D1" transform="translate(255 292)" tabindex="0" role="button">
+            <circle class="halo" r="13"/>
+            <g transform="translate(-8 -6)">
+              <path d="M1 7 L15 7 L12 10 L4 10 Z" fill="#7EB8D4"/>
+              <path d="M7 7 L7 1 L10 7" fill="#5A9BB8"/>
+              <path d="M7 7 L1 4 L7 6" fill="#5A9BB8"/>
+            </g>
+            <text class="slabel" y="24">三义机场</text>
+          </g>
+          <!-- shuhe -->
+          <g class="stop alt-low" data-id="shuhe" data-days="D1 D2 D3" transform="translate(110 242)" tabindex="0" role="button">
+            <circle class="halo" r="13"/>
+            <g transform="translate(-8 -8)">
+              <path d="M1 8 L8 2 L15 8 Z" fill="#E39B8A"/>
+              <rect x="3.5" y="8" width="9" height="7" rx="1" fill="#F4D4C0"/>
+              <rect x="6.5" y="10" width="3" height="5" fill="#C17A68"/>
+            </g>
+            <text class="slabel" y="24">束河古镇</text>
+          </g>
+          <!-- baisha -->
+          <g class="stop alt-low" data-id="baisha" data-days="D1 D2" transform="translate(150 208)" tabindex="0" role="button">
+            <circle class="halo" r="12"/>
+            <g transform="translate(-7 -7)">
+              <path d="M1 7 L7 2 L13 7 Z" fill="#E0B56A"/>
+              <rect x="3" y="7" width="8" height="6" rx="1" fill="#F8E9C8"/>
+            </g>
+            <text class="slabel" y="23">白沙古镇</text>
+          </g>
+          <!-- ganhaizi -->
+          <g class="stop alt-mid" data-id="ganhaizi" data-days="D3" transform="translate(210 172)" tabindex="0" role="button">
+            <circle class="halo" r="12"/>
+            <g transform="translate(-7 -6)">
+              <ellipse cx="7" cy="8" rx="7" ry="3.5" fill="#C5D98A"/>
+              <rect x="4" y="2" width="6" height="6" rx="1" fill="#E8D5B5"/>
+            </g>
+            <text class="slabel" y="24">游客中心</text>
+          </g>
+          <!-- cable -->
+          <g class="stop alt-high" data-id="cable" data-days="D3" transform="translate(160 108)" tabindex="0" role="button">
+            <circle class="halo" r="13"/>
+            <g transform="translate(-7 -8)">
+              <rect x="2" y="0" width="10" height="8" rx="2" fill="#E39B8A"/>
+              <rect x="4" y="2" width="6" height="4" rx="1" fill="#FFF6E8"/>
+              <line x1="7" y1="8" x2="7" y2="13" stroke="#5C564E" stroke-width="1.2"/>
+              <circle cx="7" cy="3" r="0"/>
+            </g>
+            <text class="slabel" y="24">大索道上站</text>
+          </g>
+          <!-- bluemoon -->
+          <g class="stop alt-mid" data-id="bluemoon" data-days="D3" transform="translate(262 136)" tabindex="0" role="button">
+            <circle class="halo" r="13"/>
+            <g transform="translate(-8 -6)">
+              <ellipse cx="5" cy="7" rx="5.5" ry="3.4" fill="url(#pool)"/>
+              <ellipse cx="11" cy="8" rx="4.2" ry="2.6" fill="#8ED4D8"/>
+              <ellipse cx="6" cy="6" rx="2" ry="1" fill="#fff" opacity=".5"/>
+            </g>
+            <text class="slabel" y="24">蓝月谷</text>
+          </g>
+          <!-- lj station -->
+          <g class="stop alt-low" data-id="ljstation" data-days="D4" transform="translate(175 286)" tabindex="0" role="button">
+            <circle class="halo" r="12"/>
+            <g transform="translate(-8 -6)">
+              <rect x="0" y="3" width="16" height="9" rx="3" fill="#7EB8D4"/>
+              <rect x="3" y="5" width="3.5" height="3.5" rx="0.8" fill="#fff"/>
+              <rect x="8.5" y="5" width="3.5" height="3.5" rx="0.8" fill="#fff"/>
+            </g>
+            <text class="slabel" y="24">丽江站</text>
+          </g>
+          <!-- dali station -->
+          <g class="stop alt-low" data-id="dlistation" data-days="D4 D6" transform="translate(210 722)" tabindex="0" role="button">
+            <circle class="halo" r="12"/>
+            <g transform="translate(-8 -6)">
+              <rect x="0" y="3" width="16" height="9" rx="3" fill="#7EB8D4"/>
+              <rect x="3" y="5" width="3.5" height="3.5" rx="0.8" fill="#fff"/>
+              <rect x="8.5" y="5" width="3.5" height="3.5" rx="0.8" fill="#fff"/>
+            </g>
+            <text class="slabel" y="24">大理站</text>
+          </g>
+          <!-- xizhou -->
+          <g class="stop alt-low" data-id="xizhou" data-days="D4 D5 D6" transform="translate(162 568)" tabindex="0" role="button">
+            <circle class="halo" r="13"/>
+            <g transform="translate(-8 -8)">
+              <path d="M1 8 L8 2 L15 8 Z" fill="#E39B8A"/>
+              <rect x="3.5" y="8" width="9" height="7" rx="1" fill="#F4D4C0"/>
+            </g>
+            <text class="slabel" y="24">喜洲</text>
+          </g>
+          <!-- shuanglang -->
+          <g class="stop alt-low" data-id="shuanglang" data-days="D4 D5" transform="translate(292 498)" tabindex="0" role="button">
+            <circle class="halo" r="12"/>
+            <g transform="translate(-8 -7)">
+              <path d="M1 8 L8 3 L15 8 Z" fill="#E0B56A"/>
+              <rect x="4" y="8" width="8" height="6" rx="1" fill="#F8E9C8"/>
+            </g>
+            <text class="slabel" y="23">双廊</text>
+          </g>
+          <!-- gantong -->
+          <g class="stop alt-low" data-id="gantong" data-days="D6" transform="translate(102 638)" tabindex="0" role="button">
+            <circle class="halo" r="12"/>
+            <g transform="translate(-7 -8)">
+              <rect x="2" y="0" width="10" height="8" rx="2" fill="#88B894"/>
+              <rect x="4" y="2" width="6" height="4" rx="1" fill="#FFF6E8"/>
+              <line x1="7" y1="8" x2="7" y2="13" stroke="#5C564E" stroke-width="1.2"/>
+            </g>
+            <text class="slabel" y="24">感通索道</text>
+          </g>
+          <!-- ximatan -->
+          <g class="stop alt-high" data-id="ximatan" data-days="D6" transform="translate(88 528)" tabindex="0" role="button">
+            <circle class="halo" r="12"/>
+            <g transform="translate(-7 -7)">
+              <path d="M7 0 L13 12 L1 12 Z" fill="#C9D8E2"/>
+              <path d="M7 0 L10 6 L4 6 Z" fill="url(#snowcap)"/>
+            </g>
+            <text class="slabel" y="24">洗马潭</text>
+          </g>
+        </svg>
+        <div class="map-bubble" id="map-bubble" hidden>
+          <button class="bubble-x" type="button" aria-label="关闭">×</button>
+          <strong class="b-name"></strong>
+          <span class="b-alt"></span>
+          <p class="b-note"></p>
+          <span class="b-days"></span>
+        </div>
         <div class="map-fallback">
-          <p><strong>地图没能加载。</strong>下面按天列出地点，详细行程见日程卡片。</p>
+          <p><strong>地图没能显示。</strong>下面按天列出地点，详细行程见日程卡片。</p>
           <ul class="plain" id="map-fallback-list"></ul>
         </div>
       </div>
@@ -288,19 +682,19 @@
       <details class="src">
         <summary>来源与说明</summary>
         <div class="src-body">
-          <p>坐标尽量用公开标注，没有编造。玉湖村没查到可靠的单点坐标，地图上暂不标，行程里仍可去。</p>
+          <p>这是手绘示意地图，南北关系大致对（丽江在北、大理在南），不是实测底图。坐标尽量用公开标注，没有编造。玉湖村没查到可靠的单点坐标，地图上暂不标，行程里仍可去。</p>
           <ul class="plain">
             <li>丽江三义机场 26.67917°N，100.24583°E，海拔 2243 米：<a href="https://en.wikipedia.org/wiki/Lijiang_Sanyi_International_Airport">英文维基百科</a></li>
             <li>束河古镇 26.92347°N，100.20359°E：OpenStreetMap Nominatim 景点</li>
             <li>白沙古镇 26.95648°N，100.21465°E：OpenStreetMap Nominatim 景点</li>
-            <li>玉龙雪山游客中心／甘海子：高德「雪川游客港」27.097342，100.259092（火星坐标，图上已换算成地球坐标）</li>
+            <li>玉龙雪山游客中心／甘海子：高德「雪川游客港」27.097342，100.259092（火星坐标，已换算成地球坐标）</li>
             <li>冰川公园大索道上站：维基共享照片《玉龙雪山4506m标志》（Caihm）文件里标的拍摄位置 27.105193°N，100.199577°E；海拔 4506 米为景区常用标高。拍摄点可能有几米到几十米误差</li>
             <li>蓝月谷 27.12938°N，100.24193°E：OpenStreetMap Nominatim 景点</li>
             <li>丽江站 26.81381°N，100.25093°E：OpenStreetMap 火车站</li>
             <li>大理站 25.59259°N，100.25039°E：<a href="https://zh.wikipedia.org/wiki/%E5%A4%A7%E7%90%86%E7%AB%99">中文维基百科</a></li>
             <li>喜洲 25.85333°N，100.12935°E：<a href="https://zh.wikipedia.org/wiki/%E5%96%9C%E6%B4%B2%E9%95%87">喜洲镇维基百科</a>；双廊 25.91274°N，100.19250°E：<a href="https://zh.wikipedia.org/wiki/%E5%8F%8C%E5%BB%8A%E9%95%87">双廊镇维基百科</a></li>
             <li>感通索道下站 25.64762°N，100.16844°E：OpenStreetMap 售票点；洗马潭：大理苍山公示路线坐标 100.103528，25.660918（火星坐标，已换算），上站约 3900 米见大理旅游集团</li>
-            <li>束河、洱海海拔沿用行程常用口径：束河约 2400 米，洱海约 1970 米。底图默认 OpenStreetMap；如加载慢或失败，会改用高德瓦片（需火星坐标）或改显示文字列表</li>
+            <li>束河、洱海海拔沿用行程常用口径：束河约 2400 米，洱海约 1970 米</li>
           </ul>
         </div>
       </details>
@@ -322,9 +716,12 @@
 
       <div class="day-grid" id="days">
         <article class="day-card" data-day="D1" id="day-d1">
-          <img src="img/shuhe-06-gate-lanterns.jpg" alt="束河古镇门口灯笼" width="1000" height="750">
+          <div class="day-photo">
+            <img src="img/shuhe-gate.jpg" alt="束河古镇牌坊" width="1500" height="1125">
+            <span class="day-n">D1 · 抵达</span>
+          </div>
           <div class="day-body">
-            <div class="day-top"><span class="day-n">D1 · 抵达</span><span>约 2400 米</span></div>
+            <div class="day-top"><span>约 2400 米</span></div>
             <div class="alt-bar"><div class="lab"><span>当天最高海拔</span><span>约 2400 米</span></div><div class="track"><div class="fill fill-g" style="width:48%"></div></div></div>
             <p class="day-sum">成都飞到<strong>丽江三义机场</strong>，去束河或白沙住下，先适应海拔。</p>
             <div class="day-more">
@@ -337,9 +734,12 @@
           </div>
         </article>
         <article class="day-card" data-day="D2" id="day-d2">
-          <img src="img/shuhe-01-stream.jpg" alt="束河古镇溪流与石板路" width="1200" height="900">
+          <div class="day-photo">
+            <img src="img/shuhe-willow.jpg" alt="束河古镇柳树与牌坊" width="1500" height="1125">
+            <span class="day-n">D2 · 适应</span>
+          </div>
           <div class="day-body">
-            <div class="day-top"><span class="day-n">D2 · 适应</span><span>约 2400 米</span></div>
+            <div class="day-top"><span>约 2400 米</span></div>
             <div class="alt-bar"><div class="lab"><span>当天最高海拔</span><span>约 2400 米</span></div><div class="track"><div class="fill fill-g" style="width:48%"></div></div></div>
             <p class="day-sum">睡到自然醒。在<strong>束河、白沙</strong>转转，也可去玉湖村远看雪山。</p>
             <div class="day-more">
@@ -352,9 +752,12 @@
           </div>
         </article>
         <article class="day-card" data-day="D3" id="day-d3">
-          <img src="img/blue-moon-valley.jpg" alt="玉龙雪山蓝月谷的蓝色湖水" width="1200" height="900">
+          <div class="day-photo">
+            <img src="img/yulong-glacier.jpg" alt="玉龙雪山冰川公园栈道" width="1600" height="1200">
+            <span class="day-n">D3 · 玉龙雪山</span>
+          </div>
           <div class="day-body">
-            <div class="day-top"><span class="day-n">D3 · 玉龙雪山</span><span>4506 米</span></div>
+            <div class="day-top"><span>4506 米</span></div>
             <div class="alt-bar"><div class="lab"><span>当天最高海拔</span><span>大索道上站 4506 米</span></div><div class="track"><div class="fill fill-r" style="width:90%"></div></div></div>
             <p class="day-sum">上<strong>冰川公园大索道</strong>，下午走<strong>蓝月谷</strong>。须排在同行朋友 1 月 7 日回日本之前。</p>
             <div class="day-more">
@@ -369,9 +772,12 @@
           </div>
         </article>
         <article class="day-card" data-day="D4" id="day-d4">
-          <img src="img/erhai-xizhou.jpg" alt="喜洲附近的洱海" width="1200" height="750">
+          <div class="day-photo">
+            <img src="img/erhai-boat.jpg" alt="洱海上的渔人" width="1600" height="1000">
+            <span class="day-n">D4 · 去大理</span>
+          </div>
           <div class="day-body">
-            <div class="day-top"><span class="day-n">D4 · 去大理</span><span>约 1970 米</span></div>
+            <div class="day-top"><span>约 1970 米</span></div>
             <div class="alt-bar"><div class="lab"><span>当天海拔</span><span>降到洱海边约 1970 米</span></div><div class="track"><div class="fill fill-g" style="width:39%"></div></div></div>
             <p class="day-sum">坐高铁去大理，二等座 <strong>80 元</strong>，约 2 小时。住洱海边，喜洲或双廊都行。</p>
             <div class="day-more">
@@ -384,9 +790,12 @@
           </div>
         </article>
         <article class="day-card" data-day="D5" id="day-d5">
-          <img src="img/shuhe-03-qinglong-bridge.jpg" alt="古镇石桥，作大理慢逛配图" width="1200" height="900">
+          <div class="day-photo">
+            <img src="img/erhai-shore.jpg" alt="洱海生态廊道岸边" width="1500" height="1000">
+            <span class="day-n">D5 · 洱海</span>
+          </div>
           <div class="day-body">
-            <div class="day-top"><span class="day-n">D5 · 洱海</span><span>约 1970 米</span></div>
+            <div class="day-top"><span>约 1970 米</span></div>
             <div class="alt-bar"><div class="lab"><span>当天最高海拔</span><span>约 1970 米</span></div><div class="track"><div class="fill fill-g" style="width:39%"></div></div></div>
             <p class="day-sum">走环海西路，在<strong>双廊或喜洲</strong>转转。住在海边，不必赶场。</p>
             <div class="day-more">
@@ -397,9 +806,12 @@
           </div>
         </article>
         <article class="day-card" data-day="D6" id="day-d6">
-          <img src="img/cangshan.jpg" alt="苍山与田野" width="1200" height="750">
+          <div class="day-photo">
+            <img src="img/cangshan-erhai.jpg" alt="苍山雪峰倒映在洱海" width="1800" height="810">
+            <span class="day-n">D6 · 苍山（可选）</span>
+          </div>
           <div class="day-body">
-            <div class="day-top"><span class="day-n">D6 · 苍山（可选）</span><span>约 3900 米</span></div>
+            <div class="day-top"><span>约 3900 米</span></div>
             <div class="alt-bar"><div class="lab"><span>当天最高海拔</span><span>洗马潭约 3900 米</span></div><div class="track"><div class="fill fill-r" style="width:78%"></div></div></div>
             <p class="day-sum">可选苍山索道：<strong>感通</strong>较低、较轻松；<strong>洗马潭</strong>可到约 3900 米，上面别久留。</p>
             <div class="day-more">
@@ -412,7 +824,7 @@
           </div>
         </article>
       </div>
-      <p style="font-size:.75rem;color:var(--cream-mute);margin:-.6rem 0 1.2rem;">点卡片看细节，并在地图上高亮这一天。D5 配图是束河石桥，仅作气氛，不是双廊实地。</p>
+      <p class="hint">点卡片看细节，地图会跟着高亮这一天。</p>
 
       <div class="alt-box">
         <h3>对海拔敏感的朋友</h3>
@@ -462,43 +874,43 @@
               <tbody>
                 <tr>
                   <td>长途交通<span class="sub">去程约 290–400 元/人，丽江—大理 80 元，返程预留 300–700 元/人</span></td>
-                  <td class="way">按每人收</td>
+                  <td class="way"><span class="way-pill way-head">按每人收</span></td>
                   <td class="num">670–1180 元/人</td>
                   <td class="num">670–1180</td><td class="num">670–1180</td><td class="num">670–1180</td>
                 </tr>
                 <tr>
                   <td>丽江用车（对照：包车一天）<span class="sub">大象包车市内价：5 座 650 元、7 座 850 元；玉龙未单列。自驾日租本页未能打开，不编数字</span></td>
-                  <td class="way">总账平摊</td>
+                  <td class="way"><span class="way-pill way-share">总账平摊</span></td>
                   <td class="num">3–4 人按 5 座 650；5 人按 7 座 850</td>
                   <td class="num">约 217</td><td class="num">约 163</td><td class="num">约 170</td>
                 </tr>
                 <tr>
                   <td>油费·过路费·停车<span class="sub">仅自驾。束河往返甘海子约 50–60 公里，预留 40–80 元。过路费按 0。新游客中心暂不收费</span></td>
-                  <td class="way">总账平摊</td>
+                  <td class="way"><span class="way-pill way-share">总账平摊</span></td>
                   <td class="num">约 40–80 元（自驾时）</td>
                   <td class="num">约 13–27</td><td class="num">约 10–20</td><td class="num">约 8–16</td>
                 </tr>
                 <tr>
                   <td>门票<span class="sub">玉龙雪山 100 元/人。苍山门票常见含在索道套票里</span></td>
-                  <td class="way">按每人收</td>
+                  <td class="way"><span class="way-pill way-head">按每人收</span></td>
                   <td class="num">100 元/人</td>
                   <td class="num">100</td><td class="num">100</td><td class="num">100</td>
                 </tr>
                 <tr>
                   <td>索道（含景区摆渡车）<span class="sub">玉龙摆渡 20＋大索道 120，加苍山感通 100 或洗马潭约 260–320，约 240–460 元/人。高反朋友如来，该人只计摆渡 20 元</span></td>
-                  <td class="way">按每人收</td>
+                  <td class="way"><span class="way-pill way-head">按每人收</span></td>
                   <td class="num">240–460 元/人</td>
                   <td class="num">240–460</td><td class="num">240–460</td><td class="num">240–460</td>
                 </tr>
                 <tr>
                   <td>吃饭<span class="sub">按每人每天 80–150 元、5–6 天估算</span></td>
-                  <td class="way">按每人收</td>
+                  <td class="way"><span class="way-pill way-head">按每人收</span></td>
                   <td class="num">400–900 元/人</td>
                   <td class="num">400–900</td><td class="num">400–900</td><td class="num">400–900</td>
                 </tr>
                 <tr>
                   <td>住宿（丽江 3 晚＋大理 2 晚）<span class="sub">3 人：丽江合住一间 666–1113（222–371×3）＋大理 1976＝2642–3089。4 人住两居 2720–3953。5 人住「涵香＋归心」4433（节日约 5393）</span></td>
-                  <td class="way">总账平摊</td>
+                  <td class="way"><span class="way-pill way-share">总账平摊</span></td>
                   <td class="num">见上行说明</td>
                   <td class="num">881–1030</td><td class="num">680–988</td><td class="num">887–1079</td>
                 </tr>
@@ -545,13 +957,13 @@
           <div class="budget-pie-wrap">
             <div class="pie pie-lj" role="img" aria-label="丽江加大理费用占比，按各分项区间中位估算"></div>
             <ul class="pie-legend">
-              <li><i style="background:#d4b07a"></i><span class="lab">长途交通</span><span class="amt">28% · 4600</span></li>
-              <li><i style="background:#edcf96"></i><span class="lab">当地交通</span><span class="amt">10% · 1600</span></li>
-              <li><i style="background:#9fd0de"></i><span class="lab">门票</span><span class="amt">3% · 500</span></li>
-              <li><i style="background:#6aa8b8"></i><span class="lab">索道与摆渡</span><span class="amt">10% · 1740</span></li>
-              <li><i style="background:#e8d5b5"></i><span class="lab">住宿</span><span class="amt">29% · 4913</span></li>
-              <li><i style="background:#b7c4a1"></i><span class="lab">餐饮</span><span class="amt">19% · 3250</span></li>
-              <li><i style="background:#8b9aa0"></i><span class="lab">氧气及其他</span><span class="amt">1% · 125</span></li>
+              <li><i style="background:#E0B56A"></i><span class="lab">长途交通</span><span class="amt">28% · 4600</span></li>
+              <li><i style="background:#F0C9A0"></i><span class="lab">当地交通</span><span class="amt">10% · 1600</span></li>
+              <li><i style="background:#7EB8D4"></i><span class="lab">门票</span><span class="amt">3% · 500</span></li>
+              <li><i style="background:#8EBFD0"></i><span class="lab">索道与摆渡</span><span class="amt">10% · 1740</span></li>
+              <li><i style="background:#E8C9B0"></i><span class="lab">住宿</span><span class="amt">29% · 4913</span></li>
+              <li><i style="background:#A8C9A8"></i><span class="lab">餐饮</span><span class="amt">19% · 3250</span></li>
+              <li><i style="background:#C0B8B0"></i><span class="lab">氧气及其他</span><span class="amt">1% · 125</span></li>
             </ul>
             <p class="pie-cap">5 人中位约 16728 元，仅作总盘参考。</p>
           </div>
@@ -602,7 +1014,7 @@
           <p class="price">12/26–1/12 日历均为 <strong>988 元/晚</strong>，两晚 1976 元。近环海西路。</p>
         </div>
       </div>
-      <p style="font-size:.86rem;color:var(--cream-mute);">以上是平台日历价，不是下单瞬间的成交价，出发前请再核。</p>
+      <p class="hint">以上是平台日历价，不是下单瞬间的成交价，出发前请再核。</p>
 
       <div class="refs" id="refs-lijiang">
         <h3>参考视频</h3>
@@ -614,44 +1026,43 @@
           <a class="card" href="https://www.douyin.com/video/7594779658990652699" target="_blank" rel="noopener noreferrer"><span class="card-title">1、2 月云南怎么玩</span><small>付先生在云南 · 抖音</small><span class="card-note">云南冬季参考，未见可靠赞数，不编造</span></a>
           <a class="card" href="https://www.douyin.com/video/7671625286467518568" target="_blank" rel="noopener noreferrer"><span class="card-title">大理苍山旅行实拍记</span><small>抖音</small><span class="card-note">讲感通索道和苍山步道。未见可靠的账号与赞数，不编造</span></a>
         </div>
-        <p class="refs-note" style="font-size:.82rem;color:var(--cream-mute);margin-top:.6rem;">博主说法仅供参考（包括高反用药），出发前以官方和医生建议为准。</p>
+        <p class="hint" style="margin-top:.6rem;">博主说法仅供参考（包括高反用药），出发前以官方和医生建议为准。</p>
       </div>
 
-      <div class="gallery reveal">
+      <div class="gallery">
         <figure>
-          <img src="img/yulong-snow-mountain.jpg" width="1200" height="750" alt="玉龙雪山雪峰" data-full="img/yulong-snow-mountain.jpg" data-cap="玉龙雪山，Ma Martin，CC BY-SA 3.0">
-          <figcaption>玉龙雪山　Ma Martin　<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>　<a href="https://commons.wikimedia.org/wiki/File:%E7%8E%89%E9%BE%99%E9%9B%AA%E5%B1%B1_Jade_Dragon_Snow_Mountain_-_panoramio.jpg">来源</a></figcaption>
+          <img src="img/yulong-peak.jpg" width="1800" height="810" alt="玉龙雪山雪峰" data-full="img/yulong-peak.jpg" data-cap="玉龙雪山，CEphoto, Uwe Aranas，CC BY-SA 3.0">
+          <figcaption>玉龙雪山　CEphoto, Uwe Aranas　<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>　<a href="https://commons.wikimedia.org/wiki/File:Lijiang_Yunnan_China_Jade-Dragon-Snow-Mountain-01.jpg">来源</a></figcaption>
         </figure>
         <figure>
-          <img src="img/blue-moon-valley.jpg" width="1200" height="900" alt="蓝月谷蓝色湖水" data-full="img/blue-moon-valley.jpg" data-cap="蓝月谷，Ping an Chang，CC BY-SA 4.0">
-          <figcaption>蓝月谷　Ping an Chang　<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>　<a href="https://commons.wikimedia.org/wiki/File:%E6%B0%B4%E8%89%B2%E6%9C%83%E8%AE%8A%E7%9A%84%E8%97%8D%E6%9C%88%E8%B0%B7_20190928195012.jpg">来源</a></figcaption>
+          <img src="img/yulong-glacier.jpg" width="1600" height="1200" alt="玉龙雪山冰川公园栈道" data-full="img/yulong-glacier.jpg" data-cap="冰川公园栈道，Caihm，CC BY 3.0">
+          <figcaption>冰川公园栈道　Caihm　<a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>　<a href="https://commons.wikimedia.org/wiki/File:%E4%BB%8E%E6%A0%88%E9%81%93%E6%9C%80%E9%AB%98%E7%82%B9(4680m)%E4%BF%AF%E7%9E%B0%E7%8E%89%E9%BE%99%E9%9B%AA%E5%B1%B1_-_panoramio.jpg">来源</a></figcaption>
         </figure>
         <figure>
-          <img src="img/shuhe-02-sanyanjing.jpg" width="1000" height="750" alt="束河三眼井" data-full="img/shuhe-02-sanyanjing.jpg" data-cap="束河三眼井，Yumeto，CC BY-SA 4.0">
-          <figcaption>束河三眼井　Yumeto　<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></figcaption>
+          <img src="img/blue-moon-valley.jpg" width="1500" height="1125" alt="蓝月谷清澈的蓝绿色湖水" data-full="img/blue-moon-valley.jpg" data-cap="蓝月谷，宝安区浩哥，CC BY-SA 4.0">
+          <figcaption>蓝月谷　宝安区浩哥　<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>　<a href="https://commons.wikimedia.org/wiki/File:%E4%BA%91%E5%8D%97%E8%93%9D%E6%9C%88%E8%B0%B702.jpg">来源</a></figcaption>
         </figure>
         <figure>
-          <img src="img/shuhe-04-night-lanterns.jpg" width="802" height="1200" alt="束河夜晚溪边灯笼" data-full="img/shuhe-04-night-lanterns.jpg" data-cap="束河夜色，Li Zhengxu，CC BY-SA 3.0">
-          <figcaption>束河夜色　Li Zhengxu　<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a></figcaption>
+          <img src="img/shuhe-gate.jpg" width="1500" height="1125" alt="束河古镇牌坊" data-full="img/shuhe-gate.jpg" data-cap="束河古镇牌坊，Gisling，CC BY 3.0">
+          <figcaption>束河古镇牌坊　Gisling　<a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>　<a href="https://commons.wikimedia.org/wiki/File:%E4%B8%BD%E6%B1%9F%E6%9D%9F%E6%B2%B3%E5%8F%A4%E9%95%87.JPG">来源</a></figcaption>
         </figure>
         <figure>
-          <img src="img/erhai-xizhou.jpg" width="1200" height="750" alt="喜洲附近的洱海" data-full="img/erhai-xizhou.jpg" data-cap="喜洲附近洱海，Ma Martin，CC BY-SA 3.0">
-          <figcaption>喜洲附近洱海　Ma Martin　<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>　<a href="https://commons.wikimedia.org/wiki/File:%E6%B4%B1%E6%B5%B7_%E5%96%9C%E6%B4%B2%E9%99%84%E8%BF%91_Erhai_Lake_-_panoramio.jpg">来源</a></figcaption>
+          <img src="img/shuhe-willow.jpg" width="1500" height="1125" alt="束河古镇柳树与丹凤含书牌坊" data-full="img/shuhe-willow.jpg" data-cap="束河古镇，Nyx Ning，CC BY-SA 3.0">
+          <figcaption>束河古镇　Nyx Ning　<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>　<a href="https://commons.wikimedia.org/wiki/File:%E4%BA%91%E5%8D%97-%E4%B8%BD%E6%B1%9F.%E6%9D%9F%E7%A6%BE%E5%8F%A4%E9%95%87%E4%B8%80%E6%99%AF_-_panoramio.jpg">来源</a></figcaption>
         </figure>
         <figure>
-          <img src="img/cangshan.jpg" width="1200" height="750" alt="苍山" data-full="img/cangshan.jpg" data-cap="苍山，Ma Martin，CC BY-SA 3.0">
-          <figcaption>苍山　Ma Martin　<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>　<a href="https://commons.wikimedia.org/wiki/File:%E5%A4%A7%E7%90%86%E8%8B%8D%E5%B1%B1_-_panoramio.jpg">来源</a></figcaption>
+          <img src="img/erhai-boat.jpg" width="1600" height="1000" alt="洱海上的渔人" data-full="img/erhai-boat.jpg" data-cap="洱海泛舟，Ma Martin，CC BY-SA 3.0">
+          <figcaption>洱海泛舟　Ma Martin　<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>　<a href="https://commons.wikimedia.org/wiki/File:%E6%B4%B1%E6%B5%B7_%E6%B3%9B%E8%88%9F_Erhai_Lake_-_panoramio.jpg">来源</a></figcaption>
         </figure>
         <figure>
-          <img src="img/shuhe-05-naxi-house.jpg" width="1200" height="900" alt="束河纳西民居" data-full="img/shuhe-05-naxi-house.jpg" data-cap="束河民居，nobush，CC BY 2.0">
-          <figcaption>束河民居　nobush　<a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a></figcaption>
+          <img src="img/erhai-shore.jpg" width="1500" height="1000" alt="洱海生态廊道" data-full="img/erhai-shore.jpg" data-cap="洱海生态廊道，Jonashtand，CC BY-SA 4.0">
+          <figcaption>洱海生态廊道　Jonashtand　<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>　<a href="https://commons.wikimedia.org/wiki/File:202605_Views_of_Erhai_from_the_Ecological_Corridor_22.jpg">来源</a></figcaption>
         </figure>
         <figure>
-          <img src="img/shuhe-01-stream.jpg" width="1200" height="900" alt="束河溪流石板路" data-full="img/shuhe-01-stream.jpg" data-cap="束河溪流，wuzhongj，CC BY 3.0">
-          <figcaption>束河溪流　wuzhongj　<a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></figcaption>
+          <img src="img/cangshan-erhai.jpg" width="1800" height="810" alt="苍山与洱海" data-full="img/cangshan-erhai.jpg" data-cap="苍山与洱海，Kcx36，CC BY-SA 4.0">
+          <figcaption>苍山与洱海　Kcx36　<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>　<a href="https://commons.wikimedia.org/wiki/File:%E5%A4%A7%E7%90%86%E6%B4%B1%E6%B5%B7%E5%8F%8A%E8%8B%8D%E5%B1%B1_03.jpg">来源</a></figcaption>
         </figure>
       </div>
-      <p style="font-size:.75rem;color:var(--cream-mute);margin-top:.5rem;">束河门口灯笼另见行程 D1，作者 Xiaoding413，<a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>。束河青龙桥见 D5 配图，作者 Yumeto，CC BY-SA 4.0。</p>
     </div>
   </div>
 
@@ -659,12 +1070,18 @@
     <div class="wrap">
       <p class="eyebrow">出处</p>
       <h2>照片与依据</h2>
+      <details class="src">
+        <summary>照片、票价与日历出处</summary>
+        <div class="src-body">
       <ol>
-        <li><a href="https://commons.wikimedia.org/wiki/File:%E7%8E%89%E9%BE%99%E9%9B%AA%E5%B1%B1_Jade_Dragon_Snow_Mountain_-_panoramio.jpg">玉龙雪山照片：Ma Martin，CC BY-SA 3.0</a></li>
-        <li><a href="https://commons.wikimedia.org/wiki/File:%E6%B0%B4%E8%89%B2%E6%9C%83%E8%AE%8A%E7%9A%84%E8%97%8D%E6%9C%88%E8%B0%B7_20190928195012.jpg">蓝月谷照片：Ping an Chang，CC BY-SA 4.0（2019-09-21）</a></li>
-        <li><a href="https://commons.wikimedia.org/wiki/File:%E6%B4%B1%E6%B5%B7_%E5%96%9C%E6%B4%B2%E9%99%84%E8%BF%91_Erhai_Lake_-_panoramio.jpg">喜洲附近洱海照片：Ma Martin，CC BY-SA 3.0</a></li>
-        <li><a href="https://commons.wikimedia.org/wiki/File:%E5%A4%A7%E7%90%86%E8%8B%8D%E5%B1%B1_-_panoramio.jpg">苍山照片：Ma Martin，CC BY-SA 3.0</a></li>
-        <li>束河照片：01 wuzhongj CC BY 3.0；02、03 Yumeto CC BY-SA 4.0；04 Li Zhengxu CC BY-SA 3.0；05 nobush CC BY 2.0；06 Xiaoding413 CC0</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Lijiang_Yunnan_China_Jade-Dragon-Snow-Mountain-01.jpg">玉龙雪山照片：CEphoto, Uwe Aranas，CC BY-SA 3.0</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:%E4%BB%8E%E6%A0%88%E9%81%93%E6%9C%80%E9%AB%98%E7%82%B9(4680m)%E4%BF%AF%E7%9E%B0%E7%8E%89%E9%BE%99%E9%9B%AA%E5%B1%B1_-_panoramio.jpg">冰川公园栈道照片：Caihm，CC BY 3.0</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:%E4%BA%91%E5%8D%97%E8%93%9D%E6%9C%88%E8%B0%B702.jpg">蓝月谷照片：宝安区浩哥，CC BY-SA 4.0</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:%E4%B8%BD%E6%B1%9F%E6%9D%9F%E6%B2%B3%E5%8F%A4%E9%95%87.JPG">束河古镇牌坊照片：Gisling，CC BY 3.0</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:%E4%BA%91%E5%8D%97-%E4%B8%BD%E6%B1%9F.%E6%9D%9F%E7%A6%BE%E5%8F%A4%E9%95%87%E4%B8%80%E6%99%AF_-_panoramio.jpg">束河古镇柳树照片：Nyx Ning，CC BY-SA 3.0</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:%E6%B4%B1%E6%B5%B7_%E6%B3%9B%E8%88%9F_Erhai_Lake_-_panoramio.jpg">洱海泛舟照片：Ma Martin，CC BY-SA 3.0</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:202605_Views_of_Erhai_from_the_Ecological_Corridor_22.jpg">洱海生态廊道照片：Jonashtand，CC BY-SA 4.0</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:%E5%A4%A7%E7%90%86%E6%B4%B1%E6%B5%B7%E5%8F%8A%E8%8B%8D%E5%B1%B1_03.jpg">苍山与洱海照片：Kcx36，CC BY-SA 4.0</a></li>
         <li><a href="http://www.yn.news.cn/20260702/e8f8d1a27e2845b4bf54cfc5ef8f5d36/c.html">玉龙雪山 2026 年票价：门票 100、环保车 20、冰川公园索道 120、蓝月谷电瓶车全程 40（玉龙雪山管委会 / 新华网云南）</a></li>
         <li><a href="https://view.inews.qq.com/a/20260104A071DC00">2026 年 1 月成都—丽江特价机票：去程 200 元起、返程 240 元起，不含机建燃油（成都本地宝，截自携程）</a></li>
         <li><a href="https://trains.ctrip.com/TrainBooking/lijiang-dali2/dongche">丽江—大理动车二等座 80 元，约 1 小时 56 分–2 小时 22 分（携程 2026-11-11）</a></li>
@@ -694,6 +1111,8 @@
         <li><a href="https://www.muniao.com/room/1083406.html">木鸟：轻奢三房两卫别墅套房（束河别墅区），页面标价 550 元/晚，可住 10 人</a></li>
         <li><a href="https://en.wikipedia.org/wiki/Lijiang_Sanyi_International_Airport">丽江三义机场坐标与海拔 2243 米（英文维基百科）</a></li>
       </ol>
+        </div>
+      </details>
     </div>
   </section>
   <footer>照片权利归拍摄者，按标注的知识共享协议使用。页面仅供行程参考，票价、开放与预约以官方最新通告为准。</footer>
@@ -707,7 +1126,6 @@
       <p class="lb-cap" id="lbCap"></p>
     </div>
   </div>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script>
     (function () {
       var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -719,7 +1137,6 @@
         if (nav) nav.classList.toggle("is-scrolled", window.scrollY > 40);
       }, { passive: true });
 
-      /* --- lightbox --- */
       var items = [].slice.call(document.querySelectorAll("img[data-full]"));
       var lb = document.getElementById("lightbox");
       var lbImg = document.getElementById("lbImg");
@@ -756,72 +1173,39 @@
         });
       }
 
-      /* --- coords: WGS-84, with GCJ helpers for Amap tiles --- */
-      function outOfChina(lat, lon) {
-        return lon < 72.004 || lon > 137.8347 || lat < 0.8293 || lat > 55.8271;
-      }
-      function trans(lat, lon) {
-        var dlat = -100 + 2 * lon + 3 * lat + 0.2 * lat * lat + 0.1 * lon * lat + 0.2 * Math.sqrt(Math.abs(lon));
-        dlat += (20 * Math.sin(6 * lon * Math.PI) + 20 * Math.sin(2 * lon * Math.PI)) * 2 / 3;
-        dlat += (20 * Math.sin(lat * Math.PI) + 40 * Math.sin(lat / 3 * Math.PI)) * 2 / 3;
-        dlat += (160 * Math.sin(lat / 12 * Math.PI) + 320 * Math.sin(lat * Math.PI / 30)) * 2 / 3;
-        var dlon = 300 + lon + 2 * lat + 0.1 * lon * lon + 0.1 * lon * lat + 0.1 * Math.sqrt(Math.abs(lon));
-        dlon += (20 * Math.sin(6 * lon * Math.PI) + 20 * Math.sin(2 * lon * Math.PI)) * 2 / 3;
-        dlon += (20 * Math.sin(lon * Math.PI) + 40 * Math.sin(lon / 3 * Math.PI)) * 2 / 3;
-        dlon += (150 * Math.sin(lon / 12 * Math.PI) + 300 * Math.sin(lon / 30 * Math.PI)) * 2 / 3;
-        return [dlat, dlon];
-      }
-      function wgsToGcj(lat, lon) {
-        if (outOfChina(lat, lon)) return [lat, lon];
-        var t = trans(lat - 35, lon - 105);
-        var rad = lat / 180 * Math.PI;
-        var magic = 1 - 0.00669342162296594323 * Math.sin(rad) * Math.sin(rad);
-        var sqrtm = Math.sqrt(magic);
-        var a = 6378245;
-        var dlat = (t[0] * 180) / ((a * (1 - 0.00669342162296594323)) / (magic * sqrtm) * Math.PI);
-        var dlon = (t[1] * 180) / (a / sqrtm * Math.cos(rad) * Math.PI);
-        return [lat + dlat, lon + dlon];
-      }
-
       var PLACES = [
-        { id: "airport", name: "丽江三义机场", lat: 26.67917, lon: 100.24583, alt: 2243, altLabel: "2243 米", days: ["D1"], note: "成都飞到这里。" },
-        { id: "shuhe", name: "束河古镇", lat: 26.9234735, lon: 100.2035898, alt: 2400, altLabel: "约 2400 米", days: ["D1", "D2", "D3"], note: "建议住这里适应海拔。" },
-        { id: "baisha", name: "白沙古镇", lat: 26.9564769, lon: 100.2146539, alt: 2400, altLabel: "约 2400 米", days: ["D1", "D2"], note: "也可住这里，或第二天过来转转。" },
-        { id: "ganhaizi", name: "玉龙雪山游客中心／甘海子", lat: 27.100839, lon: 100.257962, alt: 3356, altLabel: "索道下站一带约 3356 米", days: ["D3"], note: "车停在游客中心，进景区坐摆渡车。" },
-        { id: "cable", name: "冰川公园大索道上站", lat: 27.105193, lon: 100.199577, alt: 4506, altLabel: "4506 米", days: ["D3"], note: "上面别久留，不舒服就下。" },
-        { id: "bluemoon", name: "蓝月谷", lat: 27.1293772, lon: 100.2419291, alt: 3200, altLabel: "低于大索道（未核到精确单点高程）", days: ["D3"], note: "下午走栈道。高反朋友如果来，在这里等。" },
-        { id: "ljstation", name: "丽江站", lat: 26.8138119, lon: 100.2509280, alt: 2400, altLabel: "约 2400 米", days: ["D4"], note: "坐高铁去大理。" },
-        { id: "dlistation", name: "大理站", lat: 25.5925944, lon: 100.2503917, alt: 1970, altLabel: "约 1970 米", days: ["D4", "D6"], note: "下车去喜洲或双廊；返程也可从这里走。" },
-        { id: "xizhou", name: "喜洲", lat: 25.85333, lon: 100.12935, alt: 1970, altLabel: "洱海边约 1970 米", days: ["D4", "D5", "D6"], note: "可住洱海边，慢慢看海。" },
-        { id: "shuanglang", name: "双廊", lat: 25.91274, lon: 100.1925, alt: 1970, altLabel: "洱海边约 1970 米", days: ["D4", "D5"], note: "也可住这里，或第五天过来转转。" },
-        { id: "gantong", name: "苍山感通索道", lat: 25.6476152, lon: 100.1684432, alt: 2200, altLabel: "相对较低（未核到精确单点高程）", days: ["D6"], note: "可选，比较轻松。" },
-        { id: "ximatan", name: "洗马潭", lat: 25.663800, lon: 100.102231, alt: 3900, altLabel: "约 3900 米", days: ["D6"], note: "可选。上面别久留。高反朋友不上苍山。" }
+        { id: "airport", name: "丽江三义机场", alt: 2243, altLabel: "2243 米", days: ["D1"], note: "成都飞到这里。" },
+        { id: "shuhe", name: "束河古镇", alt: 2400, altLabel: "约 2400 米", days: ["D1", "D2", "D3"], note: "建议住这里适应海拔。" },
+        { id: "baisha", name: "白沙古镇", alt: 2400, altLabel: "约 2400 米", days: ["D1", "D2"], note: "也可住这里，或第二天过来转转。" },
+        { id: "ganhaizi", name: "玉龙雪山游客中心／甘海子", alt: 3356, altLabel: "索道下站一带约 3356 米", days: ["D3"], note: "车停在游客中心，进景区坐摆渡车。" },
+        { id: "cable", name: "冰川公园大索道上站", alt: 4506, altLabel: "4506 米", days: ["D3"], note: "上面别久留，不舒服就下。" },
+        { id: "bluemoon", name: "蓝月谷", alt: 3200, altLabel: "低于大索道（未核到精确单点高程）", days: ["D3"], note: "下午走栈道。高反朋友如果来，在这里等。" },
+        { id: "ljstation", name: "丽江站", alt: 2400, altLabel: "约 2400 米", days: ["D4"], note: "坐高铁去大理。" },
+        { id: "dlistation", name: "大理站", alt: 1970, altLabel: "约 1970 米", days: ["D4", "D6"], note: "下车去喜洲或双廊；返程也可从这里走。" },
+        { id: "xizhou", name: "喜洲", alt: 1970, altLabel: "洱海边约 1970 米", days: ["D4", "D5", "D6"], note: "可住洱海边，慢慢看海。" },
+        { id: "shuanglang", name: "双廊", alt: 1970, altLabel: "洱海边约 1970 米", days: ["D4", "D5"], note: "也可住这里，或第五天过来转转。" },
+        { id: "gantong", name: "苍山感通索道", alt: 2200, altLabel: "相对较低（未核到精确单点高程）", days: ["D6"], note: "可选，比较轻松。" },
+        { id: "ximatan", name: "洗马潭", alt: 3900, altLabel: "约 3900 米", days: ["D6"], note: "可选。上面别久留。高反朋友不上苍山。" }
       ];
-      /* 蓝月谷、感通、束河精确海拔未逐一核到单点高程：束河/洱海用行程常用口径；洗马潭、机场、大索道上站有出处。甘海子 3356 米为索道下站常见公示，作分色参考。蓝月谷只用「低于大索道」显示，分色按 3000 估在黄档，若不准不影响走线。 */
+      var PLACE_MAP = {};
+      PLACES.forEach(function (p) { PLACE_MAP[p.id] = p; });
 
-      var ROUTES = {
-        D1: ["airport", "shuhe"],
-        D2: ["shuhe", "baisha"],
-        D3: ["shuhe", "ganhaizi", "cable", "bluemoon"],
-        D4: ["ljstation", "dlistation", "xizhou"],
-        D5: ["xizhou", "shuanglang"],
-        D6: ["xizhou", "gantong", "ximatan", "dlistation"]
-      };
-
-      function altColor(alt) {
-        if (alt > 3500) return "#d9897a";
-        if (alt >= 2500) return "#e0c56a";
-        return "#8fbe8a";
-      }
-
-      var map, markers = {}, routeLine, useGcj = false, tileMode = "osm";
-      var mapEl = document.getElementById("trip-map");
-      var frame = document.getElementById("map-frame");
+      var stage = document.getElementById("map-stage");
+      var svg = document.getElementById("trip-map");
+      var bubble = document.getElementById("map-bubble");
       var fallbackList = document.getElementById("map-fallback-list");
+      var currentDay = "all";
+      var currentStop = null;
+
+      function altClass(alt) {
+        if (alt > 3500) return "high";
+        if (alt >= 2500) return "mid";
+        return "low";
+      }
 
       function showFallback() {
-        if (!frame) return;
-        frame.classList.add("is-fallback");
+        if (!stage) return;
+        stage.classList.add("is-fallback");
         if (fallbackList && !fallbackList.childNodes.length) {
           PLACES.forEach(function (p) {
             var li = document.createElement("li");
@@ -831,183 +1215,122 @@
         }
       }
 
-      function latlng(p) {
-        if (useGcj) {
-          var g = wgsToGcj(p.lat, p.lon);
-          return [g[0], g[1]];
-        }
-        return [p.lat, p.lon];
+      function hideBubble() {
+        if (bubble) bubble.hidden = true;
+        currentStop = null;
       }
 
-      function osmLayer() {
-        return L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-          maxZoom: 18,
-          attribution: "&copy; OpenStreetMap"
-        });
-      }
-      function amapLayer() {
-        return L.tileLayer("https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}", {
-          maxZoom: 18,
-          subdomains: "1234",
-          attribution: "高德地图"
-        });
+      function showBubble(stopEl) {
+        if (!bubble || !stage || !stopEl) return;
+        var id = stopEl.getAttribute("data-id");
+        var p = PLACE_MAP[id];
+        if (!p) return;
+        currentStop = id;
+        bubble.querySelector(".b-name").textContent = p.name;
+        var altEl = bubble.querySelector(".b-alt");
+        altEl.textContent = p.altLabel;
+        altEl.className = "b-alt " + altClass(p.alt);
+        bubble.querySelector(".b-note").textContent = p.note;
+        bubble.querySelector(".b-days").textContent = "安排在：" + p.days.join("、");
+        bubble.hidden = false;
+
+        var stageBox = stage.getBoundingClientRect();
+        var stopBox = stopEl.getBoundingClientRect();
+        var bw = bubble.offsetWidth;
+        var bh = bubble.offsetHeight;
+        var x = stopBox.left - stageBox.left + stopBox.width / 2 - bw / 2;
+        var relY = stopBox.top - stageBox.top;
+        var yAbove = relY - bh - 10;
+        var yBelow = relY + stopBox.height + 10;
+        var y = (relY < stageBox.height * 0.38 || yAbove < 16) ? yBelow : yAbove;
+        if (x < 8) x = 8;
+        if (x + bw > stageBox.width - 8) x = stageBox.width - bw - 8;
+        if (y + bh > stageBox.height - 8) y = Math.max(8, relY - bh - 10);
+        bubble.style.left = x + "px";
+        bubble.style.top = y + "px";
       }
 
-      function popupHtml(p) {
-        return "<strong>" + p.name + "</strong><br>海拔：" + p.altLabel + "<br>安排在：" + p.days.join("、") + "<br>" + p.note;
-      }
-
-      function addMarkers(day) {
-        Object.keys(markers).forEach(function (k) {
-          map.removeLayer(markers[k]);
-        });
-        markers = {};
-        PLACES.forEach(function (p) {
-          if (day !== "all" && p.days.indexOf(day) === -1) return;
-          var m = L.circleMarker(latlng(p), {
-            radius: 9,
-            color: "#0b1012",
-            weight: 2,
-            fillColor: altColor(p.alt),
-            fillOpacity: 0.95
-          }).addTo(map);
-          m.bindPopup(popupHtml(p));
-          markers[p.id] = m;
-        });
-        if (routeLine) { map.removeLayer(routeLine); routeLine = null; }
-        if (day !== "all" && ROUTES[day]) {
-          var pts = ROUTES[day].map(function (id) {
-            var p = PLACES.filter(function (x) { return x.id === id; })[0];
-            return latlng(p);
-          });
-          routeLine = L.polyline(pts, { color: "#edcf96", weight: 3, opacity: 0.85 }).addTo(map);
-        }
-        var group = L.featureGroup(Object.keys(markers).map(function (k) { return markers[k]; }).concat(routeLine ? [routeLine] : []));
-        if (Object.keys(markers).length) map.fitBounds(group.getBounds().pad(0.25));
-      }
-
-      function initMap() {
-        if (!mapEl || typeof L === "undefined") { showFallback(); return; }
-        map = L.map("trip-map", { scrollWheelZoom: false, zoomControl: true });
-        var layer = osmLayer();
-        var errors = 0;
-        var switched = false;
-        layer.on("tileerror", function () {
-          errors += 1;
-          if (!switched && errors >= 3) {
-            switched = true;
-            map.removeLayer(layer);
-            useGcj = true;
-            tileMode = "amap";
-            var am = amapLayer();
-            var aerr = 0;
-            am.on("tileerror", function () {
-              aerr += 1;
-              if (aerr >= 3) showFallback();
-            });
-            am.addTo(map);
-            addMarkers(currentDay);
-          }
-        });
-        layer.addTo(map);
-        map.setView([26.4, 100.2], 8);
-        addMarkers("all");
-        setTimeout(function () { if (map) map.invalidateSize(); }, 400);
-      }
-
-      var currentDay = "all";
-      function setDay(day) {
+      function setDay(day, openId) {
         currentDay = day;
         document.querySelectorAll(".map-toolbar button").forEach(function (b) {
           b.classList.toggle("is-on", b.getAttribute("data-day") === day);
         });
-        if (map && !frame.classList.contains("is-fallback")) addMarkers(day);
+        document.querySelectorAll(".map-svg .stop").forEach(function (el) {
+          var days = (el.getAttribute("data-days") || "").split(/\s+/);
+          var on = day === "all" || days.indexOf(day) !== -1;
+          el.classList.toggle("is-dim", !on);
+          el.classList.toggle("is-on", on && day !== "all");
+        });
+        document.querySelectorAll(".route-line").forEach(function (el) {
+          el.classList.toggle("is-on", el.getAttribute("data-day") === day);
+        });
+        if (openId) {
+          var el = document.querySelector('.stop[data-id="' + openId + '"]');
+          if (el) showBubble(el);
+        } else if (currentStop) {
+          var cur = document.querySelector('.stop[data-id="' + currentStop + '"]');
+          if (cur && !cur.classList.contains("is-dim")) showBubble(cur);
+          else hideBubble();
+        } else {
+          hideBubble();
+        }
       }
+
       document.querySelectorAll(".map-toolbar button").forEach(function (b) {
         b.addEventListener("click", function () { setDay(b.getAttribute("data-day")); });
       });
+
+      if (svg) {
+        svg.querySelectorAll(".stop").forEach(function (el) {
+          el.addEventListener("click", function (e) {
+            e.stopPropagation();
+            if (currentStop === el.getAttribute("data-id") && bubble && !bubble.hidden) hideBubble();
+            else showBubble(el);
+          });
+          el.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") { e.preventDefault(); el.click(); }
+          });
+        });
+        stage.addEventListener("click", function (e) {
+          if (!bubble.contains(e.target) && !e.target.closest(".stop")) hideBubble();
+        });
+        if (bubble) bubble.querySelector(".bubble-x").addEventListener("click", function (e) {
+          e.stopPropagation(); hideBubble();
+        });
+        window.addEventListener("resize", function () {
+          if (currentStop && bubble && !bubble.hidden) {
+            var el = document.querySelector('.stop[data-id="' + currentStop + '"]');
+            if (el) showBubble(el);
+          }
+        });
+      } else {
+        showFallback();
+      }
 
       document.querySelectorAll(".day-card").forEach(function (card) {
         card.addEventListener("click", function () {
           var open = card.classList.contains("is-open");
           document.querySelectorAll(".day-card").forEach(function (c) { c.classList.remove("is-open"); });
           if (!open) card.classList.add("is-open");
-          var day = card.getAttribute("data-day");
-          setDay(day);
-          var mapSec = document.getElementById("map");
-          if (mapSec && !shot) mapSec.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
-          if (map) setTimeout(function () { map.invalidateSize(); }, 250);
+          setDay(card.getAttribute("data-day"));
         });
       });
 
-      if (document.readyState === "complete") initMap();
-      else window.addEventListener("load", initMap);
+      var jump = new URLSearchParams(location.search).get("y");
+      if (jump) { window.scrollTo(0, parseInt(jump, 10) || 0); }
 
-      /* --- shot modes --- */
       if (shot) {
-        if (shot === "final-top" || shot === "single-plan") {
-          document.documentElement.classList.add("shot-top");
-          if (shot === "single-plan") document.documentElement.classList.add("shot-section");
+        if (shot === "hero") {
+          document.documentElement.classList.add("shot-hero");
           window.scrollTo(0, 0);
         } else if (shot === "map") {
           document.documentElement.classList.add("shot-map");
-          Array.prototype.forEach.call(document.body.children, function (el) {
-            if (el.id !== "map" && el.id !== "lightbox") el.style.display = "none";
-          });
           window.scrollTo(0, 0);
-          setTimeout(function () { if (map) map.invalidateSize(); }, 600);
-        } else if (shot === "perhead") {
-          document.documentElement.classList.add("shot-perhead");
-          window.scrollTo(0, 0);
-        } else if (shot === "final-lijiang") {
-          document.documentElement.classList.add("shot-section");
+          setDay("D3", "bluemoon");
+        } else if (shot === "table" || shot === "perhead") {
+          document.documentElement.classList.add("shot-table");
           window.scrollTo(0, 0);
         }
-      }
-
-      /* --- snow --- */
-      var canvas = document.getElementById("snow");
-      if (canvas && !reduce && !shot) {
-        var ctx = canvas.getContext("2d");
-        var flakes = [], w = 0, h = 0, running = true;
-        function resize() {
-          w = canvas.width = canvas.offsetWidth * devicePixelRatio;
-          h = canvas.height = canvas.offsetHeight * devicePixelRatio;
-        }
-        function spawn(n) {
-          flakes = [];
-          for (var i = 0; i < n; i++) {
-            flakes.push({ x: Math.random() * w, y: Math.random() * h, r: Math.random() * 1.6 * devicePixelRatio + 0.6, s: Math.random() * 0.6 + 0.25, a: Math.random() * 0.45 + 0.15, d: Math.random() * Math.PI * 2 });
-          }
-        }
-        var last = 0;
-        function frame(t) {
-          if (!running) return;
-          requestAnimationFrame(frame);
-          if (t - last < 30) return;
-          last = t;
-          ctx.clearRect(0, 0, w, h);
-          flakes.forEach(function (f) {
-            f.y += f.s * devicePixelRatio * 1.2;
-            f.x += Math.sin(f.d += 0.008) * 0.35 * devicePixelRatio;
-            if (f.y > h) { f.y = -4; f.x = Math.random() * w; }
-            ctx.beginPath();
-            ctx.fillStyle = "rgba(244,239,230," + f.a + ")";
-            ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
-            ctx.fill();
-          });
-        }
-        resize();
-        spawn(window.innerWidth < 700 ? 36 : 64);
-        window.addEventListener("resize", function () { resize(); spawn(window.innerWidth < 700 ? 36 : 64); });
-        var hero = document.querySelector(".hero");
-        if ("IntersectionObserver" in window && hero) {
-          new IntersectionObserver(function (entries) {
-            running = entries[0].isIntersecting;
-            if (running) requestAnimationFrame(frame);
-          }).observe(hero);
-        }
-        requestAnimationFrame(frame);
       }
     })();
   </script>
