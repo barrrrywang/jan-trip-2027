@@ -3,22 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>一月慢游：丽江＋大理</title>
-  <meta name="description" content="一月去丽江和大理：先上玉龙雪山，再坐高铁看洱海、苍山。当地可坐公交、包车或自己开车。">
+  <title>丽江＋大理：12 月 26–31 日</title>
+  <meta name="description" content="12 月 26–31 日去丽江和大理：6 天，先上玉龙雪山，再在洱海边慢慢走。">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://barrrrywang.github.io/jan-trip-2027/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="zh_CN">
-  <meta property="og:title" content="一月慢游：丽江＋大理">
-  <meta property="og:description" content="一月去丽江和大理：先上玉龙雪山，再坐高铁看洱海、苍山。">
+  <meta property="og:title" content="丽江＋大理：12 月 26–31 日">
+  <meta property="og:description" content="12 月 26–31 日去丽江和大理：6 天，先上玉龙雪山，再在洱海边慢慢走。">
   <meta property="og:url" content="https://barrrrywang.github.io/jan-trip-2027/">
   <meta property="og:image" content="https://barrrrywang.github.io/jan-trip-2027/og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="玉龙雪山雪峰，CEphoto, Uwe Aranas，CC BY-SA 3.0">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="一月慢游：丽江＋大理">
-  <meta name="twitter:description" content="一月去丽江和大理：先上玉龙雪山，再坐高铁看洱海、苍山。">
+  <meta name="twitter:title" content="丽江＋大理：12 月 26–31 日">
+  <meta name="twitter:description" content="12 月 26–31 日去丽江和大理：6 天，先上玉龙雪山，再在洱海边慢慢走。">
   <meta name="twitter:image" content="https://barrrrywang.github.io/jan-trip-2027/og.jpg">
   <script>
     (function(){
@@ -34,26 +34,40 @@
       font-weight: 400; font-style: normal; font-display: swap;
     }
     :root {
-      --bg: #FBF7F0;
-      --bg-2: #F3EEE4;
-      --paper: #FFFCFA;
-      --ink: #3F3A35;
-      --ink-2: #5C564E;
-      --mute: #8A8278;
-      --line: rgba(80, 60, 40, .10);
-      --blue: #7EB8D4;
-      --blue-s: #E4F3F8;
-      --mint: #7EAB8A;
-      --mint-s: #E6F3E9;
-      --peach: #E39B8A;
-      --peach-s: #FDECE6;
-      --gold: #E0B56A;
-      --gold-s: #F8EBCB;
+      /* surfaces */
+      --bg: #F6F0E6;
+      --bg-2: #EDE6D9;
+      --paper: #FFFCF8;
+      /* text: high contrast, three steps only */
+      --ink: #2A261F;
+      --ink-2: #3E3932;
+      --mute: #5C564E;
+      --line: rgba(42, 38, 31, .16);
+      /* meaning */
+      --low: #2F7D5B;       /* altitude low */
+      --low-s: #DCEFE4;
+      --mid: #B4841F;       /* altitude mid */
+      --mid-s: #F6E7C2;
+      --high: #C45C45;      /* altitude high; also the one accent / recommended */
+      --high-s: #FDE4DC;
+      --tour: #2B7A9A;      /* 跟团 */
+      --tour-s: #D7EEF6;
+      --accent: var(--high);
+      --accent-s: var(--high-s);
       --display: "ZCOOL KuaiLe", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
       --sans: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", "Segoe UI", system-ui, sans-serif;
-      --shadow: 0 10px 28px rgba(80, 55, 35, .08);
-      --shadow-sm: 0 4px 14px rgba(80, 55, 35, .06);
-      --r: 22px;
+      /* type scale: only these sizes */
+      --fs-xs: .75rem;
+      --fs-sm: .875rem;
+      --fs-md: 1rem;
+      --fs-lg: 1.25rem;
+      --fs-xl: 1.625rem;
+      --fs-2xl: clamp(1.85rem, 5.5vw, 2.35rem);
+      --fs-num: 2rem;
+      --shadow: 0 1px 2px rgba(42,38,31,.07), 0 8px 18px rgba(42,38,31,.08), 0 20px 36px rgba(42,38,31,.06);
+      --shadow-sm: 0 1px 2px rgba(42,38,31,.06), 0 4px 10px rgba(42,38,31,.06);
+      --shadow-lift: 0 2px 6px rgba(42,38,31,.08), 0 16px 32px rgba(42,38,31,.14);
+      --r: 20px;
       --ease: cubic-bezier(.22,1,.36,1);
     }
     * { box-sizing: border-box; }
@@ -61,158 +75,204 @@
     html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); }
     body {
       font-family: var(--sans);
-      font-size: 15px;
+      font-size: var(--fs-md);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      background-image:
-        radial-gradient(ellipse 80% 40% at 10% -10%, #f3e4d4 0%, transparent 55%),
-        radial-gradient(ellipse 60% 30% at 100% 5%, #dceee8 0%, transparent 50%);
     }
     img { max-width: 100%; height: auto; display: block; }
-    a { color: #4a8aa3; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-    a:hover { color: #c26b5a; }
-    :focus-visible { outline: 2px solid var(--peach); outline-offset: 3px; }
+    a { color: var(--tour); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a:hover { color: var(--accent); }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
     p { margin: 0 0 .5rem; }
     p:last-child { margin-bottom: 0; }
     ul.plain, ol.plain { margin: .15rem 0 0; padding: 0 0 0 1.1rem; color: var(--ink-2); }
     ul.plain li, ol.plain li { margin: .22rem 0; }
     strong { font-weight: 650; color: var(--ink); }
 
+    .wrap { width: min(40rem, calc(100% - 1.6rem)); margin: 0 auto; }
+    .wrap-wide { width: min(56rem, calc(100% - 1.4rem)); margin: 0 auto; }
+
     .nav {
       position: sticky; top: 0; z-index: 40;
-      display: flex; align-items: center; justify-content: space-between; gap: .7rem;
-      padding: .55rem 1rem;
-      background: rgba(251,247,240,.82);
-      backdrop-filter: blur(16px) saturate(1.2);
-      -webkit-backdrop-filter: blur(16px) saturate(1.2);
-      border-bottom: 1px solid transparent;
+      display: flex; align-items: center; justify-content: space-between; gap: .6rem;
+      padding: .5rem .8rem;
+      background: rgba(246,240,230,.94);
+      backdrop-filter: blur(16px) saturate(1.15);
+      -webkit-backdrop-filter: blur(16px) saturate(1.15);
+      border-bottom: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
     }
-    .nav.is-scrolled { border-bottom-color: var(--line); }
+    .nav.is-scrolled {
+      box-shadow: var(--shadow);
+      border-bottom-color: rgba(42,38,31,.22);
+    }
     .nav-brand {
-      font-family: var(--display); font-size: 1.05rem; color: var(--ink);
+      font-family: var(--display); font-size: var(--fs-md); color: var(--ink);
       text-decoration: none; white-space: nowrap;
       background: var(--paper); border-radius: 999px; padding: .28rem .8rem;
       box-shadow: var(--shadow-sm); border: 1px solid var(--line);
     }
-    .nav-links { display: flex; flex-wrap: wrap; gap: .15rem .85rem; }
-    .nav-links a { color: var(--ink-2); text-decoration: none; font-size: .8rem; padding: .2rem 0; }
-    .nav-links a:hover { color: var(--peach); }
+    .nav-links { display: flex; flex-wrap: wrap; gap: .3rem; }
+    .nav-links a {
+      color: var(--ink); text-decoration: none; font-size: var(--fs-sm);
+      padding: .22rem .65rem; border-radius: 999px;
+      background: var(--paper); border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-links a:hover { color: var(--accent); background: var(--accent-s); border-color: transparent; }
 
-    .wrap { width: min(40rem, calc(100% - 1.6rem)); margin: 0 auto; }
-    .wrap-wide { width: min(52rem, calc(100% - 1.4rem)); margin: 0 auto; }
-    .eyebrow {
-      margin: 0 0 .35rem; font-family: var(--display); font-size: .95rem; color: #c17a68;
+    h1, h2, h3, .sec-h {
+      font-family: var(--display); font-weight: 400; color: var(--ink); line-height: 1.3;
     }
-    h2 {
-      font-family: var(--display); font-weight: 400;
-      font-size: clamp(1.45rem, 4vw, 1.85rem); line-height: 1.35;
-      margin: 0 0 .75rem; color: var(--ink);
+    h1 { font-size: var(--fs-2xl); margin: 0 0 .8rem; }
+    h2, .sec-h {
+      font-size: var(--fs-xl); margin: 0 0 .8rem;
+      display: flex; align-items: center; gap: .5rem;
     }
-    h3 {
-      font-family: var(--display); font-weight: 400;
-      font-size: 1.15rem; margin: 0 0 .55rem; color: #c17a68;
+    h3 { font-size: var(--fs-lg); margin: 0 0 .55rem; color: var(--ink); }
+    .sec-badge {
+      flex-shrink: 0; width: 1.85rem; height: 1.85rem; border-radius: 10px;
+      background: var(--paper); border: 1px solid var(--line); box-shadow: var(--shadow-sm);
+      display: grid; place-items: center;
     }
+    .sec-badge svg { width: 1.05rem; height: 1.05rem; display: block; }
 
-    /* hero */
-    .hero { padding: 1rem 0 1.6rem; }
-    .hero-grid {
-      width: min(58rem, calc(100% - 1.4rem));
-      margin: 0 auto;
-      display: grid; gap: 1.1rem; align-items: center;
-      grid-template-columns: 1fr;
-    }
-    @media (min-width: 820px) {
-      .hero-grid { grid-template-columns: .92fr 1.08fr; gap: 1.8rem; min-height: 22rem; }
-    }
-    .hero-copy { padding: .4rem .2rem 0; }
     .kicker {
-      display: inline-block; margin: 0 0 .65rem;
-      font-size: .78rem; color: #c17a68;
-      background: var(--peach-s); border-radius: 999px; padding: .2rem .7rem;
+      margin: 0 0 .3rem; font-size: var(--fs-sm); color: var(--ink-2);
     }
-    .hero h1 {
-      font-family: var(--display); font-weight: 400;
-      font-size: clamp(1.85rem, 6vw, 2.7rem); line-height: 1.28;
-      margin: 0 0 .7rem;
+    .eyebrow { display: none; } /* filler labels removed from the type scale */
+
+    /* full-bleed section bands */
+    .band { position: relative; padding: 1.8rem 0 2rem; }
+    .band-blue { background: var(--tour-s); }
+    .band-mint { background: var(--low-s); }
+    .band-peach { background: var(--accent-s); }
+    .band-paper { background: var(--bg); }
+
+    /* hero / join */
+    .hero { padding: 1.2rem 0 1.8rem; background: var(--bg); }
+    .highlights {
+      display: grid; grid-template-columns: 1fr; gap: .65rem; margin: 0 0 1.1rem;
     }
-    .hero-lead { margin: 0; max-width: 22em; color: var(--ink-2); font-size: 1rem; }
-    .hero-photo-wrap {
-      position: relative; border-radius: 28px; overflow: hidden;
-      box-shadow: var(--shadow); background: #d7e4ec;
+    @media (min-width: 700px) { .highlights { grid-template-columns: 1fr 1fr 1fr; } }
+    .highlights figure {
+      margin: 0; background: var(--paper); border: 1px solid var(--line);
+      border-radius: 16px; padding: .45rem .45rem .65rem; box-shadow: var(--shadow);
     }
-    .hero-photo { width: 100%; height: min(52vw, 22rem); object-fit: cover; }
-    @media (min-width: 820px) { .hero-photo { height: 24rem; } }
-    .hero-credit {
-      margin: .4rem .15rem 0; font-size: .68rem; color: var(--mute); text-align: right;
+    .highlights img {
+      width: 100%; height: 10rem; object-fit: cover; border-radius: 12px; cursor: zoom-in;
     }
+    .highlights figcaption { margin: .45rem .2rem 0; font-size: var(--fs-sm); color: var(--ink-2); }
+    .highlights figcaption b {
+      font-family: var(--display); font-weight: 400; font-size: var(--fs-md);
+      color: var(--ink); display: block; line-height: 1.3;
+    }
+    .hero-credit { margin: -.5rem 0 1.1rem; font-size: var(--fs-xs); color: var(--mute); text-align: right; }
     .hero-credit a { color: inherit; }
 
-    .overview { padding: 0 0 2rem; }
-    .chips { display: flex; flex-wrap: wrap; gap: .45rem; margin: 0 0 1rem; padding: 0; list-style: none; }
-    .chips li {
-      background: var(--paper); border: 1px solid var(--line); border-radius: 999px;
-      padding: .35rem .8rem; font-size: .84rem; color: var(--ink-2); box-shadow: var(--shadow-sm);
+    .snap {
+      display: grid; grid-template-columns: 1fr; gap: .7rem; margin: 0 0 1rem;
     }
-    .chips strong { color: #c17a68; }
-    .fact-grid { display: grid; gap: .65rem; grid-template-columns: 1fr; }
-    @media (min-width: 640px) { .fact-grid { grid-template-columns: repeat(3, 1fr); } }
-    .fact {
-      background: var(--paper); border: 1px solid var(--line); border-radius: 18px;
-      padding: .85rem .9rem; box-shadow: var(--shadow-sm);
+    @media (min-width: 700px) { .snap { grid-template-columns: 1fr 1fr 1fr; } }
+    .snap-card {
+      background: var(--paper); border: 1px solid var(--line); border-radius: var(--r);
+      padding: .85rem .9rem .9rem; box-shadow: var(--shadow);
+      display: flex; flex-direction: column; min-width: 0;
     }
-    .fact .k { display: block; font-family: var(--display); font-size: .95rem; color: #c17a68; margin-bottom: .25rem; }
-    .fact p { color: var(--ink-2); font-size: .88rem; }
+    .snap-k {
+      display: flex; align-items: center; gap: .4rem;
+      font-size: var(--fs-sm); color: var(--ink-2); margin: 0 0 .2rem;
+    }
+    .snap-k svg { width: 1.1rem; height: 1.1rem; flex-shrink: 0; }
+    .snap-num {
+      font-family: var(--display); font-size: var(--fs-num); line-height: 1.1;
+      margin: 0 0 .35rem; color: var(--ink);
+    }
+    .snap-num .unit { font-size: var(--fs-lg); margin-left: .15rem; }
+    .snap-d { margin: 0; font-size: var(--fs-sm); color: var(--ink-2); }
+    .snap-prices { list-style: none; margin: 0 0 .4rem; padding: 0; }
+    .snap-prices li {
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: .4rem; padding: .18rem 0; border-bottom: 1px solid var(--line);
+      font-size: var(--fs-sm); color: var(--ink-2);
+    }
+    .snap-prices li:last-child { border-bottom: 0; }
+    .snap-prices b { font-family: var(--display); font-weight: 400; font-size: var(--fs-lg); color: var(--ink); }
+    .pace-meter { margin: .55rem 0 0; }
+    .pace-meter .track {
+      position: relative; height: .45rem; border-radius: 99px; background: var(--bg-2);
+      margin: .35rem 0 .4rem;
+    }
+    .pace-meter .fill {
+      height: 100%; width: 100%; border-radius: 99px;
+      background: linear-gradient(90deg, var(--low) 0 53%, var(--high) 53% 100%);
+    }
+    .pace-scale { display: flex; justify-content: space-between; font-size: var(--fs-xs); color: var(--mute); }
+
+    .pack-box {
+      background: var(--paper); border: 1px solid var(--line); border-radius: var(--r);
+      padding: 1rem 1.05rem .9rem; box-shadow: var(--shadow); margin: 0;
+    }
+    .pack-box ul { margin: .1rem 0 0; padding: 0; list-style: none; }
+    .pack-box li {
+      position: relative; padding: .32rem 0 .32rem 1.05rem;
+      border-bottom: 1px solid var(--line); color: var(--ink-2); font-size: var(--fs-sm);
+    }
+    .pack-box li:last-child { border-bottom: 0; }
+    .pack-box li::before {
+      content: ""; position: absolute; left: 0; top: .75em;
+      width: .42rem; height: .42rem; border-radius: 50%; background: var(--accent);
+    }
 
     /* map */
-    .map-sec { padding: 0 0 2.4rem; }
+    .map-sec { }
     .map-toolbar { display: flex; flex-wrap: wrap; gap: .35rem; margin: 0 0 .7rem; }
     .map-toolbar button {
-      appearance: none; border: 1px solid var(--line); background: var(--paper);
-      color: var(--ink-2); border-radius: 999px; padding: .32rem .75rem;
-      font: inherit; font-size: .8rem; cursor: pointer; box-shadow: var(--shadow-sm);
+      font: inherit; font-size: var(--fs-xs); color: var(--ink-2);
+      background: var(--paper); border: 1px solid var(--line); border-radius: 999px;
+      padding: .28rem .7rem; cursor: pointer; box-shadow: var(--shadow-sm);
     }
     .map-toolbar button.is-on, .map-toolbar button:hover {
-      background: #c17a68; color: #fff; border-color: #c17a68;
+      background: var(--accent); color: #fff; border-color: var(--accent);
     }
     .map-stage {
-      position: relative; background: var(--paper);
-      border: 1px solid var(--line); border-radius: 28px;
-      box-shadow: var(--shadow); overflow: hidden; padding: .4rem;
+      position: relative; background: var(--paper); border: 1px solid var(--line);
+      border-radius: 24px; box-shadow: var(--shadow); overflow: hidden; padding: .4rem;
     }
     .map-svg { display: block; width: 100%; height: auto; }
-    .legend { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin: .65rem 0 0; padding: 0; list-style: none; font-size: .78rem; color: var(--ink-2); }
-    .legend i { display: inline-block; width: .7rem; height: .7rem; border-radius: 50%; margin-right: .3rem; vertical-align: -1px; border: 2px solid #fff; box-shadow: 0 0 0 1px rgba(80,60,40,.12); }
-    .dot-g { background: #8FCB9E; } .dot-y { background: #E8C56A; } .dot-r { background: #E8A090; }
+    .legend { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin: .65rem 0 0; padding: 0; list-style: none; font-size: var(--fs-xs); color: var(--ink-2); }
+    .legend i { display: inline-block; width: .7rem; height: .7rem; border-radius: 50%; margin-right: .3rem; vertical-align: -1px; border: 2px solid #fff; box-shadow: 0 0 0 1px rgba(42,38,31,.16); }
+    .dot-g { background: var(--low); } .dot-y { background: var(--mid); } .dot-r { background: var(--high); }
 
     .stop { cursor: pointer; }
     .stop .halo { fill: #fff; stroke-width: 3; }
-    .stop.alt-low .halo { stroke: #8FCB9E; }
-    .stop.alt-mid .halo { stroke: #E8C56A; }
-    .stop.alt-high .halo { stroke: #E8A090; }
+    .stop.alt-low .halo { stroke: var(--low); }
+    .stop.alt-mid .halo { stroke: var(--mid); }
+    .stop.alt-high .halo { stroke: var(--high); }
     .stop .slabel {
       font-family: var(--sans); font-size: 11px; fill: var(--ink);
       text-anchor: middle; pointer-events: none;
     }
     .stop.is-dim { opacity: .22; }
     .stop.is-on { opacity: 1; }
-    .stop.is-on .halo { filter: drop-shadow(0 2px 6px rgba(80,60,40,.2)); }
-    .route-line { fill: none; stroke: #E39B8A; stroke-width: 2.2; stroke-dasharray: 4 5; stroke-linecap: round; stroke-linejoin: round; opacity: 0; }
-    .route-line.is-on { opacity: .9; }
-    .route-main { fill: none; stroke: #C17A68; stroke-width: 2; stroke-dasharray: 3 6; stroke-linecap: round; opacity: .7; }
+    .stop.is-on .halo { filter: drop-shadow(0 2px 6px rgba(42,38,31,.25)); }
+    .route-line { fill: none; stroke: var(--accent); stroke-width: 2.8; stroke-dasharray: 4 5; stroke-linecap: round; stroke-linejoin: round; opacity: 0; }
+    .route-line.is-on { opacity: 1; }
+    .route-main { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 3 6; stroke-linecap: round; opacity: .45; }
     .map-bubble {
       position: absolute; z-index: 5; width: min(16.5rem, calc(100% - 1.6rem));
       background: var(--paper); border: 1px solid var(--line); border-radius: 16px;
       box-shadow: var(--shadow); padding: .7rem .8rem .75rem; color: var(--ink);
-      font-size: .82rem; line-height: 1.5;
+      font-size: var(--fs-sm); line-height: 1.5;
     }
     .map-bubble[hidden] { display: none; }
-    .map-bubble strong { font-family: var(--display); font-weight: 400; font-size: 1rem; display: block; margin-bottom: .15rem; }
-    .map-bubble .b-alt { display: inline-block; font-size: .72rem; border-radius: 999px; padding: .05rem .5rem; margin: .1rem 0 .3rem; }
-    .b-alt.low { background: var(--mint-s); color: #3d6b4a; }
-    .b-alt.mid { background: var(--gold-s); color: #7a5a18; }
-    .b-alt.high { background: var(--peach-s); color: #8a4a3a; }
+    .map-bubble strong { font-family: var(--display); font-weight: 400; font-size: var(--fs-md); display: block; margin-bottom: .15rem; }
+    .map-bubble .b-alt { display: inline-block; font-size: var(--fs-xs); border-radius: 999px; padding: .05rem .5rem; margin: .1rem 0 .3rem; }
+    .b-alt.low { background: var(--low-s); color: var(--low); }
+    .b-alt.mid { background: var(--mid-s); color: var(--mid); }
+    .b-alt.high { background: var(--high-s); color: var(--high); }
     .map-bubble .b-note { color: var(--ink-2); margin: 0 0 .2rem; }
-    .map-bubble .b-days { font-size: .72rem; color: var(--mute); }
+    .map-bubble .b-days { font-size: var(--fs-xs); color: var(--mute); }
     .bubble-x {
       position: absolute; top: .3rem; right: .4rem; border: 0; background: transparent;
       color: var(--mute); font-size: 1.1rem; cursor: pointer; padding: .15rem .3rem;
@@ -221,271 +281,526 @@
     .map-stage.is-fallback .map-svg, .map-stage.is-fallback .map-bubble { display: none; }
     .map-stage.is-fallback .map-fallback { display: block; }
 
-    .plan { padding: 0 0 3rem; }
-    .date-box, .todo, .alt-box, .budget {
-      background: var(--paper); border: 1px solid var(--line); border-radius: 20px;
-      padding: 1rem 1.05rem .9rem; box-shadow: var(--shadow-sm); margin: 0 0 1rem;
+    .plan { padding: 0; }
+    .date-box, .budget, .stay-block {
+      background: var(--paper); border: 1px solid var(--line); border-radius: var(--r);
+      padding: 1rem 1.05rem .9rem; box-shadow: var(--shadow);
     }
-    .date-box ul, .alt-box ul, .todo ul { margin: .1rem 0 0; padding: 0; list-style: none; }
-    .date-box li, .alt-box li, .todo li {
+    .date-box ul { margin: .1rem 0 0; padding: 0; list-style: none; }
+    .date-box li {
       position: relative; padding: .32rem 0 .32rem 1.05rem;
-      border-bottom: 1px solid var(--line); color: var(--ink-2); font-size: .9rem;
+      border-bottom: 1px solid var(--line); color: var(--ink-2); font-size: var(--fs-sm);
     }
-    .date-box li:last-child, .alt-box li:last-child, .todo li:last-child { border-bottom: 0; }
-    .date-box li::before, .alt-box li::before, .todo li::before {
+    .date-box li:last-child { border-bottom: 0; }
+    .date-box li::before {
       content: ""; position: absolute; left: 0; top: .75em; width: .42rem; height: .42rem;
-      border-radius: 50%; background: #E39B8A;
+      border-radius: 50%; background: var(--accent);
     }
 
-    .day-grid { display: grid; gap: .8rem; grid-template-columns: 1fr; margin: 0 0 1.2rem; }
+    .dates-verdict {
+      margin: 0 0 1rem; background: var(--paper); border: 1px solid var(--line);
+      border-radius: var(--r); padding: 1rem 1.05rem .95rem; box-shadow: var(--shadow);
+      border-left: 5px solid var(--accent);
+    }
+    .dates-verdict .v-line {
+      margin: 0; font-family: var(--display); font-weight: 400;
+      font-size: var(--fs-xl); color: var(--ink); line-height: 1.3;
+      display: flex; align-items: center; gap: .5rem; flex-wrap: wrap;
+    }
+    .dates-verdict .v-why {
+      margin: .35rem 0 0; font-size: var(--fs-sm); color: var(--ink-2);
+    }
+    .badge-rec {
+      display: inline-block;
+      font-family: var(--display); font-weight: 400; font-size: var(--fs-sm);
+      color: #fff; background: var(--accent);
+      border-radius: 999px; padding: .12rem .6rem; line-height: 1.4;
+    }
+    .date-x-wrap {
+      overflow-x: auto; background: var(--paper); border: 1px solid var(--line);
+      border-radius: var(--r); box-shadow: var(--shadow);
+    }
+    table.date-x {
+      width: 100%; border-collapse: collapse; font-size: var(--fs-sm);
+      min-width: 36rem;
+    }
+    .date-x th, .date-x td {
+      padding: .55rem .7rem; text-align: left; vertical-align: middle;
+      border-bottom: 1px solid var(--line); color: var(--ink-2); line-height: 1.45;
+    }
+    .date-x thead th {
+      font-family: var(--display); font-weight: 400; font-size: var(--fs-md);
+      color: var(--ink); background: var(--bg); vertical-align: bottom;
+    }
+    .date-x thead th .badge-rec { margin: 0 0 .25rem; display: inline-block; }
+    .date-x tbody th {
+      font-weight: 650; color: var(--ink); width: 22%;
+      background: var(--paper);
+    }
+    .date-x tr:last-child th, .date-x tr:last-child td { border-bottom: 0; }
+    .date-x .col-rec { background: var(--accent-s); color: var(--ink); }
+    .date-x thead th.col-rec { background: color-mix(in srgb, var(--accent-s) 70%, var(--paper)); }
+    .date-x .yn {
+      display: inline-flex; align-items: center; gap: .3rem;
+    }
+    .date-x .yn .mark { width: 1.15rem; height: 1.15rem; flex-shrink: 0; }
+    .date-x .why { color: var(--ink-2); }
+    .date-x .col-rec .why { font-family: var(--display); font-weight: 400; color: var(--accent); }
+    .date-x .num { font-family: var(--display); font-weight: 400; color: var(--accent); font-size: var(--fs-md); }
+    .date-foot { margin: .65rem 0 0; }
+    @media (max-width: 700px) {
+      table.date-x { min-width: 0; font-size: var(--fs-xs); }
+      .date-x thead th { font-size: var(--fs-sm); }
+      .date-x th, .date-x td { padding: .45rem .35rem; }
+    }
+
+    .tour-sec .wrap-wide { padding: 0; }
+    .tour-x-wrap {
+      margin: .85rem 0 0; overflow-x: auto;
+      background: var(--paper); border: 1px solid var(--line); border-radius: var(--r);
+      box-shadow: var(--shadow); padding: .2rem 0 .15rem;
+    }
+    table.tour-x {
+      width: 100%; border-collapse: collapse; font-size: var(--fs-sm);
+    }
+    .tour-x th, .tour-x td {
+      padding: .55rem .75rem; text-align: left; vertical-align: middle;
+      border-bottom: 1px solid var(--line); color: var(--ink-2);
+    }
+    .tour-x thead th {
+      font-family: var(--display); font-weight: 400; font-size: var(--fs-md);
+      color: var(--ink); background: var(--bg);
+    }
+    .tour-x tbody th {
+      font-weight: 650; color: var(--ink); width: 28%;
+    }
+    .tour-x tr:last-child th, .tour-x tr:last-child td { border-bottom: 0; }
+    .tour-x .yes, .tour-x .no {
+      display: inline-flex; align-items: flex-start; gap: .4rem;
+    }
+    .tour-x .mark {
+      flex-shrink: 0; width: 1.2rem; height: 1.2rem; margin-top: .1rem;
+    }
+    .tour-verdict {
+      margin: .85rem 0 0; background: var(--paper); border: 1px solid var(--line);
+      border-radius: var(--r); padding: .85rem 1rem; font-size: var(--fs-md);
+      color: var(--ink-2); line-height: 1.55; box-shadow: var(--shadow);
+      display: flex; align-items: flex-start; gap: .65rem;
+    }
+    .verdict-badge {
+      flex-shrink: 0; font-family: var(--display); font-weight: 400;
+      font-size: var(--fs-sm); color: #fff; background: var(--tour);
+      border-radius: 999px; padding: .2rem .7rem; line-height: 1.4;
+    }
+    .tour-verdict p { margin: 0; }
+    .tour-verdict strong { font-family: var(--display); font-weight: 400; color: var(--ink); margin-right: 0; }
+
+
+    .day-grid { display: grid; gap: .9rem; grid-template-columns: 1fr; margin: 0 0 .6rem; }
     @media (min-width: 820px) { .day-grid { grid-template-columns: 1fr 1fr; } }
     .day-card {
-      border: 1px solid var(--line); border-radius: 22px; overflow: hidden;
-      background: var(--paper); display: flex; flex-direction: column;
+      border: 1px solid var(--line); border-radius: 18px;
+      background: var(--paper);
+      display: flex; flex-direction: column;
       cursor: pointer; text-align: left; color: inherit; font: inherit;
-      padding: 0; width: 100%; box-shadow: var(--shadow-sm);
+      padding: .5rem .5rem .8rem; width: 100%;
+      box-shadow: var(--shadow);
+      transition: transform .22s var(--ease), box-shadow .22s var(--ease);
     }
-    .day-card:hover { box-shadow: var(--shadow); }
-    .day-card.is-open { border-color: #E39B8A; box-shadow: var(--shadow); }
+    .day-card:hover, .day-card:focus-visible {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lift);
+    }
+    .day-card.is-open { border-color: var(--accent); box-shadow: var(--shadow-lift); }
     .day-photo { position: relative; }
-    .day-card img { width: 100%; height: 9.2rem; object-fit: cover; }
+    .day-card img { width: 100%; height: 9rem; object-fit: cover; border-radius: 12px; }
     .day-n {
-      position: absolute; left: .7rem; top: .7rem;
-      font-family: var(--display); font-size: .92rem;
-      background: rgba(255,252,250,.92); color: var(--ink);
-      border-radius: 999px; padding: .15rem .65rem;
-      box-shadow: var(--shadow-sm);
+      position: absolute; left: .55rem; top: .55rem;
+      font-family: var(--display); font-size: var(--fs-sm);
+      background: var(--paper); color: var(--ink);
+      border-radius: 999px; padding: .12rem .6rem;
+      box-shadow: var(--shadow-sm); border: 1px solid var(--line);
     }
-    .day-body { padding: .75rem .85rem .9rem; }
-    .day-top { display: flex; justify-content: flex-end; font-size: .75rem; color: var(--mute); margin: -.15rem 0 .2rem; }
-    .alt-bar { margin: .2rem 0 .45rem; }
-    .alt-bar .lab { display: flex; justify-content: space-between; font-size: .7rem; color: var(--mute); margin-bottom: .18rem; }
-    .alt-bar .track { height: .32rem; border-radius: 99px; background: var(--bg-2); overflow: hidden; }
+    .day-body { padding: .65rem .4rem 0; }
+    .day-top { display: flex; justify-content: flex-end; font-size: var(--fs-xs); color: var(--mute); margin: 0 0 .2rem; }
+    .alt-bar { margin: .15rem 0 .4rem; }
+    .alt-bar .lab { display: flex; justify-content: space-between; font-size: var(--fs-xs); color: var(--mute); margin-bottom: .18rem; }
+    .alt-bar .track { height: .4rem; border-radius: 99px; background: var(--bg-2); overflow: hidden; }
     .alt-bar .fill { height: 100%; border-radius: 99px; }
-    .fill-g { background: #8FCB9E; } .fill-y { background: #E8C56A; } .fill-r { background: #E8A090; }
-    .day-sum { margin: 0; color: var(--ink-2); font-size: .88rem; }
-    .day-more { display: none; margin: .5rem 0 0; padding: .5rem 0 0; border-top: 1px solid var(--line); color: var(--ink-2); font-size: .84rem; }
+    .fill-g { background: var(--low); } .fill-y { background: var(--mid); } .fill-r { background: var(--high); }
+    .day-sum { margin: 0; color: var(--ink-2); font-size: var(--fs-sm); }
+    .day-more { display: none; margin: .5rem 0 0; padding: .5rem 0 0; border-top: 1px solid var(--line); color: var(--ink-2); font-size: var(--fs-sm); }
     .day-card.is-open .day-more { display: block; }
     .day-more li { margin: .22rem 0; }
-    .hint { font-size: .75rem; color: var(--mute); margin: -.4rem 0 1.1rem; }
+    .hint { font-size: var(--fs-xs); color: var(--mute); margin: 0 0 0; }
 
     /* 跟团 vs 自己走 */
-    .tour-cmp { margin: 0 0 1.4rem; }
+    .tour-cmp { margin: 0; }
     .tour-pair { display: grid; grid-template-columns: 1fr; gap: .7rem; }
-    @media (min-width: 620px) {
-      .tour-pair { grid-template-columns: 1fr 1fr; }
-    }
+    @media (min-width: 620px) { .tour-pair { grid-template-columns: 1fr 1fr; } }
     .tour-card {
-      background: var(--paper); border: 1px solid var(--line); border-radius: 22px;
-      padding: .95rem 1rem .9rem; box-shadow: var(--shadow-sm);
+      background: var(--paper); border: 1px solid var(--line); border-radius: var(--r);
+      padding: .95rem 1rem .9rem; box-shadow: var(--shadow);
       display: flex; flex-direction: column; min-width: 0; height: 100%;
     }
-    .tour-card.tour-group { background: linear-gradient(180deg, #E4F3F8 0%, var(--paper) 42%); }
-    .tour-card.tour-self { background: linear-gradient(180deg, #F8EBCB 0%, var(--paper) 42%); }
+    .tour-card.tour-group { background: linear-gradient(180deg, var(--tour-s) 0%, var(--paper) 42%); border-color: color-mix(in srgb, var(--tour) 28%, var(--line)); }
+    .tour-card.tour-self { background: var(--paper); }
     .tour-ico {
-      width: 2.55rem; height: 2.55rem; border-radius: 14px; background: #fff;
+      width: 2.4rem; height: 2.4rem; border-radius: 14px; background: #fff;
       border: 1px solid var(--line); display: grid; place-items: center;
       margin: 0 0 .45rem; box-shadow: var(--shadow-sm);
     }
     .tour-ico svg { width: 1.6rem; height: 1.6rem; display: block; }
     .tour-card h4 {
-      font-family: var(--display); font-weight: 400; font-size: 1.2rem;
+      font-family: var(--display); font-weight: 400; font-size: var(--fs-lg);
       margin: 0 0 .2rem; color: var(--ink);
     }
     .tour-price {
-      margin: 0 0 .12rem; color: var(--ink-2); font-size: .82rem;
+      margin: 0 0 .12rem; color: var(--ink-2); font-size: var(--fs-sm);
       display: flex; align-items: baseline; gap: .22rem; flex-wrap: wrap;
     }
     .tour-price b {
-      font-family: var(--display); font-weight: 400; font-size: 2.05rem;
+      font-family: var(--display); font-weight: 400; font-size: var(--fs-num);
       line-height: 1; color: var(--ink);
     }
-    .tour-price .yen { font-family: var(--display); font-size: 1.05rem; color: var(--ink); }
-    .tour-sub { margin: 0 0 .55rem; font-size: .75rem; color: var(--mute); }
-    .tour-card ul { margin: 0; padding: 0; list-style: none; font-size: .84rem; color: var(--ink-2); }
+    .tour-price .yen { font-family: var(--display); font-size: var(--fs-lg); color: var(--ink); }
+    .tour-sub { margin: 0 0 .55rem; font-size: var(--fs-xs); color: var(--mute); }
+    .tour-card ul { margin: 0; padding: 0; list-style: none; font-size: var(--fs-sm); color: var(--ink-2); }
     .tour-card li {
       position: relative; padding: .22rem 0 .22rem 1rem;
       border-top: 1px solid var(--line);
     }
     .tour-card li::before {
       content: ""; position: absolute; left: 0; top: .72em;
-      width: .38rem; height: .38rem; border-radius: 50%; background: var(--peach);
+      width: .38rem; height: .38rem; border-radius: 50%; background: var(--accent);
     }
-    .tour-group li::before { background: var(--blue); }
-    .tour-self li::before { background: var(--gold); }
-    .tour-risk { margin-top: auto; padding-top: .55rem; font-size: .75rem; color: var(--mute); line-height: 1.5; }
-    .tour-foot { margin: .55rem 0 0; font-size: .75rem; color: var(--mute); }
-    .tour-verdict {
-      margin: .7rem 0 0; background: var(--peach-s); border: 1px solid var(--line);
-      border-radius: 16px; padding: .65rem .85rem; font-size: .88rem;
-      color: var(--ink-2); line-height: 1.55;
-    }
-    .tour-verdict strong {
-      font-family: var(--display); font-weight: 400; color: #c17a68; margin-right: .35rem;
-    }
+    .tour-group li::before { background: var(--tour); }
+    .tour-risk { margin-top: auto; padding-top: .55rem; font-size: var(--fs-xs); color: var(--mute); line-height: 1.5; }
+    .tour-foot { margin: .55rem 0 0; font-size: var(--fs-xs); color: var(--mute); }
+    /* .tour-verdict restyled with dates/tour css above */
     .tour-table-note {
-      margin: 0 0 .7rem; font-size: .78rem; color: var(--ink-2); line-height: 1.55;
-      background: var(--gold-s); border-radius: 14px; padding: .65rem .8rem;
+      margin: 0 0 .7rem; font-size: var(--fs-sm); color: var(--ink-2); line-height: 1.55;
+      background: var(--mid-s); border-radius: 14px; padding: .65rem .8rem;
     }
 
+    .alt-tips {
+      background: var(--paper); border: 1px solid var(--line); border-radius: var(--r);
+      padding: 1rem 1.05rem 1rem; box-shadow: var(--shadow);
+    }
+    .alt-chart { margin: .15rem 0 .85rem; display: grid; gap: .5rem; }
+    .alt-row { display: grid; grid-template-columns: 5.6rem 1fr 5.2rem; align-items: center; gap: .5rem; }
+    .alt-name { font-size: var(--fs-sm); color: var(--ink-2); }
+    .alt-m { font-size: var(--fs-xs); color: var(--mute); text-align: right; font-variant-numeric: tabular-nums; }
+    .alt-track { height: .7rem; background: var(--bg-2); border-radius: 999px; overflow: hidden; }
+    .alt-fill { display: block; height: 100%; border-radius: 999px; }
+    .alt-fill.fill-g { background: var(--low); }
+    .alt-fill.fill-r { background: var(--high); }
+    .tip-grid {
+      list-style: none; margin: 0; padding: 0;
+      display: grid; grid-template-columns: 1fr 1fr; gap: .5rem .65rem;
+    }
+    .tip-grid li {
+      display: flex; align-items: flex-start; gap: .5rem;
+      font-size: var(--fs-sm); color: var(--ink-2); line-height: 1.45;
+      margin: 0; background: var(--bg); border-radius: 14px; padding: .5rem .55rem;
+    }
+    .tip-grid li.tip-wide { grid-column: 1 / -1; }
+    .tip-ico {
+      flex-shrink: 0; width: 1.85rem; height: 1.85rem; border-radius: 10px;
+      background: #fff; border: 1px solid var(--line);
+      display: grid; place-items: center;
+    }
+    .tip-ico svg { width: 1.15rem; height: 1.15rem; display: block; }
+    .alt-tips-foot { margin: .7rem 0 0; font-size: var(--fs-xs); color: var(--mute); }
+    @media (max-width: 520px) {
+      .alt-row { grid-template-columns: 4.6rem 1fr 4.6rem; gap: .35rem; }
+      .tip-grid { grid-template-columns: 1fr; }
+      .tip-grid li.tip-wide { grid-column: auto; }
+    }
 
-    .src { margin: .65rem 0 0; border: 1px dashed var(--line); border-radius: 14px; background: transparent; }
-    .src > summary { cursor: pointer; list-style: none; padding: .5rem .8rem; color: #c17a68; font-size: .82rem; }
+    .src { margin: .65rem 0 0; border: 1px solid var(--line); border-radius: 14px; background: var(--paper); }
+    .src > summary { cursor: pointer; list-style: none; padding: .5rem .8rem; color: var(--accent); font-size: var(--fs-sm); }
     .src > summary::-webkit-details-marker { display: none; }
     .src > summary::after { content: "＋"; float: right; color: var(--mute); }
     .src[open] > summary::after { content: "－"; }
-    .src-body { padding: 0 .8rem .8rem; font-size: .8rem; color: var(--ink-2); }
+    .src-body { padding: 0 .8rem .8rem; font-size: var(--fs-sm); color: var(--ink-2); }
 
     .perhead-block { margin: .9rem 0 1.1rem; }
-    .perhead-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 0 .55rem; border: 1px solid var(--line); border-radius: 16px; background: #fff; }
-    table.perhead { width: 100%; min-width: 38rem; border-collapse: collapse; font-size: .78rem; color: var(--ink-2); table-layout: fixed; }
+    .perhead-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 0 .55rem; border: 1px solid var(--line); border-radius: 16px; background: #fff; box-shadow: var(--shadow-sm); }
+    table.perhead { width: 100%; min-width: 38rem; border-collapse: collapse; font-size: var(--fs-sm); color: var(--ink-2); table-layout: fixed; }
     table.perhead col.c-item { width: 28%; } table.perhead col.c-way { width: 12%; } table.perhead col.c-unit { width: 18%; } table.perhead col.c-n { width: 14%; }
     table.perhead th, table.perhead td { padding: .48rem .5rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
-    table.perhead th { color: #8a5346; font-weight: 600; background: var(--peach-s); white-space: nowrap; }
-    table.perhead td.num { text-align: right; color: var(--ink); font-variant-numeric: tabular-nums; }
+    table.perhead th { color: var(--ink); font-weight: 600; background: var(--accent-s); white-space: nowrap; }
+    table.perhead td.num { text-align: right; color: var(--ink); font-family: var(--display); font-variant-numeric: tabular-nums; }
     table.perhead td.way { white-space: nowrap; }
-    table.perhead .sub { display: block; margin-top: .12rem; font-size: .7rem; color: var(--mute); font-weight: 400; }
-    table.perhead tr.total th, table.perhead tr.total td { color: var(--ink); font-weight: 650; border-bottom: 0; background: var(--gold-s); }
-    .way-pill { display: inline-block; font-size: .68rem; border-radius: 999px; padding: .05rem .4rem; }
-    .way-head { background: var(--blue-s); color: #3a6a80; }
-    .way-share { background: var(--mint-s); color: #3d6b4a; }
+    table.perhead .sub { display: block; margin-top: .12rem; font-size: var(--fs-xs); color: var(--mute); font-weight: 400; font-family: var(--sans); }
+    table.perhead tr.total th, table.perhead tr.total td { color: var(--ink); font-weight: 650; border-bottom: 0; background: var(--mid-s); }
+    table.perhead tr.total td.num { font-size: var(--fs-md); }
+    .way-pill { display: inline-block; font-size: var(--fs-xs); border-radius: 999px; padding: .05rem .4rem; }
+    .way-head { background: var(--tour-s); color: var(--tour); }
+    .way-share { background: var(--low-s); color: var(--low); }
+    .price-pill {
+      display: inline-block; font-family: var(--display);
+      background: var(--accent-s); color: var(--accent);
+      border-radius: 999px; padding: .05rem .5rem;
+    }
 
-    .budget-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(14rem, .85fr); gap: 1rem 1.2rem; align-items: start; }
-    @media (max-width: 800px) { .budget-grid { grid-template-columns: 1fr; } }
-    .b-row { display: grid; grid-template-columns: 6.2em 1fr auto; gap: .15rem .5rem; padding: .38rem 0; border-bottom: 1px solid var(--line); font-size: .84rem; }
+    .budget-grid { display: grid; grid-template-columns: 1fr; gap: .2rem; }
+    .b-row { display: grid; grid-template-columns: 6.2em 1fr auto; gap: .15rem .5rem; padding: .4rem 0; border-bottom: 1px solid var(--line); }
     .b-row .k { color: var(--ink); }
-    .b-row .d { color: var(--mute); font-size: .72rem; }
-    .b-row .v { color: #c17a68; font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+    .b-row .d { color: var(--mute); font-size: var(--fs-xs); }
+    .b-row .v { font-family: var(--display); color: var(--ink); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
     .b-row.total { border-bottom: 0; padding-top: .65rem; }
-    .budget-pie-wrap { display: flex; flex-direction: column; align-items: center; gap: .6rem; }
-    .pie { width: 9.6rem; height: 9.6rem; border-radius: 50%; box-shadow: 0 0 0 6px rgba(80,60,40,.04); flex-shrink: 0; }
-    .pie-lj { background: conic-gradient(#E0B56A 0 27.50%, #F0C9A0 27.50% 37.06%, #7EB8D4 37.06% 40.05%, #8EBFD0 40.05% 50.45%, #E8C9B0 50.45% 79.82%, #A8C9A8 79.82% 99.25%, #C0B8B0 99.25% 100%); }
-    .pie-legend { list-style: none; margin: 0; padding: 0; width: 100%; font-size: .74rem; color: var(--ink-2); }
-    .pie-legend li { display: flex; align-items: baseline; gap: .4rem; padding: .1rem 0; }
-    .pie-legend i { width: .5rem; height: .5rem; border-radius: 50%; flex-shrink: 0; }
-    .pie-legend .lab { flex: 1; } .pie-legend .amt { color: var(--mute); font-variant-numeric: tabular-nums; }
-    .pie-cap { margin: 0; font-size: .7rem; color: var(--mute); text-align: center; }
+    .b-row.total .v { color: var(--accent); font-size: var(--fs-lg); }
 
     .lodge-grid { display: grid; gap: .65rem; grid-template-columns: 1fr; margin: .35rem 0 1rem; }
     @media (min-width: 640px) { .lodge-grid { grid-template-columns: repeat(2, 1fr); } }
     .lodge {
-      border: 1px solid var(--line); border-radius: 18px; padding: .8rem .9rem;
-      background: var(--paper); color: var(--ink-2); font-size: .86rem; box-shadow: var(--shadow-sm);
+      background: var(--paper); border: 1px solid var(--line); border-radius: 16px;
+      padding: .75rem .8rem; box-shadow: var(--shadow-sm);
     }
     .lodge a { color: var(--ink); font-weight: 650; text-decoration: none; }
-    .lodge a:hover { color: #c17a68; }
-    .lodge .price { color: #c17a68; font-variant-numeric: tabular-nums; margin: .28rem 0 0; }
-    .lodge .meta { font-size: .78rem; color: var(--mute); margin: .15rem 0 0; }
+    .lodge a:hover { color: var(--accent); }
+    .lodge .price { color: var(--accent); font-family: var(--display); font-variant-numeric: tabular-nums; margin: .28rem 0 0; }
+    .lodge .meta { font-size: var(--fs-sm); color: var(--mute); margin: .15rem 0 0; }
 
-    .links { display: grid; gap: .6rem; margin: .2rem 0 0; }
-    @media (min-width: 800px) { .links { grid-template-columns: 1fr 1fr; } }
-    .card {
-      display: block; padding: .8rem .9rem; border: 1px solid var(--line); border-radius: 16px;
-      background: var(--paper); color: inherit; text-decoration: none; box-shadow: var(--shadow-sm);
-    }
-    .card:hover { border-color: #E39B8A; }
-    .card-title { display: block; color: var(--ink); font-weight: 650; }
-    .card small { color: var(--mute); font-size: .72rem; }
-    .card-note { display: block; margin-top: .2rem; font-size: .8rem; color: var(--ink-2); }
+    .sources { padding: 2.2rem 0 3rem; background: var(--bg); }
+    footer { padding: 1rem 1.2rem 2rem; text-align: center; color: var(--mute); font-size: var(--fs-xs); }
 
-    .gallery { display: grid; gap: .7rem; grid-template-columns: 1fr 1fr; margin: 1.2rem 0 0; }
-    @media (max-width: 700px) { .gallery { grid-template-columns: 1fr; } }
-    .gallery figure { margin: 0; }
-    .gallery img { width: 100%; height: 11rem; object-fit: cover; border-radius: 16px; cursor: zoom-in; box-shadow: var(--shadow-sm); }
-    .gallery figcaption { font-size: .7rem; color: var(--mute); margin-top: .3rem; }
-
-    .sources { padding: 2.2rem 0 3rem; }
-    footer { padding: 1rem 1.2rem 2rem; text-align: center; color: var(--mute); font-size: .75rem; }
-
-    #lightbox { position: fixed; inset: 0; z-index: 80; background: rgba(50,44,38,.88); display: grid; place-items: center; padding: 3vh 4vw; }
+    #lightbox { position: fixed; inset: 0; z-index: 80; background: rgba(42,38,31,.88); display: grid; place-items: center; padding: 3vh 4vw; }
     #lightbox[hidden] { display: none; }
     #lightbox img { max-width: min(96vw, 1400px); max-height: 86vh; object-fit: contain; border-radius: 12px; }
-    .lb-cap { color: #efe8de; font-size: .82rem; margin-top: .6rem; text-align: center; }
+    .lb-cap { color: #efe8de; font-size: var(--fs-sm); margin-top: .6rem; text-align: center; }
     .lb-x, .lb-nav { position: absolute; top: 1rem; background: transparent; border: 0; color: #fff; font-size: 1.4rem; cursor: pointer; padding: .4rem .7rem; }
     .lb-x { right: 1rem; } .prev { left: .4rem; top: 50%; } .next { right: .4rem; top: 50%; }
 
     html.shot .reveal { opacity: 1 !important; transform: none !important; animation: none !important; }
-    html.shot-hero .nav, html.shot-hero footer, html.shot-hero #lightbox, html.shot-hero .overview, html.shot-hero .map-sec, html.shot-hero .plan, html.shot-hero .sources { display: none !important; }
-    html.shot-hero body { background: var(--bg); padding: 1rem !important; }
-    html.shot-map .nav, html.shot-map footer, html.shot-map #lightbox, html.shot-map .hero, html.shot-map .overview, html.shot-map .plan, html.shot-map .sources { display: none !important; }
-    html.shot-map body { background: var(--bg); padding: 1rem !important; }
-    html.shot-map .map-sec { padding: 0; }
-    html.shot-table .nav, html.shot-table footer, html.shot-table #lightbox, html.shot-table .hero, html.shot-table .overview, html.shot-table .map-sec, html.shot-table .sources, html.shot-table .day-grid, html.shot-table .date-box, html.shot-table .alt-box, html.shot-table .todo, html.shot-table .gallery, html.shot-table .refs, html.shot-table .budget-grid, html.shot-table .lodge-grid, html.shot-table #stay, html.shot-table .hint, html.shot-table .tour-cmp, html.shot-table .budget > .chips, html.shot-table .budget > .plain, html.shot-table .budget > h3, html.shot-table .perhead-block .src { display: none !important; }
-    html.shot-table body { background: var(--bg); padding: 1rem !important; }
-    html.shot-table h3:not(.perhead-block h3) { display: none; }
-
-    html.shot-tour .nav, html.shot-tour footer, html.shot-tour #lightbox, html.shot-tour .hero, html.shot-tour .overview, html.shot-tour .map-sec, html.shot-tour .sources { display: none !important; }
-    html.shot-tour .plan > .wrap > *:not(.tour-cmp) { display: none !important; }
-    html.shot-tour body { background: var(--bg) !important; background-image: none !important; padding: 1.7rem 1.2rem 1.6rem !important; }
-    html.shot-tour .plan { padding: 0; }
+    html.shot-hero .nav, html.shot-hero footer, html.shot-hero #lightbox, html.shot-hero .map-sec, html.shot-hero .plan, html.shot-hero .sources, html.shot-hero .dates-sec, html.shot-hero .tour-sec,
+    html.shot-top .nav, html.shot-top footer, html.shot-top #lightbox, html.shot-top .map-sec, html.shot-top .plan, html.shot-top .sources, html.shot-top .dates-sec, html.shot-top .tour-sec { display: none !important; }
+    html.shot-hero body, html.shot-top body { background: var(--bg); padding: 1rem !important; }
+    html.shot-map .nav, html.shot-map footer, html.shot-map #lightbox, html.shot-map .hero, html.shot-map .plan, html.shot-map .sources, html.shot-map .dates-sec, html.shot-map .tour-sec { display: none !important; }
+    html.shot-map body { background: var(--bg) !important; background-image: none !important; padding: 1rem !important; }
+    html.shot-map .map-sec, html.shot-map .band { padding: 1rem 0; background: var(--tour-s); }
+    html.shot-map .map-sec .src { display: none !important; }
+    html.shot-table .nav, html.shot-table footer, html.shot-table #lightbox, html.shot-table .hero, html.shot-table .map-sec, html.shot-table .sources, html.shot-table .dates-sec, html.shot-table .tour-sec { display: none !important; }
+    html.shot-table .band:not(:has(#perhead)) { display: none !important; }
+    html.shot-table .budget > .chips, html.shot-table .budget > .plain, html.shot-table .budget > h2, html.shot-table .budget-grid, html.shot-table .perhead-block .src { display: none !important; }
+    html.shot-table body { background: var(--bg) !important; padding: 1rem !important; }
+    html.shot-table .band { background: transparent; padding: 0; }
+    html.shot-tour .nav, html.shot-tour footer, html.shot-tour #lightbox, html.shot-tour .hero, html.shot-tour .map-sec, html.shot-tour .plan, html.shot-tour .sources, html.shot-tour .dates-sec { display: none !important; }
+    html.shot-tour body { background: var(--bg) !important; padding: 1.4rem 1rem !important; }
+    html.shot-tour .band { background: transparent; padding: 0; }
     html.shot-tour .tour-cmp { margin: 0; }
-
+    html.shot-days .nav, html.shot-days footer, html.shot-days #lightbox, html.shot-days .hero, html.shot-days .map-sec, html.shot-days .sources, html.shot-days .dates-sec, html.shot-days .tour-sec { display: none !important; }
+    html.shot-days .band:not(:has(.day-grid)) { display: none !important; }
+    html.shot-days .wrap > *:not(.day-grid) { display: none !important; }
+    html.shot-days body { background: var(--bg) !important; padding: 1.3rem 1rem !important; }
+    html.shot-days .band { background: transparent; padding: 0; }
+    html.shot-days .plan > .band > .wrap { width: min(64rem, calc(100% - 1.2rem)); }
+    html.shot-days .day-grid { grid-template-columns: 1fr 1fr 1fr; margin: 0; }
+    @media (max-width: 820px) { html.shot-days .day-grid { grid-template-columns: 1fr; } }
+    html.shot-alt .nav, html.shot-alt footer, html.shot-alt #lightbox, html.shot-alt .hero, html.shot-alt .map-sec, html.shot-alt .sources, html.shot-alt .dates-sec, html.shot-alt .tour-sec { display: none !important; }
+    html.shot-alt .band:not(:has(.alt-tips)) { display: none !important; }
+    html.shot-alt .wrap > *:not(.alt-tips) { display: none !important; }
+    html.shot-alt body { background: var(--bg) !important; padding: 1.5rem 1.1rem !important; }
+    html.shot-alt .band { background: transparent; padding: 0; }
+    html.shot-alt .alt-tips { margin: 0; }
+    html.shot-dates .nav, html.shot-dates footer, html.shot-dates #lightbox, html.shot-dates .hero, html.shot-dates .map-sec, html.shot-dates .plan, html.shot-dates .sources, html.shot-dates .tour-sec { display: none !important; }
+    html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 1rem !important; }
+    html.shot-dates .dates-sec { padding: 0; background: transparent; }
+    html.shot-nav footer, html.shot-nav #lightbox, html.shot-nav .hero, html.shot-nav .dates-sec, html.shot-nav .tour-sec, html.shot-nav .map-sec, html.shot-nav .sources { display: none !important; }
+    html.shot-nav .plan > .band:not(:has(.day-grid)) { display: none !important; }
+    html.shot-nav .day-card:nth-child(n+3) { display: none !important; }
+    html.shot-nav body { background: var(--bg) !important; padding: 0 !important; }
+    html.shot-nav .band { padding-top: 1.2rem; }
 
     @media (max-width: 800px) {
-      .nav { padding: .45rem .7rem; }
-      .hero-photo { height: 14.5rem; }
+      .nav { padding: .45rem .6rem; }
+      .highlights img { height: 9rem; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .train-bounce { animation: none !important; }
+      .train-bounce, .day-card { animation: none !important; transition: none !important; }
     }
     @keyframes train-bounce {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-3px); }
     }
     .train-bounce { animation: train-bounce 1.6s ease-in-out infinite; }
-  </style>
+    </style>
 </head>
 <body>
   <header class="nav" id="nav">
-    <a class="nav-brand" href="#top">一月慢游</a>
+    <a class="nav-brand" href="#top">丽江＋大理</a>
     <nav class="nav-links" aria-label="页面导航">
-      <a href="#plan">行程</a>
+      <a href="#dates">日期</a>
+      <a href="#tour-vs">跟团</a>
       <a href="#map">地图</a>
+      <a href="#days">每天</a>
+      <a href="#pack">带啥</a>
+      <a href="#stay">住哪</a>
       <a href="#budget">费用</a>
-      <a href="#stay">住宿</a>
-      <a href="#sources">出处</a>
     </nav>
   </header>
 
   <section class="hero" id="top">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <p class="kicker">木阳的冬日小记</p>
-        <h1>一月，先丽江<br>再大理</h1>
-        <p class="hero-lead">先上玉龙雪山，再坐高铁去洱海、苍山。当地可坐公交、包车，也可以自己开车。</p>
-      </div>
-      <div class="hero-visual">
-        <div class="hero-photo-wrap">
-          <img class="hero-photo" id="heroPhoto" src="img/yulong-peak.jpg" width="1800" height="810" alt="玉龙雪山雪峰">
-        </div>
-        <p class="hero-credit">玉龙雪山　CEphoto, Uwe Aranas　<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a></p>
-      </div>
-    </div>
-  </section>
-
-  <section class="overview" id="plan">
-    <div class="wrap">
-      <p class="eyebrow">这次怎么走</p>
-      <h2>一条路线，五到六天</h2>
-      <ul class="chips">
-        <li>一共 <strong>5–6 天</strong></li>
-        <li>人数可能是 <strong>3、4 或 5 人</strong></li>
-        <li>木阳 <strong>1 月 11 日</strong>返回</li>
-        <li>有一位同行朋友 <strong>1 月 7 日回日本</strong>，玉龙雪山要排在这之前</li>
-      </ul>
-      <div class="fact-grid">
-        <div class="fact"><span class="k">怎么走</span><p>成都飞丽江，住束河或白沙，上雪山；再坐高铁去大理，住海边。</p></div>
-        <div class="fact"><span class="k">怎么住</span><p><strong>3 人可合住一间</strong>；4–5 人仍住两居整套。</p></div>
-        <div class="fact"><span class="k">高反朋友</span><p>可能不来；如果来，在蓝月谷等，<strong>不上大索道和苍山</strong>。</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="map-sec" id="map">
     <div class="wrap-wide">
-      <p class="eyebrow">手绘行程图</p>
-      <h2>点一天，看那天怎么走</h2>
+      <p class="kicker">先把这次怎么走记在这儿</p>
+      <h1>丽江＋大理</h1>
+      <div class="highlights">
+        <figure>
+          <img src="img/yulong-glacier.jpg" width="1600" height="1200" alt="玉龙雪山冰川公园栈道" data-full="img/yulong-glacier.jpg" data-cap="冰川公园栈道，Caihm，CC BY 3.0">
+          <figcaption><b>玉龙雪山</b>大索道上站 4506 米</figcaption>
+        </figure>
+        <figure>
+          <img src="img/erhai-shore.jpg" width="1500" height="1000" alt="洱海生态廊道岸边" data-full="img/erhai-shore.jpg" data-cap="洱海生态廊道，Jonashtand，CC BY-SA 4.0">
+          <figcaption><b>洱海两天</b>喜洲、西岸，再去双廊</figcaption>
+        </figure>
+        <figure>
+          <img src="img/shuhe-gate.jpg" width="1500" height="1125" alt="束河古镇牌坊" data-full="img/shuhe-gate.jpg" data-cap="束河古镇牌坊，Gisling，CC BY 3.0">
+          <figcaption><b>先适应</b>住束河或白沙，再上山</figcaption>
+        </figure>
+      </div>
+      <p class="hero-credit">冰川公园栈道 Caihm　洱海 Jonashtand　束河 Gisling　<a href="#sources">出处</a></p>
+
+      <div class="snap">
+        <div class="snap-card">
+          <p class="snap-k"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="3" stroke="#C45C45" stroke-width="1.8"/><path d="M8 3.5v3M16 3.5v3M3.5 10h17" stroke="#C45C45" stroke-width="1.8" stroke-linecap="round"/></svg> 什么时候</p>
+          <p class="snap-num">6<span class="unit">天</span></p>
+          <p class="snap-d">现在想的是 <strong>12 月 26–31 日</strong>。丽江住 3 晚，29–30 日在大理，31 日飞回。</p>
+        </div>
+        <div class="snap-card">
+          <p class="snap-k"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke="#C45C45" stroke-width="1.8"/><path d="M8.5 9.5 L12 13 L15.5 9.5M12 13v5M8.8 16.5h6.4" stroke="#C45C45" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg> 人均大约</p>
+          <ul class="snap-prices">
+            <li><span>3 人</span><b>2271–3567</b></li>
+            <li><span>4 人</span><b>2070–3471</b></li>
+            <li><span>5 人</span><b>2277–3377</b></li>
+          </ul>
+          <p class="snap-d">元 / 人，含或不含包车的区间。<a href="#budget">看分项</a></p>
+        </div>
+        <div class="snap-card">
+          <p class="snap-k"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 18 L9.5 8 L13 13 L15.2 10.2 L21 18 Z" stroke="#C45C45" stroke-width="1.8" stroke-linejoin="round"/><path d="M9.5 8 L11.2 10.4 L8.4 10.4 Z" fill="#C45C45"/></svg> 累不累</p>
+          <p class="snap-num">慢走</p>
+          <p class="snap-d">大多时候在 2000 米上下。只有上山那天到 4506 米，约 5–6 小时。</p>
+          <div class="pace-meter" role="img" aria-label="海拔：洱海约 1970 米，束河约 2400 米，大索道上站 4506 米">
+            <div class="track"><div class="fill"></div></div>
+            <div class="pace-scale"><span>洱海 1970</span><span>束河 2400</span><span>索道 4506</span></div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </section>
+
+
+  <section class="dates-sec band band-mint" id="dates">
+    <div class="wrap-wide">
+      <h2 class="sec-h"><span class="sec-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5" width="17" height="15" rx="3" stroke="#2F7D5B" stroke-width="1.8"/><path d="M8 3.5v3M16 3.5v3M3.5 10h17" stroke="#2F7D5B" stroke-width="1.8" stroke-linecap="round"/></svg></span>什么时候走</h2>
+      <div class="dates-verdict">
+        <p class="v-line"><span class="badge-rec">推荐</span>12 月 26–31 日</p>
+        <p class="v-why">全程平时价，在元旦前。丽江一起住满 3 晚，有一天适应，洱海也能多走一天。</p>
+      </div>
+      <div class="date-x-wrap">
+        <table class="date-x">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="col-rec"><span class="badge-rec">推荐</span><br>12/26–31</th>
+              <th>1/3–1/6</th>
+              <th>1/4–1/6</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th>丽江住几晚</th><td class="col-rec">3 晚</td><td>3 晚</td><td>2 晚</td></tr>
+            <tr><th>能否一起住满 3 晚</th><td class="col-rec"><span class="yn"><svg class="mark" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#DCEFE4"/><path d="M5.5 10.3 L8.4 13.1 L14.5 6.8" stroke="#2F7D5B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>能</span></td><td><span class="yn"><svg class="mark" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#DCEFE4"/><path d="M5.5 10.3 L8.4 13.1 L14.5 6.8" stroke="#2F7D5B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>能</span></td><td><span class="yn"><svg class="mark" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#FDE4DC"/><path d="M6.6 6.6 L13.4 13.4 M13.4 6.6 L6.6 13.4" stroke="#C45C45" stroke-width="1.8" stroke-linecap="round"/></svg>不能</span></td></tr>
+            <tr><th>有没有适应日</th><td class="col-rec"><span class="yn"><svg class="mark" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#DCEFE4"/><path d="M5.5 10.3 L8.4 13.1 L14.5 6.8" stroke="#2F7D5B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>有</span> 12/27</td><td><span class="yn"><svg class="mark" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#DCEFE4"/><path d="M5.5 10.3 L8.4 13.1 L14.5 6.8" stroke="#2F7D5B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>有</span> 1/4</td><td><span class="yn"><svg class="mark" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#FDE4DC"/><path d="M6.6 6.6 L13.4 13.4 M13.4 6.6 L6.6 13.4" stroke="#C45C45" stroke-width="1.8" stroke-linecap="round"/></svg>没有</span></td></tr>
+            <tr><th>是不是假期</th><td class="col-rec">不是，元旦前</td><td>1/3 是元旦最后一天</td><td>不是，元旦后</td></tr>
+            <tr><th>丽江住宿人均</th><td class="col-rec"><span class="num">74</span> 元/人/晚</td><td><span class="num">83</span> 元/人/晚</td><td><span class="num">74</span> 元/人/晚</td></tr>
+            <tr><th>天气</th><td class="col-rec">旱季，约 90% 晴到多云</td><td>旱季，约 92% 晴到多云</td><td>同 1 月，约 92%</td></tr>
+            <tr><th>人潮</th><td class="col-rec">不是元旦假（26–27 周末）</td><td>1/3 仍在假期内</td><td>元旦后工作日</td></tr>
+            <tr><th>为什么不选</th><td class="col-rec"><span class="why">就是这段</span></td><td class="why">有一晚假期价，贵一点</td><td class="why">丽江只住 2 晚，没有完整适应日</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="hint date-foot">住宿人均按 3 人、该段最便宜的一间，单位元/人/晚：12/26–31 丽江三晚与 1/4–6 为禅茶 222 元/晚，1/3–6 为阳光 249 元/晚。木鸟日历 2026-11-10，不是成交价。</p>
+    </div>
+  </section>
+
+  <section class="tour-sec band band-peach" id="tour-vs">
+    <div class="wrap-wide">
+      <h2 class="sec-h"><span class="sec-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="9" r="2.2" stroke="#C45C45" stroke-width="1.7"/><circle cx="15.5" cy="9" r="2.2" stroke="#C45C45" stroke-width="1.7"/><path d="M5.5 17.5c.6-2.6 2.3-4 4.5-4s3.9 1.4 4.5 4M14 13.5c1.8 0 3.3 1 4 3.2" stroke="#C45C45" stroke-width="1.7" stroke-linecap="round"/></svg></span>跟团，还是自己走</h2>
+      <div class="tour-pair">
+        <article class="tour-card tour-group">
+          <div class="tour-ico" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <rect x="3.5" y="8" width="25" height="14.5" rx="6" fill="#7EB8D4"/>
+              <rect x="6.5" y="10.5" width="8" height="5.5" rx="1.6" fill="#E4F3F8"/>
+              <rect x="16.5" y="10.5" width="8" height="5.5" rx="1.6" fill="#E4F3F8"/>
+              <circle cx="10" cy="23.5" r="2.6" fill="#3F3A35"/>
+              <circle cx="10" cy="23.5" r="1.15" fill="#FFFCFA"/>
+              <circle cx="22" cy="23.5" r="2.6" fill="#3F3A35"/>
+              <circle cx="22" cy="23.5" r="1.15" fill="#FFFCFA"/>
+              <rect x="26.2" y="14.2" width="2.4" height="3.2" rx="1" fill="#E39B8A"/>
+            </svg>
+          </div>
+          <h4>跟团</h4>
+          <p class="tour-price"><b>246</b><span class="yen">元起</span><span>/ 人</span></p>
+          <p class="tour-sub"><a href="https://piao.qunar.com/daytrip/detail_3224093.html">去哪儿纯玩 2–8 人小团</a></p>
+          <ul>
+            <li>束河接送、门票、大索道都含着</li>
+            <li>氧气、防寒服、午餐也含着</li>
+            <li>当天大约 5–6 小时，节奏跟着团走</li>
+          </ul>
+          <p class="tour-risk">大风季（11–1 月，约 15%）大索道可能停，或改坐别的索道。</p>
+        </article>
+        <article class="tour-card tour-self">
+          <div class="tour-ico" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="M11.2 7.2c0-2.2 1.7-3.9 3.8-3.9h2c2.1 0 3.8 1.7 3.8 3.9v1.1H11.2V7.2Z" fill="#E0B56A"/>
+              <rect x="8.2" y="8.6" width="15.6" height="16.6" rx="5" fill="#E8C56A"/>
+              <rect x="12.2" y="13.2" width="7.6" height="7.2" rx="2.2" fill="#F8EBCB"/>
+              <path d="M12.4 8.6v-1.2h7.2V8.6" stroke="#C9A24E" stroke-width="1.4" stroke-linecap="round"/>
+              <circle cx="16" cy="16.6" r="1.15" fill="#8A6A2A"/>
+            </svg>
+          </div>
+          <h4>自己走</h4>
+          <p class="tour-price"><b>240</b><span class="yen">元</span><span>/ 人</span></p>
+          <p class="tour-sub">门票 100 ＋ 大索道 120 ＋ 环保车 20</p>
+          <ul>
+            <li>车费已写在费用表（包车或打车）</li>
+            <li>午餐、氧气、租防寒服另计</li>
+            <li>当天大约 5–6 小时，想停就停</li>
+          </ul>
+          <p class="tour-risk">想慢慢走、随时能停时，更合适。</p>
+        </article>
+      </div>
+      <div class="tour-x-wrap">
+        <table class="tour-x">
+          <thead>
+            <tr><th>比一比</th><th>跟团</th><th>自己走</th></tr>
+          </thead>
+          <tbody>
+            <tr><th>束河接送</th><td><span class="yes"><svg class="mark" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#DCEFE4"/><path d="M5.5 10.3 L8.4 13.1 L14.5 6.8" stroke="#2F7D5B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>含</span></td><td><span class="no"><svg class="mark" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#FDE4DC"/><path d="M6.6 6.6 L13.4 13.4 M13.4 6.6 L6.6 13.4" stroke="#C45C45" stroke-width="1.8" stroke-linecap="round"/></svg>车费另计</span></td></tr>
+            <tr><th>门票、大索道</th><td><span class="yes"><svg class="mark" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#DCEFE4"/><path d="M5.5 10.3 L8.4 13.1 L14.5 6.8" stroke="#2F7D5B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>含</span></td><td><span class="yes"><svg class="mark" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#DCEFE4"/><path d="M5.5 10.3 L8.4 13.1 L14.5 6.8" stroke="#2F7D5B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>门票 100＋索道 120</span></td></tr>
+            <tr><th>景区摆渡（环保车）</th><td><span class="no"><svg class="mark" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#FDE4DC"/><path d="M6.6 6.6 L13.4 13.4 M13.4 6.6 L6.6 13.4" stroke="#C45C45" stroke-width="1.8" stroke-linecap="round"/></svg>另计 20 元</span></td><td><span class="yes"><svg class="mark" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#DCEFE4"/><path d="M5.5 10.3 L8.4 13.1 L14.5 6.8" stroke="#2F7D5B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>已含在 240 元里</span></td></tr>
+            <tr><th>氧气、防寒服、午餐</th><td><span class="yes"><svg class="mark" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#DCEFE4"/><path d="M5.5 10.3 L8.4 13.1 L14.5 6.8" stroke="#2F7D5B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>含</span></td><td><span class="no"><svg class="mark" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#FDE4DC"/><path d="M6.6 6.6 L13.4 13.4 M13.4 6.6 L6.6 13.4" stroke="#C45C45" stroke-width="1.8" stroke-linecap="round"/></svg>另计</span></td></tr>
+            <tr><th>当天节奏</th><td><span class="no"><svg class="mark" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#FDE4DC"/><path d="M6.6 6.6 L13.4 13.4 M13.4 6.6 L6.6 13.4" stroke="#C45C45" stroke-width="1.8" stroke-linecap="round"/></svg>跟着团走</span></td><td><span class="yes"><svg class="mark" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#DCEFE4"/><path d="M5.5 10.3 L8.4 13.1 L14.5 6.8" stroke="#2F7D5B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>想停就停</span></td></tr>
+            <tr><th>蓝月谷电瓶车</th><td><span class="no"><svg class="mark" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#FDE4DC"/><path d="M6.6 6.6 L13.4 13.4 M13.4 6.6 L6.6 13.4" stroke="#C45C45" stroke-width="1.8" stroke-linecap="round"/></svg>不含，50 元</span></td><td><span class="no"><svg class="mark" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#FDE4DC"/><path d="M6.6 6.6 L13.4 13.4 M13.4 6.6 L6.6 13.4" stroke="#C45C45" stroke-width="1.8" stroke-linecap="round"/></svg>不含，50 元</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tour-verdict">
+        <span class="verdict-badge">怎么选</span>
+        <p><strong>跟团更省、更省心。</strong>想自由走、随时能停，就自己走。相对「含包车一天对照」，跟团人均大约少 137–191 元；环保车 20、蓝月谷电瓶车 50 仍另计。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="map-sec band band-blue" id="map">
+    <div class="wrap-wide">
+      <h2 class="sec-h"><span class="sec-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-6.5-7.2-6.5-11.2A6.5 6.5 0 0 1 12 3.3a6.5 6.5 0 0 1 6.5 6.5C18.5 13.8 12 21 12 21Z" stroke="#2B7A9A" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="9.8" r="2.2" stroke="#2B7A9A" stroke-width="1.8"/></svg></span>那天怎么走</h2>
       <div class="map-toolbar" role="toolbar" aria-label="按天筛选">
         <button type="button" data-day="all" class="is-on">全程</button>
         <button type="button" data-day="D1">D1 抵达</button>
@@ -493,7 +808,7 @@
         <button type="button" data-day="D3">D3 雪山</button>
         <button type="button" data-day="D4">D4 去大理</button>
         <button type="button" data-day="D5">D5 洱海</button>
-        <button type="button" data-day="D6">D6 苍山</button>
+        <button type="button" data-day="D6">D6 洱海返程</button>
       </div>
       <div class="map-stage" id="map-stage">
         <svg class="map-svg" id="trip-map" viewBox="0 0 400 795" role="img" aria-label="丽江到大理手绘行程图">
@@ -594,8 +909,8 @@
           <path class="route-line" data-day="D2" d="M110 242 L150 208"/>
           <path class="route-line" data-day="D3" d="M110 242 L210 172 L160 108 L262 136"/>
           <path class="route-line" data-day="D4" d="M175 286 C 220 330, 330 350, 345 410 C 358 480, 350 620, 250 700 L210 722 L162 568"/>
-          <path class="route-line" data-day="D5" d="M162 568 L292 498"/>
-          <path class="route-line" data-day="D6" d="M162 568 L102 638 L88 528 L210 722"/>
+          <path class="route-line" data-day="D5" d="M155 640 C 142 600, 140 555, 148 515 C 150 485, 165 458, 205 452"/>
+          <path class="route-line" data-day="D6" d="M292 498 C 318 528, 322 572, 310 620 C 298 662, 268 686, 236 694"/>
 
           <!-- cute train between Lijiang and Dali -->
           <g transform="translate(318 368)">
@@ -682,7 +997,7 @@
             <text class="slabel" y="24">丽江站</text>
           </g>
           <!-- dali station -->
-          <g class="stop alt-low" data-id="dlistation" data-days="D4 D6" transform="translate(210 722)" tabindex="0" role="button">
+          <g class="stop alt-low" data-id="dlistation" data-days="D4" transform="translate(210 722)" tabindex="0" role="button">
             <circle class="halo" r="12"/>
             <g transform="translate(-8 -6)">
               <rect x="0" y="3" width="16" height="9" rx="3" fill="#7EB8D4"/>
@@ -701,32 +1016,13 @@
             <text class="slabel" y="24">喜洲</text>
           </g>
           <!-- shuanglang -->
-          <g class="stop alt-low" data-id="shuanglang" data-days="D4 D5" transform="translate(292 498)" tabindex="0" role="button">
+          <g class="stop alt-low" data-id="shuanglang" data-days="D5" transform="translate(292 498)" tabindex="0" role="button">
             <circle class="halo" r="12"/>
             <g transform="translate(-8 -7)">
               <path d="M1 8 L8 3 L15 8 Z" fill="#E0B56A"/>
               <rect x="4" y="8" width="8" height="6" rx="1" fill="#F8E9C8"/>
             </g>
             <text class="slabel" y="23">双廊</text>
-          </g>
-          <!-- gantong -->
-          <g class="stop alt-low" data-id="gantong" data-days="D6" transform="translate(102 638)" tabindex="0" role="button">
-            <circle class="halo" r="12"/>
-            <g transform="translate(-7 -8)">
-              <rect x="2" y="0" width="10" height="8" rx="2" fill="#88B894"/>
-              <rect x="4" y="2" width="6" height="4" rx="1" fill="#FFF6E8"/>
-              <line x1="7" y1="8" x2="7" y2="13" stroke="#5C564E" stroke-width="1.2"/>
-            </g>
-            <text class="slabel" y="24">感通索道</text>
-          </g>
-          <!-- ximatan -->
-          <g class="stop alt-high" data-id="ximatan" data-days="D6" transform="translate(88 528)" tabindex="0" role="button">
-            <circle class="halo" r="12"/>
-            <g transform="translate(-7 -7)">
-              <path d="M7 0 L13 12 L1 12 Z" fill="#C9D8E2"/>
-              <path d="M7 0 L10 6 L4 6 Z" fill="url(#snowcap)"/>
-            </g>
-            <text class="slabel" y="24">洗马潭</text>
           </g>
         </svg>
         <div class="map-bubble" id="map-bubble" hidden>
@@ -760,7 +1056,6 @@
             <li>丽江站 26.81381°N，100.25093°E：OpenStreetMap 火车站</li>
             <li>大理站 25.59259°N，100.25039°E：<a href="https://zh.wikipedia.org/wiki/%E5%A4%A7%E7%90%86%E7%AB%99">中文维基百科</a></li>
             <li>喜洲 25.85333°N，100.12935°E：<a href="https://zh.wikipedia.org/wiki/%E5%96%9C%E6%B4%B2%E9%95%87">喜洲镇维基百科</a>；双廊 25.91274°N，100.19250°E：<a href="https://zh.wikipedia.org/wiki/%E5%8F%8C%E5%BB%8A%E9%95%87">双廊镇维基百科</a></li>
-            <li>感通索道下站 25.64762°N，100.16844°E：OpenStreetMap 售票点；洗马潭：大理苍山公示路线坐标 100.103528，25.660918（火星坐标，已换算），上站约 3900 米见大理旅游集团</li>
             <li>束河、洱海海拔沿用行程常用口径：束河约 2400 米，洱海约 1970 米</li>
           </ul>
         </div>
@@ -769,31 +1064,39 @@
   </section>
 
   <div class="plan" id="lijiang">
+
+
+    <section class="band band-mint">
     <div class="wrap">
-      <div class="date-box" id="dates">
-        <h3>出发日还没定死</h3>
+      <h2 class="sec-h" id="pack"><span class="sec-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="6" y="8" width="12" height="12" rx="2" stroke="#2F7D5B" stroke-width="1.8"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8" stroke="#2F7D5B" stroke-width="1.8" stroke-linecap="round"/></svg></span>带好这些</h2>
+      <div class="pack-box">
         <ul>
-          <li>现在订的是 <strong>1 月 4–6 日</strong>；也可改到 1 月 3–5 日，或 1 月 2 日就走。</li>
-          <li>也可以提前到 <strong>12 月 26–30 日</strong>。这两段日子，两居「涵香＋归心」和 1 月 4–7 日一样，都是 <strong>819 元/晚</strong>。</li>
-          <li>「涵香＋归心」在 <strong>12 月 31 日–1 月 3 日</strong>是 <strong>1139 元/晚</strong>（1 月 3 日已是元旦假期价）。</li>
-          <li>3 人合住一间时，最便宜的「禅茶榻榻米家庭房」平日 <strong>222 元/晚</strong>，元旦那几天 392 元。</li>
-          <li>有一位同行朋友 <strong>1 月 7 日回日本</strong>，玉龙雪山要排在这之前。木阳 <strong>1 月 11 日</strong>返回。</li>
+          <li>冲锋衣或厚羽绒</li>
+          <li>墨镜、帽子</li>
+          <li>防滑鞋</li>
+          <li>保温杯</li>
+          <li>氧气瓶可以提前买，山上也有</li>
+          <li>出门把身份证带着</li>
         </ul>
       </div>
+    </div>
+    </section>
 
+    <section class="band band-paper">
+    <div class="wrap">
+      <h2 class="sec-h"><span class="sec-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="14" rx="2.5" stroke="#C45C45" stroke-width="1.8"/><path d="M4 9.5h16" stroke="#C45C45" stroke-width="1.8"/><circle cx="8.5" cy="14.5" r="1.2" fill="#C45C45"/></svg></span>每天怎么过</h2>
       <div class="day-grid" id="days">
         <article class="day-card" data-day="D1" id="day-d1">
           <div class="day-photo">
             <img src="img/shuhe-gate.jpg" alt="束河古镇牌坊" width="1500" height="1125">
-            <span class="day-n">D1 · 抵达</span>
+            <span class="day-n">D1 · 12/26 抵达</span>
           </div>
           <div class="day-body">
-            <div class="day-top"><span>约 2400 米</span></div>
             <div class="alt-bar"><div class="lab"><span>当天最高海拔</span><span>约 2400 米</span></div><div class="track"><div class="fill fill-g" style="width:48%"></div></div></div>
             <p class="day-sum">成都飞到<strong>丽江三义机场</strong>，去束河或白沙住下，先适应海拔。</p>
             <div class="day-more">
               <ul class="plain">
-                <li>5 人加行李，4 座往往不够，可订 <strong>7 座接机</strong>。</li>
+                <li>5 人加行李，4 座往往不够，要用 <strong>7 座接机</strong>。</li>
                 <li>也可坐机场大巴到束河，<strong>20 元/人</strong>；去白沙需到束河再转 6 路或打车。</li>
                 <li>合住一套，慢慢适应（束河一带约 2400 米）。</li>
               </ul>
@@ -803,17 +1106,15 @@
         <article class="day-card" data-day="D2" id="day-d2">
           <div class="day-photo">
             <img src="img/shuhe-willow.jpg" alt="束河古镇柳树与牌坊" width="1500" height="1125">
-            <span class="day-n">D2 · 适应</span>
+            <span class="day-n">D2 · 12/27 适应</span>
           </div>
           <div class="day-body">
-            <div class="day-top"><span>约 2400 米</span></div>
             <div class="alt-bar"><div class="lab"><span>当天最高海拔</span><span>约 2400 米</span></div><div class="track"><div class="fill fill-g" style="width:48%"></div></div></div>
             <p class="day-sum">睡到自然醒。在<strong>束河、白沙</strong>转转，也可去玉湖村远看雪山。</p>
             <div class="day-more">
               <ul class="plain">
                 <li>短途用滴滴、出租车，或坐 6 路、雪山轻轨旅游环线公交。</li>
                 <li>可提前买氧气瓶。</li>
-                <li>若 1 月 4 日才出发、后面会赶，这天可以缩短，第二天就上雪山。</li>
               </ul>
             </div>
           </div>
@@ -821,18 +1122,17 @@
         <article class="day-card" data-day="D3" id="day-d3">
           <div class="day-photo">
             <img src="img/yulong-glacier.jpg" alt="玉龙雪山冰川公园栈道" width="1600" height="1200">
-            <span class="day-n">D3 · 玉龙雪山</span>
+            <span class="day-n">D3 · 12/28 玉龙雪山</span>
           </div>
           <div class="day-body">
-            <div class="day-top"><span>4506 米</span></div>
             <div class="alt-bar"><div class="lab"><span>当天最高海拔</span><span>大索道上站 4506 米</span></div><div class="track"><div class="fill fill-r" style="width:90%"></div></div></div>
-            <p class="day-sum">上<strong>冰川公园大索道</strong>，下午走<strong>蓝月谷</strong>。须排在同行朋友 1 月 7 日回日本之前。</p>
+            <p class="day-sum">12 月 28 日上<strong>冰川公园大索道</strong>，下午走<strong>蓝月谷</strong>。</p>
             <div class="day-more">
               <ul class="plain">
-                <li>可订包车一天，或坐环线公交到新游客服务中心，再转旅游直通车；也可到忠义市场坐 <strong>101 路（15 元/人）</strong>。</li>
+                <li>上山这天可以包车，或坐环线公交到新游客服务中心，再转旅游直通车；也可以到忠义市场坐 <strong>101 路（15 元/人）</strong>。</li>
                 <li>若自己开车，车停在游客中心。进景区改坐环保车（摆渡车），私家车不能进园。</li>
                 <li>大索道上站 <strong>4506 米</strong>，上面别久留，不舒服就下。</li>
-                <li>对海拔敏感的朋友可能不来；如果来，在蓝月谷等，不上大索道。</li>
+                <li>谁不舒服就在蓝月谷等，不必上大索道。</li>
                 <li>也可报纯玩小团，见下面「<a href="#tour-vs">跟团，还是自己走</a>」。</li>
               </ul>
             </div>
@@ -841,17 +1141,16 @@
         <article class="day-card" data-day="D4" id="day-d4">
           <div class="day-photo">
             <img src="img/erhai-boat.jpg" alt="洱海上的渔人" width="1600" height="1000">
-            <span class="day-n">D4 · 去大理</span>
+            <span class="day-n">D4 · 12/29 去大理</span>
           </div>
           <div class="day-body">
-            <div class="day-top"><span>约 1970 米</span></div>
             <div class="alt-bar"><div class="lab"><span>当天海拔</span><span>降到洱海边约 1970 米</span></div><div class="track"><div class="fill fill-g" style="width:39%"></div></div></div>
-            <p class="day-sum">坐高铁去大理，二等座 <strong>80 元</strong>，约 2 小时。住洱海边，喜洲或双廊都行。</p>
+            <p class="day-sum">坐高铁去大理，二等座 <strong>80 元</strong>，约 2 小时。下午到洱海边，在<strong>喜洲</strong>附近慢慢走走，不必排满。</p>
             <div class="day-more">
               <ul class="plain">
                 <li>约 1 小时 56 分至 2 小时 22 分。</li>
-                <li>车站到住处坐公交或打车。</li>
-                <li>回日本的朋友若当天离开，可在丽江分开，其余人再去大理。</li>
+                <li>车站到住处坐公交或打车。住喜洲海边。</li>
+                <li>当天只剩下午和傍晚，慢慢看，不要两边都赶。</li>
               </ul>
             </div>
           </div>
@@ -859,118 +1158,154 @@
         <article class="day-card" data-day="D5" id="day-d5">
           <div class="day-photo">
             <img src="img/erhai-shore.jpg" alt="洱海生态廊道岸边" width="1500" height="1000">
-            <span class="day-n">D5 · 洱海</span>
+            <span class="day-n">D5 · 12/30 洱海</span>
           </div>
           <div class="day-body">
-            <div class="day-top"><span>约 1970 米</span></div>
             <div class="alt-bar"><div class="lab"><span>当天最高海拔</span><span>约 1970 米</span></div><div class="track"><div class="fill fill-g" style="width:39%"></div></div></div>
-            <p class="day-sum">走环海西路，在<strong>双廊或喜洲</strong>转转。住在海边，不必赶场。</p>
+            <p class="day-sum">走<strong>环海西路／生态廊道</strong>，也可去<strong>双廊</strong>。慢慢看，不必两边赶。</p>
             <div class="day-more">
               <ul class="plain">
-                <li>慢慢看海即可，不必排太多景点。</li>
+                <li>可骑车或走路。住在海边，不必赶场。</li>
+                <li>西岸和双廊不必同一天硬排满。</li>
               </ul>
             </div>
           </div>
         </article>
         <article class="day-card" data-day="D6" id="day-d6">
           <div class="day-photo">
-            <img src="img/cangshan-erhai.jpg" alt="苍山雪峰倒映在洱海" width="1800" height="810">
-            <span class="day-n">D6 · 苍山（可选）</span>
+            <img src="img/cangshan-erhai.jpg" alt="洱海边，远处能看到苍山" width="1800" height="810">
+            <span class="day-n">D6 · 12/31 洱海返程</span>
           </div>
           <div class="day-body">
-            <div class="day-top"><span>约 3900 米</span></div>
-            <div class="alt-bar"><div class="lab"><span>当天最高海拔</span><span>洗马潭约 3900 米</span></div><div class="track"><div class="fill fill-r" style="width:78%"></div></div></div>
-            <p class="day-sum">可选苍山索道：<strong>感通</strong>较低、较轻松；<strong>洗马潭</strong>可到约 3900 米，上面别久留。</p>
+            <div class="alt-bar"><div class="lab"><span>当天最高海拔</span><span>约 1970 米</span></div><div class="track"><div class="fill fill-g" style="width:39%"></div></div></div>
+            <p class="day-sum">早上继续在<strong>洱海</strong>边慢走，再从大理飞回成都。</p>
             <div class="day-more">
               <ul class="plain">
-                <li>对海拔敏感的朋友如果来，不上苍山。回日本的朋友此时多半已离开。</li>
-                <li>若只排 5 天，这天可改成返程，或并进前一天。</li>
-                <li>返回从大理走（也可经丽江或昆明）。</li>
+                <li>上午不必赶，再走一会儿再出发。</li>
+                <li>当天有直飞大理到成都的航班；票价见费用表里的返程预留。</li>
               </ul>
             </div>
           </div>
         </article>
       </div>
       <p class="hint">点卡片看细节，地图会跟着高亮这一天。</p>
+    </div>
+    </section>
 
-      <section class="tour-cmp" id="tour-vs">
-        <p class="eyebrow">D3 玉龙雪山</p>
-        <h3>跟团，还是自己走</h3>
-        <div class="tour-pair">
-          <article class="tour-card tour-group">
-            <div class="tour-ico" aria-hidden="true">
-              <svg viewBox="0 0 32 32" fill="none">
-                <rect x="3.5" y="8" width="25" height="14.5" rx="6" fill="#7EB8D4"/>
-                <rect x="6.5" y="10.5" width="8" height="5.5" rx="1.6" fill="#E4F3F8"/>
-                <rect x="16.5" y="10.5" width="8" height="5.5" rx="1.6" fill="#E4F3F8"/>
-                <circle cx="10" cy="23.5" r="2.6" fill="#3F3A35"/>
-                <circle cx="10" cy="23.5" r="1.15" fill="#FFFCFA"/>
-                <circle cx="22" cy="23.5" r="2.6" fill="#3F3A35"/>
-                <circle cx="22" cy="23.5" r="1.15" fill="#FFFCFA"/>
-                <rect x="26.2" y="14.2" width="2.4" height="3.2" rx="1" fill="#E39B8A"/>
-              </svg>
-            </div>
-            <h4>跟团</h4>
-            <p class="tour-price"><b>246</b><span class="yen">元起</span><span>/ 人</span></p>
-            <p class="tour-sub"><a href="https://piao.qunar.com/daytrip/detail_3224093.html">去哪儿纯玩 2–8 人小团</a></p>
-            <ul>
-              <li>束河接送、门票、大索道都含着</li>
-              <li>氧气、防寒服、午餐也含着</li>
-              <li>当天大约 5–6 小时，节奏跟着团走</li>
-            </ul>
-            <p class="tour-risk">大风季（11–1 月，约 15%）大索道可能停，或改坐别的索道。</p>
-          </article>
-          <article class="tour-card tour-self">
-            <div class="tour-ico" aria-hidden="true">
-              <svg viewBox="0 0 32 32" fill="none">
-                <path d="M11.2 7.2c0-2.2 1.7-3.9 3.8-3.9h2c2.1 0 3.8 1.7 3.8 3.9v1.1H11.2V7.2Z" fill="#E0B56A"/>
-                <rect x="8.2" y="8.6" width="15.6" height="16.6" rx="5" fill="#E8C56A"/>
-                <rect x="12.2" y="13.2" width="7.6" height="7.2" rx="2.2" fill="#F8EBCB"/>
-                <path d="M12.4 8.6v-1.2h7.2V8.6" stroke="#C9A24E" stroke-width="1.4" stroke-linecap="round"/>
-                <circle cx="16" cy="16.6" r="1.15" fill="#8A6A2A"/>
-              </svg>
-            </div>
-            <h4>自己走</h4>
-            <p class="tour-price"><b>240</b><span class="yen">元</span><span>/ 人</span></p>
-            <p class="tour-sub">门票 100 ＋ 大索道 120 ＋ 环保车 20</p>
-            <ul>
-              <li>车费已写在费用表（包车或打车）</li>
-              <li>午餐、氧气、租防寒服另计</li>
-              <li>当天大约 5–6 小时，想停就停</li>
-            </ul>
-            <p class="tour-risk">有人对海拔敏感、或想慢慢走时，更合适。</p>
-          </article>
+    <section class="band band-mint">
+    <div class="wrap">
+      <section class="alt-tips" id="alt-tips">
+        <h2 class="sec-h"><span class="sec-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 18 L10 8 L14 13.5 L21 18 Z" stroke="#2F7D5B" stroke-width="1.8" stroke-linejoin="round"/></svg></span>防高反小贴士</h2>
+        <div class="alt-chart" role="img" aria-label="主要地点海拔：洱海约 1970 米，束河约 2400 米，大索道上站 4506 米">
+          <div class="alt-row">
+            <span class="alt-name">洱海</span>
+            <span class="alt-track"><span class="alt-fill fill-g" style="width:44%"></span></span>
+            <span class="alt-m">约 1970 米</span>
+          </div>
+          <div class="alt-row">
+            <span class="alt-name">束河</span>
+            <span class="alt-track"><span class="alt-fill fill-g" style="width:53%"></span></span>
+            <span class="alt-m">约 2400 米</span>
+          </div>
+          <div class="alt-row">
+            <span class="alt-name">大索道上站</span>
+            <span class="alt-track"><span class="alt-fill fill-r" style="width:100%"></span></span>
+            <span class="alt-m">4506 米</span>
+          </div>
         </div>
-        <p class="tour-foot">蓝月谷电瓶车 50 元，两边都不含。</p>
-        <p class="tour-verdict"><strong>怎么选</strong>跟团更省、更省心；想自由走，或有人对海拔敏感，选自己走。</p>
+        <ul class="tip-grid">
+          <li>
+            <span class="tip-ico" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none"><path d="M16 5v10" stroke="#7EAB8A" stroke-width="2.2" stroke-linecap="round"/><path d="M11 10.5 L16 5 L21 10.5" stroke="#7EAB8A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 17v10" stroke="#E39B8A" stroke-width="2.2" stroke-linecap="round"/><path d="M11 21.5 L16 27 L21 21.5" stroke="#E39B8A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span>上得快，也下得快，别在上面久留</span>
+          </li>
+          <li>
+            <span class="tip-ico" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none"><rect x="11" y="6" width="10" height="20" rx="5" fill="#7EB8D4"/><rect x="13.5" y="9.5" width="5" height="9" rx="2.2" fill="#E4F3F8"/><path d="M16 4.5v2.2" stroke="#5C564E" stroke-width="1.6" stroke-linecap="round"/><circle cx="16" cy="21.5" r="1.3" fill="#FFFCFA"/></svg>
+            </span>
+            <span>带着氧气，慢慢走</span>
+          </li>
+          <li>
+            <span class="tip-ico" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none"><path d="M10 12.5c2.2-1.4 4.4.4 6.2 2.4 1.8 2 3.6 3.6 5.8 2.2" stroke="#E0B56A" stroke-width="2.2" stroke-linecap="round"/><path d="M8.5 20.5c2.4-1.2 4.2.6 6.2 2.4 2 1.8 3.6 3.2 6.3 2" stroke="#E39B8A" stroke-width="2.2" stroke-linecap="round"/></svg>
+            </span>
+            <span>注意保暖</span>
+          </li>
+          <li>
+            <span class="tip-ico" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none"><path d="M11 10c0-2.4 1.8-4.2 5-4.2s5 1.8 5 4.2c0 3.4-5 6.2-5 10" stroke="#C17A68" stroke-width="2" stroke-linecap="round"/><circle cx="16" cy="24.2" r="1.6" fill="#C17A68"/><path d="M9 9.5 L23 24.5" stroke="#E39B8A" stroke-width="2" stroke-linecap="round"/></svg>
+            </span>
+            <span>上山前别喝酒</span>
+          </li>
+          <li class="tip-wide">
+            <span class="tip-ico" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none"><ellipse cx="12" cy="20" rx="7" ry="4.2" fill="#8EC9E0"/><ellipse cx="20" cy="21" rx="5.5" ry="3.2" fill="#7EB8D4"/><path d="M8 16c2-4 5-6 8-4" stroke="#E8D5B5" stroke-width="1.6" stroke-linecap="round"/><circle cx="22.5" cy="11" r="2.2" fill="#F8E3A8"/></svg>
+            </span>
+            <span>谁不舒服就在蓝月谷等，或留在山下</span>
+          </li>
+        </ul>
+        <p class="alt-tips-foot">丽江先在束河或白沙适应。有不放心的，出发前问医生。</p>
       </section>
 
-      <div class="alt-box">
-        <h3>对海拔敏感的朋友</h3>
-        <ul>
-          <li>有人曾在大理洱海（约 <strong>1970 米</strong>）就出现高反。</li>
-          <li>这位朋友<strong>可能不来</strong>；如果来，在蓝月谷等，<strong>不上大索道和苍山</strong>。</li>
-          <li>大索道上站 4506 米，苍山洗马潭约 3900 米；感通相对较低。</li>
-          <li>出发前问医生。丽江先在束河或白沙适应。</li>
-          <li>另有一位同行朋友 1 月 7 日回日本（<strong>不是同一人</strong>），玉龙雪山要排在这之前。</li>
-        </ul>
+    </div>
+    </section>
+
+    <section class="band band-paper">
+    <div class="wrap">
+      <h2 class="sec-h" id="stay"><span class="sec-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19 V11 L12 5 L20 11 V19 H4Z" stroke="#C45C45" stroke-width="1.8" stroke-linejoin="round"/><path d="M10 19v-5h4v5" stroke="#C45C45" stroke-width="1.8" stroke-linejoin="round"/></svg></span>住哪</h2>
+      <h3>3 人住一间</h3>
+      <p>3 人可以合住一间带三张床或双人床＋单人床的房间。下面是木鸟民宿 2026 年 11 月 10 日查到的日历价。主行程按 <strong>12 月 26–31 日</strong>：丽江 3 晚（26、27、28 日，均为平时价）＋大理 2 晚（29、30 日）。</p>
+      <div class="lodge-grid">
+        <div class="lodge">
+          <a href="https://www.muniao.com/room/1441831.html" target="_blank" rel="noopener noreferrer">禅茶榻榻米家庭房（带雪山观景台，双人床＋单人床）</a>
+          <p class="price">12/26–30：<strong>222 元/晚</strong> · 三晚 666 元</p>
+          <p class="meta">主行程 3 人房里最便宜。元旦 12/31–1/3 为 392 元/晚。</p>
+        </div>
+        <div class="lodge">
+          <a href="https://www.muniao.com/room/1441832.html" target="_blank" rel="noopener noreferrer">古色古香三人间（3张单人床）</a>
+          <p class="price">12/26–30：<strong>236 元/晚</strong> · 三晚 708 元</p>
+          <p class="meta">三张单人床。元旦 12/31–1/3 为 392 元/晚。</p>
+        </div>
+        <div class="lodge">
+          <a href="https://www.muniao.com/room/880957.html" target="_blank" rel="noopener noreferrer">阳光家庭房（3张单人床）</a>
+          <p class="price">12/26–30：<strong>249 元/晚</strong> · 三晚 747 元</p>
+          <p class="meta">平日与元旦都是 249 元。假期里价格也稳。</p>
+        </div>
+        <div class="lodge">
+          <a href="https://www.muniao.com/room/896183.html" target="_blank" rel="noopener noreferrer">庭院亲子家庭房（可看雪山）</a>
+          <p class="price">12/26–30：<strong>371 元/晚</strong> · 三晚 1113 元</p>
+          <p class="meta">可看雪山。元旦 12/31–1/3 为 757 元/晚。</p>
+        </div>
       </div>
 
-      <div class="todo">
-        <h3>出发前待办</h3>
-        <ul>
-          <li>大索道在官方渠道实名提前预约，并排在同行朋友 1 月 7 日回日本之前</li>
-          <li>确认出发日：12 月 26–30 日，或 1 月 2、3、4 日；确认是 3、4 还是 5 人</li>
-          <li>可提前订丽江 7 座接机和上山包车，或确认机场大巴、公交班次</li>
-          <li>预订丽江—大理高铁，以及大理返程</li>
-          <li>苍山索道看天气，大风可能停运</li>
-          <li>保暖：冲锋衣或厚羽绒、墨镜、帽子、防滑鞋、保温杯</li>
-          <li>有心肺问题，先问医生</li>
-        </ul>
+      <h3>4–5 人住两居，以及大理</h3>
+      <div class="lodge-grid">
+        <div class="lodge">
+          <a href="https://www.muniao.com/room/39652.html" target="_blank" rel="noopener noreferrer">束河古镇双卧复式套房（古镇内，两居，宜住4人）</a>
+          <p class="price">12/26–30：<strong>248 元/晚</strong> · 三晚 744 元。1/4–7：284 元；1/1–3：580 元</p>
+        </div>
+        <div class="lodge">
+          <a href="https://www.muniao.com/room/638127.html" target="_blank" rel="noopener noreferrer">独栋庭院双卧别墅（近束河，宜住4人）</a>
+          <p class="price">12/26–30：<strong>659 元/晚</strong> · 三晚 1977 元。1/4–7：631 元（三晚 1893）；1/1–3：784 元</p>
+        </div>
+        <div class="lodge">
+          <a href="https://www.muniao.com/room/1083409.html" target="_blank" rel="noopener noreferrer">涵香＋归心两卫套房（近束河，两居，宜住5人+）</a>
+          <p class="price">12/26–30：<strong>819 元/晚</strong> · 三晚 2457 元。1/4–7 同价；12/31–1/3：1139 元</p>
+        </div>
+        <div class="lodge">
+          <a href="https://www.muniao.com/room/1076788.html" target="_blank" rel="noopener noreferrer">洱海边／花海旁白族民居大院（喜洲仁里邑，三居，可住6人）</a>
+          <p class="price">12/26–1/12 日历均为 <strong>988 元/晚</strong>。主行程住 2 晚（12/29、12/30），共 1976 元。近环海西路。</p>
+        </div>
       </div>
+      <p class="hint">以上是平台日历价，不是下单瞬间的成交价。</p>
+    </div>
+    </section>
 
+    <section class="band band-peach">
+    <div class="wrap">
       <div class="budget" id="budget">
-        <h3>费用（5–6 天）</h3>
+        <h2 class="sec-h"><span class="sec-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="#C45C45" stroke-width="1.8"/><path d="M8.5 9.5 L12 13 L15.5 9.5M12 13v5M8.8 16.5h6.4" stroke="#C45C45" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>要花多少</h2>
         <ul class="chips">
           <li>以这张 <strong>3 / 4 / 5 人人均表</strong>为准</li>
           <li>机票、高铁、门票、索道、吃饭：<strong>按每人收</strong></li>
@@ -979,11 +1314,11 @@
         <ul class="plain">
           <li>3 人可合住一间；4 人住可住 4 人的两居；5 人需可住 5 人的两居（如「涵香＋归心」）。</li>
           <li>5 座车适合 3–4 人，4 人加冬季行李可能偏紧；5 人需 7 座。</li>
-          <li>1 月 7 日后大理段可能少 1 人。表内先按该列人数全程估算（丽江 3 晚＋大理 2 晚）。</li>
+          <li>表内先按该列人数全程估算（丽江 3 晚＋大理 2 晚，12 月 26–31 日）。</li>
         </ul>
 
         <div class="perhead-block" id="perhead">
-          <h3 style="margin-top:1rem;">人均费用：3 人 / 4 人 / 5 人</h3>
+          <h3>人均费用：3 人 / 4 人 / 5 人</h3>
           <div class="perhead-wrap">
             <table class="perhead">
               <colgroup><col class="c-item"><col class="c-way"><col class="c-unit"><col class="c-n"><col class="c-n"><col class="c-n"></colgroup>
@@ -1010,51 +1345,51 @@
                   <td class="num">约 13–27</td><td class="num">约 10–20</td><td class="num">约 8–16</td>
                 </tr>
                 <tr>
-                  <td>门票<span class="sub">玉龙雪山 100 元/人。苍山门票常见含在索道套票里</span></td>
+                  <td>门票<span class="sub">玉龙雪山 100 元/人</span></td>
                   <td class="way"><span class="way-pill way-head">按每人收</span></td>
                   <td class="num">100 元/人</td>
                   <td class="num">100</td><td class="num">100</td><td class="num">100</td>
                 </tr>
                 <tr>
-                  <td>索道（含景区摆渡车）<span class="sub">玉龙摆渡 20＋大索道 120，加苍山感通 100 或洗马潭约 260–320，约 240–460 元/人。高反朋友如来，该人只计摆渡 20 元</span></td>
+                  <td>索道（含景区摆渡车）<span class="sub">玉龙摆渡 20＋大索道 120，共 140 元/人。不上索道的人只计摆渡 20 元</span></td>
                   <td class="way"><span class="way-pill way-head">按每人收</span></td>
-                  <td class="num">240–460 元/人</td>
-                  <td class="num">240–460</td><td class="num">240–460</td><td class="num">240–460</td>
+                  <td class="num">140 元/人</td>
+                  <td class="num">140</td><td class="num">140</td><td class="num">140</td>
                 </tr>
                 <tr>
-                  <td>吃饭<span class="sub">按每人每天 80–150 元、5–6 天估算</span></td>
+                  <td>吃饭<span class="sub">按每人每天 80–150 元、6 天估算</span></td>
                   <td class="way"><span class="way-pill way-head">按每人收</span></td>
-                  <td class="num">400–900 元/人</td>
-                  <td class="num">400–900</td><td class="num">400–900</td><td class="num">400–900</td>
+                  <td class="num">480–900 元/人</td>
+                  <td class="num">480–900</td><td class="num">480–900</td><td class="num">480–900</td>
                 </tr>
                 <tr>
-                  <td>住宿（丽江 3 晚＋大理 2 晚）<span class="sub">3 人：丽江合住一间 666–1113（222–371×3）＋大理 1976＝2642–3089。4 人住两居 2720–3953。5 人住「涵香＋归心」4433（节日约 5393）</span></td>
+                  <td>住宿（丽江 3 晚＋大理 2 晚）<span class="sub">按 12/26–31 平时价：3 人丽江 666–1113（禅茶 222×3，或庭院亲子 371×3）＋大理 1976＝2642–3089。4 人复式 744 或别墅 1977，加大理＝2720–3953。5 人「涵香＋归心」2457＋1976＝4433</span></td>
                   <td class="way"><span class="way-pill way-share">总账平摊</span></td>
                   <td class="num">见上行说明</td>
-                  <td class="num">881–1030</td><td class="num">680–988</td><td class="num">887–1079</td>
+                  <td class="num">881–1030</td><td class="num">680–988</td><td class="num">887</td>
                 </tr>
                 <tr class="total">
                   <td>合计（不含丽江用车）<span class="sub">公交或 101 路另计。含包车一天对照时，约再加 163–217 元/人</span></td>
                   <td class="way">—</td><td class="num">—</td>
-                  <td class="num">2291–3670</td><td class="num">2090–3628</td><td class="num">2297–3719</td>
+                  <td class="num">2271–3350</td><td class="num">2070–3308</td><td class="num">2277–3207</td>
                 </tr>
                 <tr class="total">
                   <td>合计（含包车一天对照）</td>
                   <td class="way">—</td><td class="num">—</td>
-                  <td class="num">2508–3887</td><td class="num">2253–3791</td><td class="num">2467–3889</td>
+                  <td class="num">2488–3567</td><td class="num">2233–3471</td><td class="num">2447–3377</td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <p class="tour-table-note">若玉龙这天改跟团（246 元/人，含门票、大索道、束河接送）：相对「含包车一天对照」，人均大约少 137–191 元（3 人约 191、4 人约 137、5 人约 144）。环保车 20、苍山索道、蓝月谷电瓶车 50 仍另计。跟团还含午餐、氧气和防寒服，上表吃饭和氧气尚未扣减。</p>
-          <details class="src" open>
+          <p class="tour-table-note">若玉龙这天改跟团（246 元/人，含门票、大索道、束河接送）：相对「含包车一天对照」，人均大约少 137–191 元（3 人约 191、4 人约 137、5 人约 144）。环保车 20、蓝月谷电瓶车 50 仍另计。跟团还含午餐、氧气和防寒服，上表吃饭和氧气尚未扣减。</p>
+          <details class="src">
             <summary>来源与说明</summary>
             <div class="src-body">
-              <p>住宿分日（木鸟民宿日历，2026 年 11 月 10 日查到）。大理两晚都按「洱海边／花海旁白族民居大院」988×2＝1976。</p>
+              <p>住宿分日（木鸟民宿日历，2026 年 11 月 10 日查到）。主行程大理住 2 晚（12/29、12/30），按「洱海边／花海旁白族民居大院」988×2＝1976（12/26–1/12 日历均为 988 元/晚；12/30 当晚也是这个价，不是假期价）。</p>
               <ul class="plain">
-                <li>3 人丽江合住一间：最便宜是<a href="https://www.muniao.com/room/1441831.html">禅茶榻榻米家庭房</a> 222×3＝666，加大理共 2642，人均 881；若选<a href="https://www.muniao.com/room/896183.html">庭院亲子家庭房</a> 371×3＝1113，加大理共 3089，人均 1030。元旦那几天房价可能更高，见下面房间卡片。</li>
-                <li>4 人两居：12/26–30 用<a href="https://www.muniao.com/room/39652.html">束河古镇双卧复式套房</a>（248×3＝744）加大理＝2720，人均 680；1/4–7 用该房 284×3＝852，合计 2828，人均 707；或用<a href="https://www.muniao.com/room/638127.html">独栋庭院双卧别墅</a>，1/4–7 为 1893＋1976＝3869，人均 967；12/26–30 为 1977＋1976＝3953，人均 988。</li>
-                <li>5 人用<a href="https://www.muniao.com/room/1083409.html">涵香＋归心两卫套房</a>：12/26–30 与 1/4–7 均为 2457＋1976＝4433，人均 887；若住到 12/31–1/3（1139 元/晚），三晚加大理约 5393，人均 1079。</li>
+                <li>主行程按 12 月 26–31 日：丽江 3 晚均为平时价（26–28 日；不住 12/31 当晚），加大理 2 晚 1976。3 人最便宜是<a href="https://www.muniao.com/room/1441831.html">禅茶榻榻米</a> 222×3＝666，加大理共 2642，人均 881；若选<a href="https://www.muniao.com/room/896183.html">庭院亲子家庭房</a> 371×3＝1113，加大理共 3089，人均 1030。</li>
+                <li>4 人两居，12/26–31：<a href="https://www.muniao.com/room/39652.html">束河古镇双卧复式套房</a> 248×3＝744，加大理＝2720，人均 680；或<a href="https://www.muniao.com/room/638127.html">独栋庭院双卧别墅</a> 659×3＝1977，加大理＝3953，人均 988。</li>
+                <li>5 人用<a href="https://www.muniao.com/room/1083409.html">涵香＋归心两卫套房</a>：丽江三晚 819×3＝2457，加大理 4433，人均 887。该房 12/31–1/3 才是假期价 1139，主行程不住丽江 12/31 当晚。</li>
                 <li>包车对照：<a href="https://www.daxiangbaoche.com/lijiang-car-service/">大象包车价目</a>市内列。连租 3 天不等于日价×3。自驾请看租车网站填好日期后的日租金和保险。</li>
                 <li>油价：丽江 92 号 <strong>9.04 元/升</strong>（<a href="https://www.yjcxw.com/meiriyoujia/48382.html">油价查询网 2026-11-10</a>）。停车：新游客中心暂不收费，甘海子需预约、收费未公布（<a href="https://www.163.com/dy/article/L7LQDQKH052491GH.html">丽江同城网 2026-09-25</a>）。</li>
                 <li>跟团上雪山：去哪儿纯玩 2–8 人小团 <strong>246 元起</strong>（<a href="https://piao.qunar.com/daytrip/detail_3224093.html">链接</a>），含进山费、大索道、接送、氧气、防寒服、中餐；不含蓝月谷电瓶车 50 元。大风停运可能改坐云杉坪那边较低的索道，并退差价。</li>
@@ -1068,130 +1403,23 @@
             <div class="b-row"><span class="k">长途交通</span><span class="d">5 人合计，口径同上表</span><span class="v">3400–5800 元</span></div>
             <div class="b-row"><span class="k">当地交通</span><span class="d">接送、短途、上山日公交或包车预留</span><span class="v">1000–2200 元</span></div>
             <div class="b-row"><span class="k">门票</span><span class="d">玉龙 100 元×5</span><span class="v">500 元</span></div>
-            <div class="b-row"><span class="k">索道与摆渡</span><span class="d">玉龙＋苍山，按 4–5 人</span><span class="v">980–2500 元</span></div>
-            <div class="b-row"><span class="k">住宿</span><span class="d">5 人按「涵香＋归心」＋喜洲大院日历</span><span class="v">4433–5393 元</span></div>
-            <div class="b-row"><span class="k">餐饮</span><span class="d">80–150 元/人/天，5–6 天，估算</span><span class="v">2000–4500 元</span></div>
+            <div class="b-row"><span class="k">索道与摆渡</span><span class="d">玉龙摆渡 20＋大索道 120，×5</span><span class="v">700 元</span></div>
+            <div class="b-row"><span class="k">住宿</span><span class="d">5 人按 12/26–31「涵香＋归心」2457＋喜洲大院 2 晚 1976</span><span class="v">4433 元</span></div>
+            <div class="b-row"><span class="k">餐饮</span><span class="d">80–150 元/人/天，6 天，估算</span><span class="v">2400–4500 元</span></div>
             <div class="b-row"><span class="k">氧气及其他</span><span class="d">氧气瓶约 9.9–19.9 元，预留</span><span class="v">50–200 元</span></div>
-            <div class="b-row total"><span class="k">合计</span><span class="d">5 人约 12333–21093 元（含当地交通预留；人均请以上表为准）</span><span class="v">12333–21093 元</span></div>
-          </div>
-          <div class="budget-pie-wrap">
-            <div class="pie pie-lj" role="img" aria-label="丽江加大理费用占比，按各分项区间中位估算"></div>
-            <ul class="pie-legend">
-              <li><i style="background:#E0B56A"></i><span class="lab">长途交通</span><span class="amt">28% · 4600</span></li>
-              <li><i style="background:#F0C9A0"></i><span class="lab">当地交通</span><span class="amt">10% · 1600</span></li>
-              <li><i style="background:#7EB8D4"></i><span class="lab">门票</span><span class="amt">3% · 500</span></li>
-              <li><i style="background:#8EBFD0"></i><span class="lab">索道与摆渡</span><span class="amt">10% · 1740</span></li>
-              <li><i style="background:#E8C9B0"></i><span class="lab">住宿</span><span class="amt">29% · 4913</span></li>
-              <li><i style="background:#A8C9A8"></i><span class="lab">餐饮</span><span class="amt">19% · 3250</span></li>
-              <li><i style="background:#C0B8B0"></i><span class="lab">氧气及其他</span><span class="amt">1% · 125</span></li>
-            </ul>
-            <p class="pie-cap">5 人中位约 16728 元，仅作总盘参考。</p>
+            <div class="b-row total"><span class="k">合计</span><span class="d">5 人约 12483–18333 元（含当地交通预留；人均请以上表为准）</span><span class="v">12483–18333 元</span></div>
           </div>
         </div>
-      </div>
-
-      <h3 id="stay">3 人住一间</h3>
-      <p>3 人可以合住一间带三张床或双人床＋单人床的房间。下面是木鸟民宿 2026 年 11 月 10 日查到的日历价，<strong>12 月 26–30 日与 1 月 4–7 日相同</strong>。</p>
-      <div class="lodge-grid">
-        <div class="lodge">
-          <a href="https://www.muniao.com/room/1441831.html" target="_blank" rel="noopener noreferrer">禅茶榻榻米家庭房（带雪山观景台，双人床＋单人床）</a>
-          <p class="price"><strong>222 元/晚</strong> · 三晚 666 元</p>
-          <p class="meta">最便宜。元旦 12/31–1/3 为 392 元/晚。</p>
-        </div>
-        <div class="lodge">
-          <a href="https://www.muniao.com/room/1441832.html" target="_blank" rel="noopener noreferrer">古色古香三人间（3张单人床）</a>
-          <p class="price"><strong>236 元/晚</strong> · 三晚 708 元</p>
-          <p class="meta">三张单人床。元旦 12/31–1/3 为 392 元/晚。</p>
-        </div>
-        <div class="lodge">
-          <a href="https://www.muniao.com/room/880957.html" target="_blank" rel="noopener noreferrer">阳光家庭房（3张单人床）</a>
-          <p class="price"><strong>249 元/晚</strong> · 三晚 747 元</p>
-          <p class="meta">元旦那几天也是 249 元，假期里更稳。</p>
-        </div>
-        <div class="lodge">
-          <a href="https://www.muniao.com/room/896183.html" target="_blank" rel="noopener noreferrer">庭院亲子家庭房（可看雪山）</a>
-          <p class="price"><strong>371 元/晚</strong> · 三晚 1113 元</p>
-          <p class="meta">可看雪山。元旦 12/31–1/3 为 757 元/晚。</p>
-        </div>
-      </div>
-
-      <h3>4–5 人住两居，以及大理</h3>
-      <div class="lodge-grid">
-        <div class="lodge">
-          <a href="https://www.muniao.com/room/39652.html" target="_blank" rel="noopener noreferrer">束河古镇双卧复式套房（古镇内，两居，宜住4人）</a>
-          <p class="price">12/26–31：<strong>248 元/晚</strong>；1/4–7：284 元；1/1–3：580 元</p>
-        </div>
-        <div class="lodge">
-          <a href="https://www.muniao.com/room/638127.html" target="_blank" rel="noopener noreferrer">独栋庭院双卧别墅（近束河，宜住4人）</a>
-          <p class="price">12/26–31：<strong>659 元/晚</strong>；1/4–7：631 元（三晚 1893）；1/1–3：784 元</p>
-        </div>
-        <div class="lodge">
-          <a href="https://www.muniao.com/room/1083409.html" target="_blank" rel="noopener noreferrer">涵香＋归心两卫套房（近束河，两居，宜住5人+）</a>
-          <p class="price">12/26–30 与 1/4–7：<strong>819 元/晚</strong>（三晚 2457）；12/31–1/3：1139 元</p>
-        </div>
-        <div class="lodge">
-          <a href="https://www.muniao.com/room/1076788.html" target="_blank" rel="noopener noreferrer">洱海边／花海旁白族民居大院（喜洲仁里邑，三居，可住6人）</a>
-          <p class="price">12/26–1/12 日历均为 <strong>988 元/晚</strong>，两晚 1976 元。近环海西路。</p>
-        </div>
-      </div>
-      <p class="hint">以上是平台日历价，不是下单瞬间的成交价，出发前请再核。</p>
-
-      <div class="refs" id="refs-lijiang">
-        <h3>参考视频</h3>
-        <div class="links">
-          <a class="card" href="https://www.douyin.com/video/7703177450784062118" target="_blank" rel="noopener noreferrer"><span class="card-title">丽江冬季怎么玩</span><small>好人阿滇 · 1575 赞 · 2026-11</small><span class="card-note">住大研/束河/白沙、地暖、门票索道和氧气避坑</span></a>
-          <a class="card" href="https://www.douyin.com/video/7593760884875674600" target="_blank" rel="noopener noreferrer"><span class="card-title">玉龙雪山实用攻略</span><small>是阿佳吖 · 1.2 万赞 · 2026-01</small><span class="card-note">一月实游，大索道后吸氧休息和防寒</span></a>
-          <a class="card" href="https://www.douyin.com/video/7686713025142793381" target="_blank" rel="noopener noreferrer"><span class="card-title">玉龙雪山值不值得来</span><small>蛋壳儿 · 3.7 万赞 · 2026-09</small><span class="card-note">大索道到 4500 米、蓝月谷、高反提醒（非冬季拍）</span></a>
-          <a class="card" href="https://www.douyin.com/video/7697612390846934244" target="_blank" rel="noopener noreferrer"><span class="card-title">秋冬雪山实测干货</span><small>云南吉朵 · 抖音</small><span class="card-note">秋冬上雪山的实测补充</span></a>
-          <a class="card" href="https://www.douyin.com/video/7594779658990652699" target="_blank" rel="noopener noreferrer"><span class="card-title">1、2 月云南怎么玩</span><small>付先生在云南 · 抖音</small><span class="card-note">云南冬季参考，未见可靠赞数，不编造</span></a>
-          <a class="card" href="https://www.douyin.com/video/7671625286467518568" target="_blank" rel="noopener noreferrer"><span class="card-title">大理苍山旅行实拍记</span><small>抖音</small><span class="card-note">讲感通索道和苍山步道。未见可靠的账号与赞数，不编造</span></a>
-        </div>
-        <p class="hint" style="margin-top:.6rem;">博主说法仅供参考（包括高反用药），出发前以官方和医生建议为准。</p>
-      </div>
-
-      <div class="gallery">
-        <figure>
-          <img src="img/yulong-peak.jpg" width="1800" height="810" alt="玉龙雪山雪峰" data-full="img/yulong-peak.jpg" data-cap="玉龙雪山，CEphoto, Uwe Aranas，CC BY-SA 3.0">
-          <figcaption>玉龙雪山　CEphoto, Uwe Aranas　<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>　<a href="https://commons.wikimedia.org/wiki/File:Lijiang_Yunnan_China_Jade-Dragon-Snow-Mountain-01.jpg">来源</a></figcaption>
-        </figure>
-        <figure>
-          <img src="img/yulong-glacier.jpg" width="1600" height="1200" alt="玉龙雪山冰川公园栈道" data-full="img/yulong-glacier.jpg" data-cap="冰川公园栈道，Caihm，CC BY 3.0">
-          <figcaption>冰川公园栈道　Caihm　<a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>　<a href="https://commons.wikimedia.org/wiki/File:%E4%BB%8E%E6%A0%88%E9%81%93%E6%9C%80%E9%AB%98%E7%82%B9(4680m)%E4%BF%AF%E7%9E%B0%E7%8E%89%E9%BE%99%E9%9B%AA%E5%B1%B1_-_panoramio.jpg">来源</a></figcaption>
-        </figure>
-        <figure>
-          <img src="img/blue-moon-valley.jpg" width="1500" height="1125" alt="蓝月谷清澈的蓝绿色湖水" data-full="img/blue-moon-valley.jpg" data-cap="蓝月谷，宝安区浩哥，CC BY-SA 4.0">
-          <figcaption>蓝月谷　宝安区浩哥　<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>　<a href="https://commons.wikimedia.org/wiki/File:%E4%BA%91%E5%8D%97%E8%93%9D%E6%9C%88%E8%B0%B702.jpg">来源</a></figcaption>
-        </figure>
-        <figure>
-          <img src="img/shuhe-gate.jpg" width="1500" height="1125" alt="束河古镇牌坊" data-full="img/shuhe-gate.jpg" data-cap="束河古镇牌坊，Gisling，CC BY 3.0">
-          <figcaption>束河古镇牌坊　Gisling　<a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>　<a href="https://commons.wikimedia.org/wiki/File:%E4%B8%BD%E6%B1%9F%E6%9D%9F%E6%B2%B3%E5%8F%A4%E9%95%87.JPG">来源</a></figcaption>
-        </figure>
-        <figure>
-          <img src="img/shuhe-willow.jpg" width="1500" height="1125" alt="束河古镇柳树与丹凤含书牌坊" data-full="img/shuhe-willow.jpg" data-cap="束河古镇，Nyx Ning，CC BY-SA 3.0">
-          <figcaption>束河古镇　Nyx Ning　<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>　<a href="https://commons.wikimedia.org/wiki/File:%E4%BA%91%E5%8D%97-%E4%B8%BD%E6%B1%9F.%E6%9D%9F%E7%A6%BE%E5%8F%A4%E9%95%87%E4%B8%80%E6%99%AF_-_panoramio.jpg">来源</a></figcaption>
-        </figure>
-        <figure>
-          <img src="img/erhai-boat.jpg" width="1600" height="1000" alt="洱海上的渔人" data-full="img/erhai-boat.jpg" data-cap="洱海泛舟，Ma Martin，CC BY-SA 3.0">
-          <figcaption>洱海泛舟　Ma Martin　<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA 3.0</a>　<a href="https://commons.wikimedia.org/wiki/File:%E6%B4%B1%E6%B5%B7_%E6%B3%9B%E8%88%9F_Erhai_Lake_-_panoramio.jpg">来源</a></figcaption>
-        </figure>
-        <figure>
-          <img src="img/erhai-shore.jpg" width="1500" height="1000" alt="洱海生态廊道" data-full="img/erhai-shore.jpg" data-cap="洱海生态廊道，Jonashtand，CC BY-SA 4.0">
-          <figcaption>洱海生态廊道　Jonashtand　<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>　<a href="https://commons.wikimedia.org/wiki/File:202605_Views_of_Erhai_from_the_Ecological_Corridor_22.jpg">来源</a></figcaption>
-        </figure>
-        <figure>
-          <img src="img/cangshan-erhai.jpg" width="1800" height="810" alt="苍山与洱海" data-full="img/cangshan-erhai.jpg" data-cap="苍山与洱海，Kcx36，CC BY-SA 4.0">
-          <figcaption>苍山与洱海　Kcx36　<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>　<a href="https://commons.wikimedia.org/wiki/File:%E5%A4%A7%E7%90%86%E6%B4%B1%E6%B5%B7%E5%8F%8A%E8%8B%8D%E5%B1%B1_03.jpg">来源</a></figcaption>
-        </figure>
       </div>
     </div>
+    </section>
   </div>
 
   <section class="sources" id="sources">
     <div class="wrap">
-      <p class="eyebrow">出处</p>
-      <h2>照片与依据</h2>
+      <h2 class="sec-h"><span class="sec-badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 4.5h10v15l-5-2.2-5 2.2Z" stroke="#5C564E" stroke-width="1.8" stroke-linejoin="round"/></svg></span>数字和照片从哪来</h2>
       <details class="src">
-        <summary>照片、票价与日历出处</summary>
+        <summary>照片、票价、日历与视频</summary>
         <div class="src-body">
       <ol>
         <li><a href="https://commons.wikimedia.org/wiki/File:Lijiang_Yunnan_China_Jade-Dragon-Snow-Mountain-01.jpg">玉龙雪山照片：CEphoto, Uwe Aranas，CC BY-SA 3.0</a></li>
@@ -1214,12 +1442,12 @@
         <li><a href="https://www.yjcxw.com/meiriyoujia/48382.html">丽江 92 号汽油 9.04 元/升（油价查询网 2026-11-10）</a></li>
         <li><a href="https://www.163.com/dy/article/L7LQDQKH052491GH.html">丽江同城网 2026-09-25：甘海子停车场预约测试；新游客服务中心暂不收取停车费（转述管委会通告）</a></li>
         <li><a href="https://piao.qunar.com/daytrip/detail_3224093.html">去哪儿：玉龙雪山纯玩 2–8 人小团 246 元起</a></li>
-        <li><a href="https://www.yndali.gov.cn/dlsrmzf/c106727/pc/content/1983766513792946176/content_1983766513792946176.html">大理市发改局：感通索道单程 65 元、往返 100 元（2025-07-25）</a></li>
-        <li><a href="https://touch.piao.qunar.com/touch/detail.htm?id=12323">洗马潭索道全程往返：去哪儿 2026-11-10 可见成人约 260 元起；此前平台常见约 320 元</a></li>
-        <li><a href="https://www.dalitravel.cn/content/read/180.html">大理旅游集团：洗马潭上站位于玉局峰洗马潭，海拔约 3900 米</a></li>
         <li><a href="https://travelnews.qunar.com/ugc/dali-xizhou-bus-vs-ebike">去哪儿游客记录：去喜洲坐中巴约 7 元（可能从古城出发）</a></li>
         <li><a href="https://www.lijiang.cn/article/176940.html">玉龙雪山氧气瓶限价约 9.9–19.9 元（丽江网）</a></li>
-        <li><a href="https://www.muniao.com/room/1441831.html">木鸟：禅茶榻榻米家庭房，12/26–30 与 1/4–7 日历 222 元/晚，12/31–1/3 为 392 元（2026-11-10）</a></li>
+        <li><a href="https://www.gov.cn/zhengce/content/202611/content_7085101.htm">国务院办公厅关于 2027 年部分节假日安排的通知（国办发明电〔2026〕10 号）：元旦 1 月 1 日（周五）至 3 日（周日）放假，共 3 天</a></li>
+        <li><a href="https://weatherspark.com/m/113630/12/Average-Weather-in-Lijiang-China-in-December">Weather Spark：丽江 12 月城区约 90% 日子晴到多云（12 月大部分时间阴或大部多云约 10%；不等于山顶）</a></li>
+        <li><a href="https://weatherspark.com/m/113630/1/Average-Weather-in-Lijiang-China-in-January">Weather Spark：丽江 1 月城区约 92% 日子晴到多云（不等于山顶）</a></li>
+        <li><a href="https://www.muniao.com/room/1441831.html">木鸟：禅茶榻榻米家庭房，12/26–30 与 1/4–7 日历 222 元/晚，12/31–1/3 为 392 元；1/3–1/6 三晚 836 元（2026-11-10）</a></li>
         <li><a href="https://www.muniao.com/room/1441832.html">木鸟：古色古香三人间，平日 236 元/晚，12/31–1/3 为 392 元（2026-11-10）</a></li>
         <li><a href="https://www.muniao.com/room/880957.html">木鸟：阳光家庭房，平日与元旦均为 249 元/晚（2026-11-10）</a></li>
         <li><a href="https://www.muniao.com/room/896183.html">木鸟：庭院亲子家庭房，平日 371 元/晚，12/31–1/3 为 757 元（2026-11-10）</a></li>
@@ -1231,6 +1459,15 @@
         <li><a href="https://www.muniao.com/room/1083406.html">木鸟：轻奢三房两卫别墅套房（束河别墅区），页面标价 550 元/晚，可住 10 人</a></li>
         <li><a href="https://en.wikipedia.org/wiki/Lijiang_Sanyi_International_Airport">丽江三义机场坐标与海拔 2243 米（英文维基百科）</a></li>
       </ol>
+      <p>参考视频（博主说法仅供参考，包括高反用药；出发前以官方和医生建议为准）：</p>
+      <ul class="plain">
+        <li><a href="https://www.douyin.com/video/7703177450784062118">丽江冬季怎么玩</a>　好人阿滇 · 1575 赞 · 2026-11</li>
+        <li><a href="https://www.douyin.com/video/7593760884875674600">玉龙雪山实用攻略</a>　是阿佳吖 · 1.2 万赞 · 2026-01</li>
+        <li><a href="https://www.douyin.com/video/7686713025142793381">玉龙雪山值不值得来</a>　蛋壳儿 · 3.7 万赞 · 2026-09</li>
+        <li><a href="https://www.douyin.com/video/7697612390846934244">秋冬雪山实测干货</a>　云南吉朵 · 抖音</li>
+        <li><a href="https://www.douyin.com/video/7594779658990652699">1、2 月云南怎么玩</a>　付先生在云南 · 抖音</li>
+      </ul>
+
         </div>
       </details>
     </div>
@@ -1299,13 +1536,11 @@
         { id: "baisha", name: "白沙古镇", alt: 2400, altLabel: "约 2400 米", days: ["D1", "D2"], note: "也可住这里，或第二天过来转转。" },
         { id: "ganhaizi", name: "玉龙雪山游客中心／甘海子", alt: 3356, altLabel: "索道下站一带约 3356 米", days: ["D3"], note: "车停在游客中心，进景区坐摆渡车。" },
         { id: "cable", name: "冰川公园大索道上站", alt: 4506, altLabel: "4506 米", days: ["D3"], note: "上面别久留，不舒服就下。" },
-        { id: "bluemoon", name: "蓝月谷", alt: 3200, altLabel: "低于大索道（未核到精确单点高程）", days: ["D3"], note: "下午走栈道。高反朋友如果来，在这里等。" },
+        { id: "bluemoon", name: "蓝月谷", alt: 3200, altLabel: "低于大索道（未核到精确单点高程）", days: ["D3"], note: "下午走栈道。谁不舒服就在这里等。" },
         { id: "ljstation", name: "丽江站", alt: 2400, altLabel: "约 2400 米", days: ["D4"], note: "坐高铁去大理。" },
-        { id: "dlistation", name: "大理站", alt: 1970, altLabel: "约 1970 米", days: ["D4", "D6"], note: "下车去喜洲或双廊；返程也可从这里走。" },
-        { id: "xizhou", name: "喜洲", alt: 1970, altLabel: "洱海边约 1970 米", days: ["D4", "D5", "D6"], note: "可住洱海边，慢慢看海。" },
-        { id: "shuanglang", name: "双廊", alt: 1970, altLabel: "洱海边约 1970 米", days: ["D4", "D5"], note: "也可住这里，或第五天过来转转。" },
-        { id: "gantong", name: "苍山感通索道", alt: 2200, altLabel: "相对较低（未核到精确单点高程）", days: ["D6"], note: "可选，比较轻松。" },
-        { id: "ximatan", name: "洗马潭", alt: 3900, altLabel: "约 3900 米", days: ["D6"], note: "可选。上面别久留。高反朋友不上苍山。" }
+        { id: "dlistation", name: "大理站", alt: 1970, altLabel: "约 1970 米", days: ["D4"], note: "下车去喜洲或双廊；返程也可从这里走。" },
+        { id: "xizhou", name: "喜洲", alt: 1970, altLabel: "洱海边约 1970 米", days: ["D4", "D5", "D6"], note: "可住洱海边。29 日下午到，30 日慢慢走西岸，31 日早上再走一会儿。" },
+        { id: "shuanglang", name: "双廊", alt: 1970, altLabel: "洱海边约 1970 米", days: ["D5"], note: "30 日可以过来，走走东岸，不必赶。" },
       ];
       var PLACE_MAP = {};
       PLACES.forEach(function (p) { PLACE_MAP[p.id] = p; });
@@ -1440,17 +1675,33 @@
       if (jump) { window.scrollTo(0, parseInt(jump, 10) || 0); }
 
       if (shot) {
-        if (shot === "hero") {
-          document.documentElement.classList.add("shot-hero");
+        if (shot === "hero" || shot === "top") {
+          document.documentElement.classList.add(shot === "top" ? "shot-top" : "shot-hero");
           window.scrollTo(0, 0);
         } else if (shot === "map") {
           document.documentElement.classList.add("shot-map");
           window.scrollTo(0, 0);
-          setDay("D3", "bluemoon");
+          var dayQ = new URLSearchParams(location.search).get("day") || "D3";
+          var stopQ = new URLSearchParams(location.search).get("stop");
+          setDay(dayQ, stopQ || undefined);
         } else if (shot === "table" || shot === "perhead") {
           document.documentElement.classList.add("shot-table");
         } else if (shot === "tour") {
           document.documentElement.classList.add("shot-tour");
+          window.scrollTo(0, 0);
+        } else if (shot === "days") {
+          document.documentElement.classList.add("shot-days");
+          window.scrollTo(0, 0);
+        } else if (shot === "alt") {
+          document.documentElement.classList.add("shot-alt");
+          window.scrollTo(0, 0);
+        } else if (shot === "dates") {
+          document.documentElement.classList.add("shot-dates");
+          window.scrollTo(0, 0);
+        } else if (shot === "nav") {
+          document.documentElement.classList.add("shot-nav");
+          var navEl = document.getElementById("nav");
+          if (navEl) navEl.classList.add("is-scrolled");
           window.scrollTo(0, 0);
         }
       }
