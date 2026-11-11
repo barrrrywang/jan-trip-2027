@@ -372,15 +372,74 @@ button:active, .date-card:active, .day-card:active, .seg button:active, .map-too
 }
 
 /* tour */
-.tour-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.tour-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
 @media (max-width: 619px) { .tour-pair { grid-template-columns: 1fr; } }
-.tour-card { padding: 1.3rem 1.3rem 1.15rem; }
+.tour-card { padding: 1.3rem 1.3rem 1.15rem; min-width: 0; word-break: keep-all; }
+#tour-vs .hint, #tour-vs .verdict { word-break: keep-all; }
 .tour-card .price { font-size: var(--fs-card); margin: .15rem 0 .4rem; }
 .tour-card .price .unit { font-family: var(--sans); font-size: var(--fs-cap); font-weight: 650; margin-left: .25rem; }
 .tour-card h3 { margin: 0; }
-.compare { width: 100%; border-collapse: collapse; margin: 1.4rem 0 0; font-size: var(--fs-cap); }
-.compare th, .compare td { text-align: left; padding: .55rem .4rem; box-shadow: inset 0 -1px 0 var(--line); vertical-align: top; }
+.tour-opts { display: grid; gap: .5rem; margin: .35rem 0 .75rem; }
+.tour-opt {
+  display: block;
+  padding: .6rem .75rem;
+  background: var(--bg);
+  border-radius: 14px;
+  box-shadow: inset 0 0 0 1px var(--line);
+  text-decoration: none;
+  color: inherit;
+  min-width: 0;
+}
+.tour-opt:hover { color: inherit; box-shadow: inset 0 0 0 1px rgba(43,122,154,.35); }
+.tour-opt .opt-name {
+  margin: 0;
+  font-size: var(--fs-cap);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.35;
+}
+.tour-opt .opt-meta {
+  margin: .18rem 0 0;
+  font-size: var(--fs-cap);
+  color: var(--mute);
+  line-height: 1.45;
+}
+.tour-includes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3rem;
+  margin: .1rem 0 .65rem;
+  padding: 0;
+  list-style: none;
+}
+.tour-includes li {
+  margin: 0;
+  font-size: var(--fs-cap);
+  font-weight: 650;
+  color: var(--low);
+  background: var(--low-s);
+  border-radius: var(--r-pill);
+  padding: .12rem .5rem;
+  line-height: 1.4;
+}
+.compare-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.4rem 0 0; }
+.compare { width: 100%; border-collapse: collapse; margin: 0; font-size: var(--fs-cap); }
+.compare th, .compare td {
+  text-align: left;
+  padding: .55rem .4rem;
+  box-shadow: inset 0 -1px 0 var(--line);
+  vertical-align: top;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+}
 .compare th { font-weight: 700; }
+.compare th:first-child { width: 28%; }
+@media (max-width: 619px) {
+  .tour-card { padding: 1.1rem 1rem 1rem; }
+  .tour-includes { gap: .25rem; }
+  .tour-includes li { padding: .1rem .4rem; }
+  .compare th, .compare td { padding: .5rem .28rem; }
+}
 .verdict { margin: 1.2rem 0 0; max-width: var(--wrap-text); color: var(--ink-2); }
 .verdict strong { display: block; font-size: var(--fs-card); margin-bottom: .25rem; }
 
@@ -754,48 +813,85 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
 
   <section class="sec" id="tour-vs">
     <div class="wrap-visual">
-      <h2 class="sec-h"><span class="ico-tile" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M48,184H88v24a8,8,0,0,1-8,8H56a8,8,0,0,1-8-8Zm120,24a8,8,0,0,0,8,8h24a8,8,0,0,0,8-8V184H168ZM48,72v40H208V72Z" opacity="0.2"/><path d="M184,32H72A32,32,0,0,0,40,64V208a16,16,0,0,0,16,16H80a16,16,0,0,0,16-16V192h64v16a16,16,0,0,0,16,16h24a16,16,0,0,0,16-16V64A32,32,0,0,0,184,32ZM56,176V120H200v56Zm0-96H200v24H56ZM72,48H184a16,16,0,0,1,16,16H56A16,16,0,0,1,72,48Zm8,160H56V192H80Zm96,0V192h24v16Zm-72-60a12,12,0,1,1-12-12A12,12,0,0,1,104,148Zm72,0a12,12,0,1,1-12-12A12,12,0,0,1,176,148Zm72-68v24a8,8,0,0,1-16,0V80a8,8,0,0,1,16,0ZM24,80v24a8,8,0,0,1-16,0V80a8,8,0,0,1,16,0Z"/></svg></span>跟团，还是自己走</h2>
-      <p class="sec-lead">只比玉龙雪山这一天。跟团从束河接，自己走的车费写在费用表里。</p>
+      <h2 class="sec-h"><span class="ico-tile" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M48,184H88v24a8,8,0,0,1-8,8H56a8,8,0,0,1-8-8Zm120,24a8,8,0,0,0,8,8h24a8,8,0,0,0,8-8V184H168ZM48,72v40H208V72Z" opacity="0.2"/><path d="M184,32H72A32,32,0,0,0,40,64V208a16,16,0,0,0,16,16H80a16,16,0,0,0,16-16V192h64v16a16,16,0,0,0,16,16h24a16,16,0,0,0,16-16V64A32,32,0,0,0,184,32ZM56,176V120H200v56Zm0-96H200v24H56ZM72,48H184a16,16,0,0,1,16,16H56A16,16,0,0,1,72,48Zm8,160H56V192H80Zm96,0V192h24v16Zm-72-60a12,12,0,1,1-12-12A12,12,0,0,1,104,148Zm72,0a12,12,0,1,1-12-12A12,12,0,0,1,176,148Zm72-68v24a8,8,0,0,1-16,0V80a8,8,0,0,1,16,0ZM24,80v24a8,8,0,0,1-16,0V80a8,8,0,0,1,16,0Z"/></svg></span>两种小团</h2>
+      <p class="sec-lead">只比玉龙雪山这一天。两边都从束河接，都含门票和大索道。</p>
       <div class="tour-pair">
         <article class="tour-card card-flat">
-          <h3>跟团</h3>
-          <p class="price"><span class="num">266</span><span class="unit">元起 / 人</span></p>
-          <p>小团 246 ＋ 环保车 20</p>
-          <p><a href="https://piao.qunar.com/daytrip/detail_3224093.html">去哪儿纯玩 2–8 人小团</a></p>
-          <ul class="plain">
-            <li>束河接送：含</li>
-            <li>门票、大索道、环保车：含（环保车 20 已加进 266）</li>
-            <li>氧气、防寒服、午餐也含着</li>
-            <li>当天大约 5–6 小时，节奏跟着团走</li>
+          <h3>去哪儿小团</h3>
+          <p class="price"><span class="num">336–396</span><span class="unit">元 / 人</span></p>
+          <p>336 要抢票，396 保出票</p>
+          <div class="tour-opts">
+            <a class="tour-opt" href="https://piao.qunar.com/daytrip/detail_3224093.html">
+              <p class="opt-name">8人团·特惠游大索道蓝月谷</p>
+              <p class="opt-meta">336 / 成人 · 集合出票，抢不到退款</p>
+            </a>
+            <a class="tour-opt" href="https://piao.qunar.com/daytrip/detail_3224093.html">
+              <p class="opt-name">8人团·保出票大索道蓝月谷</p>
+              <p class="opt-meta">396 / 成人 · 保证出票</p>
+            </a>
+          </div>
+          <ul class="tour-includes" aria-label="已包含">
+            <li>午餐</li>
+            <li>氧气</li>
+            <li>防寒服</li>
+            <li>门票</li>
+            <li>大索道</li>
+            <li>接送</li>
           </ul>
-          <p class="hint">想省心、不用自己安排时，更合适。</p>
+          <p>束河 <strong>07:00</strong> 接，古城 <strong>06:00</strong> 接，约 <strong>18:00</strong> 送回，可送回束河。6–8 人团。</p>
+          <ul class="plain">
+            <li>没有导游，司机兼向导</li>
+            <li>环保车页面没写</li>
+          </ul>
+          <p class="hint">蓝月谷电瓶车 50 元自付，可不坐。246 是云杉坪小索道，不是大索道。</p>
         </article>
         <article class="tour-card card-flat">
-          <h3>自己走</h3>
-          <p class="price"><span class="num">240</span><span class="unit">元 / 人</span></p>
-          <p>门票 100 ＋ 大索道 120 ＋ 环保车 20</p>
-          <ul class="plain">
-            <li>束河接送：不含，另计（包车或公交，见费用表）</li>
-            <li>门票、大索道、环保车：含</li>
-            <li>午餐、氧气、租防寒服另计</li>
-            <li>当天大约 5–6 小时，想停就停</li>
+          <h3>携程小团</h3>
+          <p class="price"><span class="num">311–330</span><span class="unit">元 / 人</span></p>
+          <p>按日期浮动</p>
+          <div class="tour-opts">
+            <a class="tour-opt" href="https://m.ctrip.com/webapp/activity/dest/t96966988.html">
+              <p class="opt-name">8人精品小团 · 套餐A</p>
+              <p class="opt-meta">07:00 接，17:30 送回</p>
+            </a>
+            <a class="tour-opt" href="https://m.ctrip.com/webapp/activity/dest/t100056811.html">
+              <p class="opt-name">8人纯玩 · 套餐B</p>
+              <p class="opt-meta">07:00 接，17:20 送回 · 11月底见过 330</p>
+            </a>
+          </div>
+          <ul class="tour-includes" aria-label="已包含">
+            <li>午餐</li>
+            <li>氧气</li>
+            <li>防寒服</li>
+            <li>门票</li>
+            <li>大索道</li>
+            <li>环保车</li>
+            <li>接送</li>
           </ul>
-          <p class="hint">想慢慢走、随时能停时，更合适。</p>
+          <p><strong>07:00</strong> 接，<strong>17:20–17:30</strong> 送回。束河也接。</p>
+          <ul class="plain">
+            <li>没有导游，司机兼向导</li>
+            <li>要抢票，不保证出票，抢不到全额退</li>
+          </ul>
+          <p class="hint">蓝月谷电瓶车 50 元自付，可不坐。</p>
         </article>
       </div>
+      <div class="compare-wrap">
       <table class="compare">
-        <thead><tr><th>比一比</th><th>跟团</th><th>自己走</th></tr></thead>
+        <thead><tr><th>比一比</th><th>去哪儿小团</th><th>携程小团</th></tr></thead>
         <tbody>
-          <tr><th>束河接送</th><td>含</td><td>不含，另计</td></tr>
-          <tr><th>门票、大索道</th><td>含</td><td>含（门票 100＋索道 120）</td></tr>
-          <tr><th>环保车 20 元</th><td>含（已加进 266）</td><td>含（已加进 240）</td></tr>
-          <tr><th>氧气、防寒服、午餐</th><td>含</td><td>不含，另计</td></tr>
-          <tr><th>当天节奏</th><td>跟着团走</td><td>想停就停</td></tr>
-          <tr><th>蓝月谷电瓶车 40 元</th><td>不含，另计</td><td>不含，另计</td></tr>
+          <tr><th>束河接送</th><td>含（07:00 接，约 18:00 送回）</td><td>含（07:00 接，17:20–17:30 送回）</td></tr>
+          <tr><th>门票、大索道</th><td>含</td><td>含</td></tr>
+          <tr><th>环保车</th><td>页面没写</td><td>含（已计入 311–330）</td></tr>
+          <tr><th>氧气、防寒服、午餐</th><td>含</td><td>含</td></tr>
+          <tr><th>当天节奏</th><td>司机兼向导</td><td>司机兼向导</td></tr>
+          <tr><th>出票</th><td>336 要抢票，396 保出票</td><td>要抢票，抢不到全额退</td></tr>
+          <tr><th>蓝月谷电瓶车</th><td>50 元自付，可不坐</td><td>50 元自付，可不坐</td></tr>
         </tbody>
       </table>
-      <p class="hint">两边价格都已含环保车 20 元；蓝月谷电瓶车 40 元两边都另计。大风季（11–1 月，约 15%）大索道可能停，或改坐别的索道，两种走法都一样。</p>
-      <p class="verdict"><strong>怎么选</strong>跟团 266 已含接送和午餐，自己走 240 还要加车费和午餐，所以跟团更省、更省心。想自由走、随时能停，就自己走。</p>
+      </div>
+      <p class="hint">去哪儿页没写环保车含不含；蓝月谷电瓶车两边都是 50 元自付，可不坐。去哪儿 336 要抢票、抢不到退款，396 保证出票；携程小团要配合抢票，不保证出票，抢不到全额退。大风季（11–1 月，约 15%）大索道可能停，或改坐别的索道，两种走法都一样。</p>
+      <p class="verdict"><strong>怎么选</strong>携程小团 311–330 更便宜、7 点接；要抢票，抢不到全额退。去哪儿 396 可保出票，336 也要抢票。两边都是司机兼向导，都含接送、门票、大索道、午餐、氧气和防寒服。去哪儿环保车页面没写。</p>
     </div>
   </section>
 
@@ -993,7 +1089,7 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
                 <li>上山这天可以包车，或坐环线公交到新游客服务中心，再转旅游直通车；也可以到忠义市场坐 101 路（15 元/人）。</li>
                 <li>若自己开车，车停在游客中心。进景区改坐环保车（摆渡车），私家车不能进园。</li>
                 <li>谁不舒服就在蓝月谷等，不必上大索道。</li>
-                <li>也可报纯玩小团，见上面「跟团，还是自己走」。</li>
+                <li>也可报纯玩小团，见上面「两种小团」。</li>
                 <li>大索道票可提前 7 天、每天 20:00 在「丽江旅游集团」小程序开售。1/5 上山即 12 月 29 日 20:00；建议提前一两天完成实名认证。</li>
               </ul>
             </div>
@@ -1151,7 +1247,7 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
               </tbody>
             </table>
           </div>
-          <p class="hint">若玉龙这天改跟团：266 元/人（小团 246＋环保车 20），含门票、大索道、环保车、束河接送、午餐、氧气和防寒服；蓝月谷电瓶车 40 另计。上表吃饭和氧气尚未扣减。</p>
+          <p class="hint">若玉龙这天改跟团：去哪儿大索道小团 336–396 元/人（336 要抢票，396 保出票；246 是云杉坪小索道，不是大索道）；或携程小团 311–330 元/人（按日期浮动），07:00 接、17:20–17:30 送回，要抢票、抢不到全额退。两边都含门票、大索道、束河接送、午餐、氧气和防寒服。去哪儿环保车页面没写；携程含环保车。蓝月谷电瓶车两边都是 50 元自付，可不坐。上表吃饭、用车和氧气尚未按跟团扣减。</p>
           <div class="budget-grid">
             <div class="b-row"><span class="k">长途交通</span><span class="d">3 人合计，口径同上表（返程为估算）</span><span class="v">1770–3300 元</span></div>
             <div class="b-row"><span class="k">当地交通</span><span class="d">上山日包车对照，3 人 5 座 400–650；不含则公交另计</span><span class="v">0–650 元</span></div>
@@ -1170,7 +1266,7 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
                 <li>最便宜是<a href="https://www.muniao.com/room/880957.html">阳光家庭房</a> 249×3＝747，人均 249；若选<a href="https://www.muniao.com/room/896183.html">庭院亲子家庭房</a> 757＋371＋371＝1499，人均 500。</li>
                 <li>包车对照：1/5 上山日，5 座 400–650 元（<a href="https://piao.qunar.com/daytrip/detail_3618922.html?productId=1916711955">去哪儿</a>；<a href="https://www.daxiangbaoche.com/lijiang-car-service/">大象市内价</a> 5 座 650 作上限参考）。价随平台而变，需按当天确认；油费、停车是否包含因平台而异。自驾请看租车网站填好日期后的日租金和保险。</li>
                 <li>油价：丽江 92 号 <strong>9.04 元/升</strong>（<a href="https://www.yjcxw.com/meiriyoujia/48382.html">油价查询网 2026-11-10</a>）。停车：新游客中心暂不收费，甘海子需预约、收费未公布（<a href="https://www.163.com/dy/article/L7LQDQKH052491GH.html">丽江同城网 2026-09-25</a>）。</li>
-                <li>跟团上雪山：去哪儿纯玩 2–8 人小团 <strong>246 元起</strong>（<a href="https://piao.qunar.com/daytrip/detail_3224093.html">链接</a>），含进山费、大索道、接送、氧气、防寒服、中餐；不含蓝月谷电瓶车全程 40 元。大风停运可能改坐云杉坪那边较低的索道，并退差价。</li>
+                <li>跟团上雪山：去哪儿纯玩小团（<a href="https://piao.qunar.com/daytrip/detail_3224093.html">链接</a>）。<strong>246 是云杉坪小索道，不是大索道。</strong>大索道套餐为「8人团-特惠游大索道蓝月谷」<strong>336 元/成人</strong>（集合出票，抢不到退款），「8人团-保出票大索道蓝月谷」<strong>396 元/成人</strong>（保证出票）。含往返车费、门票、冰川大索道、大氧气一瓶、防寒服、午餐；环保车页面没写；蓝月谷电瓶车 50 元自付；无导游，司机兼向导；06:00 古城 / 07:00 束河接，约 18:00 回市区，可送回束河；6–8 人团。另有携程小团 <strong>311–330 元/人</strong>（按日期浮动）：<a href="https://m.ctrip.com/webapp/activity/dest/t96966988.html">8人精品小团，选套餐A</a>；<a href="https://m.ctrip.com/webapp/activity/dest/t100056811.html">8人纯玩，选套餐B</a>。含门票、大索道、环保车、午餐、氧气、防寒服和束河接送；07:00 接，17:20–17:30 送回；要抢票、不保证出票，抢不到全额退；没有导游，司机兼向导；蓝月谷电瓶车 50 元自付，可不坐。</li>
               </ul>
             </div>
           </details>
@@ -1210,7 +1306,9 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
         <li><a href="https://www.daxiangbaoche.com/lijiang-car-service/">大象包车市内价（上限参考）：5 座 650；停车和高速另算</a></li>
         <li>丽江 92 号汽油 9.04 元/升（<a href="https://www.yjcxw.com/meiriyoujia/48382.html">油价查询网 2026-11-10</a>）</li>
         <li><a href="https://www.163.com/dy/article/L7LQDQKH052491GH.html">丽江同城网 2026-09-25：甘海子停车场预约测试；新游客服务中心暂不收取停车费</a></li>
-        <li><a href="https://piao.qunar.com/daytrip/detail_3224093.html">去哪儿：玉龙雪山纯玩 2–8 人小团 246 元起</a></li>
+        <li><a href="https://piao.qunar.com/daytrip/detail_3224093.html">去哪儿：玉龙雪山纯玩 2–8 人小团。246 是云杉坪小索道；大索道为「8人团-特惠游大索道蓝月谷」336 元/成人（集合出票，抢不到退款）、「8人团-保出票大索道蓝月谷」396 元/成人（保证出票）</a></li>
+        <li><a href="https://m.ctrip.com/webapp/activity/dest/t96966988.html">携程：玉龙雪山冰川公园大索道+蓝月谷一日游 8人精品小团（选套餐A，311–330 元/人，按日期浮动）</a></li>
+        <li><a href="https://m.ctrip.com/webapp/activity/dest/t100056811.html">携程：玉龙雪山大索道冰川公园+蓝月谷一日游 8人纯玩（选套餐B，311–330 元/人，按日期浮动；11月底见过 330）</a></li>
         <li><a href="https://www.lijiang.cn/article/176940.html">玉龙雪山氧气瓶限价约 9.9–19.9 元（丽江网）</a></li>
         <li><a href="https://www.gov.cn/zhengce/content/202611/content_7085101.htm">国务院办公厅关于 2027 年部分节假日安排的通知（国办发明电〔2026〕10 号）</a>：元旦 1 月 1 日（周五）至 3 日（周日）放假，共 3 天</li>
         <li><a href="https://weatherspark.com/m/113630/12/Average-Weather-in-Lijiang-China-in-December">Weather Spark：丽江 12 月城区约 90% 日子晴到多云</a>（不等于山顶）</li>
