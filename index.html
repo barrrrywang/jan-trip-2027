@@ -603,22 +603,56 @@ button:active, .date-card:active, .day-card:active, .seg button:active, .map-too
 /* stay */
 .lodge-grid { display: grid; gap: 16px; grid-template-columns: 1fr; margin: .35rem 0 1.1rem; }
 @media (min-width: 640px) { .lodge-grid { grid-template-columns: repeat(2, 1fr); } }
-.lodge { padding: 1.15rem 1.2rem; }
-.lodge h3 { margin: 0 0 .3rem; font-size: var(--fs-card); }
+.lodge { padding: 1.15rem 1.2rem; min-width: 0; }
+.lodge h3 {
+  margin: 0 0 .3rem;
+  font-size: var(--fs-card);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .3rem .45rem;
+}
 .lodge .price { margin: 0 0 .3rem; }
 .lodge p { font-size: var(--fs-cap); color: var(--ink-2); }
-.lodge.is-on {
-  background: var(--accent-s);
-  box-shadow: var(--shadow-hover);
+.lodge h3 .badge-rec { margin-left: 0; flex-shrink: 0; font-size: .75rem; }
+.lodge-shots {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 0;
+  margin: 0 0 .4rem;
+  padding-bottom: .2rem;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(42,38,31,.28) transparent;
 }
-.lodge h3 .badge-rec { margin-left: .4rem; vertical-align: 0.15em; }
-.lodge-photo {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+.lodge-shot {
+  flex: 0 0 70%;
+  max-width: 70%;
+  scroll-snap-align: start;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  cursor: zoom-in;
   border-radius: var(--r-sm);
-  margin: 0 0 .75rem;
+  overflow: hidden;
   box-shadow: var(--shadow-sm);
+  display: block;
+  line-height: 0;
+}
+.lodge-shot:active { transform: none; }
+.lodge-shot img, .lodge-shot picture { width: 100%; height: auto; display: block; }
+.lodge-shot img {
+  aspect-ratio: 610 / 386;
+  object-fit: cover;
+}
+.lodge-credit {
+  margin: 0 0 .65rem;
+  font-size: .75rem;
+  color: var(--mute);
 }
 .place-row {
   display: grid;
@@ -788,7 +822,7 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
       <h2 class="sec-h"><span class="ico-tile" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M216,48V88H40V48a8,8,0,0,1,8-8H208A8,8,0,0,1,216,48Z" opacity="0.2"/><path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Z"/></svg></span>什么时候走</h2>
       <div class="date-grid" aria-label="行程日期">
 <article class="date-card is-on" data-key="a">
-          <p class="when"><span class="badge-rec">已定</span><span class="num">1/3–1/6</span></p>
+          <p class="when"><span class="badge-rec">日期已定</span><span class="num">1/3–1/6</span></p>
           <p class="why-short">1/3 是元旦最后一天，有一晚可能是假期价。</p>
           <ul class="date-rows">
             <li><span class="ico-tile tone-low" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M248,112v56H112V80H216A32,32,0,0,1,248,112Z" opacity="0.2"/><path d="M216,72H32V48a8,8,0,0,0-16,0V208a8,8,0,0,0,16,0V176H240v32a8,8,0,0,0,16,0V112A40,40,0,0,0,216,72ZM32,88h72v72H32Zm88,72V88h96a24,24,0,0,1,24,24v48Z"/></svg></span><span><span class="lab">住几晚</span><span class="val">丽江 3 晚</span></span></li>
@@ -806,7 +840,7 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
           </details>
         </article>
               </div>
-      <p class="hint">三晚住束河阳光家庭房，每晚 249，三晚 747，人均 249。木鸟日历 2026-11-11 查到，非成交价。</p>
+      <p class="hint">住宿按最便宜的候选估算：束河阳光家庭房每晚 249，三晚 747，人均 249。四间都还没订。木鸟日历 2026-11-11 查到，非成交价。</p>
 
     </div>
   </section>
@@ -1018,7 +1052,7 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
               <article class="place">
                 <img src="img/shuhe-minju-1600.jpg" srcset="img/shuhe-minju-1200.jpg 1200w, img/shuhe-minju-1600.jpg 1600w, img/shuhe-minju-2400.jpg 2400w, img/shuhe-minju-2592.jpg 2592w" sizes="(max-width: 639px) calc(100vw - 40px), 240px" alt="束河民居，nobush，CC BY 2.0">
                 <h3>束河住下</h3>
-                <p>三晚都住阳光家庭房。这张是束河的民居，不是房间实拍。</p>
+                <p>先在束河住下，房间还没订，四间候选见「住哪」。这张是束河的民居。</p>
               </article>
             </div>
             <div class="day-more">
@@ -1137,30 +1171,141 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
     <div class="wrap-visual">
       <h2 class="sec-h"><span class="ico-tile" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M216,120v96H152V152H104v64H40V120a8,8,0,0,1,2.34-5.66l80-80a8,8,0,0,1,11.32,0l80,80A8,8,0,0,1,216,120Z" opacity="0.2"/><path d="M219.31,108.68l-80-80a16,16,0,0,0-22.62,0l-80,80A15.87,15.87,0,0,0,32,120v96a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V160h32v56a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V120A15.87,15.87,0,0,0,219.31,108.68ZM208,208H160V152a8,8,0,0,0-8-8H104a8,8,0,0,0-8,8v56H48V120l80-80,80,80Z"/></svg></span>住哪</h2>
       <div class="wrap-text" style="width:auto;max-width:var(--wrap-text);margin:0 0 1.2rem;">
-        <p>三晚都住束河阳光家庭房（3、4、5 日晚）。1/3 当晚是元旦假期价，这间仍是 249。下面几间是备选，日历价来自木鸟民宿 2026 年 11 月 11 日。</p>
+        <p>这 4 间都是候选，都还没订。价格来自木鸟民宿日历，2026 年 11 月 11 日查到，不是成交价。1/3 当晚是元旦假期价。</p>
       </div>
       <h3>3 人住一间</h3>
       <div class="lodge-grid">
-        <article class="lodge card-flat is-on">
-          <img class="lodge-photo" src="img/shuhe-minju-1600.jpg" srcset="img/shuhe-minju-1200.jpg 1200w, img/shuhe-minju-1600.jpg 1600w, img/shuhe-minju-2400.jpg 2400w, img/shuhe-minju-2592.jpg 2592w" sizes="(min-width: 640px) 340px, calc(100vw - 80px)" alt="束河民居，nobush，CC BY 2.0">
-          <h3><a href="https://www.muniao.com/room/880957.html">阳光家庭房</a><span class="badge-rec">已定</span></h3>
-          <p class="price"><span class="num">249</span> 元/晚 · 三晚 <span class="num">747</span> 元</p>
-          <p>三张单人床。1/3、1/4、1/5 均为 249，人均 249。上面这张是束河的民居，不是这间房的实拍。</p>
+        <article class="lodge card-flat">
+          <div class="lodge-shots" role="list">
+            <button type="button" class="lodge-shot" role="listitem" aria-label="放大查看：阳光家庭房：三张单人床的卧室。图：木鸟民宿房源页">
+              <picture>
+                <source type="image/webp" srcset="img/rooms/880957-1.webp">
+                <img src="img/rooms/880957-1.jpg" alt="阳光家庭房：三张单人床的卧室。图：木鸟民宿房源页" width="610" height="386">
+              </picture>
+            </button>
+            <button type="button" class="lodge-shot" role="listitem" aria-label="放大查看：阳光家庭房：卫生间淋浴。图：木鸟民宿房源页">
+              <picture>
+                <source type="image/webp" srcset="img/rooms/880957-2.webp">
+                <img src="img/rooms/880957-2.jpg" alt="阳光家庭房：卫生间淋浴。图：木鸟民宿房源页" width="610" height="386">
+              </picture>
+            </button>
+            <button type="button" class="lodge-shot" role="listitem" aria-label="放大查看：阳光家庭房：走廊窗外的瓦屋顶和远山。图：木鸟民宿房源页">
+              <picture>
+                <source type="image/webp" srcset="img/rooms/880957-3.webp">
+                <img src="img/rooms/880957-3.jpg" alt="阳光家庭房：走廊窗外的瓦屋顶和远山。图：木鸟民宿房源页" width="610" height="386">
+              </picture>
+            </button>
+            <button type="button" class="lodge-shot" role="listitem" aria-label="放大查看：阳光家庭房：植物庭院。图：木鸟民宿房源页">
+              <picture>
+                <source type="image/webp" srcset="img/rooms/880957-4.webp">
+                <img src="img/rooms/880957-4.jpg" alt="阳光家庭房：植物庭院。图：木鸟民宿房源页" width="610" height="386">
+              </picture>
+            </button>
+          </div>
+          <p class="lodge-credit">图：木鸟民宿房源页</p>
+          <h3><a href="https://www.muniao.com/room/880957.html">阳光家庭房</a><span class="badge-rec">候选 · 还没订</span></h3>
+          <p class="price">三晚 <span class="num">747</span> 元 · 人均 <span class="num">249</span></p>
+          <p>3 张单人床。有庭院，看不到雪山。</p>
+          <p>1/3、1/4、1/5 均为 249。</p>
         </article>
         <article class="lodge card-flat">
-          <h3><a href="https://www.muniao.com/room/1441831.html">禅茶榻榻米家庭房</a></h3>
+          <div class="lodge-shots" role="list">
+            <button type="button" class="lodge-shot" role="listitem" aria-label="放大查看：禅茶榻榻米家庭房：双人床与单人床的卧室。图：木鸟民宿房源页">
+              <picture>
+                <source type="image/webp" srcset="img/rooms/1441831-1.webp">
+                <img src="img/rooms/1441831-1.jpg" alt="禅茶榻榻米家庭房：双人床与单人床的卧室。图：木鸟民宿房源页" width="610" height="386">
+              </picture>
+            </button>
+            <button type="button" class="lodge-shot" role="listitem" aria-label="放大查看：禅茶榻榻米家庭房：淋浴和马桶。图：木鸟民宿房源页">
+              <picture>
+                <source type="image/webp" srcset="img/rooms/1441831-2.webp">
+                <img src="img/rooms/1441831-2.jpg" alt="禅茶榻榻米家庭房：淋浴和马桶。图：木鸟民宿房源页" width="610" height="386">
+              </picture>
+            </button>
+            <button type="button" class="lodge-shot" role="listitem" aria-label="放大查看：禅茶榻榻米家庭房：公共庭院。图：木鸟民宿房源页">
+              <picture>
+                <source type="image/webp" srcset="img/rooms/1441831-3.webp">
+                <img src="img/rooms/1441831-3.jpg" alt="禅茶榻榻米家庭房：公共庭院。图：木鸟民宿房源页" width="610" height="386">
+              </picture>
+            </button>
+            <button type="button" class="lodge-shot" role="listitem" aria-label="放大查看：禅茶榻榻米家庭房：屋顶观景台和远山。图：木鸟民宿房源页">
+              <picture>
+                <source type="image/webp" srcset="img/rooms/1441831-4.webp">
+                <img src="img/rooms/1441831-4.jpg" alt="禅茶榻榻米家庭房：屋顶观景台和远山。图：木鸟民宿房源页" width="610" height="386">
+              </picture>
+            </button>
+          </div>
+          <p class="lodge-credit">图：木鸟民宿房源页</p>
+          <h3><a href="https://www.muniao.com/room/1441831.html">禅茶榻榻米家庭房</a><span class="badge-rec">候选 · 还没订</span></h3>
           <p class="price">三晚 <span class="num">836</span> 元 · 人均 <span class="num">279</span></p>
-          <p>带雪山观景台，双人床＋单人床。1/3 为 392，1/4、1/5 为 222。</p>
+          <p>双人床＋单人床。屋顶观景台看远山。</p>
+          <p>1/3 为 392，1/4、1/5 为 222。</p>
         </article>
         <article class="lodge card-flat">
-          <h3><a href="https://www.muniao.com/room/1441832.html">古色古香三人间</a></h3>
+          <div class="lodge-shots" role="list">
+            <button type="button" class="lodge-shot" role="listitem" aria-label="放大查看：古色古香三人间套房：三床卧室，朝卫生间方向。图：木鸟民宿房源页">
+              <picture>
+                <source type="image/webp" srcset="img/rooms/1441832-1.webp">
+                <img src="img/rooms/1441832-1.jpg" alt="古色古香三人间套房：三床卧室，朝卫生间方向。图：木鸟民宿房源页" width="610" height="386">
+              </picture>
+            </button>
+            <button type="button" class="lodge-shot" role="listitem" aria-label="放大查看：古色古香三人间套房：三床卧室，朝窗方向。图：木鸟民宿房源页">
+              <picture>
+                <source type="image/webp" srcset="img/rooms/1441832-2.webp">
+                <img src="img/rooms/1441832-2.jpg" alt="古色古香三人间套房：三床卧室，朝窗方向。图：木鸟民宿房源页" width="610" height="386">
+              </picture>
+            </button>
+            <button type="button" class="lodge-shot" role="listitem" aria-label="放大查看：古色古香三人间套房：卫生间洗手台。图：木鸟民宿房源页">
+              <picture>
+                <source type="image/webp" srcset="img/rooms/1441832-3.webp">
+                <img src="img/rooms/1441832-3.jpg" alt="古色古香三人间套房：卫生间洗手台。图：木鸟民宿房源页" width="610" height="386">
+              </picture>
+            </button>
+            <button type="button" class="lodge-shot" role="listitem" aria-label="放大查看：古色古香三人间套房：公共庭院和二层回廊。图：木鸟民宿房源页">
+              <picture>
+                <source type="image/webp" srcset="img/rooms/1441832-4.webp">
+                <img src="img/rooms/1441832-4.jpg" alt="古色古香三人间套房：公共庭院和二层回廊。图：木鸟民宿房源页" width="610" height="386">
+              </picture>
+            </button>
+          </div>
+          <p class="lodge-credit">图：木鸟民宿房源页</p>
+          <h3><a href="https://www.muniao.com/room/1441832.html">古色古香三人间套房</a><span class="badge-rec">候选 · 还没订</span></h3>
           <p class="price">三晚 <span class="num">864</span> 元 · 人均 <span class="num">288</span></p>
-          <p>三张单人床。1/3 为 392，1/4、1/5 为 236。</p>
+          <p>3 张单人床。和禅茶房同一家客栈。</p>
+          <p>1/3 为 392，1/4、1/5 为 236。</p>
         </article>
         <article class="lodge card-flat">
-          <h3><a href="https://www.muniao.com/room/896183.html">庭院亲子家庭房</a></h3>
+          <div class="lodge-shots" role="list">
+            <button type="button" class="lodge-shot" role="listitem" aria-label="放大查看：庭院亲子家庭房：大床卧室。图：木鸟民宿房源页">
+              <picture>
+                <source type="image/webp" srcset="img/rooms/896183-1.webp">
+                <img src="img/rooms/896183-1.jpg" alt="庭院亲子家庭房：大床卧室。图：木鸟民宿房源页" width="610" height="386">
+              </picture>
+            </button>
+            <button type="button" class="lodge-shot" role="listitem" aria-label="放大查看：庭院亲子家庭房：卫生间淋浴和马桶。图：木鸟民宿房源页">
+              <picture>
+                <source type="image/webp" srcset="img/rooms/896183-2.webp">
+                <img src="img/rooms/896183-2.jpg" alt="庭院亲子家庭房：卫生间淋浴和马桶。图：木鸟民宿房源页" width="610" height="386">
+              </picture>
+            </button>
+            <button type="button" class="lodge-shot" role="listitem" aria-label="放大查看：庭院亲子家庭房：庭院、凉亭和远处雪山。图：木鸟民宿房源页">
+              <picture>
+                <source type="image/webp" srcset="img/rooms/896183-3.webp">
+                <img src="img/rooms/896183-3.jpg" alt="庭院亲子家庭房：庭院、凉亭和远处雪山。图：木鸟民宿房源页" width="610" height="386">
+              </picture>
+            </button>
+            <button type="button" class="lodge-shot" role="listitem" aria-label="放大查看：庭院亲子家庭房：月洞门庭院。图：木鸟民宿房源页">
+              <picture>
+                <source type="image/webp" srcset="img/rooms/896183-4.webp">
+                <img src="img/rooms/896183-4.jpg" alt="庭院亲子家庭房：月洞门庭院。图：木鸟民宿房源页" width="610" height="386">
+              </picture>
+            </button>
+          </div>
+          <p class="lodge-credit">图：木鸟民宿房源页</p>
+          <h3><a href="https://www.muniao.com/room/896183.html">庭院亲子家庭房</a><span class="badge-rec">候选 · 还没订</span></h3>
           <p class="price">三晚 <span class="num">1499</span> 元 · 人均 <span class="num">500</span></p>
-          <p>可看雪山。1/3 为 757，1/4、1/5 为 371。</p>
+          <p>双人床＋单人床（房型随机分配）。院子能看到雪山。</p>
+          <p>1/3 为 757，1/4、1/5 为 371。</p>
         </article>
       </div>
       <p class="hint">以上是平台日历价，不是下单瞬间的成交价。</p>
@@ -1172,7 +1317,7 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
       <h2 class="sec-h"><span class="ico-tile" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M192,56v56H64V56Z" opacity="0.2"/><path d="M56,56a8,8,0,0,1,8-8H192a8,8,0,0,1,0,16H64A8,8,0,0,1,56,56ZM216,160a8,8,0,0,0-8,8v16H176a16,16,0,0,1-16-16V120h48a8,8,0,0,0,0-16H48a8,8,0,0,0,0,16H96v8a56.06,56.06,0,0,1-56,56,8,8,0,0,0,0,16,72.08,72.08,0,0,0,72-72v-8h32v48a32,32,0,0,0,32,32h40a8,8,0,0,0,8-8V168A8,8,0,0,0,216,160Z"/></svg></span>要花多少</h2>
       <div class="budget-hero card-sm" id="perhead">
         <p class="budget-num" id="budget-num">1399–2406<span class="unit">元 / 人</span></p>
-        <p class="budget-sub" id="budget-sub">含或不含包车一天的区间。3 人：不含 1399–2189，含包车 1532–2406。住宿按阳光家庭房。</p>
+        <p class="budget-sub" id="budget-sub">含或不含包车一天的区间。3 人：不含 1399–2189，含包车 1532–2406。住宿按最便宜的候选估算，还没订。</p>
         <ul class="budget-notes">
           <li>按 2027 年 1 月 3–6 日估算（丽江 3 晚）。机票、门票、索道、吃饭按每人收，住宿和包车再平摊。</li>
         </ul>
@@ -1229,9 +1374,9 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
                   <td class="num">320–600</td>
                 </tr>
                 <tr>
-                  <td>住宿（丽江 3 晚）<span class="sub">按阳光家庭房 249×3＝747，人均 249。木鸟日历 2026-11-11。备选见「住哪」。</span></td>
+                  <td>住宿（丽江 3 晚）<span class="sub">按最便宜的候选估算：阳光家庭房 249×3＝747，人均 249。木鸟日历 2026-11-11。四间都还没订，见「住哪」。</span></td>
                   <td class="way"><span class="way-pill way-share">总账平摊</span></td>
-                  <td>阳光家庭房 747</td>
+                  <td>最便宜候选 747</td>
                   <td class="num">249</td>
                 </tr>
                 <tr class="total">
@@ -1253,7 +1398,7 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
             <div class="b-row"><span class="k">当地交通</span><span class="d">上山日包车对照，3 人 5 座 400–650；不含则公交另计</span><span class="v">0–650 元</span></div>
             <div class="b-row"><span class="k">门票</span><span class="d">玉龙 100 元×3</span><span class="v">300 元</span></div>
             <div class="b-row"><span class="k">索道与摆渡</span><span class="d">玉龙摆渡 20＋大索道 120，×3</span><span class="v">420 元</span></div>
-            <div class="b-row"><span class="k">住宿</span><span class="d">3 人按阳光家庭房 249×3</span><span class="v">747 元</span></div>
+            <div class="b-row"><span class="k">住宿</span><span class="d">按最便宜的候选估算，阳光家庭房 249×3</span><span class="v">747 元</span></div>
             <div class="b-row"><span class="k">餐饮</span><span class="d">80–150 元/人/天，4 天，估算</span><span class="v">960–1800 元</span></div>
             <div class="b-row"><span class="k">氧气及其他</span><span class="d">氧气瓶约 9.9–19.9 元，按 3 人预留</span><span class="v">30–120 元</span></div>
             <div class="b-row total"><span class="k">合计</span><span class="d">3 人约 4227–7338 元（含包车与氧气预留时走上限；人均请以上表为准）</span><span class="v">4227–7338 元</span></div>
@@ -1263,7 +1408,7 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
             <div class="src-body">
               <p>住宿分日（木鸟民宿日历，2026 年 11 月 11 日查到）。主行程丽江住 3 晚（1/3、1/4、1/5）。1/3 当晚是元旦假期价，1/4、1/5 为平时价。</p>
               <ul class="plain">
-                <li>最便宜是<a href="https://www.muniao.com/room/880957.html">阳光家庭房</a> 249×3＝747，人均 249；若选<a href="https://www.muniao.com/room/896183.html">庭院亲子家庭房</a> 757＋371＋371＝1499，人均 500。</li>
+                <li>费用按最便宜的候选估算，都还没订：<a href="https://www.muniao.com/room/880957.html">阳光家庭房</a> 249×3＝747，人均 249；若选<a href="https://www.muniao.com/room/896183.html">庭院亲子家庭房</a> 757＋371＋371＝1499，人均 500。</li>
                 <li>包车对照：1/5 上山日，5 座 400–650 元（<a href="https://piao.qunar.com/daytrip/detail_3618922.html?productId=1916711955">去哪儿</a>；<a href="https://www.daxiangbaoche.com/lijiang-car-service/">大象市内价</a> 5 座 650 作上限参考）。价随平台而变，需按当天确认；油费、停车是否包含因平台而异。自驾请看租车网站填好日期后的日租金和保险。</li>
                 <li>油价：丽江 92 号 <strong>9.04 元/升</strong>（<a href="https://www.yjcxw.com/meiriyoujia/48382.html">油价查询网 2026-11-10</a>）。停车：新游客中心暂不收费，甘海子需预约、收费未公布（<a href="https://www.163.com/dy/article/L7LQDQKH052491GH.html">丽江同城网 2026-09-25</a>）。</li>
                 <li>跟团上雪山：去哪儿纯玩小团（<a href="https://piao.qunar.com/daytrip/detail_3224093.html">链接</a>）。<strong>246 是云杉坪小索道，不是大索道。</strong>大索道套餐为「8人团-特惠游大索道蓝月谷」<strong>336 元/成人</strong>（集合出票，抢不到退款），「8人团-保出票大索道蓝月谷」<strong>396 元/成人</strong>（保证出票）。含往返车费、门票、冰川大索道、大氧气一瓶、防寒服、午餐；环保车页面没写；蓝月谷电瓶车 50 元自付；无导游，司机兼向导；06:00 古城 / 07:00 束河接，约 18:00 回市区，可送回束河；6–8 人团。另有携程小团 <strong>311–330 元/人</strong>（按日期浮动）：<a href="https://m.ctrip.com/webapp/activity/dest/t96966988.html">8人精品小团，选套餐A</a>；<a href="https://m.ctrip.com/webapp/activity/dest/t100056811.html">8人纯玩，选套餐B</a>。含门票、大索道、环保车、午餐、氧气、防寒服和束河接送；07:00 接，17:20–17:30 送回；要抢票、不保证出票，抢不到全额退；没有导游，司机兼向导；蓝月谷电瓶车 50 元自付，可不坐。</li>
@@ -1287,7 +1432,8 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
         <li><a href="https://commons.wikimedia.org/wiki/File:%E7%99%BD%E6%B2%99%E5%8F%A4%E9%95%87_02.jpg">白沙古镇：Caitriana Nicholson，CC BY-SA 2.0</a>（原图 3264×2448）</li>
         <li><a href="https://commons.wikimedia.org/wiki/File:%E4%BA%91%E5%8D%97%E8%93%9D%E6%9C%88%E8%B0%B702.jpg">蓝月谷：宝安区浩哥，CC BY-SA 4.0</a>（3264×2448）</li>
         <li><a href="https://commons.wikimedia.org/wiki/File:Zhongyi_Market_(48366765802).jpg">忠义市场：David Stanley，CC BY 2.0</a>（1024×768）</li>
-        <li><a href="https://commons.wikimedia.org/wiki/File:%E6%9D%9F%E6%B2%B3%E5%8F%A4%E9%8E%AE%EF%BC%8D%E6%B0%91%E5%B1%85.jpg">束河民居：nobush，CC BY 2.0</a>（2592×1944；不是阳光家庭房房间实拍）</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:%E6%9D%9F%E6%B2%B3%E5%8F%A4%E9%8E%AE%EF%BC%8D%E6%B0%91%E5%B1%85.jpg">束河民居：nobush，CC BY 2.0</a>（2592×1944；行程日卡片用，不是候选房间实拍）</li>
+        <li>住宿候选照片截自木鸟民宿各房源页相册（2026-11-11，图上有木鸟水印），用于「住哪」四间候选。</li>
         <li><a href="https://commons.wikimedia.org/wiki/File:Shuhe_Street,_Lijiang,_Yunnan,_China.jpg">束河绿荫与山景：Luke Chantrell，CC BY-SA 4.0</a>（4032×3024）</li>
         <li><a href="https://commons.wikimedia.org/wiki/File:20240503_Shuhe.jpg">束河古镇街道：Yumeto，CC BY-SA 4.0</a>（4096×3072）</li>
         <li><a href="https://commons.wikimedia.org/wiki/File:20240503_Qinglong_Qiao,_Lijiang.jpg">束河青龙桥：Yumeto，CC BY-SA 4.0</a>（4096×3072）</li>
@@ -1441,22 +1587,41 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
       var lb = document.getElementById("lightbox");
       var lbImg = document.getElementById("lbImg");
       var lbCap = document.getElementById("lbCap");
-      var gallery = [].slice.call(document.querySelectorAll(".hero-photo, .hl img, .day-photo img, .place img, .lodge-photo"));
+      var pageGallery = [].slice.call(document.querySelectorAll(".hero-photo, .hl img, .day-photo img, .place img"));
+      var lbSet = pageGallery;
       var lbIndex = 0;
       function showLb(i) {
-        lbIndex = (i + gallery.length) % gallery.length;
-        var el = gallery[lbIndex];
+        if (!lbSet.length) return;
+        lbIndex = (i + lbSet.length) % lbSet.length;
+        var el = lbSet[lbIndex];
         lbImg.src = el.currentSrc || el.src;
         lbImg.alt = el.alt || "";
         lbCap.textContent = el.alt || "";
         lb.hidden = false;
       }
-      gallery.forEach(function (img, i) {
+      function openGallery(list, i) {
+        lbSet = list;
+        showLb(i);
+      }
+      pageGallery.forEach(function (img, i) {
         img.style.cursor = "zoom-in";
         img.addEventListener("click", function (e) {
           if (e.target.closest(".day-card") && !e.target.closest(".day-photo")) return;
           e.stopPropagation();
-          showLb(i);
+          openGallery(pageGallery, i);
+        });
+      });
+      [].slice.call(document.querySelectorAll(".lodge")).forEach(function (card) {
+        var shots = [].slice.call(card.querySelectorAll(".lodge-shot img"));
+        shots.forEach(function (img, i) {
+          var btn = img.closest(".lodge-shot");
+          function open(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            openGallery(shots, i);
+          }
+          if (btn) btn.addEventListener("click", open);
+          else img.addEventListener("click", open);
         });
       });
       function closeLb() { lb.hidden = true; lbImg.src = ""; }
