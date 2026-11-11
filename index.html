@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>慢游玉龙雪山：1 月 3–6 日</title>
-  <meta name="description" content="1 月 3–6 日去丽江：4 天 3 晚，先在束河或白沙适应，再上玉龙雪山。">
+  <meta name="description" content="1 月 3–6 日去丽江：4 天 3 晚。到了先在市区歇一晚，第二天白沙、束河慢慢逛，再上玉龙雪山。">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://barrrrywang.github.io/jan-trip-2027/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:title" content="慢游玉龙雪山：1 月 3–6 日">
-  <meta property="og:description" content="1 月 3–6 日去丽江：4 天 3 晚，先在束河或白沙适应，再上玉龙雪山。">
+  <meta property="og:description" content="1 月 3–6 日去丽江：4 天 3 晚。到了先在市区歇一晚，第二天白沙、束河慢慢逛，再上玉龙雪山。">
   <meta property="og:url" content="https://barrrrywang.github.io/jan-trip-2027/">
   <meta property="og:image" content="https://barrrrywang.github.io/jan-trip-2027/img/hero-yulong-1920.jpg">
   <meta property="og:image:width" content="1920">
@@ -18,7 +18,7 @@
   <meta property="og:image:alt" content="玉龙雪山雪峰，CEphoto, Uwe Aranas，CC BY-SA 3.0">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="慢游玉龙雪山：1 月 3–6 日">
-  <meta name="twitter:description" content="1 月 3–6 日去丽江：4 天 3 晚，先在束河或白沙适应，再上玉龙雪山。">
+  <meta name="twitter:description" content="1 月 3–6 日去丽江：4 天 3 晚。到了先在市区歇一晚，第二天白沙、束河慢慢逛，再上玉龙雪山。">
   <meta name="twitter:image" content="https://barrrrywang.github.io/jan-trip-2027/img/hero-yulong-1920.jpg">
   <script>
     (function(){
@@ -55,6 +55,7 @@
   --mid-s: #F6E7C2;
   --tour: #2B7A9A;
   --tour-s: #D7EEF6;
+  --high: #C45C45;
   --ico-bg: #E7E2D8;
   --display: "ZCOOL KuaiLe", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
   --sans: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Microsoft YaHei", "Segoe UI", system-ui, sans-serif;
@@ -547,6 +548,38 @@ button:active, .date-card:active, .day-card:active, .seg button:active, .map-too
 .lodge h3 { margin: 0 0 .3rem; font-size: var(--fs-card); }
 .lodge .price { margin: 0 0 .3rem; }
 .lodge p { font-size: var(--fs-cap); color: var(--ink-2); }
+.lodge.is-on {
+  background: var(--accent-s);
+  box-shadow: var(--shadow-hover);
+}
+.lodge h3 .badge-rec { margin-left: .4rem; vertical-align: 0.15em; }
+.lodge-photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--r-sm);
+  margin: 0 0 .75rem;
+  box-shadow: var(--shadow-sm);
+}
+.place-row {
+  display: grid;
+  gap: 14px;
+  margin: .85rem 0 0;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .place-row { grid-template-columns: repeat(3, 1fr); }
+  .place-row.cols-2 { grid-template-columns: repeat(2, 1fr); }
+}
+.place h3 { margin: .5rem 0 .2rem; font-size: 1.05rem; }
+.place p { margin: 0; font-size: var(--fs-cap); color: var(--ink-2); }
+.place img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--r-sm);
+  box-shadow: var(--shadow-sm);
+}
 
 /* budget */
 .budget-hero { padding: 1.4rem 1.35rem 1.3rem; text-align: left; }
@@ -664,7 +697,7 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
       <div class="hero-copy-inner">
         <h1>慢游玉龙雪山</h1>
         <p class="hero-date"><span class="num">1/3–1/6</span> · 成都 → 丽江</p>
-        <p class="hero-facts">4 天 3 晚 · 3 人 · 人均约 <span class="num">1399–2657</span> 元 <a href="#budget">看分项</a> · 上山那天到 <span class="num">4506</span> 米</p>
+        <p class="hero-facts">4 天 3 晚 · 3 人 · 人均约 <span class="num">1399–2406</span> 元 <a href="#budget">看分项</a> · 上山那天到 <span class="num">4506</span> 米</p>
         <a class="btn" href="#days">看这四天</a>
       </div>
     </div>
@@ -677,15 +710,15 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
       <div class="hl-row">
         <a class="hl" href="#days" data-go="d1">
           <img src="img/lijiang-night-2400.jpg" srcset="img/lijiang-night-1200.jpg 1200w, img/lijiang-night-1800.jpg 1800w, img/lijiang-night-2400.jpg 2400w, img/lijiang-night-3200.jpg 3200w" sizes="(max-width: 700px) 30vw, 360px" alt="丽江古城夜色，运河与灯火，ShuQizhe，CC BY-SA 4.0" >
-          <p>古城夜色</p>
+          <p>到了先歇</p>
         </a>
         <a class="hl" href="#days" data-go="d2">
-          <img src="img/shuhe-street-2400.jpg" srcset="img/shuhe-street-1200.jpg 1200w, img/shuhe-street-1800.jpg 1800w, img/shuhe-street-2400.jpg 2400w, img/shuhe-street-3200.jpg 3200w" sizes="(max-width: 700px) 30vw, 360px" alt="束河绿荫与远处的山，Luke Chantrell，CC BY-SA 4.0" >
-          <p>慢慢适应高原</p>
+          <img src="img/baisha-1600.jpg" srcset="img/baisha-1200.jpg 1200w, img/baisha-1600.jpg 1600w" sizes="(max-width: 700px) 30vw, 360px" alt="丽江白沙古镇，Caitriana Nicholson，CC BY-SA 2.0" >
+          <p>白沙、束河</p>
         </a>
         <a class="hl" href="#days" data-go="d3">
           <img src="img/yulong-boardwalk-2400.jpg" srcset="img/yulong-boardwalk-1200.jpg 1200w, img/yulong-boardwalk-1800.jpg 1800w, img/yulong-boardwalk-2400.jpg 2400w, img/yulong-boardwalk-3072.jpg 3072w" sizes="(max-width: 700px) 30vw, 360px" alt="玉龙雪山冰川公园栈道，Caihm，CC BY 3.0" >
-          <p>大索道</p>
+          <p>大索道、蓝月谷</p>
         </a>
       </div>
     </div>
@@ -714,7 +747,7 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
           </details>
         </article>
               </div>
-      <p class="hint">住宿按 3 人一间：这三晚最便宜是阳光家庭房，每晚 249，三晚 747，人均 249。木鸟日历 2026-11-11 查到，非成交价。</p>
+      <p class="hint">三晚住束河阳光家庭房，每晚 249，三晚 747，人均 249。木鸟日历 2026-11-11 查到，非成交价。</p>
 
     </div>
   </section>
@@ -768,9 +801,9 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
       <div class="map-toolbar" role="toolbar" aria-label="按天看地点">
         <button type="button" data-day="all" class="is-on">全程</button>
         <button type="button" data-day="D1">D1 抵达</button>
-        <button type="button" data-day="D2">D2 适应</button>
+        <button type="button" data-day="D2">D2 白沙束河</button>
         <button type="button" data-day="D3">D3 雪山</button>
-        <button type="button" data-day="D4">D4 返程</button>
+        <button type="button" data-day="D4">D4 待定</button>
       </div>
       <div class="map-frame">
         <svg class="map-art" viewBox="0 0 1120 840" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="map-title">
@@ -791,20 +824,36 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
   <path d="M610 200 L665 300 L555 310 Z" fill="#F7FBFE"/>
   <path d="M800 170 L848 280 L740 295 Z" fill="#F7FBFE"/>
   <path d="M980 430 L1120 350 L1120 520 Z" fill="#B7C8D6" opacity=".7"/>
-  <path d="M640 620 C600 540, 480 500, 400 450 C360 420, 420 380, 560 340 C650 310, 720 280, 790 230" fill="none" stroke="#E8DFD0" stroke-width="10" stroke-linecap="round"/>
-  <path d="M640 620 C600 540, 480 500, 400 450 C360 420, 420 380, 560 340 C650 310, 720 280, 790 230" fill="none" stroke="#C4B59A" stroke-width="2" stroke-dasharray="8 10"/>
+  <path d="M640 640 C600 580, 580 550, 560 520 C500 470, 420 430, 390 400 C400 360, 420 330, 430 310 C530 300, 640 290, 700 280 C740 250, 780 210, 810 190" fill="none" stroke="#E8DFD0" stroke-width="10" stroke-linecap="round"/>
+  <path d="M640 640 C600 580, 580 550, 560 520 C500 470, 420 430, 390 400 C400 360, 420 330, 430 310 C530 300, 640 290, 700 280 C740 250, 780 210, 810 190" fill="none" stroke="#C4B59A" stroke-width="2" stroke-dasharray="8 10"/>
+  <path d="M668 292 C690 278, 724 288, 738 304 C722 318, 694 320, 672 308 Z" fill="#7BA8B8" opacity=".55"/>
   <circle cx="200" cy="230" r="36" fill="#F3D56A" opacity=".9"/>
-  <g class="map-pin-svg" data-stop="ropeway" data-days="D3" transform="translate(800 230)" filter="url(#pinsh)">
+  <g class="map-pin-svg" data-stop="ropeway" data-days="D3" transform="translate(810 190)" filter="url(#pinsh)">
     <circle r="20" fill="#C45C45" stroke="#fff" stroke-width="3"/>
     <rect x="26" y="-18" rx="10" width="118" height="36" fill="#FFFCF8"/>
     <text x="36" y="6" font-size="16" font-family="PingFang SC, Hiragino Sans GB, sans-serif" fill="#2A261F">大索道上站</text>
   </g>
-  <g class="map-pin-svg" data-stop="shuhe" data-days="D1 D2 D4" transform="translate(400 450)" filter="url(#pinsh)">
+  <g class="map-pin-svg" data-stop="bluemoon" data-days="D3" transform="translate(700 280)" filter="url(#pinsh)">
     <circle r="20" fill="#C45C45" stroke="#fff" stroke-width="3"/>
-    <rect x="26" y="-18" rx="10" width="86" height="36" fill="#FFFCF8"/>
-    <text x="36" y="6" font-size="16" font-family="PingFang SC, Hiragino Sans GB, sans-serif" fill="#2A261F">束河／白沙</text>
+    <rect x="26" y="-18" rx="10" width="68" height="36" fill="#FFFCF8"/>
+    <text x="36" y="6" font-size="16" font-family="PingFang SC, Hiragino Sans GB, sans-serif" fill="#2A261F">蓝月谷</text>
   </g>
-  <g class="map-pin-svg" data-stop="airport" data-days="D1 D4" transform="translate(640 620)" filter="url(#pinsh)">
+  <g class="map-pin-svg" data-stop="baisha" data-days="D2" transform="translate(430 310)" filter="url(#pinsh)">
+    <circle r="20" fill="#C45C45" stroke="#fff" stroke-width="3"/>
+    <rect x="26" y="-18" rx="10" width="52" height="36" fill="#FFFCF8"/>
+    <text x="36" y="6" font-size="16" font-family="PingFang SC, Hiragino Sans GB, sans-serif" fill="#2A261F">白沙</text>
+  </g>
+  <g class="map-pin-svg" data-stop="shuhe" data-days="D1 D2 D4" transform="translate(390 400)" filter="url(#pinsh)">
+    <circle r="20" fill="#C45C45" stroke="#fff" stroke-width="3"/>
+    <rect x="26" y="-18" rx="10" width="52" height="36" fill="#FFFCF8"/>
+    <text x="36" y="6" font-size="16" font-family="PingFang SC, Hiragino Sans GB, sans-serif" fill="#2A261F">束河</text>
+  </g>
+  <g class="map-pin-svg" data-stop="gucheng" data-days="D1 D2" transform="translate(560 520)" filter="url(#pinsh)">
+    <circle r="20" fill="#C45C45" stroke="#fff" stroke-width="3"/>
+    <rect x="26" y="-18" rx="10" width="52" height="36" fill="#FFFCF8"/>
+    <text x="36" y="6" font-size="16" font-family="PingFang SC, Hiragino Sans GB, sans-serif" fill="#2A261F">古城</text>
+  </g>
+  <g class="map-pin-svg" data-stop="airport" data-days="D1 D4" transform="translate(640 640)" filter="url(#pinsh)">
     <circle r="20" fill="#C45C45" stroke="#fff" stroke-width="3"/>
     <rect x="26" y="-18" rx="10" width="86" height="36" fill="#FFFCF8"/>
     <text x="36" y="6" font-size="16" font-family="PingFang SC, Hiragino Sans GB, sans-serif" fill="#2A261F">三义机场</text>
@@ -819,9 +868,10 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
       <details class="src">
         <summary>来源与说明</summary>
         <div class="src-body">
-          <p>这是手绘示意地图，南北关系大致对（机场在南、雪山在北），不是实测底图。坐标尽量用公开标注，没有编造。玉湖村没查到可靠的单点坐标，地图上暂不标，行程里仍可去。</p>
+          <p>这是手绘示意地图，南北关系大致对（机场在南、雪山在北），不是实测底图。坐标尽量用公开标注，没有编造。</p>
           <ul class="plain">
             <li>丽江三义机场 26.67917°N，100.24583°E，海拔 2243 米：<a href="https://en.wikipedia.org/wiki/Lijiang_Sanyi_International_Airport">英文维基百科</a></li>
+            <li>丽江古城 26.87390°N，100.23528°E：OpenStreetMap Nominatim 景点</li>
             <li>束河古镇 26.92347°N，100.20359°E：OpenStreetMap Nominatim 景点</li>
             <li>白沙古镇 26.95648°N，100.21465°E：OpenStreetMap Nominatim 景点</li>
             <li>玉龙雪山游客中心／甘海子：高德「雪川游客港」27.097342，100.259092（火星坐标，已换算成地球坐标）</li>
@@ -853,30 +903,62 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
       <h2 class="sec-h"><span class="ico-tile" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M184,128a56,56,0,1,1-56-56A56,56,0,0,1,184,128Z" opacity="0.2"/><path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.32-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/></svg></span>每天怎么过</h2>
       <div class="day-grid">
         <article class="day-card" id="day-d1" data-day="D1">
-          <div class="day-photo"><img src="img/shuhe-town-2400.jpg" srcset="img/shuhe-town-1200.jpg 1200w, img/shuhe-town-1800.jpg 1800w, img/shuhe-town-2400.jpg 2400w, img/shuhe-town-3200.jpg 3200w" sizes="(min-width: 800px) 540px, calc(100vw - 40px)" alt="束河古镇街道，Yumeto，CC BY-SA 4.0" ><div class="day-badge"><span class="k">Day</span><span class="n">1</span></div></div>
+          <div class="day-photo"><img src="img/gucheng-1600.jpg" srcset="img/gucheng-1200.jpg 1200w, img/gucheng-1600.jpg 1600w" sizes="(min-width: 800px) 540px, calc(100vw - 40px)" alt="古城小桥流水及红灯笼，Caihm，CC BY 3.0" ><div class="day-badge"><span class="k">Day</span><span class="n">1</span></div></div>
           <div class="day-body">
             <h3>1/3 抵达</h3>
             <div class="alt-bar"><div class="lab"><span>当天最高</span><span><span class="alt-m">2400</span> 米</span></div><div class="track"><div class="fill fill-g" style="width:42%"></div></div></div>
-            <p class="day-sum">成都飞到丽江三义机场，去束河或白沙住下，先适应海拔。</p>
-            <span class="day-tag">抵达日</span>
+            <p class="day-sum">中午到下午飞到丽江三义机场，去束河住下。在附近的古城慢慢走走，吃晚饭，晚上早点歇。</p>
+            <span class="day-tag">早点歇</span>
+            <div class="place-row cols-2">
+              <article class="place">
+                <img src="img/gucheng-1600.jpg" srcset="img/gucheng-1200.jpg 1200w, img/gucheng-1600.jpg 1600w" sizes="(max-width: 639px) calc(100vw - 40px), 240px" alt="古城小桥流水及红灯笼，Caihm，CC BY 3.0">
+                <h3>古城走走</h3>
+                <p>石板路、流水和小桥就在住处附近。到了先不赶路，晚饭后早点歇。</p>
+              </article>
+              <article class="place">
+                <img src="img/shuhe-minju-1600.jpg" srcset="img/shuhe-minju-1200.jpg 1200w, img/shuhe-minju-1600.jpg 1600w, img/shuhe-minju-2400.jpg 2400w, img/shuhe-minju-2592.jpg 2592w" sizes="(max-width: 639px) calc(100vw - 40px), 240px" alt="束河民居，nobush，CC BY 2.0">
+                <h3>束河住下</h3>
+                <p>三晚都住阳光家庭房。这张是束河的民居，不是房间实拍。</p>
+              </article>
+            </div>
             <div class="day-more">
               <ul class="plain">
                 <li>3 人接机用 5 座即可。</li>
-                <li>也可坐机场大巴到束河，20 元/人；去白沙需到束河再转 6 路或打车。</li>
-                <li>合住一套，慢慢适应（束河一带约 2400 米）。</li>
+                <li>也可坐机场大巴到束河，20 元/人。</li>
+                <li>今晚不往远处走，束河一带约 2400 米。</li>
               </ul>
             </div>
           </div>
         </article>
         <article class="day-card" id="day-d2" data-day="D2">
-          <div class="day-photo"><img src="img/shuhe-qinglong-2400.jpg" srcset="img/shuhe-qinglong-1200.jpg 1200w, img/shuhe-qinglong-1800.jpg 1800w, img/shuhe-qinglong-2400.jpg 2400w, img/shuhe-qinglong-3200.jpg 3200w" sizes="(min-width: 800px) 540px, calc(100vw - 40px)" alt="束河青龙桥，Yumeto，CC BY-SA 4.0" ><div class="day-badge"><span class="k">Day</span><span class="n">2</span></div></div>
+          <div class="day-photo"><img src="img/baisha-1600.jpg" srcset="img/baisha-1200.jpg 1200w, img/baisha-1600.jpg 1600w" sizes="(min-width: 800px) 540px, calc(100vw - 40px)" alt="丽江白沙古镇，Caitriana Nicholson，CC BY-SA 2.0" ><div class="day-badge"><span class="k">Day</span><span class="n">2</span></div></div>
           <div class="day-body">
-            <h3>1/4 适应</h3>
+            <h3>1/4 白沙 · 束河</h3>
             <div class="alt-bar"><div class="lab"><span>当天最高</span><span><span class="alt-m">2400</span> 米</span></div><div class="track"><div class="fill fill-g" style="width:42%"></div></div></div>
-            <p class="day-sum">睡到自然醒。在束河、白沙转转，也可去玉湖村远看雪山。</p>
-            <span class="day-tag">高原适应日</span>
+            <p class="day-sum">从市区经过，去白沙、束河慢慢逛。本地市场也好好看一遍。</p>
+            <span class="day-tag">精逛</span>
+            <div class="place-row">
+              <article class="place">
+                <img src="img/baisha-1600.jpg" srcset="img/baisha-1200.jpg 1200w, img/baisha-1600.jpg 1600w" sizes="(max-width: 639px) calc(100vw - 40px), 240px" alt="丽江白沙古镇，Caitriana Nicholson，CC BY-SA 2.0">
+                <h3>白沙古镇</h3>
+                <p>在束河北边一点，街巷不长，比大研安静，适合慢慢走。</p>
+              </article>
+              <article class="place">
+                <img src="img/shuhe-qinglong-2400.jpg" srcset="img/shuhe-qinglong-1200.jpg 1200w, img/shuhe-qinglong-1800.jpg 1800w, img/shuhe-qinglong-2400.jpg 2400w, img/shuhe-qinglong-3200.jpg 3200w" sizes="(max-width: 639px) calc(100vw - 40px), 240px" alt="束河青龙桥，Yumeto，CC BY-SA 4.0">
+                <h3>束河古镇</h3>
+                <p>住处就在这一带。青龙桥、流水和院子，不用赶。</p>
+              </article>
+              <article class="place">
+                <img src="img/zhongyi-1024.jpg" srcset="img/zhongyi-800.jpg 800w, img/zhongyi-1024.jpg 1024w" sizes="(max-width: 639px) calc(100vw - 40px), 240px" alt="忠义市场，David Stanley，CC BY 2.0">
+                <h3>本地市场</h3>
+                <p>忠义、金甲都是本地人买菜的地方。蔬果、肉食、小吃都有，慢慢看就好。</p>
+              </article>
+            </div>
             <div class="day-more">
               <ul class="plain">
+                <li>忠义市场在古城南侧（古佑巷一带）。去哪儿标开放 08:00–23:00，以当天为准。</li>
+                <li>金甲市场在市区中间（金甲路、香格里大道附近），也是农贸市场，卖生鲜和日用百货。</li>
+                <li>束河仁里路、酒吧街一带有小平桥菜市场。</li>
                 <li>短途用滴滴、出租车，或坐 6 路、雪山轻轨旅游环线公交。</li>
                 <li>可提前买氧气瓶。</li>
               </ul>
@@ -890,6 +972,18 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
             <div class="alt-bar"><div class="lab"><span>当天最高 · 大索道上站</span><span><span class="alt-m">4506</span> 米</span></div><div class="track"><div class="fill fill-r" style="width:100%"></div></div></div>
             <p class="day-sum">上冰川公园大索道，下午走蓝月谷。上面别久留，不舒服就下。</p>
             <span class="day-tag">大索道</span>
+            <div class="place-row cols-2">
+              <article class="place">
+                <img src="img/yulong-boardwalk-2400.jpg" srcset="img/yulong-boardwalk-1200.jpg 1200w, img/yulong-boardwalk-1800.jpg 1800w, img/yulong-boardwalk-2400.jpg 2400w, img/yulong-boardwalk-3072.jpg 3072w" sizes="(max-width: 639px) calc(100vw - 40px), 360px" alt="玉龙雪山冰川公园栈道，Caihm，CC BY 3.0">
+                <h3>大索道 · 冰川公园</h3>
+                <p>坐上去到 4506 米。上面别久留，不舒服就下。</p>
+              </article>
+              <article class="place">
+                <img src="img/lanyuegu-2400.jpg" srcset="img/lanyuegu-1200.jpg 1200w, img/lanyuegu-1600.jpg 1600w, img/lanyuegu-2400.jpg 2400w, img/lanyuegu-3264.jpg 3264w" sizes="(max-width: 639px) calc(100vw - 40px), 360px" alt="云南丽江蓝月谷，宝安区浩哥，CC BY-SA 4.0">
+                <h3>蓝月谷</h3>
+                <p>就在同一个景区，下山顺路。谁不舒服，也可以在这里等。</p>
+              </article>
+            </div>
             <div class="day-more">
               <ul class="plain">
                 <li>上山这天可以包车，或坐环线公交到新游客服务中心，再转旅游直通车；也可以到忠义市场坐 101 路（15 元/人）。</li>
@@ -904,13 +998,12 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
         <article class="day-card" id="day-d4" data-day="D4">
           <div class="day-photo"><img src="img/shuhe-street-2400.jpg" srcset="img/shuhe-street-1200.jpg 1200w, img/shuhe-street-1800.jpg 1800w, img/shuhe-street-2400.jpg 2400w, img/shuhe-street-3200.jpg 3200w" sizes="(min-width: 800px) 540px, calc(100vw - 40px)" alt="束河绿荫与远处的山，Luke Chantrell，CC BY-SA 4.0" ><div class="day-badge"><span class="k">Day</span><span class="n">4</span></div></div>
           <div class="day-body">
-            <h3>1/6 返程</h3>
+            <h3>1/6 待定</h3>
             <div class="alt-bar"><div class="lab"><span>当天最高</span><span><span class="alt-m">2400</span> 米</span></div><div class="track"><div class="fill fill-g" style="width:42%"></div></div></div>
-            <p class="day-sum">早上在束河慢慢走一会儿，再从丽江飞回成都。</p>
-            <span class="day-tag">返程日</span>
+            <p class="day-sum">这一天先不定死。可能在附近再走走，也可能早一点出发，从丽江飞回成都。</p>
+            <span class="day-tag">待定</span>
             <div class="day-more">
               <ul class="plain">
-                <li>上午不必赶，再走一会儿再出发。</li>
                 <li>市区到机场大约 40–45 分钟；票价见费用表里的返程估算。</li>
               </ul>
             </div>
@@ -936,7 +1029,7 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
         <div class="tip"><span class="ico-tile" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M182.48,162.5a79.77,79.77,0,0,1-109,0A55.86,55.86,0,0,1,58.3,105.93l1.57-5.31h0C72.49,95.21,95.2,91.4,128,108c35.86,18.16,59.67,11.89,71.42,5.84h0A55.72,55.72,0,0,1,182.48,162.5Z" opacity="0.2"/><path d="M205.33,103.67,183.56,29.74A8,8,0,0,0,175.89,24H80.11a8,8,0,0,0-7.67,5.74L50.67,103.67a63.46,63.46,0,0,0,17.42,64.67A87.41,87.41,0,0,0,120,191.63V232H88a8,8,0,1,0,0,16h80a8,8,0,1,0,0-16H136V191.63a87.39,87.39,0,0,0,51.91-23.29A63.48,63.48,0,0,0,205.33,103.67ZM86.09,40h83.82L190,108.19c.09.3.17.6.25.9-21.42,7.68-45.54-1.6-58.63-8.23C106.43,88.11,86.43,86.49,71.68,88.93ZM177,156.65a71.69,71.69,0,0,1-98,0,47.55,47.55,0,0,1-13-48.46l.45-1.52c12-4.06,31.07-5.14,57.93,8.47,11.15,5.65,29.16,12.85,48.43,12.85a68.64,68.64,0,0,0,19.05-2.6A47.2,47.2,0,0,1,177,156.65Z"/></svg></span>上山前别喝酒</div>
         <div class="tip"><span class="ico-tile" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M144,52a20,20,0,1,1,20,20A20,20,0,0,1,144,52Zm49.44,55.92a8,8,0,0,0-13.77,0l-33,55.75-21-35.67H50.35L8,200H248Z" opacity="0.2"/><path d="M164,80a28,28,0,1,0-28-28A28,28,0,0,0,164,80Zm0-40a12,12,0,1,1-12,12A12,12,0,0,1,164,40Zm90.88,155.92-54.56-92.08A15.87,15.87,0,0,0,186.55,96h0a15.85,15.85,0,0,0-13.76,7.84L146.63,148l-44.84-76.1a16,16,0,0,0-27.58,0L1.11,195.94A8,8,0,0,0,8,208H248a8,8,0,0,0,6.88-12.08ZM88,80l23.57,40H64.43ZM22,192l33-56h66l33,56Zm150.57,0-16.66-28.28L186.55,112,234,192Z"/></svg></span>不舒服就在蓝月谷等，或留在山下</div>
       </div>
-      <p class="hint">先在束河或白沙适应。有不放心的，出发前问医生。</p>
+      <p class="hint">先在束河住下适应，1/4 再慢慢走。有不放心的，出发前问医生。</p>
     </div>
   </section>
 
@@ -944,14 +1037,15 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
     <div class="wrap-visual">
       <h2 class="sec-h"><span class="ico-tile" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M216,120v96H152V152H104v64H40V120a8,8,0,0,1,2.34-5.66l80-80a8,8,0,0,1,11.32,0l80,80A8,8,0,0,1,216,120Z" opacity="0.2"/><path d="M219.31,108.68l-80-80a16,16,0,0,0-22.62,0l-80,80A15.87,15.87,0,0,0,32,120v96a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V160h32v56a8,8,0,0,0,8,8h64a8,8,0,0,0,8-8V120A15.87,15.87,0,0,0,219.31,108.68ZM208,208H160V152a8,8,0,0,0-8-8H104a8,8,0,0,0-8,8v56H48V120l80-80,80,80Z"/></svg></span>住哪</h2>
       <div class="wrap-text" style="width:auto;max-width:var(--wrap-text);margin:0 0 1.2rem;">
-        <p>主行程按 2027 年 1 月 3–6 日，在束河或白沙住 3 晚（3、4、5 日晚；3 日当晚是元旦假期价）。下面是木鸟民宿 2026 年 11 月 11 日查到的日历价。</p>
+        <p>三晚都住束河阳光家庭房（3、4、5 日晚）。1/3 当晚是元旦假期价，这间仍是 249。下面几间是备选，日历价来自木鸟民宿 2026 年 11 月 11 日。</p>
       </div>
       <h3>3 人住一间</h3>
       <div class="lodge-grid">
-        <article class="lodge card-flat">
-          <h3><a href="https://www.muniao.com/room/880957.html">阳光家庭房</a></h3>
+        <article class="lodge card-flat is-on">
+          <img class="lodge-photo" src="img/shuhe-minju-1600.jpg" srcset="img/shuhe-minju-1200.jpg 1200w, img/shuhe-minju-1600.jpg 1600w, img/shuhe-minju-2400.jpg 2400w, img/shuhe-minju-2592.jpg 2592w" sizes="(min-width: 640px) 340px, calc(100vw - 80px)" alt="束河民居，nobush，CC BY 2.0">
+          <h3><a href="https://www.muniao.com/room/880957.html">阳光家庭房</a><span class="badge-rec">已定</span></h3>
           <p class="price"><span class="num">249</span> 元/晚 · 三晚 <span class="num">747</span> 元</p>
-          <p>三张单人床。1/3、1/4、1/5 均为 249。这三晚里最便宜，人均 249。</p>
+          <p>三张单人床。1/3、1/4、1/5 均为 249，人均 249。上面这张是束河的民居，不是这间房的实拍。</p>
         </article>
         <article class="lodge card-flat">
           <h3><a href="https://www.muniao.com/room/1441831.html">禅茶榻榻米家庭房</a></h3>
@@ -977,8 +1071,8 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
     <div class="wrap-visual">
       <h2 class="sec-h"><span class="ico-tile" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M192,56v56H64V56Z" opacity="0.2"/><path d="M56,56a8,8,0,0,1,8-8H192a8,8,0,0,1,0,16H64A8,8,0,0,1,56,56ZM216,160a8,8,0,0,0-8,8v16H176a16,16,0,0,1-16-16V120h48a8,8,0,0,0,0-16H48a8,8,0,0,0,0,16H96v8a56.06,56.06,0,0,1-56,56,8,8,0,0,0,0,16,72.08,72.08,0,0,0,72-72v-8h32v48a32,32,0,0,0,32,32h40a8,8,0,0,0,8-8V168A8,8,0,0,0,216,160Z"/></svg></span>要花多少</h2>
       <div class="budget-hero card-sm" id="perhead">
-        <p class="budget-num" id="budget-num">1399–2657<span class="unit">元 / 人</span></p>
-        <p class="budget-sub" id="budget-sub">含或不含包车一天的区间。3 人：不含 1399–2440，含包车 1532–2657。</p>
+        <p class="budget-num" id="budget-num">1399–2406<span class="unit">元 / 人</span></p>
+        <p class="budget-sub" id="budget-sub">含或不含包车一天的区间。3 人：不含 1399–2189，含包车 1532–2406。住宿按阳光家庭房。</p>
         <ul class="budget-notes">
           <li>按 2027 年 1 月 3–6 日估算（丽江 3 晚）。机票、门票、索道、吃饭按每人收，住宿和包车再平摊。</li>
         </ul>
@@ -1035,20 +1129,20 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
                   <td class="num">320–600</td>
                 </tr>
                 <tr>
-                  <td>住宿（丽江 3 晚）<span class="sub">按 1/3–1/6：747–1499（阳光 249×3＝747，或庭院亲子 757＋371＋371＝1499）。木鸟日历 2026-11-11。</span></td>
+                  <td>住宿（丽江 3 晚）<span class="sub">按阳光家庭房 249×3＝747，人均 249。木鸟日历 2026-11-11。备选见「住哪」。</span></td>
                   <td class="way"><span class="way-pill way-share">总账平摊</span></td>
-                  <td>见上行说明</td>
-                  <td class="num">249–500</td>
+                  <td>阳光家庭房 747</td>
+                  <td class="num">249</td>
                 </tr>
                 <tr class="total">
                   <td>合计（不含丽江用车）<span class="sub">公交或 101 路另计。含包车一天对照时，约再加 133–217 元/人</span></td>
                   <td class="way">—</td><td>—</td>
-                  <td class="num">1399–2440</td>
+                  <td class="num">1399–2189</td>
                 </tr>
                 <tr class="total">
                   <td>合计（含包车一天对照）</td>
                   <td class="way">—</td><td>—</td>
-                  <td class="num">1532–2657</td>
+                  <td class="num">1532–2406</td>
                 </tr>
               </tbody>
             </table>
@@ -1059,10 +1153,10 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
             <div class="b-row"><span class="k">当地交通</span><span class="d">上山日包车对照，3 人 5 座 400–650；不含则公交另计</span><span class="v">0–650 元</span></div>
             <div class="b-row"><span class="k">门票</span><span class="d">玉龙 100 元×3</span><span class="v">300 元</span></div>
             <div class="b-row"><span class="k">索道与摆渡</span><span class="d">玉龙摆渡 20＋大索道 120，×3</span><span class="v">420 元</span></div>
-            <div class="b-row"><span class="k">住宿</span><span class="d">3 人按 1/3–1/6 阳光 249×3 至庭院亲子 757＋371＋371</span><span class="v">747–1499 元</span></div>
+            <div class="b-row"><span class="k">住宿</span><span class="d">3 人按阳光家庭房 249×3</span><span class="v">747 元</span></div>
             <div class="b-row"><span class="k">餐饮</span><span class="d">80–150 元/人/天，4 天，估算</span><span class="v">960–1800 元</span></div>
             <div class="b-row"><span class="k">氧气及其他</span><span class="d">氧气瓶约 9.9–19.9 元，按 3 人预留</span><span class="v">30–120 元</span></div>
-            <div class="b-row total"><span class="k">合计</span><span class="d">3 人约 4227–8089 元（含包车与氧气预留时走上限；人均请以上表为准）</span><span class="v">4227–8089 元</span></div>
+            <div class="b-row total"><span class="k">合计</span><span class="d">3 人约 4227–7338 元（含包车与氧气预留时走上限；人均请以上表为准）</span><span class="v">4227–7338 元</span></div>
           </div>
           <details class="src">
             <summary>来源与说明</summary>
@@ -1089,12 +1183,21 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
         <li><a href="https://commons.wikimedia.org/wiki/File:Lijiang_Yunnan_China_Jade-Dragon-Snow-Mountain-01.jpg">玉龙雪山照片：CEphoto, Uwe Aranas，CC BY-SA 3.0</a>（4272×1923，首屏）</li>
         <li><a href="https://commons.wikimedia.org/wiki/File:%E4%BB%8E%E6%A0%88%E9%81%93%E6%9C%80%E9%AB%98%E7%82%B9(4680m)%E4%BF%AF%E7%9E%B0%E7%8E%89%E9%BE%99%E9%9B%AA%E5%B1%B1_-_panoramio.jpg">冰川公园栈道照片：Caihm，CC BY 3.0</a>（3072×2304）</li>
         <li><a href="https://commons.wikimedia.org/wiki/File:Old_Town_of_Lijiang_at_night_20260221-3.jpg">丽江古城夜色：ShuQizhe，CC BY-SA 4.0</a>（4096×3072）</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:%E5%8F%A4%E5%9F%8E%E5%B0%8F%E6%A1%A5%E6%B5%81%E6%B0%B4%E5%8F%8A%E7%BA%A2%E7%81%AF%E7%AC%BC_-_panoramio.jpg">古城小桥流水及红灯笼：Caihm，CC BY 3.0</a>（原图 3648×2056）</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:%E7%99%BD%E6%B2%99%E5%8F%A4%E9%95%87_02.jpg">白沙古镇：Caitriana Nicholson，CC BY-SA 2.0</a>（原图 3264×2448）</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:%E4%BA%91%E5%8D%97%E8%93%9D%E6%9C%88%E8%B0%B702.jpg">蓝月谷：宝安区浩哥，CC BY-SA 4.0</a>（3264×2448）</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Zhongyi_Market_(48366765802).jpg">忠义市场：David Stanley，CC BY 2.0</a>（1024×768）</li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:%E6%9D%9F%E6%B2%B3%E5%8F%A4%E9%8E%AE%EF%BC%8D%E6%B0%91%E5%B1%85.jpg">束河民居：nobush，CC BY 2.0</a>（2592×1944；不是阳光家庭房房间实拍）</li>
         <li><a href="https://commons.wikimedia.org/wiki/File:Shuhe_Street,_Lijiang,_Yunnan,_China.jpg">束河绿荫与山景：Luke Chantrell，CC BY-SA 4.0</a>（4032×3024）</li>
         <li><a href="https://commons.wikimedia.org/wiki/File:20240503_Shuhe.jpg">束河古镇街道：Yumeto，CC BY-SA 4.0</a>（4096×3072）</li>
         <li><a href="https://commons.wikimedia.org/wiki/File:20240503_Qinglong_Qiao,_Lijiang.jpg">束河青龙桥：Yumeto，CC BY-SA 4.0</a>（4096×3072）</li>
         <li>玉龙雪山 2026 年票价：门票 100、环保车 20、冰川公园索道 120、蓝月谷电瓶车全程 40（玉龙雪山管委会 / 新华网云南）</li>
         <li><a href="https://view.inews.qq.com/a/20260104A071DC00">2026 年 1 月成都—丽江特价机票：去程 200 元起、返程 240 元起，不含机建燃油（成都本地宝，截自携程）</a>。那是另一段日期的特价，不能当 1/3、1/6 的下单价。</li>
         <li>本页 1/3、1/6 往返采用估算：去程 290–400 元/人，返程 300–700 元/人（今天未能打开这两天的实时报价，不是下单价）。1/3 是元旦返程日，成都飞丽江可能更便宜；1/6 是普通工作日。附近日期参考（<a href="https://www.woyaofei.com.cn/city/tfu/tfu-ljg.html">民航掌上飞去程</a>、<a href="https://www.woyaofei.com.cn/city/ljg/ljg-tfu.html">返程</a>，2026-11-11）：1/9 去程约 460、1/11 去程约 370；1/5 返程山航 SC8822 约 410。</li>
+        <li><a href="https://www.lijiang.cn/article/145146.html">丽江网：忠义市场是本地人买菜的农贸市场（蔬菜、肉食、水果；2025 年新春报道）</a></li>
+        <li><a href="https://sight.qunar.com/993776287">去哪儿：忠义市场地址古城区古佑巷 148 号，标开放 08:00–23:00（以当天为准）</a></li>
+        <li><a href="https://zixun.kunming.cn/c/8000805.shtml">昆明信息港：金甲市场位于丽江城区中心，集生鲜、五金、百货（建成于 1997 年的报道）</a></li>
+        <li><a href="https://www.chinaholiday.com/big5/hotel-print-207911.html">束河仁里路一带有「小平桥菜市场」这一地名（酒店地址等公开标注，近酒吧街）</a></li>
         <li><a href="https://www.lijiang.cn/article/133089.html">丽江网：束河往返三义机场专线 20 元/人（2024-07-06）</a></li>
         <li><a href="https://www.lijiang.cn/article/154420.html">丽江网：雪山轻轨旅游环线公交（束河南门—观光火车站—白沙）10 元/人</a></li>
         <li><a href="https://www.lijiang.cn/article/145546.html">丽江网：新游客服务中心至甘海子旅游直通车，单程 30 元、往返 60 元</a></li>
@@ -1236,7 +1339,7 @@ html.shot-dates body { background: var(--bg) !important; padding: 1.3rem 0 !impo
       var lb = document.getElementById("lightbox");
       var lbImg = document.getElementById("lbImg");
       var lbCap = document.getElementById("lbCap");
-      var gallery = [].slice.call(document.querySelectorAll(".hero-photo, .hl img, .day-photo img"));
+      var gallery = [].slice.call(document.querySelectorAll(".hero-photo, .hl img, .day-photo img, .place img, .lodge-photo"));
       var lbIndex = 0;
       function showLb(i) {
         lbIndex = (i + gallery.length) % gallery.length;
